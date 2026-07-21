@@ -13,6 +13,7 @@ body{margin:0;background:var(--bg);color:var(--white);font-family:var(--font-bod
 a{color:var(--gold);text-decoration:none}
 a:hover{color:var(--gold-light)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.wrap.wide{max-width:1120px}
 
 /* Шапка */
 .top{border-bottom:1px solid var(--gold-line);padding:22px 0;position:sticky;top:0;
@@ -35,17 +36,23 @@ a:hover{color:var(--gold-light)}
   font-size:14px;color:var(--muted)}
 .rubrics a:hover,.rubrics a.active{color:var(--bg);background:var(--gold);border-color:var(--gold)}
 
-/* Список статей */
-.list{display:grid;gap:18px;padding-bottom:80px}
-.card{display:block;background:var(--card-bg);border:1px solid var(--card-border);
-  border-radius:16px;padding:24px 26px;transition:.2s}
-.card:hover{border-color:var(--card-border-hover);transform:translateY(-2px)}
-.tag{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+/* Список статей — сетка 3 в ряд */
+.list{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding-bottom:80px}
+.card{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:16px;overflow:hidden;transition:.2s;height:100%}
+.card:hover{border-color:var(--card-border-hover);transform:translateY(-3px)}
+.card .thumb{aspect-ratio:4/3;width:100%;object-fit:cover;background:#0A0A0A;display:block;border-bottom:1px solid var(--card-border)}
+.card .body{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1}
+.tag{display:inline-block;align-self:flex-start;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--teal-light);border:1px solid rgba(13,115,119,0.4);border-radius:999px;
-  padding:3px 10px;margin-bottom:12px}
-.card h2{font-family:var(--font-head);font-weight:700;font-size:22px;margin:0 0 8px;color:var(--white);line-height:1.25}
-.card p{margin:0;color:var(--muted);font-size:16px}
-.card .more{color:var(--gold);font-size:15px;margin-top:12px;display:inline-block}
+  padding:3px 10px;margin-bottom:10px}
+.card h2{font-family:var(--font-head);font-weight:700;font-size:19px;margin:0 0 8px;color:var(--white);line-height:1.28}
+.card .cmeta{color:var(--muted);font-size:13px;margin:0 0 10px}
+.card p{margin:0 0 14px;color:var(--muted);font-size:15px;line-height:1.55}
+.card .more{color:var(--gold);font-size:14px;margin-top:auto;display:inline-block}
+
+@media (max-width:900px){.list{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.list{grid-template-columns:1fr}}
 
 /* Статья */
 article.post{padding:48px 0 80px}
