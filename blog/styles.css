@@ -1,0 +1,68 @@
+/* Блог «Полезные статьи» — статические SEO-страницы в бренд-эстетике лендинга */
+:root{
+  --bg:#0A0A0A; --gold:#E8A020; --gold-light:#f6b94a; --gold-soft:rgba(232,160,32,0.15);
+  --gold-line:rgba(232,160,32,0.2); --teal:#0D7377; --teal-light:#2bd4c8;
+  --white:#F5F0E8; --muted:rgba(245,240,232,0.45); --card-bg:rgba(255,255,255,0.03);
+  --card-border:rgba(232,160,32,0.15); --card-border-hover:rgba(232,160,32,0.28);
+  --maxw:720px; --font-head:'Montserrat',system-ui,sans-serif; --font-body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--white);font-family:var(--font-body);
+  font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+a:hover{color:var(--gold-light)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+/* Шапка */
+.top{border-bottom:1px solid var(--gold-line);padding:22px 0;position:sticky;top:0;
+  background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);z-index:10}
+.top .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--font-head);font-weight:800;letter-spacing:.02em;color:var(--white)}
+.brand span{color:var(--gold)}
+.top nav a{color:var(--muted);font-size:15px;margin-left:22px}
+.top nav a:hover{color:var(--white)}
+
+/* Заголовок раздела */
+.hero{padding:64px 0 28px;text-align:center}
+.hero h1{font-family:var(--font-head);font-weight:800;font-size:clamp(30px,6vw,46px);
+  margin:0 0 12px;line-height:1.1}
+.hero p{color:var(--muted);max-width:540px;margin:0 auto;font-size:17px}
+
+/* Рубрики-фильтр */
+.rubrics{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 40px}
+.rubrics a{border:1px solid var(--gold-line);border-radius:999px;padding:7px 16px;
+  font-size:14px;color:var(--muted)}
+.rubrics a:hover,.rubrics a.active{color:var(--bg);background:var(--gold);border-color:var(--gold)}
+
+/* Список статей */
+.list{display:grid;gap:18px;padding-bottom:80px}
+.card{display:block;background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:16px;padding:24px 26px;transition:.2s}
+.card:hover{border-color:var(--card-border-hover);transform:translateY(-2px)}
+.tag{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--teal-light);border:1px solid rgba(13,115,119,0.4);border-radius:999px;
+  padding:3px 10px;margin-bottom:12px}
+.card h2{font-family:var(--font-head);font-weight:700;font-size:22px;margin:0 0 8px;color:var(--white);line-height:1.25}
+.card p{margin:0;color:var(--muted);font-size:16px}
+.card .more{color:var(--gold);font-size:15px;margin-top:12px;display:inline-block}
+
+/* Статья */
+article.post{padding:48px 0 80px}
+article.post .tag{margin-bottom:16px}
+article.post h1{font-family:var(--font-head);font-weight:800;font-size:clamp(28px,5.5vw,40px);
+  line-height:1.15;margin:0 0 14px}
+article.post .meta{color:var(--muted);font-size:14px;margin-bottom:36px;border-bottom:1px solid var(--gold-line);padding-bottom:20px}
+article.post h2{font-family:var(--font-head);font-weight:700;font-size:24px;margin:40px 0 12px;color:var(--gold-light)}
+article.post p{margin:0 0 20px}
+article.post strong{color:var(--white)}
+article.post .cta{background:var(--card-bg);border:1px solid var(--card-border);border-left:3px solid var(--gold);
+  border-radius:12px;padding:22px 24px;margin:36px 0}
+article.post .cta p{margin:0}
+.backlink{display:inline-block;margin:0 0 8px;color:var(--muted);font-size:15px}
+.backlink:hover{color:var(--gold)}
+
+/* Подвал */
+.foot{border-top:1px solid var(--gold-line);padding:34px 0;color:var(--muted);font-size:14px;text-align:center}
+
+@media (max-width:560px){body{font-size:17px}.card{padding:20px 20px}}
