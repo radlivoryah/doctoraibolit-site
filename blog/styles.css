@@ -59,7 +59,8 @@ article.post{padding:48px 0 80px}
 article.post .tag{margin-bottom:16px}
 article.post h1{font-family:var(--font-head);font-weight:800;font-size:clamp(28px,5.5vw,40px);
   line-height:1.15;margin:0 0 14px}
-article.post .meta{color:var(--muted);font-size:14px;margin-bottom:36px;border-bottom:1px solid var(--gold-line);padding-bottom:20px}
+article.post .meta{color:var(--muted);font-size:14px;margin-bottom:24px;border-bottom:1px solid var(--gold-line);padding-bottom:20px}
+article.post .hero{width:100%;border-radius:14px;border:1px solid var(--card-border);margin:0 0 30px;display:block}
 article.post h2{font-family:var(--font-head);font-weight:700;font-size:24px;margin:40px 0 12px;color:var(--gold-light)}
 article.post p{margin:0 0 20px}
 article.post strong{color:var(--white)}
