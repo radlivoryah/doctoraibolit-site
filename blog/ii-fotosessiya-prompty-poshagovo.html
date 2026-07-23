@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ИИ-фотосессия: как я собираю экспертные кадры без фотографа</title>
+<meta name="description" content="Пошагово: как писать промпты для ИИ-фотосессии, готовые шаблоны и разбор брака. Аватарки, экспертные портреты и контент без съёмки." />
+<meta name="keywords" content="ии-фотосессия, промпты для фото, портрет нейросетью, фото без фотографа, gpt image портрет" />
+<link rel="canonical" href="https://doctoraibolit.online/blog/ii-fotosessiya-prompty-poshagovo.html" />
+<meta property="og:title" content="ИИ-фотосессия: как я собираю экспертные кадры без фотографа" />
+<meta property="og:description" content="Пошагово: референсы, формула промпта, готовые шаблоны и разбор брака. Кадры без съёмки." />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/">Ильдар <span>Хайров</span></a>
+    <nav>
+      <a href="/">Главная</a>
+      <a href="/blog/">Статьи</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="post">
+    <a class="backlink" href="/blog/">← Все статьи</a>
+    <span class="tag">ИИ</span>
+    <h1>ИИ-фотосессия: как я собираю экспертные кадры без фотографа</h1>
+    <div class="meta">Ильдар Хайров, стоматолог-ортопед и AI-практик</div>
+    <img class="hero" src="/blog/img/ii-fotosessiya-prompty-poshagovo.png" alt="ИИ-фотосессия" />
+
+    <p>Мне регулярно нужны кадры. Портрет для лендинга, аватарка, картинка под пост про ИИ в медицине. Гонять фотографа ради каждого такого снимка глупо. Поэтому часть кадров я собираю нейросетью. И вот что понял на своей практике: качество тут решает не красивый промпт, а то, что ты в модель загрузил на входе.</p>
+
+    <p>Разберу процесс так, как делаю сам. По шагам, с готовыми промптами, которые можешь забрать и использовать сегодня.</p>
+
+    <h2>Сначала правда, которая экономит тебе неделю</h2>
+    <p>Примерно 80% результата зависит от референсов, а не от текста промпта. Люди делают наоборот: вылизывают формулировку по часу, а лицо кормят тремя мутными селфи из отпуска. Потом удивляются, почему на выходе чужой человек.</p>
+    <p>Запомни это как аксиому. Плохие исходники не вытянет ни один промпт. Хорошие исходники прощают даже кривую формулировку.</p>
+
+    <h2>Шаг 1. Собери лицо, а не селфи</h2>
+    <p>Модели нужно 10-20 чётких фото твоего лица. Не для галочки, а рабочих.</p>
+    <ul>
+    <li><strong>Ракурсы.</strong> Анфас, три четверти, профиль. Дай нейросети объём, а не одну плоскую картинку.</li>
+    <li><strong>Свет.</strong> Ровный, дневной. Встань у окна днём. Никаких клубных вспышек и жёлтых ламп.</li>
+    <li><strong>Мимика.</strong> Разные выражения. Спокойное, лёгкая улыбка, серьёзное.</li>
+    <li><strong>Чистота кадра.</strong> Без других людей, без фильтров, лицо открыто. Ни очков-хамелеонов, ни маски.</li>
+    </ul>
+    <p>Мой лайфхак. Встаёшь у окна, включаешь серийную съёмку и медленно крутишь головой, меняя выражение. За две минуты набираешь 20 годных кадров. Это и есть твоя база.</p>
+
+    <h2>Шаг 2. Где генерить</h2>
+    <p>Три варианта, между которыми выбираю по задаче.</p>
+    <ul>
+    <li><strong>Шедеврум.</strong> Бесплатно, оплата из РФ не нужна. Сходство среднее, контроля мало. Идеально попробовать и понять, надо ли тебе это вообще.</li>
+    <li><strong>GPT Image 2.</strong> Около $20 в месяц через агрегатор. Высокое сходство, много контроля. Мой рабочий инструмент для картинок под блог.</li>
+    <li><strong>Midjourney.</strong> От $10 в месяц. Картинка красивая до неприличия, контроль максимальный, но порог входа выше.</li>
+    </ul>
+    <p>Совет: начни с бесплатного. Почувствуешь, держит модель твоё лицо или нет. Потом уже плати.</p>
+
+    <h2>Шаг 3. Формула промпта</h2>
+    <p>Не изобретай. Есть скелет, который работает:</p>
+    <p><strong>тип кадра + одежда + локация + свет + поза + ключ на лицо.</strong></p>
+    <p>Пиши на английском, так модель точнее понимает. И два элемента добавляй всегда: <strong>sharp focus on the face</strong> и <strong>realistic skin texture</strong>. Первое держит лицо в резкости. Второе спасает от пластиковой кожи манекена.</p>
+    <p>Вот пять готовых промптов. Забирай:</p>
+    <ul>
+    <li><strong>Деловой портрет:</strong> Professional business portrait, upper body, person wearing a well-fitted dark blazer over a light shirt, standing in a modern bright office with soft blurred background, natural soft window light from the left, confident calm expression, looking straight at camera, sharp focus on the face, realistic skin texture</li>
+    <li><strong>Экспертный кадр для лендинга:</strong> Editorial studio portrait, dramatic side lighting with soft shadows, plain dark grey background, person in a minimalist elegant outfit, thoughtful serious expression, high fashion magazine style, crisp detail on the eyes and face, realistic skin texture</li>
+    <li><strong>Уличный образ:</strong> Candid street photography, full body, person walking on a European old town street, casual stylish outfit, golden hour sunlight, shallow depth of field, natural relaxed pose, cinematic color grading, realistic detailed face</li>
+    <li><strong>На природе:</strong> Lifestyle portrait outdoors, person sitting on rocks by the sea at sunset, warm backlight, cozy knitted sweater, calm mood, soft bokeh of the ocean behind, natural authentic look, film-like tones, realistic skin texture</li>
+    <li><strong>Домашний кадр для ленты:</strong> Cozy indoor lifestyle photo, person sitting by a window with a cup of coffee, soft morning light, plants in the background, relaxed genuine smile, warm color palette, natural skin, documentary photography style</li>
+    </ul>
+    <p>Пять ошибок, на которых горят все новички:</p>
+    <ul>
+    <li>Каша из десяти идей в одном промпте. Одна сцена, одно настроение. Всё.</li>
+    <li>Забыл про свет. А свет это половина фотографии.</li>
+    <li>Отрицания вроде «без искажений». Модель цепляется за слово, а не за «без». Пишешь «без искажений» - получаешь искажения.</li>
+    <li>Абстрактная одежда. «Stylish outfit» ни о чём. Пиши конкретно: тёмный блейзер, светлая рубашка.</li>
+    <li>Нет ключа на лицо. И лицо уплывает в кашу.</li>
+    </ul>
+
+    <h2>Шаг 4. Отбраковка и починка</h2>
+    <p>Спойлер: из 10 кадров рабочих обычно 2-3. Это норма, а не провал. На одну сцену закладывай 8-12 генераций, на полную серию из десяти сцен уйдёт около сотни. Не жди шедевра с первого клика.</p>
+    <p>Частый брак и что с ним делать:</p>
+    <ul>
+    <li><strong>Не твоё лицо.</strong> Добавь чётких референсов, усиль акцент в промпте. Или сгенери крупный портрет, где сходство есть, и скорми его модели как новый референс.</li>
+    <li><strong>Кривые пальцы.</strong> Перегенери или спрячь руки за кадр.</li>
+    <li><strong>Пластиковая кожа.</strong> Добавь realistic skin texture, film photography look.</li>
+    <li><strong>Дичь на фоне.</strong> Упрости фон, увеличь план.</li>
+    </ul>
+    <p>Битый кадр не чини ретушью. Дешевле перегенерить, чем спасать труп.</p>
+
+    <h2>Чек-лист перед публикацией</h2>
+    <ul>
+    <li>Пальцы пересчитал? Суставы на месте?</li>
+    <li>Зрачки симметричны, уши нормальной формы?</li>
+    <li>Фон без странных теней, ступенек и текста-абракадабры?</li>
+    <li>Кожа живая, не глянцевый манекен?</li>
+    <li>И честно: это похоже на тебя?</li>
+    </ul>
+
+    <h2>Где ИИ-фото врёт, а где помогает</h2>
+    <p>Скажу прямо как врач. Для документов, товарных карточек и всего, где нужна достоверность события, ИИ-фото не годится. В медицине и юридических делах врать картинкой нельзя.</p>
+    <div class="cta">
+      <p>А вот аватарка, обложка канала, портрет эксперта для лендинга, картинка под пост - тут ИИ закрывает задачу без фотографа и студии. Начни с малого. Собери 15 хороших референсов, залей в бесплатный Шедеврум, прогони деловой портрет. Понравится держать лицо - расширяй сцены. Думай своей головой и пробуй руками, это быстрее любой теории.</p>
+    </div>
+
+    <a class="backlink" href="/blog/">← Все статьи</a>
+  </article>
+</main>
+
+<footer class="foot">
+  <div class="wrap">© Ильдар Хайров · стоматолог-ортопед и AI-практик · doctoraibolit.online</div>
+</footer>
+</body>
+</html>
