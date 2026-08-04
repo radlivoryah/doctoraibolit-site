@@ -67,6 +67,11 @@ article.post strong{color:var(--white)}
 article.post .cta{background:var(--card-bg);border:1px solid var(--card-border);border-left:3px solid var(--gold);
   border-radius:12px;padding:22px 24px;margin:36px 0}
 article.post .cta p{margin:0}
+/* Панель с готовым промптом: рамка-сообщение, как в каруселях */
+article.post .prompt{background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:18px 18px 18px 6px;padding:22px 24px;margin:24px 0;font-size:.94em;line-height:1.5}
+article.post .prompt p{margin:0 0 14px}
+article.post .prompt p:last-child{margin:0}
 .backlink{display:inline-block;margin:0 0 8px;color:var(--muted);font-size:15px}
 .backlink:hover{color:var(--gold)}
 
