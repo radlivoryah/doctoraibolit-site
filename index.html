@@ -197,5 +197,20 @@ if(document.body) add();
 window.addEventListener('DOMContentLoaded', add);
 window.addEventListener('load', function(){ add(); setTimeout(add,400); setTimeout(add,1200); setTimeout(add,3000); });
 })();</script>
+<script>(function(){
+var L='<div id="site-legal-links" style="margin-top:16px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap;font-size:12px">'
++'<a href="/docs/oferta.html" style="color:#E8A020;text-decoration:none">Публичная оферта</a>'
++'<a href="/docs/payment.html" style="color:#E8A020;text-decoration:none">Оплата и возврат</a>'
++'<a href="/docs/privacy.html" style="color:#E8A020;text-decoration:none">Политика конфиденциальности</a>'
++'</div>';
+function add(){
+  if(document.getElementById('site-legal-links')) return;
+  var f=document.querySelector('footer');
+  if(f){ f.insertAdjacentHTML('beforeend', L); }
+}
+if(document.body) add();
+window.addEventListener('DOMContentLoaded', add);
+window.addEventListener('load', function(){ add(); setTimeout(add,400); setTimeout(add,1200); setTimeout(add,3000); });
+})();</script>
 </body>
 </html>
