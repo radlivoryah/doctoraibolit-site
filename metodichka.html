@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ИИ в практике врача: методичка Ильдара Хайрова</title>
+<meta name="description" content="49 страниц о том, как практикующий врач применяет ИИ без потери клинического мышления. 7 сценариев с приема, формула запроса, четыре зоны, куда ИИ пускать нельзя." />
+<link rel="canonical" href="https://doctoraibolit.online/metodichka.html" />
+<meta property="og:title" content="ИИ в практике врача: методичка" />
+<meta property="og:description" content="Не про технологии. Про то, как думающий врач использует ИИ без лишних иллюзий." />
+<meta property="og:type" content="product" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="blog/styles.css" />
+<style>
+  .fill { background: #ffe9a8; color: #4a3a00; padding: 1px 6px; border-radius: 4px; font-weight: 600; }
+
+  .prod-hero { margin: 8px 0 34px; }
+  .prod-kicker {
+    font-family: Montserrat, system-ui, sans-serif; font-size: 12px; letter-spacing: .18em;
+    text-transform: uppercase; color: #b07d12; margin-bottom: 14px;
+  }
+  .prod-lead { font-size: 19px; line-height: 1.6; }
+
+  .buybox {
+    border: 2px solid #e8a020; border-radius: 14px; padding: 26px 28px;
+    margin: 34px 0; background: #fffdf7;
+  }
+  .price { font-family: Montserrat, system-ui, sans-serif; font-size: 38px; font-weight: 800; }
+  .price small { font-size: 15px; font-weight: 600; color: #7a7266; margin-left: 10px; }
+  .buybtn {
+    display: inline-block; margin-top: 18px; padding: 15px 34px; border-radius: 999px;
+    background: #e8a020; color: #1a1a1a; font-family: Montserrat, system-ui, sans-serif;
+    font-weight: 800; font-size: 17px; text-decoration: none;
+  }
+  .buybtn:hover { background: #d4900f; }
+  .buynote { margin-top: 14px; font-size: 14px; color: #6f675c; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+  @media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+  .card {
+    border: 1px solid #e2ddd2; border-left: 3px solid #0d7377;
+    border-radius: 8px; padding: 16px 18px; background: #fbfaf7;
+  }
+  .card b { display: block; margin-bottom: 6px; font-family: Montserrat, system-ui, sans-serif; }
+  .card.stop { border-left-color: #c0392b; }
+
+  .toc { counter-reset: sec; margin-top: 18px; }
+  .toc div {
+    padding: 11px 0; border-bottom: 1px solid #ece7dd;
+  }
+  .toc div::before {
+    counter-increment: sec; content: "0" counter(sec);
+    font-family: Montserrat, system-ui, sans-serif; color: #b07d12;
+    font-size: 13px; margin-right: 14px;
+  }
+  .who { margin-top: 18px; }
+  .who li { margin-bottom: 9px; }
+  .notfor { color: #6f675c; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/">Ильдар <span>Хайров</span></a>
+    <nav>
+      <a href="/">Главная</a>
+      <a href="/blog/">Статьи</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="post">
+    <div class="prod-hero">
+      <div class="prod-kicker">Методичка для практикующего врача · версия 2.0 · 2026</div>
+      <h1>ИИ в практике врача</h1>
+      <p class="prod-lead">49 страниц о том, как думающий врач использует ИИ без потери клинического мышления и без лишних иллюзий. Все из личной практики, никаких «специалисты считают».</p>
+    </div>
+
+    <div class="buybox">
+      <div class="price"><span class="fill">ЦЕНА</span> <small>разовая оплата, доступ навсегда</small></div>
+      <a class="buybtn" href="#" id="buy-link"><span class="fill">ССЫЛКА НА ОПЛАТУ</span></a>
+      <div class="buynote">PDF приходит на почту сразу после оплаты. <a href="/docs/payment.html">Условия оплаты и возврата</a> · <a href="/docs/oferta.html">Оферта</a></div>
+    </div>
+
+    <h2>Зачем она вам</h2>
+    <p>Про ИИ в медицине пишут либо восторженно, либо со страхом. И то и другое бесполезно на приеме, когда за дверью сидит следующий пациент, а документация за сегодня еще не закрыта.</p>
+    <p>Эта методичка не про технологии. Она про то, что конкретно делегировать машине, что не делегировать никогда и как сформулировать запрос, чтобы получить рабочий ответ, а не общие слова.</p>
+
+    <h2>Что внутри</h2>
+    <div class="toc">
+      <div><b>Анамнез.</b> Кто я и почему это пишу</div>
+      <div><b>Жалобы.</b> Что не так с тем, как врачи смотрят на ИИ</div>
+      <div><b>Диагностика.</b> Как это работает, три уровня</div>
+      <div><b>Рекомендации.</b> Что нельзя поручать ИИ, четыре зоны</div>
+      <div><b>Формула запроса.</b> Как разговаривать с ИИ, чтобы он работал</div>
+      <div><b>Планы лечения.</b> Семь реальных сценариев с готовыми промптами</div>
+      <div><b>Агент.</b> Следующий уровень: личный ИИ-ассистент</div>
+      <div><b>Инструменты.</b> Что использую и зачем</div>
+      <div><b>Чек-лист.</b> Тридцать секунд перед каждым использованием</div>
+    </div>
+
+    <h2>Раздел, которого нет в восторженных постах</h2>
+    <p>Четыре зоны, куда ИИ не входит. Независимо от того, насколько убедительно выглядит ответ.</p>
+    <div class="grid2">
+      <div class="card stop"><b>Диагностика</b>Даже когда ИИ называет верный диагноз, он делает это без осмотра, без интуиции, накопленной годами, и без ответственности.</div>
+      <div class="card stop"><b>Тактика лечения</b>Индивидуальное решение, где врач взвешивает показания, противопоказания и ситуацию конкретного пациента. Этого контекста ИИ не видит.</div>
+      <div class="card stop"><b>Конфликты с пациентами</b>Любая формулировка, подсказанная ИИ в спорной ситуации, может впоследствии обернуться против вас.</div>
+      <div class="card stop"><b>Юридические документы</b>Заключения, объяснения, ответы на запросы. Каждое слово имеет вес, а ИИ не понимает юридических последствий того, что пишет.</div>
+    </div>
+    <p style="margin-top:16px"><strong>Во всех этих случаях ИИ создает не надежность, а ее видимость.</strong></p>
+
+    <h2>Кому подойдет</h2>
+    <ul class="who">
+      <li>Практикующему врачу любой специальности, который тонет в документации.</li>
+      <li>Тому, кто пробовал ChatGPT, получил общие слова и решил, что это пустышка.</li>
+      <li>Тому, кто хочет применять ИИ, но боится навредить пациенту или подставиться юридически.</li>
+      <li>Ординатору и студенту, которому нужно готовиться быстрее, чем позволяет сутки.</li>
+    </ul>
+    <p class="notfor">Не подойдет: если вы ищете инструмент, который будет ставить диагнозы за вас. Такого здесь нет, и в методичке объясняется почему.</p>
+
+    <div class="buybox">
+      <div class="price"><span class="fill">ЦЕНА</span> <small>разовая оплата, доступ навсегда</small></div>
+      <a class="buybtn" href="#"><span class="fill">ССЫЛКА НА ОПЛАТУ</span></a>
+      <div class="buynote">Вопросы до покупки: <a href="mailto:il.khairov@gmail.com">il.khairov@gmail.com</a></div>
+    </div>
+
+    <p style="font-size:14px;color:#6f675c">Материал носит информационный характер, не является медицинской услугой и не заменяет очного обращения к врачу.</p>
+
+    <a class="backlink" href="/">← На главную</a>
+  </article>
+</main>
+
+<footer class="foot">
+  <div class="wrap">© Ильдар Хайров · стоматолог-ортопед и AI-практик · doctoraibolit.online</div>
+</footer>
+</body>
+</html>
