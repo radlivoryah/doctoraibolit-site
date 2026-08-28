@@ -85,7 +85,7 @@ function Hero() {
       <div className="hero-sender hero-anim">
         <div className="sender-avatar"><img src={RES('photoAvatar', 'photo-avatar.png')} alt="Ильдар Хайров" /></div>
         <div className="sender-info">
-          <strong>Ильдар Рашидович Хайров</strong>
+          <strong>Ильдар Хайров</strong>
           Москва · Стоматолог-ортопед & AI-практик
         </div>
       </div>
@@ -433,7 +433,7 @@ function FinalCTA() {
 function Footer() {
   return (
     <footer>
-      <p className="foot-name">Ильдар Рашидович Хайров</p>
+      <p className="foot-name">doctoraibolit.online</p>
       <p className="foot-meta">Стоматолог-ортопед · AI-практик · Москва</p>
       <div className="foot-links">
         <a href="https://t.me/il_khairov">@il_khairov</a>
