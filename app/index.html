@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<title>Айболит Learn</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Commissioner:wght@400;500;600&display=swap">
+<style>
+:root {
+  --ground:#0a0a0a; --surface:#151515; --surface-2:#1f1f1f; --line:rgba(244,239,230,0.10);
+  --ink:#f4efe6; --muted:#9d978d; --gold:#e8a020; --gold-ink:#0a0a0a; --teal:#0d7377; --teal-soft:#0f5f63;
+  --plus:#2bd4c8; --lock:#6e685f; --ok:#4cc38a;
+  --hero-dark:#111111; --hero-dark-2:#1c1c1c;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --ground:#f4efe6; --surface:#ffffff; --surface-2:#ece6da; --line:rgba(10,10,10,0.10);
+    --ink:#0a0a0a; --muted:#6b655c; --lock:#a39d92;
+  }
+}
+:root[data-theme="light"] {
+  --ground:#f4efe6; --surface:#ffffff; --surface-2:#ece6da; --line:rgba(10,10,10,0.10);
+  --ink:#0a0a0a; --muted:#6b655c; --lock:#a39d92;
+}
+* { box-sizing:border-box; }
+[hidden] { display:none !important; }
+html, body { height:100%; }
+body { margin:0; background:var(--ground); color:var(--ink); font-family:'Commissioner', system-ui, -apple-system, sans-serif; font-size:16px; line-height:1.45; }
+.app { max-width:480px; margin:0 auto; min-height:100%; position:relative; padding-bottom:110px; }
+.tg { position:sticky; top:env(safe-area-inset-top, 0px); z-index:5; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:12px 16px; background:var(--ground); }
+.tg .back { justify-self:start; color:var(--ink); background:none; border:0; font:inherit; font-size:16px; padding:0; cursor:pointer; }
+.tg .name { text-align:center; line-height:1.15; }
+.tg .name b { font-family:'Jost', sans-serif; font-weight:600; font-size:17px; }
+.tg .name small { display:block; color:var(--muted); font-size:12px; }
+.tg .dots { justify-self:end; width:30px; height:30px; border:1.5px solid var(--ink); border-radius:50%; text-align:center; line-height:26px; font-size:14px; letter-spacing:1px; }
+.screen { padding:8px 16px 0; display:flex; flex-direction:column; gap:18px; }
+h1, h2, h3 { margin:0; font-family:'Jost', sans-serif; font-weight:600; text-wrap:balance; letter-spacing:-0.01em; }
+h1 { font-size:26px; line-height:1.15; }
+h2 { font-size:22px; line-height:1.15; }
+h3 { font-size:17px; }
+.eyebrow { font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); font-weight:500; }
+.hello { display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--line); }
+.hello span { font-size:24px; font-family:'Jost', sans-serif; font-weight:500; }
+.hello span b { font-weight:600; color:var(--gold); }
+.avatar { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg, var(--gold), #b87410); color:var(--gold-ink); display:grid; place-items:center; font-family:'Jost', sans-serif; font-weight:600; font-size:15px; }
+.showcase { display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; margin:0 -16px; padding:0 16px 4px; scrollbar-width:none; }
+.showcase::-webkit-scrollbar { display:none; }
+.tile { flex:0 0 88%; scroll-snap-align:start; display:flex; flex-direction:column; gap:10px; }
+.tile .sub { color:var(--muted); font-size:15px; margin-top:-4px; }
+.card { border-radius:24px; padding:20px; min-height:290px; display:flex; flex-direction:column; justify-content:space-between; gap:18px; }
+.card.dark { background:linear-gradient(160deg, var(--hero-dark-2), var(--hero-dark)); color:#f4efe6; border:1px solid rgba(244,239,230,0.08); }
+.card.teal { background:linear-gradient(160deg, var(--teal), #083f42); color:#f4efe6; }
+.prompt { display:flex; align-items:center; gap:10px; background:rgba(244,239,230,0.08); border-radius:999px; padding:6px 14px 6px 6px; font-size:16px; overflow:hidden; white-space:nowrap; }
+.prompt .who { background:rgba(244,239,230,0.14); border-radius:999px; padding:8px 14px; font-family:'Jost', sans-serif; font-weight:600; font-size:14px; display:flex; gap:8px; align-items:center; }
+.prompt .who i { width:10px; height:10px; border-radius:50%; background:var(--gold); display:inline-block; }
+.prompt .typed { overflow:hidden; text-overflow:clip; }
+.prompt .caret { display:inline-block; width:2px; height:18px; background:#f4efe6; vertical-align:-3px; margin-left:2px; animation:blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity:0; } }
+.card .foot { display:flex; align-items:center; justify-content:space-between; gap:10px; font-size:15px; }
+.card .foot .arrow { flex:1; text-align:center; opacity:0.6; }
+.btn { border:0; border-radius:999px; padding:12px 22px; font:inherit; font-weight:600; font-size:15px; cursor:pointer; }
+.btn.ghost { background:rgba(244,239,230,0.14); color:#f4efe6; }
+.btn.gold { background:var(--gold); color:var(--gold-ink); }
+.btn.paper { background:#f4efe6; color:#0a0a0a; }
+.btn.block { width:100%; padding:16px; font-size:16px; }
+.inner { background:#f4efe6; color:#0a0a0a; border-radius:18px; padding:16px; display:flex; flex-direction:column; gap:12px; }
+.inner .top { display:flex; justify-content:space-between; font-size:14px; }
+.inner .top b { font-family:'Jost', sans-serif; font-weight:600; font-size:16px; }
+.inner .top .ok { color:var(--teal); font-weight:600; }
+.chips { display:flex; flex-wrap:wrap; gap:8px; }
+.chip { background:rgba(10,10,10,0.07); border-radius:999px; padding:7px 12px; font-size:14px; }
+.card.dark .chips .chip { background:rgba(244,239,230,0.10); }
+.filters { display:flex; gap:6px; overflow-x:auto; margin:0 -16px; padding:0 16px; scrollbar-width:none; }
+.filters::-webkit-scrollbar { display:none; }
+.filters button { flex:0 0 auto; border:0; background:none; color:var(--muted); font:inherit; font-size:16px; padding:8px 12px; border-radius:999px; cursor:pointer; }
+.filters button.on { background:var(--ink); color:var(--ground); }
+.filters .sep { width:1px; background:var(--line); margin:8px 2px; }
+.plus { display:flex; align-items:center; gap:14px; background:var(--surface); border-radius:18px; padding:14px 16px; font-size:15px; }
+.plus .tag { background:var(--plus); color:#062a28; border-radius:999px; padding:4px 12px; font-family:'Jost', sans-serif; font-weight:600; font-size:13px; letter-spacing:0.06em; }
+.plus a { color:var(--ink); }
+.feed { display:flex; flex-direction:column; }
+.post { display:grid; grid-template-columns:44px 1fr; gap:14px; padding:18px 0; border-top:1px solid var(--line); }
+.post .av { width:44px; height:44px; border-radius:50%; background:var(--surface-2); display:grid; place-items:center; font-size:20px; position:relative; }
+.post .av i { position:absolute; right:-4px; bottom:-4px; width:20px; height:20px; border-radius:50%; background:var(--gold); border:2px solid var(--ground); }
+.post .meta { font-size:14px; color:var(--muted); }
+.post .meta b { color:var(--ink); font-weight:600; }
+.post h3 { margin-top:2px; font-family:'Commissioner', sans-serif; font-weight:600; font-size:19px; line-height:1.25; }
+.post .cover { margin-top:12px; height:150px; border-radius:16px; display:grid; place-items:center; font-size:60px; background:var(--surface); }
+.post .cover.gold { background:linear-gradient(135deg, rgba(232,160,32,0.25), rgba(232,160,32,0.05)); }
+.post .cover.teal { background:linear-gradient(135deg, rgba(13,115,119,0.35), rgba(13,115,119,0.08)); }
+.post .read { margin-top:12px; display:inline-block; background:var(--surface-2); color:var(--ink); border-radius:999px; padding:9px 18px; font-size:15px; border:0; font:inherit; cursor:pointer; }
+.tabbar { position:fixed; left:50%; transform:translateX(-50%); bottom:0; padding:0 0 calc(18px + env(safe-area-inset-bottom, 0px)); z-index:6; }
+.tabbar div { display:flex; background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:6px; box-shadow:0 10px 30px rgba(0,0,0,0.35); }
+.tabbar button { border:0; background:none; color:var(--ink); font:inherit; font-size:16px; padding:12px 22px; border-radius:999px; display:flex; gap:10px; align-items:center; cursor:pointer; }
+.tabbar button.on { background:var(--surface); }
+.hero-cover { border-radius:24px; padding:20px; min-height:260px; display:flex; flex-direction:column; justify-content:space-between; background:linear-gradient(160deg, var(--hero-dark-2), var(--hero-dark)); color:#f4efe6; border:1px solid rgba(244,239,230,0.08); }
+.lead { font-size:17px; line-height:1.5; }
+.facts { color:var(--muted); font-size:15px; }
+.who { display:flex; flex-direction:column; gap:14px; }
+.who div { display:grid; grid-template-columns:22px 1fr; gap:10px; }
+.who .tick { color:var(--ok); font-weight:600; }
+.who b { display:block; font-size:17px; margin-bottom:2px; }
+.who p { margin:0; color:var(--muted); font-size:15px; }
+.zones { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.zone { background:var(--surface); border-radius:16px; padding:14px; font-size:15px; }
+.zone b { display:block; color:var(--gold); font-family:'Jost', sans-serif; font-weight:600; margin-bottom:4px; }
+.gallery { display:flex; gap:10px; overflow-x:auto; margin:0 -16px; padding:0 16px; scrollbar-width:none; }
+.gallery::-webkit-scrollbar { display:none; }
+.gallery div { flex:0 0 150px; height:250px; border-radius:18px; display:grid; place-items:center; padding:14px; text-align:center; font-size:14px; }
+.g1 { background:linear-gradient(160deg, #e8a020, #8a5a0a); color:#0a0a0a; font-weight:600; }
+.g2 { background:#101010; color:#f4efe6; border:1px solid rgba(244,239,230,0.1); }
+.g3 { background:linear-gradient(160deg, #0d7377, #062a2c); color:#f4efe6; }
+.sticky { position:sticky; bottom:calc(88px + env(safe-area-inset-bottom, 0px)); padding-top:8px; background:linear-gradient(to top, var(--ground) 70%, transparent); }
+.bar { display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:15px; color:var(--muted); }
+.module { display:flex; flex-direction:column; gap:10px; }
+.module .title { display:flex; align-items:baseline; gap:10px; }
+.module .title small { color:var(--muted); font-size:14px; }
+.lesson { background:var(--surface); border-radius:18px; padding:16px; display:grid; grid-template-columns:28px auto 1fr 24px; align-items:center; gap:12px; font-size:17px; }
+.lesson .n { font-family:'Jost', sans-serif; font-weight:600; font-size:24px; }
+.lesson .k { font-size:11px; letter-spacing:0.12em; color:var(--muted); border-right:1px solid var(--line); padding-right:12px; }
+.lesson .lock { color:var(--lock); justify-self:end; }
+.lesson.open { grid-template-columns:28px auto 1fr; grid-template-rows:auto auto; border:1px solid var(--line); }
+.lesson.open .start { grid-column:1 / -1; }
+.sheet-bg { position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:8; }
+.sheet { position:fixed; left:50%; transform:translateX(-50%); bottom:0; width:100%; max-width:480px; background:var(--surface); border-radius:28px 28px 0 0; padding:20px 20px calc(24px + env(safe-area-inset-bottom, 0px)); z-index:9; display:flex; flex-direction:column; gap:16px; }
+.sheet .grab { width:44px; height:5px; border-radius:3px; background:var(--line); margin:0 auto; }
+.price { display:flex; justify-content:space-between; align-items:baseline; }
+.price b { font-family:'Jost', sans-serif; font-weight:600; font-size:30px; }
+.price small { color:var(--muted); font-size:14px; }
+.pay { display:flex; flex-direction:column; gap:10px; }
+.pay button { display:flex; justify-content:space-between; align-items:center; background:var(--surface-2); color:var(--ink); border:1px solid var(--line); border-radius:16px; padding:14px 16px; font:inherit; font-size:16px; cursor:pointer; }
+.pay button span { color:var(--muted); font-size:14px; }
+.profile-head { display:flex; gap:14px; align-items:center; }
+.profile-head .avatar { width:64px; height:64px; font-size:22px; }
+.row { display:flex; justify-content:space-between; align-items:center; background:var(--surface); border-radius:18px; padding:16px; font-size:16px; }
+.row span { color:var(--muted); font-size:14px; }
+.pill { border-radius:999px; padding:5px 12px; font-size:13px; font-weight:600; }
+.pill.ok { background:rgba(76,195,138,0.16); color:var(--ok); }
+.pill.gold { background:rgba(232,160,32,0.18); color:var(--gold); }
+.article { display:flex; flex-direction:column; gap:14px; font-size:17px; line-height:1.55; }
+.article p { margin:0; }
+.note { font-size:13px; color:var(--muted); text-align:center; padding:8px 0 0; }
+button:focus-visible, a:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+@media (prefers-reduced-motion: reduce) { .prompt .caret { animation:none; } }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="tg">
+    <button class="back" id="tgBack" data-action="back">Закрыть</button>
+    <div class="name"><b>Айболит Learn</b><small>мини-приложение</small></div>
+    <div class="dots">···</div>
+  </div>
+
+  <!-- HOME -->
+  <section class="screen" id="home">
+    <div class="hello"><span>Привет, <b>Ильдар</b></span><div class="avatar">ИР</div></div>
+
+    <div class="showcase">
+      <div class="tile">
+        <div class="eyebrow">Методичка</div>
+        <h2>ИИ в работе врача</h2>
+        <div class="sub">Первая глава бесплатно, дальше по оплате</div>
+        <div class="card dark">
+          <div class="prompt"><span class="who"><i></i>Claude</span><span class="typed" id="typed"></span><span class="caret"></span></div>
+          <div class="foot"><span>49 страниц · 7 сценариев</span><span class="arrow">→</span><button class="btn ghost" data-go="product">Открыть</button></div>
+        </div>
+      </div>
+      <div class="tile">
+        <div class="eyebrow">Услуга</div>
+        <h2>Внедрение ИИ в практику</h2>
+        <div class="sub">1-2 часа · Онлайн</div>
+        <div class="card teal">
+          <div class="inner">
+            <div class="top"><b>Доктор Айболит</b><span>1-2 часа · <span class="ok">Онлайн</span></span></div>
+            <h3>С чем приходят</h3>
+            <div class="chips"><span class="chip">Документация</span><span class="chip">Планы лечения</span><span class="chip">Контент клиники</span><span class="chip">ИИ-агент</span><span class="chip">Обучение команды</span></div>
+          </div>
+          <div class="foot"><span>детали тут</span><span class="arrow">→</span><button class="btn paper" data-go="consult">Записаться</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="filters" id="filters">
+      <button class="on" data-cat="all">Все</button><span class="sep"></span>
+      <button data-cat="prompts">Промпты</button><button data-cat="guides">Гайды</button><button data-cat="tools">Инструменты</button><button data-cat="video">Видео</button><button data-cat="clinic">Клиника</button>
+    </div>
+
+    <div class="plus"><span class="tag">ПЛЮС</span><span>Доступ открыт, пока ты <a href="#" onclick="return false">подписан на канал</a></span></div>
+
+    <div class="feed" id="feed"></div>
+    <div class="note">Прототип. Статьи взяты с сайта, цена и число читателей поставлены для примера.</div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section class="screen" id="product" hidden>
+    <div class="hero-cover">
+      <div class="prompt"><span class="who"><i></i>Claude</span><span class="typed">составь план лечения по снимку</span><span class="caret"></span></div>
+      <div class="foot" style="display:flex;justify-content:space-between;align-items:center"><span>1 глава открыта</span><span style="opacity:.6">→</span><button class="btn ghost" data-go="program">Открыть</button></div>
+    </div>
+    <h1>ИИ в работе врача</h1>
+    <p class="lead" style="margin:0">Как думающий врач использует ИИ без потери клинического мышления. Семь сценариев из практики с готовыми запросами, формула запроса и четыре зоны, куда ИИ пускать нельзя.</p>
+    <div class="facts">9 разделов · 7 сценариев с промптами · чек-лист на 30 секунд</div>
+    <h2>Кому это нужно</h2>
+    <div class="who">
+      <div><span class="tick">✓</span><div><b>Практикующим врачам</b><p>Чтобы документация, планы и ответы пациентам занимали минуты, а не вечер.</p></div></div>
+      <div><span class="tick">✓</span><div><b>Руководителям клиник</b><p>Чтобы понимать, что можно доверить ИИ в команде, а что нельзя ни при каких условиях.</p></div></div>
+      <div><span class="tick">✓</span><div><b>Тем, кто боится навредить</b><p>Методичка написана от обратного: сначала где ИИ создаёт видимость надёжности, потом где он реально помогает.</p></div></div>
+    </div>
+    <h2>Четыре зоны, куда ИИ не пускаем</h2>
+    <div class="zones">
+      <div class="zone"><b>01</b>Диагностика</div>
+      <div class="zone"><b>02</b>Тактика лечения</div>
+      <div class="zone"><b>03</b>Конфликт с пациентом</div>
+      <div class="zone"><b>04</b>Юридические документы</div>
+    </div>
+    <h2>Что получается</h2>
+    <div class="gallery">
+      <div class="g1">Выписка за 90 секунд вместо получаса</div>
+      <div class="g2">План лечения в трёх вариантах для пациента</div>
+      <div class="g3">Ответ на возражение «дорого» на языке пациента</div>
+    </div>
+    <div class="facts">Сцены из практики. Как это делается, показываю в методичке.</div>
+    <div class="sticky"><button class="btn gold block" data-go="program">Открыть программу</button></div>
+  </section>
+
+  <!-- PROGRAM -->
+  <section class="screen" id="program" hidden>
+    <div class="bar"><span>9 разделов · первый открыт</span><button class="btn gold" data-action="pay">Оплатить</button></div>
+    <div class="module">
+      <div class="title"><h3>Разобраться</h3><small>3 раздела</small></div>
+      <div class="lesson open"><span class="n">1</span><span class="k">РАЗДЕЛ</span><span>Анамнез: кто я и зачем это написал</span><button class="btn paper block start" data-go="article-free">Читать бесплатно</button></div>
+      <div class="lesson"><span class="n">2</span><span class="k">РАЗДЕЛ</span><span>Жалобы: как врачи смотрят на ИИ</span><span class="lock">🔒</span></div>
+      <div class="lesson"><span class="n">3</span><span class="k">РАЗДЕЛ</span><span>Диагностика: три уровня</span><span class="lock">🔒</span></div>
+    </div>
+    <div class="module">
+      <div class="title"><h3>Правила</h3><small>2 раздела</small></div>
+      <div class="lesson"><span class="n">4</span><span class="k">РАЗДЕЛ</span><span>Четыре зоны, куда ИИ не пускаем</span><span class="lock">🔒</span></div>
+      <div class="lesson"><span class="n">5</span><span class="k">РАЗДЕЛ</span><span>Формула запроса</span><span class="lock">🔒</span></div>
+    </div>
+    <div class="module">
+      <div class="title"><h3>Практика</h3><small>4 раздела</small></div>
+      <div class="lesson"><span class="n">6</span><span class="k">РАЗДЕЛ</span><span>Семь сценариев с промптами</span><span class="lock">🔒</span></div>
+      <div class="lesson"><span class="n">7</span><span class="k">РАЗДЕЛ</span><span>Личный ИИ-ассистент врача</span><span class="lock">🔒</span></div>
+      <div class="lesson"><span class="n">8</span><span class="k">РАЗДЕЛ</span><span>Инструменты</span><span class="lock">🔒</span></div>
+      <div class="lesson"><span class="n">9</span><span class="k">РАЗДЕЛ</span><span>Чек-лист на 30 секунд</span><span class="lock">🔒</span></div>
+    </div>
+  </section>
+
+  <!-- CONSULT -->
+  <section class="screen" id="consult" hidden>
+    <div class="card teal" style="min-height:200px">
+      <div class="inner">
+        <div class="top"><b>Доктор Айболит</b><span>1-2 часа · <span class="ok">Онлайн</span></span></div>
+        <h3>Внедрение ИИ в практику</h3>
+        <div class="chips"><span class="chip">Документация</span><span class="chip">Планы лечения</span><span class="chip">Контент клиники</span><span class="chip">ИИ-агент</span><span class="chip">Обучение команды</span></div>
+      </div>
+    </div>
+    <h1>Личная консультация</h1>
+    <p class="lead" style="margin:0">Разбираем твою практику: где ИИ сэкономит время уже на этой неделе, а где его ставить нельзя. Уходишь с планом на месяц и настроенными запросами под свои задачи.</p>
+    <div class="who">
+      <div><span class="tick">✓</span><div><b>Аудит рутины</b><p>Смотрим, что ты делаешь руками каждый день, и что из этого отдаём ИИ.</p></div></div>
+      <div><span class="tick">✓</span><div><b>Настройка под тебя</b><p>Готовые запросы под твою специальность и стиль общения с пациентами.</p></div></div>
+      <div><span class="tick">✓</span><div><b>Запись и конспект</b><p>Видео и текст с планом остаются у тебя.</p></div></div>
+    </div>
+    <div class="sticky"><button class="btn gold block" data-action="book">Записаться</button></div>
+  </section>
+
+  <!-- ARTICLE -->
+  <section class="screen" id="article" hidden>
+    <div class="eyebrow" id="artMeta">Гайды · 5 мин</div>
+    <h1 id="artTitle">Где брать готовые промпты</h1>
+    <div class="article" id="artBody"></div>
+    <div class="plus"><span class="tag">ПЛЮС</span><span>Полная версия и 30 промптов файлом открыты подписчикам канала</span></div>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="screen" id="profile" hidden>
+    <div class="profile-head"><div class="avatar">ИР</div><div><h2>Ильдар</h2><div class="facts">Telegram · с 17 сентября 2026</div></div></div>
+    <h3>Мои материалы</h3>
+    <div class="row"><div>ИИ в работе врача<br><span>методичка · 1 раздел из 9 открыт</span></div><span class="pill gold">Открыть</span></div>
+    <div class="row"><div>Консультация<br><span>не записан</span></div><span class="pill ok">Записаться</span></div>
+    <h3>Доступ</h3>
+    <div class="row"><div>ПЛЮС<br><span>подписка на @ai_bolit_ildar</span></div><span class="pill ok">Активен</span></div>
+    <div class="row"><div>Поддержка<br><span>ответим в чате бота</span></div><span>→</span></div>
+  </section>
+
+  <div class="tabbar"><div>
+    <button class="on" data-tab="home">⌂ &nbsp;Главная</button>
+    <button data-tab="profile">👤</button>
+  </div></div>
+</div>
+
+<div class="sheet-bg" id="sheetBg" hidden></div>
+<div class="sheet" id="sheet" hidden>
+  <div class="grab"></div>
+  <div class="price"><b>1 490 ₽</b><small>цена для примера</small></div>
+  <div class="facts">Все 9 разделов, 7 сценариев с промптами, обновления методички и файл PDF. Доступ навсегда.</div>
+  <div class="pay">
+    <button data-action="paid">Оплатить через СБП <span>Платега, как в магазине</span></button>
+    <button data-action="paid">Оплатить звёздами Telegram <span>внутри приложения</span></button>
+  </div>
+  <button class="btn ghost block" data-action="closeSheet" style="background:var(--surface-2);color:var(--ink)">Позже</button>
+</div>
+
+<script>
+(function () {
+  // Telegram Mini App bridge: real first name, theme and full height when opened from a bot.
+  var tg = window.Telegram && window.Telegram.WebApp;
+  if (tg) {
+    try {
+      tg.ready(); tg.expand();
+      var dark = tg.colorScheme === 'dark';
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      tg.setHeaderColor(dark ? '#0a0a0a' : '#f4efe6');
+      tg.setBackgroundColor(dark ? '#0a0a0a' : '#f4efe6');
+      var u = tg.initDataUnsafe && tg.initDataUnsafe.user;
+      if (u && u.first_name) {
+        document.querySelectorAll('.hello span b, #profile h2').forEach(function (el) { el.textContent = u.first_name; });
+        var ini = (u.first_name[0] || '') + ((u.last_name || '')[0] || '');
+        document.querySelectorAll('.avatar').forEach(function (el) { el.textContent = ini.toUpperCase(); });
+      }
+      document.querySelector('.tg').hidden = true;
+      tg.BackButton.onClick(function () { document.getElementById('tgBack').click(); });
+    } catch (e) { /* outside Telegram: keep the drawn header */ }
+  }
+  var posts = [
+    { cat:'prompts', catName:'Промпты', min:5, title:'Где брать готовые промпты: пять источников, из которых беру я', emoji:'🗂️', tone:'gold' },
+    { cat:'guides', catName:'Гайды', min:7, title:'Выписка за 90 секунд: как я собираю документацию с ИИ и не вляпываюсь', emoji:'📝', tone:'teal' },
+    { cat:'guides', catName:'Гайды', min:6, title:'4 страха, из-за которых врач не берёт ИИ. Разбираю каждый', emoji:'🩺', tone:'' },
+    { cat:'tools', catName:'Инструменты', min:4, title:'Claude или ChatGPT в 2026: что брать под свои задачи', emoji:'⚖️', tone:'gold' },
+    { cat:'prompts', catName:'Промпты', min:3, title:'10 фраз, которые меняют ответ ChatGPT и Claude', emoji:'💬', tone:'teal' },
+    { cat:'tools', catName:'Инструменты', min:4, title:'5 бесплатных ИИ для новичка: с чего я советую начать', emoji:'🧰', tone:'' },
+    { cat:'video', catName:'Видео', min:2, title:'12 промптов для ChatGPT, которые вытаскивают Reels в охват', emoji:'🎬', tone:'gold' },
+    { cat:'clinic', catName:'Клиника', min:5, title:'Боль прошла, а зуб цел? Почему «отпустило» плохой знак', emoji:'🦷', tone:'teal' }
+  ];
+  var article = [
+    'Промпты я нигде не выдумываю с нуля. Есть пять мест, откуда беру заготовки, и одно правило: любой чужой запрос переписывается под мою специальность до того, как попадёт в работу.',
+    'Первое место это официальные библиотеки самих моделей. Там запросы скучные, но они точно работают с текущей версией, а не с той, что была год назад.',
+    'Второе это врачебные чаты. Коллеги делятся тем, что реально пошло в приём: выписки, ответы на жалобы, объяснение плана лечения простым языком.',
+    'Дальше идут сообщества про нейросети, свои старые удачные диалоги и, наконец, сама модель: прошу её улучшить мой запрос и объяснить, что она поменяла.'
+  ];
+
+  var feed = document.getElementById('feed');
+  function renderFeed(cat) {
+    feed.innerHTML = '';
+    posts.filter(function (p) { return cat === 'all' || p.cat === cat; }).forEach(function (p, i) {
+      var el = document.createElement('article');
+      el.className = 'post';
+      el.innerHTML = '<div class="av">🦷<i></i></div><div>' +
+        '<div class="meta"><b>Айболит</b> · ' + p.catName + ' · ' + p.min + ' мин</div>' +
+        '<h3>' + p.title + '</h3>' +
+        '<div class="cover ' + p.tone + '">' + p.emoji + '</div>' +
+        '<button class="read" data-go="article" data-idx="' + i + '">Читать</button></div>';
+      feed.appendChild(el);
+    });
+  }
+  renderFeed('all');
+
+  var typedText = 'составь план лечения по снимку';
+  var typed = document.getElementById('typed');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { typed.textContent = typedText; }
+  else {
+    var i = 0;
+    (function tick() {
+      typed.textContent = typedText.slice(0, i);
+      i = (i + 1) % (typedText.length + 12);
+      setTimeout(tick, i === 0 ? 900 : 70);
+    })();
+  }
+
+  var screens = ['home', 'product', 'program', 'consult', 'article', 'profile'];
+  var history = ['home'];
+  var back = document.getElementById('tgBack');
+  function show(id) {
+    screens.forEach(function (s) { document.getElementById(s).hidden = s !== id; });
+    back.textContent = id === 'home' ? 'Закрыть' : '‹ Назад';
+    document.querySelectorAll('.tabbar button').forEach(function (b) {
+      b.classList.toggle('on', b.dataset.tab === (id === 'profile' ? 'profile' : 'home'));
+    });
+    window.scrollTo(0, 0);
+  }
+  function go(id) { if (history[history.length - 1] !== id) history.push(id); show(id); }
+  function goBack() { if (history.length > 1) { history.pop(); show(history[history.length - 1]); } }
+
+  var sheet = document.getElementById('sheet'), sheetBg = document.getElementById('sheetBg');
+  function openSheet() { sheet.hidden = false; sheetBg.hidden = false; }
+  function closeSheet() { sheet.hidden = true; sheetBg.hidden = true; }
+  sheetBg.addEventListener('click', closeSheet);
+
+  function openArticle(p) {
+    document.getElementById('artMeta').textContent = p.catName + ' · ' + p.min + ' мин';
+    document.getElementById('artTitle').textContent = p.title;
+    document.getElementById('artBody').innerHTML = article.map(function (t) { return '<p>' + t + '</p>'; }).join('');
+    go('article');
+  }
+
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-go],[data-action],[data-tab],[data-cat]');
+    if (!t) return;
+    if (t.dataset.cat) {
+      document.querySelectorAll('#filters button').forEach(function (b) { b.classList.toggle('on', b === t); });
+      renderFeed(t.dataset.cat); return;
+    }
+    if (t.dataset.tab) { go(t.dataset.tab); return; }
+    if (t.dataset.go === 'article') { openArticle(posts[+t.dataset.idx]); return; }
+    if (t.dataset.go === 'article-free') {
+      openArticle({ catName:'Методичка · раздел 1', min:6, title:'Анамнез: кто я и зачем это написал' }); return;
+    }
+    if (t.dataset.go) { go(t.dataset.go); return; }
+    if (t.dataset.action === 'back') { goBack(); }
+    if (t.dataset.action === 'pay') { openSheet(); }
+    if (t.dataset.action === 'closeSheet') { closeSheet(); }
+    if (t.dataset.action === 'paid') { closeSheet(); alert('Здесь откроется страница оплаты. В прототипе платежа нет.'); }
+    if (t.dataset.action === 'book') { alert('Здесь откроется выбор времени. В прототипе записи нет.'); }
+  });
+})();
+</script>
+</body>
+</html>
