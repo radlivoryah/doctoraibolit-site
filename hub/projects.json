@@ -1,4 +1,14 @@
 {
+  "areas": [
+    {"id": "health", "name": "Здоровье", "score": 7},
+    {"id": "family", "name": "Семья", "score": 8},
+    {"id": "clinic", "name": "Клиника", "score": 7},
+    {"id": "money", "name": "Деньги", "score": 5},
+    {"id": "content", "name": "Контент", "score": 6},
+    {"id": "learning", "name": "Обучение", "score": 7},
+    {"id": "sport", "name": "Спорт", "score": 5},
+    {"id": "rest", "name": "Отдых", "score": 6}
+  ],
   "events": [
     {"date": "2026-09-19", "title": "Итог теста Fable 5.1 против Opus 5", "project": "swarm"},
     {"date": "2026-09-19", "title": "Ролики темы 20: хук 1 с голосом", "project": "insta"},
