@@ -164,15 +164,30 @@
           "done": [
             "Домен и HTTPS",
             "Блог",
-            "Страница методички",
+            "Страница методички с ценой 2 299 руб.",
             "Юридические страницы",
             "Мини-апп и списки"
           ],
+          "pages": [
+            {"name": "Главная", "url": "https://doctoraibolit.online/", "what": "Кто я, чем помогаю, ссылки на канал и методичку. Одна ссылка для всех соцсетей."},
+            {"name": "Статьи", "url": "https://doctoraibolit.online/blog/", "what": "Блог, 39 статей про ИИ для врачей и пациентов"},
+            {"name": "Методичка", "url": "https://doctoraibolit.online/metodichka.html", "what": "Лендинг «ИИ в работе врача», цена 2 299 руб., кнопка «Купить»"},
+            {"name": "Оплата", "url": "https://doctoraibolit.online/docs/price.html", "what": "Страница цены и перехода к оплате"},
+            {"name": "Магазин", "url": "https://pay.doctoraibolit.online/", "what": "Приём оплаты через Платегу на российском сервере, выдача файла ботом"},
+            {"name": "Старт", "url": "https://doctoraibolit.online/start.html", "what": "Страница входа для новичков"},
+            {"name": "Оферта", "url": "https://doctoraibolit.online/docs/oferta.html", "what": "Публичная оферта"},
+            {"name": "Политика", "url": "https://doctoraibolit.online/docs/privacy.html", "what": "Политика обработки персональных данных"},
+            {"name": "Соглашение", "url": "https://doctoraibolit.online/docs/soglashenie.html", "what": "Пользовательское соглашение"},
+            {"name": "Способы оплаты", "url": "https://doctoraibolit.online/docs/payment.html", "what": "Как оплатить и получить файл"},
+            {"name": "Мини-апп Learn", "url": "https://doctoraibolit.online/app/", "what": "Прототип мини-аппа: методичка, консультация, база знаний"},
+            {"name": "Автоном", "url": "https://doctoraibolit.online/kit/", "what": "Списки на 35 дней и рюкзак, меню"},
+            {"name": "Пульс", "url": "https://doctoraibolit.online/hub/", "what": "Этот дашборд"}
+          ],
           "todo": [
-            "Цена и кнопка оплаты на странице методички",
+            "Главная как единая точка входа для всех соцсетей",
             "Сертификат для www"
           ],
-          "next": "Заполнить цену на metodichka.html",
+          "next": "Переделать главную под структуру мини-аппа",
           "links": [
             {
               "name": "Сайт",
