@@ -142,6 +142,7 @@ h3 { font-size:16px; }
 .addtask { display:grid; grid-template-columns:1fr auto; gap:6px; margin-top:8px; }
 .addtask input { border:1px solid var(--line); background:var(--ground); color:var(--ink); border-radius:10px; padding:8px 12px; font:inherit; font-size:14px; min-width:0; }
 .addtask button { border:0; background:var(--accent); color:#fff; border-radius:10px; padding:8px 14px; font:inherit; font-weight:600; cursor:pointer; }
+.notes { width:100%; border:1px solid var(--line); background:var(--ground); color:var(--ink); border-radius:10px; padding:9px 12px; font:inherit; font-size:14px; resize:vertical; min-height:64px; }
 .toggle { border:0; background:none; color:var(--muted); font:inherit; font-size:13px; cursor:pointer; padding:0; text-align:left; }
 .toggle::before { content:'▸ '; }
 .toggle.on::before { content:'▾ '; }
@@ -214,7 +215,12 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
   var st = load();
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; } }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
-  st.scores = st.scores || {}; st.goals = st.goals || []; st.habits = st.habits || []; st.open = st.open || {}; st.tasks = st.tasks || {}; st.showDone = st.showDone || {};
+  st.scores = st.scores || {}; st.goals = st.goals || []; st.habits = st.habits || []; st.open = st.open || {}; st.tasks = st.tasks || {}; st.showDone = st.showDone || {}; st.lists = st.lists || {}; st.notes = st.notes || {};
+  // Older builds kept tasks in st.tasks[pid]; they now live in st.lists[pid].tasks.
+  Object.keys(st.tasks).forEach(function (pid) { st.lists[pid] = st.lists[pid] || {}; st.lists[pid].tasks = (st.lists[pid].tasks || []).concat(st.tasks[pid]); }); st.tasks = {};
+  var DEFAULT_LISTS = [{ id: 'tasks', name: 'Задачи', done: true, placeholder: 'Задача или цель' }];
+  function listsOf(p) { return p.lists || DEFAULT_LISTS; }
+  function items(pid, lid) { st.lists[pid] = st.lists[pid] || {}; return st.lists[pid][lid] = st.lists[pid][lid] || []; }
 
   var tg = window.Telegram && window.Telegram.WebApp;
   if (tg) { try { tg.ready(); tg.expand(); tg.setHeaderColor('#ffffff'); tg.setBackgroundColor('#ffffff'); } catch (e) {} }
@@ -263,7 +269,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
   /* ---------- home ---------- */
   function allTasks() {
     var out = [];
-    Object.keys(st.tasks).forEach(function (pid) { st.tasks[pid].forEach(function (t) { out.push({ pid: pid, t: t }); }); });
+    Object.keys(st.lists).forEach(function (pid) { (st.lists[pid].tasks || []).forEach(function (t) { out.push({ pid: pid, lid: 'tasks', t: t }); }); });
     return out;
   }
   function projectName(pid) { var n = ''; P.groups.forEach(function (g) { g.projects.forEach(function (p) { if (p.id === pid) n = p.name; }); }); return n; }
@@ -329,14 +335,16 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     var d = new Date(e.date + 'T00:00:00');
     return '<div class="ev"><b>' + d.getDate() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '</b><div>' + e.title + '<span>' + ['вс','пн','вт','ср','чт','пт','сб'][d.getDay()] + '</span></div></div>';
   }
-  function taskHtml(x, withProject) {
-    return '<div class="task' + (x.t.done ? ' done' : '') + '" data-pid="' + x.pid + '" data-id="' + x.t.id + '"><input type="checkbox" ' + (x.t.done ? 'checked' : '') + ' aria-label="сделано"><div><span>' + x.t.text + '</span>' + (withProject ? '<small> · ' + projectName(x.pid) + '</small>' : '') + '</div><button title="Удалить">×</button></div>';
+  function taskHtml(x, withProject, checkable) {
+    var chk = checkable === false ? '<span></span>' : '<input type="checkbox" ' + (x.t.done ? 'checked' : '') + ' aria-label="сделано">';
+    return '<div class="task' + (x.t.done ? ' done' : '') + '" data-pid="' + x.pid + '" data-lid="' + (x.lid || 'tasks') + '" data-id="' + x.t.id + '">' + chk + '<div><span>' + x.t.text + '</span>' + (withProject ? '<small> · ' + projectName(x.pid) + '</small>' : '') + (x.t.done && x.doneLabel ? '<small> · ' + x.doneLabel + ' ' + x.t.done + '</small>' : '') + '</div><button title="Удалить">×</button></div>';
   }
   function bindTasks(root) {
     root.querySelectorAll('.task').forEach(function (el) {
-      var list = st.tasks[el.dataset.pid] || [], t = list.filter(function (x) { return x.id === el.dataset.id; })[0]; if (!t) return;
-      el.querySelector('input').addEventListener('change', function (e) { t.done = e.target.checked ? todayIso() : null; save(); rerender(); });
-      el.querySelector('button').addEventListener('click', function () { st.tasks[el.dataset.pid] = list.filter(function (x) { return x !== t; }); save(); rerender(); });
+      var list = items(el.dataset.pid, el.dataset.lid), t = list.filter(function (x) { return x.id === el.dataset.id; })[0]; if (!t) return;
+      var chk = el.querySelector('input');
+      if (chk) chk.addEventListener('change', function (e) { t.done = e.target.checked ? todayIso() : null; save(); rerender(); });
+      el.querySelector('button').addEventListener('click', function () { st.lists[el.dataset.pid][el.dataset.lid] = list.filter(function (x) { return x !== t; }); save(); rerender(); });
     });
   }
   function rerender() { renderHome(); if (groupId) { var g = P.groups.filter(function (x) { return x.id === groupId; })[0]; if (g && !document.getElementById('v-group').hidden) renderGroup(g, null); } }
@@ -355,36 +363,43 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 
   /* ---------- groups ---------- */
   function renderGroup(g, pid) {
-    document.getElementById('groupTitle').textContent = g.name;
+    document.getElementById('groupTitle').textContent = 'Направление: ' + g.name;
     var wrap = document.getElementById('cards'); wrap.innerHTML = '';
     g.projects.forEach(function (p) {
       var card = document.createElement('div');
       card.className = 'card' + (st.open[p.id] || pid === p.id ? ' open' : ''); card.id = 'p-' + p.id;
       var stc = p.status === 'идёт' ? 'run' : p.status === 'решение' ? 'dec' : 'pause';
+      if (st.lists[p.id] === undefined) st.lists[p.id] = {};
       var counters = (p.counters || []).map(function (c) { var parts = c.split(':'), v = get(parts[0]); return '<span><b>' + (v === undefined ? '–' : v) + '</b> ' + parts[1] + '</span>'; }).join('');
-      var mine = st.tasks[p.id] || [];
-      var myOpen = mine.filter(function (t) { return !t.done; }), myDone = mine.filter(function (t) { return t.done; });
-      var todo = (p.todo || []).map(function (x) { return '<li class="todo"><i>○</i><span>' + x + '</span></li>'; }).join('');
-      var done = (p.done || []).map(function (x) { return '<li><i>✓</i><span>' + x + '</span></li>'; }).concat(myDone.map(function (t) { return '<li><i>✓</i><span>' + t.text + ' <small class="muted">' + t.done + '</small></span></li>'; })).join('');
-      var doneCount = (p.done || []).length + myDone.length;
+      var H4 = '<h4 style="margin:0 0 6px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500">';
+      var doneItems = (p.done || []).slice();
+      var listsHtml = listsOf(p).map(function (L) {
+        var all = items(p.id, L.id), open = L.done ? all.filter(function (t) { return !t.done; }) : all;
+        if (L.done) all.filter(function (t) { return t.done; }).forEach(function (t) { doneItems.push((L.id === 'tasks' ? '' : L.name + ': ') + t.text + ' <small class="muted">' + t.done + '</small>'); });
+        return '<div>' + H4 + L.name + (L.done ? ' · не ' + (L.doneLabel || 'сделано') : '') + '</h4>' +
+          '<div class="tasks">' + (open.length ? open.map(function (t) { return taskHtml({ pid: p.id, lid: L.id, t: t }, false, L.done); }).join('') : '<div class="muted">пусто</div>') + '</div>' +
+          '<form class="addtask" data-lid="' + L.id + '"><input placeholder="' + (L.placeholder || 'Добавить') + '" required><button type="submit">+</button></form></div>';
+      }).join('');
+      var done = doneItems.map(function (x) { return '<li><i>✓</i><span>' + x + '</span></li>'; }).join('');
       var pages = (p.pages || []).map(function (pg) { return '<div class="page"><div>' + pg.name + '<small>' + pg.what + '</small></div><a href="' + pg.url + '" target="_blank" rel="noopener">открыть</a></div>'; }).join('');
       var links = (p.links || []).map(function (l) { return '<a href="' + l.url + '" target="_blank" rel="noopener">' + l.name + '</a>'; }).join('');
       card.innerHTML = '<div class="head"><h3></h3><span class="pill ' + stc + '">' + p.status + '</span><span class="tri">▶</span></div><div class="sum"></div><div class="body">' +
         (counters ? '<div class="counters">' + counters + '</div>' : '') +
-        (pages ? '<div><h4 style="margin:0 0 6px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500">Карта страниц</h4><div class="pages">' + pages + '</div></div>' : '') +
-        '<div><h4 style="margin:0 0 6px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500">Не сделано</h4>' +
-        '<ul class="cols" style="display:flex;flex-direction:column;gap:5px;margin:0;padding:0;list-style:none;font-size:14px">' + (todo || '') + '</ul>' +
-        '<div class="tasks" style="margin-top:6px">' + myOpen.map(function (t) { return taskHtml({ pid: p.id, t: t }, false); }).join('') + '</div>' +
-        '<form class="addtask"><input placeholder="Своя задача или цель" required><button type="submit">+</button></form></div>' +
-        (p.next ? '<div class="next"><b>Следующий шаг:</b> ' + p.next + '</div>' : '') +
-        (doneCount ? '<div><button class="toggle' + (st.showDone[p.id] ? ' on' : '') + '">Сделано: ' + doneCount + '</button><ul class="cols" style="display:' + (st.showDone[p.id] ? 'flex' : 'none') + ';flex-direction:column;gap:5px;margin:6px 0 0;padding:0;list-style:none;font-size:14px">' + done + '</ul></div>' : '') +
+        (pages ? '<div>' + H4 + 'Страницы сайта</h4><div class="pages">' + pages + '</div></div>' : '') +
+        listsHtml +
+        '<div>' + H4 + 'Мои заметки</h4><textarea class="notes" rows="3" placeholder="Что важно помнить по этому проекту: пишешь здесь, хранится на этом устройстве"></textarea></div>' +
+        (doneItems.length ? '<div><button class="toggle' + (st.showDone[p.id] ? ' on' : '') + '">Сделано: ' + doneItems.length + '</button><ul class="cols" style="display:' + (st.showDone[p.id] ? 'flex' : 'none') + ';flex-direction:column;gap:5px;margin:6px 0 0;padding:0;list-style:none;font-size:14px">' + done + '</ul></div>' : '') +
         (links ? '<div class="links">' + links + '</div>' : '') + '</div>';
       card.querySelector('h3').textContent = p.name; card.querySelector('.sum').textContent = p.summary || '';
       card.querySelector('.head').addEventListener('click', function () { st.open[p.id] = !card.classList.contains('open'); card.classList.toggle('open', st.open[p.id]); save(); });
-      card.querySelector('.addtask').addEventListener('submit', function (e) {
-        e.preventDefault(); var inp = e.target.querySelector('input'), v = inp.value.trim(); if (!v) return;
-        (st.tasks[p.id] = st.tasks[p.id] || []).push({ id: String(Date.now()), text: v, done: null, created: todayIso() }); st.open[p.id] = true; save(); rerender();
+      card.querySelectorAll('.addtask').forEach(function (f) {
+        f.addEventListener('submit', function (e) {
+          e.preventDefault(); var inp = f.querySelector('input'), v = inp.value.trim(); if (!v) return;
+          items(p.id, f.dataset.lid).push({ id: String(Date.now()), text: v, done: null, created: todayIso() }); st.open[p.id] = true; save(); rerender();
+        });
       });
+      var ta = card.querySelector('.notes'); ta.value = st.notes[p.id] || '';
+      ta.addEventListener('input', function () { st.notes[p.id] = ta.value; save(); });
       var tg = card.querySelector('.toggle');
       if (tg) tg.addEventListener('click', function () { st.showDone[p.id] = !st.showDone[p.id]; save(); tg.classList.toggle('on', st.showDone[p.id]); tg.nextElementSibling.style.display = st.showDone[p.id] ? 'flex' : 'none'; });
       bindTasks(card);
