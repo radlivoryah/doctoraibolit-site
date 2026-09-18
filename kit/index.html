@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Автоном</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Commissioner:wght@400;500;600&display=swap">
+<style>
+:root {
+  --ground:#0a0a0a; --surface:#161616; --surface-2:#232323; --line:rgba(255,255,255,0.12);
+  --ink:#ffffff; --muted:#9a9a9a; --gold:#e8a020; --gold-ink:#0a0a0a; --done:#3fb36f; --danger:#e05a4f;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) { --ground:#ffffff; --surface:#f3f3f3; --surface-2:#e6e6e6; --line:rgba(10,10,10,0.12); --ink:#0a0a0a; --muted:#6f6f6f; }
+}
+:root[data-theme="light"] { --ground:#ffffff; --surface:#f3f3f3; --surface-2:#e6e6e6; --line:rgba(10,10,10,0.12); --ink:#0a0a0a; --muted:#6f6f6f; }
+* { box-sizing:border-box; }
+[hidden] { display:none !important; }
+body { margin:0; background:var(--ground); color:var(--ink); font-family:'Commissioner', system-ui, sans-serif; font-size:15px; line-height:1.4; }
+.app { max-width:640px; margin:0 auto; padding:12px 16px 120px; }
+h1, h2, h3 { margin:0; font-family:'Jost', sans-serif; font-weight:600; letter-spacing:-0.01em; }
+h1 { font-size:24px; }
+.top { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:6px; }
+.top .theme { border:1px solid var(--line); background:none; color:var(--muted); border-radius:999px; padding:6px 12px; font:inherit; font-size:13px; cursor:pointer; }
+.sub { color:var(--muted); font-size:14px; margin-bottom:14px; }
+.tabs { display:flex; background:var(--surface); border-radius:999px; padding:4px; margin-bottom:12px; }
+.tabs button { flex:1; border:0; background:none; color:var(--muted); font:inherit; font-weight:600; font-size:15px; padding:10px; border-radius:999px; cursor:pointer; }
+.tabs button.on { background:var(--ink); color:var(--ground); }
+.summary { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:12px; }
+.summary div { background:var(--surface); border-radius:14px; padding:10px 12px; }
+.summary b { display:block; font-family:'Jost', sans-serif; font-size:22px; font-variant-numeric:tabular-nums; }
+.summary span { font-size:12px; color:var(--muted); }
+.bar { height:6px; background:var(--surface-2); border-radius:3px; overflow:hidden; margin-bottom:14px; }
+.bar i { display:block; height:100%; background:var(--gold); width:0; transition:width .3s; }
+.tools { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+.tools input[type=search] { flex:1; min-width:140px; border:1px solid var(--line); background:var(--surface); color:var(--ink); border-radius:999px; padding:9px 14px; font:inherit; font-size:14px; }
+.chipbtn { border:1px solid var(--line); background:var(--surface); color:var(--ink); border-radius:999px; padding:8px 12px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap; }
+.chipbtn.on { background:var(--gold); color:var(--gold-ink); border-color:var(--gold); }
+.cat { border-top:1px solid var(--line); padding:10px 0 6px; }
+.cat-head { display:flex; align-items:center; gap:10px; cursor:pointer; padding:6px 0; user-select:none; }
+.cat-head .tri { width:18px; color:var(--muted); transition:transform .2s; }
+.cat.closed .tri { transform:rotate(-90deg); }
+.cat-head h2 { font-size:17px; flex:1; }
+.cat-head .cnt { font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums; }
+.cat-head .cnt.full { color:var(--done); }
+.cat.closed .body { display:none; }
+.cat-note { font-size:13px; color:var(--muted); margin:0 0 6px 28px; }
+.sub-h { font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:10px 0 4px 28px; font-weight:500; }
+.item { display:grid; grid-template-columns:1fr auto auto; gap:8px 10px; align-items:center; padding:8px 0 8px 28px; }
+.item.done .name { color:var(--muted); text-decoration:line-through; text-decoration-color:var(--done); }
+.item .name { font-size:15px; }
+.item .note { display:block; font-size:12px; color:var(--muted); }
+.qty { display:flex; align-items:center; gap:4px; font-variant-numeric:tabular-nums; }
+.qty input { width:46px; border:1px solid var(--line); background:var(--surface); color:var(--ink); border-radius:8px; padding:6px 4px; font:inherit; font-size:14px; text-align:center; }
+.qty .sep { color:var(--muted); }
+.qty .unit { font-size:12px; color:var(--muted); min-width:24px; }
+.item .del { border:0; background:none; color:var(--muted); font-size:18px; cursor:pointer; padding:4px 6px; line-height:1; }
+.item .del:hover { color:var(--danger); }
+.add { display:flex; gap:6px; margin:6px 0 4px 28px; }
+.add input { border:1px solid var(--line); background:var(--surface); color:var(--ink); border-radius:8px; padding:7px 10px; font:inherit; font-size:14px; }
+.add .n { flex:1; min-width:0; }
+.add .q { width:56px; text-align:center; }
+.add .u { width:56px; }
+.add button { border:0; background:var(--surface-2); color:var(--ink); border-radius:8px; padding:7px 12px; font:inherit; cursor:pointer; }
+.foot { position:fixed; left:0; right:0; bottom:0; padding:10px 16px calc(12px + env(safe-area-inset-bottom, 0px)); background:linear-gradient(to top, var(--ground) 75%, transparent); }
+.foot div { max-width:640px; margin:0 auto; display:flex; gap:8px; }
+.foot button { flex:1; border:0; border-radius:999px; padding:12px; font:inherit; font-weight:600; font-size:14px; cursor:pointer; background:var(--surface-2); color:var(--ink); }
+.foot button.gold { background:var(--gold); color:var(--gold-ink); }
+.toast { position:fixed; left:50%; transform:translateX(-50%); bottom:calc(76px + env(safe-area-inset-bottom, 0px)); background:var(--ink); color:var(--ground); border-radius:999px; padding:10px 16px; font-size:14px; display:flex; gap:12px; align-items:center; z-index:9; }
+.toast button { border:0; background:none; color:var(--gold); font:inherit; font-weight:600; cursor:pointer; }
+.hint { font-size:13px; color:var(--muted); margin:14px 0 0; }
+@media (max-width:420px) { .item { grid-template-columns:1fr auto; } .item .del { grid-column:2; grid-row:1; } .item .qty { grid-column:1 / -1; } .summary b { font-size:19px; } }
+@media print { .foot, .tools, .tabs, .top .theme { display:none; } .cat.closed .body { display:block; } .item .del { display:none; } }
+button:focus-visible, input:focus-visible { outline:2px solid var(--gold); outline-offset:1px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top"><h1>Автоном</h1><button class="theme" id="theme">Тема</button></div>
+  <div class="sub">Два списка на двоих: дом на 3-5 недель без выхода и рюкзак на случай, если из дома придётся уйти. Отметки хранятся в этом браузере.</div>
+
+  <div class="tabs"><button class="on" data-list="home">Дом, 35 дней</button><button data-list="bag">Рюкзак</button></div>
+
+  <div class="summary"><div><b id="sDone">0</b><span>позиций закрыто</span></div><div><b id="sTotal">0</b><span>всего позиций</span></div><div><b id="sPct">0%</b><span>готовность</span></div></div>
+  <div class="bar"><i id="bar"></i></div>
+
+  <div class="tools">
+    <input type="search" id="q" placeholder="Найти позицию">
+    <button class="chipbtn" id="onlyOpen">Только незакрытое</button>
+  </div>
+
+  <div id="lists"></div>
+  <p class="hint">Расчёт на двух взрослых. Нормы: вода 3 л на человека в день, еда 2000 ккал, туалетная бумага 1 рулон на человека в 4 дня. Свои позиции добавляй внизу каждой категории.</p>
+</div>
+
+<div class="foot"><div>
+  <button id="copy">Список покупок</button>
+  <button id="print">Печать</button>
+  <button id="reset">Сброс</button>
+</div></div>
+
+<script>
+(function () {
+  // Item shape: [name, need, unit, note]. Quantities are for two adults; home list is 35 days.
+  var DATA = {
+    home: {
+      title: 'Дом, 35 дней на двоих',
+      cats: [
+        { id:'water', name:'Вода', note:'3 л на человека в день: 2 л питьё и готовка, 1 л гигиена. Итого 210 л, минимум половину держать в бутылках, остальное закрывает фильтр и ёмкости, наполненные заранее.', subs: [
+          ['Питьевая', [['Вода бутилированная 5 л', 24, 'бут', '120 л, ротация раз в год'], ['Складные канистры 10-20 л', 4, 'шт', 'наполнить при первом сигнале'], ['Фильтр для воды с картриджами', 1, 'шт', 'запас 2 картриджа'], ['Таблетки для обеззараживания', 40, 'таб', 'или хлор 5% как запас']]],
+          ['Техническая', [['Ванна и вёдра под запас', 2, 'ведра', 'с крышками'], ['Пищевая плёнка для ванны', 1, 'рул', 'чтобы вода не портилась']]]
+        ]},
+        { id:'food', name:'Еда', note:'2000 ккал на человека в день, 140 000 ккал на двоих. Еда, которую вы едите и так, иначе она сгниёт на полке.', subs: [
+          ['Крупы и макароны', [['Рис', 6, 'кг', ''], ['Гречка', 6, 'кг', ''], ['Овсянка', 3, 'кг', ''], ['Макароны', 5, 'кг', ''], ['Чечевица, горох, фасоль сухие', 4, 'кг', ''], ['Мука', 3, 'кг', 'лепёшки на сковороде'], ['Картофельное пюре сухое', 6, 'уп', '']]],
+          ['Консервы', [['Тушёнка говядина, свинина', 14, 'бан', 'одна банка на двоих в день через день'], ['Рыба в масле, в томате', 14, 'бан', ''], ['Фасоль, горошек, кукуруза', 12, 'бан', ''], ['Овощи консервированные, лечо, икра', 8, 'бан', ''], ['Сгущёнка', 4, 'бан', ''], ['Паштеты', 6, 'бан', '']]],
+          ['Жиры и белок', [['Масло растительное', 3, 'л', ''], ['Топлёное масло или смалец', 1, 'кг', 'хранится без холодильника'], ['Орехи', 2, 'кг', ''], ['Арахисовая паста', 2, 'бан', ''], ['Сухое молоко', 2, 'кг', ''], ['Сыр твёрдый в воске, колбаса сырокопчёная', 2, 'кг', '']]],
+          ['Быстрое', [['Лапша быстрого приготовления', 20, 'шт', ''], ['Супы в пакетах', 20, 'шт', ''], ['Каши быстрые в пакетах', 20, 'шт', ''], ['Батончики, мюсли', 20, 'шт', '']]],
+          ['Сахар, соль, специи', [['Соль', 2, 'кг', ''], ['Сахар', 3, 'кг', ''], ['Мёд', 1, 'кг', ''], ['Специи, бульонные кубики', 1, 'наб', 'без них крупы надоедают за неделю'], ['Уксус, сода', 1, 'наб', '']]],
+          ['Напитки и сладкое', [['Чай', 300, 'г', ''], ['Кофе растворимый', 300, 'г', ''], ['Какао', 1, 'уп', ''], ['Шоколад, сухофрукты, печенье', 3, 'кг', 'настроение важнее калорий']]],
+          ['Витамины', [['Поливитамины', 2, 'уп', 'на 35 дней на двоих'], ['Витамин C, D', 1, 'наб', '']]]
+        ]},
+        { id:'cook', name:'Готовка и энергия', note:'Считаем, что газ, свет и вода из крана могут пропасть.', subs: [
+          ['Огонь', [['Газовая плитка портативная', 1, 'шт', ''], ['Баллоны газовые 220 г', 12, 'шт', 'один баллон на 1,5-2 часа горения'], ['Спички охотничьи, зажигалки', 6, 'шт', ''], ['Сухое горючее', 2, 'уп', '']]],
+          ['Свет', [['Фонарь налобный', 2, 'шт', ''], ['Фонарь кемпинговый', 1, 'шт', ''], ['Свечи', 20, 'шт', ''], ['Батарейки AA, AAA', 40, 'шт', 'литиевые хранятся 10 лет']]],
+          ['Электричество', [['Пауэрбанк 20 000 мАч', 2, 'шт', 'заряжать раз в 3 месяца'], ['Солнечная панель складная 20-30 Вт', 1, 'шт', ''], ['Кабели, переходники', 1, 'наб', ''], ['Аккумуляторы с зарядкой', 1, 'наб', '']]],
+          ['Посуда', [['Термос 1 л', 2, 'шт', ''], ['Котелок, сковорода под плитку', 1, 'наб', ''], ['Одноразовая посуда', 1, 'наб', 'экономит воду на мытьё']]]
+        ]},
+        { id:'med', name:'Аптечка', note:'Рецептурное подбирать с врачом. Хронические лекарства: запас на 2 месяца, а не на неделю.', subs: [
+          ['Постоянные', [['Хронические препараты на 60 дней', 1, 'наб', 'на каждого свои'], ['Очки, линзы, растворы', 1, 'наб', '']]],
+          ['Лекарства', [['Обезболивающее и жаропонижающее: ибупрофен, парацетамол', 60, 'таб', ''], ['Антигистаминное', 20, 'таб', ''], ['От диареи: лоперамид', 20, 'таб', ''], ['Регидратация: регидрон', 10, 'пак', ''], ['Сорбент: уголь, смекта', 20, 'доз', ''], ['Антибиотик широкого спектра', 2, 'курс', 'только по назначению'], ['Спазмолитик', 20, 'таб', ''], ['Средство от изжоги', 1, 'уп', ''], ['Капли в нос, от кашля, в глаза', 1, 'наб', ''], ['Успокоительное', 1, 'уп', '']]],
+          ['Перевязка', [['Бинты стерильные', 10, 'шт', ''], ['Пластырь рулонный и полоски', 2, 'наб', ''], ['Салфетки стерильные', 20, 'шт', ''], ['Жгут или турникет', 1, 'шт', ''], ['Гемостатическая губка', 2, 'шт', ''], ['Антисептик: хлоргексидин, перекись', 2, 'фл', ''], ['Йод, зелёнка', 1, 'наб', ''], ['Ожоговый гель', 1, 'шт', '']]],
+          ['Приборы', [['Термометр', 1, 'шт', ''], ['Тонометр', 1, 'шт', ''], ['Пульсоксиметр', 1, 'шт', ''], ['Ножницы, пинцет', 1, 'наб', ''], ['Перчатки нитриловые', 20, 'пар', ''], ['Маски FFP2', 20, 'шт', '']]]
+        ]},
+        { id:'hyg', name:'Гигиена и уборка', note:'Считаем без стиральной машины и с ограниченной водой.', subs: [
+          ['Туалет', [['Туалетная бумага', 18, 'рул', '1 рулон на человека в 4 дня'], ['Влажные салфетки', 10, 'уп', ''], ['Пакеты мусорные плотные', 60, 'шт', 'и под туалет, если нет воды'], ['Кошачий наполнитель или опилки', 10, 'кг', 'сухой туалет в ведре с пакетом']]],
+          ['Тело', [['Мыло', 6, 'шт', ''], ['Шампунь', 1, 'фл', ''], ['Зубная паста и щётки', 2, 'наб', ''], ['Дезодорант', 2, 'шт', ''], ['Бритва, ножницы', 1, 'наб', ''], ['Женская гигиена', 2, 'мес', ''], ['Санитайзер', 2, 'фл', '']]],
+          ['Уборка', [['Хлорка или белизна', 2, 'л', 'и для воды в крайнем случае'], ['Средство для посуды', 1, 'фл', ''], ['Хозяйственное мыло', 4, 'шт', 'стирка руками'], ['Тряпки, губки', 1, 'наб', '']]]
+        ]},
+        { id:'home', name:'Дом и безопасность', note:'', subs: [
+          ['Дом', [['Огнетушитель', 1, 'шт', ''], ['Датчик дыма', 1, 'шт', ''], ['Скотч армированный', 2, 'рул', 'заклеить окна, щели'], ['Плёнка строительная', 1, 'рул', ''], ['Инструменты: молоток, отвёртки, плоскогубцы, нож', 1, 'наб', ''], ['Верёвка, стяжки', 1, 'наб', ''], ['Одеяла тёплые, спальники', 2, 'шт', 'если нет отопления'], ['Ключи запасные от всего', 1, 'наб', '']]],
+          ['Защита', [['Респираторы FFP3', 10, 'шт', ''], ['Очки защитные', 2, 'шт', ''], ['Перчатки рабочие', 2, 'пар', '']]]
+        ]},
+        { id:'info', name:'Связь, документы, деньги', note:'', subs: [
+          ['Связь', [['Радиоприёмник на батарейках', 1, 'шт', ''], ['Кнопочный телефон с запасной симкой', 1, 'шт', ''], ['Рации', 2, 'шт', 'связь без сети в районе'], ['Офлайн-карты в телефоне', 1, 'наб', 'скачать заранее']]],
+          ['Документы', [['Копии паспортов, полисов, прав, документов на жильё', 1, 'наб', 'бумажные и на флешке'], ['Флешка с документами и фото', 1, 'шт', ''], ['Список контактов на бумаге', 1, 'шт', '']]],
+          ['Деньги', [['Наличные мелкими купюрами', 1, 'наб', 'сумма на месяц расходов'], ['Валюта', 1, 'наб', '']]]
+        ]},
+        { id:'mind', name:'Голова и быт', note:'Пять недель в четырёх стенах вдвоём. Это тоже часть выживания.', subs: [
+          ['Занятия', [['Книги бумажные', 5, 'шт', ''], ['Настольные игры, карты', 3, 'шт', ''], ['Блокноты, ручки', 1, 'наб', ''], ['Фильмы и музыка офлайн', 1, 'наб', ''], ['Гантели или эспандер', 1, 'наб', '']]],
+          ['Питомцы', [['Корм на 5 недель', 1, 'наб', ''], ['Наполнитель, лекарства', 1, 'наб', '']]]
+        ]}
+      ]
+    },
+    bag: {
+      title: 'Рюкзак на двоих',
+      cats: [
+        { id:'b-base', name:'Основа', note:'Рюкзак 40-50 л на каждого, вес не больше 12-15 кг. Тяжёлое к спине, лёгкое вниз. Раз в полгода перебирать.', subs: [
+          ['Рюкзак', [['Рюкзак 40-50 л с поясным ремнём', 2, 'шт', ''], ['Накидка от дождя на рюкзак', 2, 'шт', ''], ['Гермомешки или плотные пакеты', 6, 'шт', 'вещи по группам']]]
+        ]},
+        { id:'b-docs', name:'Документы и деньги', note:'В герметичном пакете, ближе к телу, не в рюкзаке.', subs: [
+          ['Документы', [['Паспорт, права, полис, СНИЛС', 2, 'наб', 'оригиналы'], ['Копии документов заламинированные', 2, 'наб', ''], ['Флешка с документами и фото семьи', 1, 'шт', 'с паролем'], ['Документы на жильё, машину', 1, 'наб', 'копии'], ['Список контактов и адресов на бумаге', 2, 'шт', ''], ['Фото близких', 1, 'наб', 'для поиска, если разделились']]],
+          ['Деньги', [['Наличные мелкими', 1, 'наб', ''], ['Валюта', 1, 'наб', ''], ['Банковская карта запасная', 1, 'шт', '']]]
+        ]},
+        { id:'b-water', name:'Вода', note:'', subs: [
+          ['Вода', [['Бутылка 1 л', 4, 'шт', 'две на каждого'], ['Фильтр походный', 1, 'шт', ''], ['Таблетки для обеззараживания', 40, 'таб', ''], ['Складная фляга 2 л', 2, 'шт', '']]]
+        ]},
+        { id:'b-food', name:'Еда', note:'На 3 дня без готовки плюс горелка на потом.', subs: [
+          ['Еда', [['Батончики, орехи, сухофрукты', 12, 'шт', ''], ['Сублиматы или каши быстрые', 12, 'пак', ''], ['Консервы с ключом', 6, 'бан', ''], ['Шоколад', 4, 'плит', ''], ['Соль, сахар, чай, кофе в пакетиках', 1, 'наб', '']]],
+          ['Готовка', [['Горелка газовая компактная', 1, 'шт', ''], ['Баллон газовый', 2, 'шт', ''], ['Котелок 1 л', 1, 'шт', ''], ['Ложка-вилка', 2, 'шт', ''], ['Кружка металлическая', 2, 'шт', ''], ['Нож консервный', 1, 'шт', '']]]
+        ]},
+        { id:'b-fire', name:'Огонь', note:'Три независимых способа.', subs: [
+          ['Огонь', [['Спички непромокаемые', 2, 'уп', ''], ['Зажигалки', 3, 'шт', ''], ['Огниво', 1, 'шт', ''], ['Сухое горючее', 1, 'уп', ''], ['Вата с вазелином в контейнере', 1, 'шт', 'трут']]]
+        ]},
+        { id:'b-shelter', name:'Укрытие и тепло', note:'', subs: [
+          ['Укрытие', [['Тент 3х3 или лёгкая палатка', 1, 'шт', ''], ['Спальник до 0 градусов', 2, 'шт', ''], ['Коврик туристический', 2, 'шт', ''], ['Термоодеяло спасательное', 4, 'шт', ''], ['Паракорд 20 м', 1, 'шт', '']]],
+          ['Одежда', [['Дождевик или пончо', 2, 'шт', ''], ['Термобельё', 2, 'ком', ''], ['Носки шерстяные', 6, 'пар', ''], ['Шапка, перчатки, бафф', 2, 'наб', ''], ['Сменное бельё', 2, 'ком', ''], ['Куртка лёгкая тёплая', 2, 'шт', ''], ['Обувь разношенная', 2, 'пар', 'стоит у рюкзака, не в нём']]]
+        ]},
+        { id:'b-light', name:'Свет, связь, навигация', note:'', subs: [
+          ['Свет', [['Фонарь налобный', 2, 'шт', ''], ['Фонарь ручной', 1, 'шт', ''], ['Батарейки', 12, 'шт', ''], ['Химические световые палочки', 4, 'шт', '']]],
+          ['Связь', [['Пауэрбанк 20 000 мАч', 2, 'шт', ''], ['Кабели', 2, 'шт', ''], ['Радиоприёмник компактный', 1, 'шт', ''], ['Рации', 2, 'шт', ''], ['Свисток', 2, 'шт', ''], ['Кнопочный телефон с симкой', 1, 'шт', '']]],
+          ['Навигация', [['Компас', 1, 'шт', ''], ['Карта района и области бумажная', 1, 'шт', ''], ['Блокнот и карандаш', 1, 'наб', ''], ['Маршрут и точки сбора на бумаге', 2, 'шт', 'договориться заранее']]]
+        ]},
+        { id:'b-tools', name:'Инструменты', note:'', subs: [
+          ['Инструменты', [['Мультитул', 1, 'шт', ''], ['Нож фиксированный', 1, 'шт', ''], ['Скотч армированный малый', 1, 'рул', ''], ['Стяжки, проволока', 1, 'наб', ''], ['Лопатка складная', 1, 'шт', ''], ['Пила цепная карманная', 1, 'шт', ''], ['Ремнабор: иголки, нитки, булавки', 1, 'наб', '']]]
+        ]},
+        { id:'b-med', name:'Аптечка', note:'Компактная, в яркой сумке сверху рюкзака.', subs: [
+          ['Аптечка', [['Личные лекарства на 14 дней', 2, 'наб', ''], ['Турникет', 1, 'шт', ''], ['Бинт, ИПП', 4, 'шт', ''], ['Гемостатик', 1, 'шт', ''], ['Пластыри', 1, 'наб', ''], ['Антисептик', 1, 'фл', ''], ['Обезболивающее, жаропонижающее', 20, 'таб', ''], ['Антигистаминное', 10, 'таб', ''], ['От диареи, регидрон', 1, 'наб', ''], ['Антибиотик', 1, 'курс', 'по назначению'], ['Перчатки, маски FFP2', 1, 'наб', ''], ['Ножницы, пинцет', 1, 'наб', ''], ['Термометр', 1, 'шт', '']]]
+        ]},
+        { id:'b-hyg', name:'Гигиена', note:'', subs: [
+          ['Гигиена', [['Туалетная бумага без втулки', 2, 'рул', ''], ['Влажные салфетки', 2, 'уп', ''], ['Санитайзер', 1, 'фл', ''], ['Мыло', 1, 'шт', ''], ['Зубные щётки и паста дорожные', 2, 'наб', ''], ['Полотенце микрофибра', 2, 'шт', ''], ['Женская гигиена', 1, 'наб', ''], ['Пакеты мусорные', 10, 'шт', ''], ['Крем от солнца, репеллент', 1, 'наб', ''], ['Гигиеническая помада', 2, 'шт', '']]]
+        ]},
+        { id:'b-safe', name:'Защита', note:'', subs: [
+          ['Защита', [['Респираторы FFP3', 4, 'шт', ''], ['Очки защитные', 2, 'шт', ''], ['Перчатки рабочие', 2, 'пар', ''], ['Сигнальное зеркало', 1, 'шт', ''], ['Светоотражающий жилет', 2, 'шт', '']]]
+        ]}
+      ]
+    }
+  };
+
+  var KEY = 'autonom-v1';
+  var state = load();
+  var list = state.list || 'home';
+  var onlyOpen = false, query = '';
+  var undo = null;
+
+  function fresh() {
+    var s = { list:'home', items:{}, removed:{}, custom:{}, closed:{} };
+    return s;
+  }
+  function load() {
+    try { var raw = localStorage.getItem(KEY); if (raw) return JSON.parse(raw); } catch (e) {}
+    return fresh();
+  }
+  function save() { state.list = list; try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  function itemsOf(listId, cat, sub) {
+    var base = sub[1].map(function (it, i) { return { id: listId + ':' + cat.id + ':' + sub[0] + ':' + i, name: it[0], need: it[1], unit: it[2], note: it[3], custom: false }; });
+    var extra = (state.custom[listId + ':' + cat.id + ':' + sub[0]] || []).map(function (it, i) { return { id: listId + ':' + cat.id + ':' + sub[0] + ':c' + i, name: it.name, need: it.need, unit: it.unit, note: '', custom: true }; });
+    return base.concat(extra).filter(function (it) { return !state.removed[it.id]; });
+  }
+  function have(it) { var v = state.items[it.id]; return v && typeof v.have === 'number' ? v.have : 0; }
+  function need(it) { var v = state.items[it.id]; return v && typeof v.need === 'number' ? v.need : it.need; }
+  function isDone(it) { return have(it) >= need(it) && need(it) > 0; }
+
+  var root = document.getElementById('lists');
+  function render() {
+    var L = DATA[list];
+    root.innerHTML = '';
+    var total = 0, done = 0, q = query.trim().toLowerCase();
+    L.cats.forEach(function (cat) {
+      var catTotal = 0, catDone = 0, visible = [];
+      cat.subs.forEach(function (sub) {
+        var its = itemsOf(list, cat, sub);
+        its.forEach(function (it) { catTotal++; if (isDone(it)) catDone++; });
+        var shown = its.filter(function (it) { return (!onlyOpen || !isDone(it)) && (!q || it.name.toLowerCase().indexOf(q) >= 0); });
+        visible.push([sub[0], shown]);
+      });
+      total += catTotal; done += catDone;
+      var anyShown = visible.some(function (v) { return v[1].length; });
+      if ((q || onlyOpen) && !anyShown) return;
+      var el = document.createElement('section');
+      el.className = 'cat' + (state.closed[cat.id] && !q ? ' closed' : '');
+      var head = document.createElement('div');
+      head.className = 'cat-head';
+      head.innerHTML = '<span class="tri">▾</span><h2></h2><span class="cnt' + (catTotal && catDone === catTotal ? ' full' : '') + '">' + catDone + ' / ' + catTotal + '</span>';
+      head.querySelector('h2').textContent = cat.name;
+      head.addEventListener('click', function () { state.closed[cat.id] = !state.closed[cat.id]; save(); render(); });
+      el.appendChild(head);
+      var body = document.createElement('div'); body.className = 'body';
+      if (cat.note) { var p = document.createElement('p'); p.className = 'cat-note'; p.textContent = cat.note; body.appendChild(p); }
+      visible.forEach(function (v, si) {
+        var sub = cat.subs[si];
+        if (cat.subs.length > 1 || sub[0] !== cat.name) { var h = document.createElement('div'); h.className = 'sub-h'; h.textContent = sub[0]; body.appendChild(h); }
+        v[1].forEach(function (it) { body.appendChild(renderItem(it)); });
+        body.appendChild(renderAdd(cat, sub));
+      });
+      el.appendChild(body);
+      root.appendChild(el);
+    });
+    document.getElementById('sDone').textContent = done;
+    document.getElementById('sTotal').textContent = total;
+    var pct = total ? Math.round(done / total * 100) : 0;
+    document.getElementById('sPct').textContent = pct + '%';
+    document.getElementById('bar').style.width = pct + '%';
+  }
+
+  function renderItem(it) {
+    var row = document.createElement('div');
+    row.className = 'item' + (isDone(it) ? ' done' : '');
+    var name = document.createElement('div'); name.className = 'name'; name.textContent = it.name;
+    if (it.note) { var n = document.createElement('span'); n.className = 'note'; n.textContent = it.note; name.appendChild(n); }
+    var qty = document.createElement('div'); qty.className = 'qty';
+    var hv = document.createElement('input'); hv.type = 'number'; hv.min = 0; hv.inputMode = 'numeric'; hv.value = have(it); hv.setAttribute('aria-label', 'куплено'); hv.id = 'h-' + it.id;
+    var nd = document.createElement('input'); nd.type = 'number'; nd.min = 0; nd.inputMode = 'numeric'; nd.value = need(it); nd.setAttribute('aria-label', 'нужно'); nd.id = 'n-' + it.id;
+    var sep = document.createElement('span'); sep.className = 'sep'; sep.textContent = '/';
+    var unit = document.createElement('span'); unit.className = 'unit'; unit.textContent = it.unit;
+    hv.addEventListener('change', function () { setQty(it, 'have', hv.value); });
+    nd.addEventListener('change', function () { setQty(it, 'need', nd.value); });
+    qty.appendChild(hv); qty.appendChild(sep); qty.appendChild(nd); qty.appendChild(unit);
+    var del = document.createElement('button'); del.className = 'del'; del.title = 'Убрать из списка'; del.textContent = '×';
+    del.addEventListener('click', function () { removeItem(it); });
+    row.appendChild(name); row.appendChild(qty); row.appendChild(del);
+    return row;
+  }
+  function renderAdd(cat, sub) {
+    var f = document.createElement('form'); f.className = 'add';
+    f.innerHTML = '<input class="n" placeholder="Своя позиция"><input class="q" type="number" min="1" value="1" inputmode="numeric"><input class="u" placeholder="шт"><button type="submit">+</button>';
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var n = f.querySelector('.n').value.trim(); if (!n) return;
+      var k = list + ':' + cat.id + ':' + sub[0];
+      (state.custom[k] = state.custom[k] || []).push({ name: n, need: +f.querySelector('.q').value || 1, unit: f.querySelector('.u').value.trim() || 'шт' });
+      save(); render();
+    });
+    return f;
+  }
+  function setQty(it, field, val) {
+    var v = state.items[it.id] || {};
+    v[field] = Math.max(0, parseInt(val, 10) || 0);
+    state.items[it.id] = v; save(); render();
+  }
+  function removeItem(it) {
+    state.removed[it.id] = true; save(); render();
+    toast('Убрано: ' + it.name, function () { delete state.removed[it.id]; save(); render(); });
+  }
+
+  var toastEl = null;
+  function toast(text, onUndo) {
+    if (toastEl) toastEl.remove();
+    toastEl = document.createElement('div'); toastEl.className = 'toast';
+    toastEl.innerHTML = '<span></span>' + (onUndo ? '<button>Вернуть</button>' : '');
+    toastEl.querySelector('span').textContent = text;
+    if (onUndo) toastEl.querySelector('button').addEventListener('click', function () { onUndo(); toastEl.remove(); toastEl = null; });
+    document.body.appendChild(toastEl);
+    setTimeout(function () { if (toastEl) { toastEl.remove(); toastEl = null; } }, 5000);
+  }
+
+  document.querySelectorAll('.tabs button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      list = b.dataset.list; save();
+      document.querySelectorAll('.tabs button').forEach(function (x) { x.classList.toggle('on', x === b); });
+      render();
+    });
+  });
+  document.getElementById('q').addEventListener('input', function (e) { query = e.target.value; render(); });
+  document.getElementById('onlyOpen').addEventListener('click', function () { onlyOpen = !onlyOpen; this.classList.toggle('on', onlyOpen); render(); });
+  document.getElementById('print').addEventListener('click', function () { window.print(); });
+  document.getElementById('reset').addEventListener('click', function () {
+    if (confirm('Сбросить все отметки и вернуть список по умолчанию?')) { state = fresh(); list = 'home'; save(); document.querySelectorAll('.tabs button').forEach(function (x) { x.classList.toggle('on', x.dataset.list === 'home'); }); render(); }
+  });
+  document.getElementById('copy').addEventListener('click', function () {
+    var L = DATA[list], lines = [L.title + ': докупить'];
+    L.cats.forEach(function (cat) {
+      var rows = [];
+      cat.subs.forEach(function (sub) { itemsOf(list, cat, sub).forEach(function (it) { if (!isDone(it)) rows.push('- ' + it.name + ': ' + (need(it) - have(it)) + ' ' + it.unit); }); });
+      if (rows.length) { lines.push(''); lines.push(cat.name.toUpperCase()); lines = lines.concat(rows); }
+    });
+    var text = lines.join('\n');
+    var done = function () { toast('Список покупок скопирован'); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, function () { fallback(text); done(); });
+    else { fallback(text); done(); }
+  });
+  function fallback(text) { var ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); }
+
+  var themeBtn = document.getElementById('theme');
+  var savedTheme = null; try { savedTheme = localStorage.getItem(KEY + '-theme'); } catch (e) {}
+  if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+  themeBtn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var dark = cur ? cur === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = dark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY + '-theme', next); } catch (e) {}
+  });
+
+  document.querySelectorAll('.tabs button').forEach(function (x) { x.classList.toggle('on', x.dataset.list === list); });
+  render();
+})();
+</script>
+</body>
+</html>
