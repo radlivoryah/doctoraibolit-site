@@ -145,11 +145,12 @@
   "carousels": 25
  },
  "sheet": {
-  "topics": 97,
+  "topics": 107,
   "by_status": {
    "на одобрение": 61,
    "опубликовано": 12,
-   "без статуса": 24
+   "без статуса": 24,
+   "идея": 10
   },
   "status_col": "Статус",
   "url": "https://docs.google.com/spreadsheets/d/1-dV-xavJeCNc6oniRlLTDyRwtu-JghhXx_g2KHHmAtE"
@@ -167,5 +168,5 @@
  "errors": {
   "telegram": "no bot access in environment"
  },
- "updated": "2026-09-19 00:20"
+ "updated": "2026-09-19 01:20"
 }
