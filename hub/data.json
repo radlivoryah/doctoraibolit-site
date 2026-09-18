@@ -1,0 +1,169 @@
+{
+ "drafts": {
+  "by_status": {
+   "черновик": 20
+  },
+  "by_type": {
+   "карусель": 11,
+   "рилс": 9
+  },
+  "items": [
+   {
+    "name": "01 — 5 промптов, экономящих час",
+    "status": "черновик",
+    "type": "карусель"
+   },
+   {
+    "name": "02 — 6 нейросетей для врача",
+    "status": "черновик",
+    "type": "карусель"
+   },
+   {
+    "name": "03 — 6 лет учебы и ни часа про ИИ",
+    "status": "черновик",
+    "type": "рилс"
+   },
+   {
+    "name": "04 — 2 часа в день на текст",
+    "status": "черновик",
+    "type": "рилс"
+   },
+   {
+    "name": "05 — Пациент с распечаткой ChatGPT",
+    "status": "черновик",
+    "type": "рилс"
+   },
+   {
+    "name": "06 — Плохой и хороший промпт",
+    "status": "черновик",
+    "type": "карусель"
+   },
+   {
+    "name": "07 — Формула запроса",
+    "status": "черновик",
+    "type": "карусель"
+   },
+   {
+    "name": "08 — Врач без ИИ и с ИИ через 3 года",
+    "status": "черновик",
+    "type": "рилс"
+   },
+   {
+    "name": "09 — Что нельзя вводить в промпт",
+    "status": "черновик",
+    "type": "карусель"
+   },
+   {
+    "name": "10 — Как я построил себе ассистента",
+    "status": "черновик",
+    "type": "рилс"
+   },
+   {
+    "name": "11 — Промпты для анамнеза и выписки",
+    "status": "черновик",
+    "type": "карусель"
+   },
+   {
+    "name": "12 — Набор ИИ-сервисов для врача",
+    "status": "черновик",
+    "type": "карусель"
+   },
+   {
+    "name": "13 — 3 связки нейросетей под задачу",
+    "status": "черновик",
+    "type": "карусель"
+   },
+   {
+    "name": "14 — Своя база знаний без выдумок",
+    "status": "черновик",
+    "type": "рилс"
+   },
+   {
+    "name": "15 — Выдуманный DOI",
+    "status": "черновик",
+    "type": "рилс"
+   },
+   {
+    "name": "16 — Золотое правило мед-слайда",
+    "status": "черновик",
+    "type": "карусель"
+   },
+   {
+    "name": "17 — Как поймать галлюцинацию",
+    "status": "черновик",
+    "type": "рилс"
+   },
+   {
+    "name": "18 — Ответы строго по науке",
+    "status": "черновик",
+    "type": "рилс"
+   },
+   {
+    "name": "19 — Лид-магнит вместо рекламы",
+    "status": "черновик",
+    "type": "карусель"
+   },
+   {
+    "name": "20 — Где брать готовые промпты",
+    "status": "черновик",
+    "type": "карусель"
+   }
+  ]
+ },
+ "blog": {
+  "count": 39,
+  "recent": [
+   {
+    "date": "2026-09-16",
+    "title": "Где брать готовые промпты: пять источников, из которых беру я",
+    "url": "https://doctoraibolit.online/blog/gde-brat-gotovye-prompty.html"
+   },
+   {
+    "date": "2026-08-06",
+    "title": "Телефон в кровати: почему сила воли не работает и какой протокол работает",
+    "url": "https://doctoraibolit.online/blog/telefon-pered-snom-vecherniy-protokol.html"
+   },
+   {
+    "date": "2026-08-06",
+    "title": "Как прочитать состав на любой этикетке: разбираю индонезийскую упаковку нейросетью",
+    "url": "https://doctoraibolit.online/blog/kak-chitat-sostav-na-etiketke-nejrosetyu.html"
+   },
+   {
+    "date": "2026-08-05",
+    "title": "Восстановил фото из девяностых одним промптом: инструкция без пластиковых лиц",
+    "url": "https://doctoraibolit.online/blog/vosstanovit-staroe-foto-nejrosetyu.html"
+   },
+   {
+    "date": "2026-07-23",
+    "title": "Выписка за 90 секунд: как я собираю документацию с ИИ и не вляпываюсь",
+    "url": "https://doctoraibolit.online/blog/chatgpt-dlya-dokumentacii-vracha.html"
+   }
+  ]
+ },
+ "media": {
+  "reels_rendered": 23,
+  "carousels": 23
+ },
+ "sheet": {
+  "topics": 97,
+  "by_status": {
+   "на одобрение": 61,
+   "опубликовано": 12,
+   "без статуса": 24
+  },
+  "status_col": "Статус",
+  "url": "https://docs.google.com/spreadsheets/d/1-dV-xavJeCNc6oniRlLTDyRwtu-JghhXx_g2KHHmAtE"
+ },
+ "telegram": {
+  "subscribers": 10,
+  "channel": "@ai_bolit_ildar"
+ },
+ "agents": {
+  "alfred": "active",
+  "tolkien": "active",
+  "holmes": "active",
+  "zoya": "active"
+ },
+ "errors": {},
+ "updated": "2026-09-18 04:08"
+}

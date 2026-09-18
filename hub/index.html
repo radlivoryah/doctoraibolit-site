@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Штаб</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Commissioner:wght@400;500;600&display=swap">
+<style>
+:root {
+  --ground:#0a0a0a; --surface:#161616; --surface-2:#222222; --line:rgba(255,255,255,0.12);
+  --ink:#ffffff; --muted:#9a9a9a; --gold:#e8a020; --gold-ink:#0a0a0a; --ok:#3fb36f; --warn:#e8a020; --off:#e05a4f;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) { --ground:#ffffff; --surface:#f3f3f3; --surface-2:#e6e6e6; --line:rgba(10,10,10,0.12); --ink:#0a0a0a; --muted:#6f6f6f; }
+}
+:root[data-theme="light"] { --ground:#ffffff; --surface:#f3f3f3; --surface-2:#e6e6e6; --line:rgba(10,10,10,0.12); --ink:#0a0a0a; --muted:#6f6f6f; }
+* { box-sizing:border-box; }
+[hidden] { display:none !important; }
+body { margin:0; background:var(--ground); color:var(--ink); font-family:'Commissioner', system-ui, sans-serif; font-size:15px; line-height:1.45; }
+a { color:var(--ink); }
+.app { max-width:720px; margin:0 auto; padding:12px 16px 40px; }
+h1, h2, h3 { margin:0; font-family:'Jost', sans-serif; font-weight:600; letter-spacing:-0.01em; }
+h1 { font-size:24px; }
+h2 { font-size:18px; }
+h3 { font-size:16px; }
+.top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.top .upd { font-size:12px; color:var(--muted); text-align:right; }
+.top button { border:1px solid var(--line); background:none; color:var(--muted); border-radius:999px; padding:6px 12px; font:inherit; font-size:13px; cursor:pointer; }
+.tiles { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin:14px 0; }
+.tile { background:var(--surface); border-radius:14px; padding:10px 12px; }
+.tile b { display:block; font-family:'Jost', sans-serif; font-size:24px; font-variant-numeric:tabular-nums; line-height:1.1; }
+.tile span { font-size:12px; color:var(--muted); }
+.tile.gold b { color:var(--gold); }
+.tabs { display:flex; background:var(--surface); border-radius:999px; padding:4px; margin:6px 0 14px; overflow-x:auto; scrollbar-width:none; }
+.tabs button { flex:1; border:0; background:none; color:var(--muted); font:inherit; font-weight:600; font-size:14px; padding:9px 10px; border-radius:999px; cursor:pointer; white-space:nowrap; }
+.tabs button.on { background:var(--ink); color:var(--ground); }
+.list { display:flex; flex-direction:column; gap:10px; }
+.card { background:var(--surface); border-radius:18px; padding:14px 16px; }
+.card .head { display:flex; align-items:center; gap:10px; cursor:pointer; }
+.card .head h3 { flex:1; }
+.pill { border-radius:999px; padding:3px 10px; font-size:12px; font-weight:600; white-space:nowrap; }
+.pill.run { background:rgba(63,179,111,0.16); color:var(--ok); }
+.pill.dec { background:rgba(232,160,32,0.18); color:var(--gold); }
+.pill.pause { background:var(--surface-2); color:var(--muted); }
+.card .tri { color:var(--muted); font-size:12px; transition:transform .2s; }
+.card.open .tri { transform:rotate(90deg); }
+.card .sum { color:var(--muted); font-size:14px; margin-top:6px; }
+.card .body { display:none; margin-top:12px; display:none; flex-direction:column; gap:12px; }
+.card.open .body { display:flex; }
+.counters { display:flex; flex-wrap:wrap; gap:6px; }
+.counters span { background:var(--surface-2); border-radius:999px; padding:5px 10px; font-size:13px; font-variant-numeric:tabular-nums; }
+.counters span b { color:var(--gold); font-weight:600; }
+.cols { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:480px) { .cols { grid-template-columns:1fr; } .tiles { grid-template-columns:repeat(2, 1fr); } }
+.cols h4 { margin:0 0 6px; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:500; }
+.cols ul { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:5px; font-size:14px; }
+.cols li { display:grid; grid-template-columns:18px 1fr; gap:6px; }
+.cols li i { font-style:normal; color:var(--ok); }
+.cols li.todo i { color:var(--muted); }
+.next { background:var(--ground); border:1px solid var(--line); border-radius:12px; padding:10px 12px; font-size:14px; }
+.next b { color:var(--gold); font-weight:600; }
+.links { display:flex; flex-wrap:wrap; gap:6px; }
+.links a { background:var(--ink); color:var(--ground); border-radius:999px; padding:7px 12px; font-size:13px; text-decoration:none; font-weight:600; }
+.agents { display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
+.agents span { display:flex; align-items:center; gap:6px; font-size:13px; }
+.agents i { width:8px; height:8px; border-radius:50%; background:var(--off); display:inline-block; }
+.agents i.on { background:var(--ok); }
+.cal { display:grid; grid-template-columns:repeat(7, 1fr); gap:4px; margin:12px 0; }
+.cal .d { aspect-ratio:1; border-radius:10px; background:var(--surface); display:grid; place-items:center; font-size:13px; position:relative; font-variant-numeric:tabular-nums; }
+.cal .d.other { opacity:.35; }
+.cal .d.today { outline:2px solid var(--gold); }
+.cal .d.has::after { content:''; position:absolute; bottom:5px; width:5px; height:5px; border-radius:50%; background:var(--gold); }
+.cal .wd { text-align:center; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
+.calhead { display:flex; justify-content:space-between; align-items:center; margin-top:14px; }
+.calhead button { border:1px solid var(--line); background:none; color:var(--ink); border-radius:999px; width:32px; height:32px; font:inherit; cursor:pointer; }
+.events { display:flex; flex-direction:column; gap:8px; }
+.ev { display:grid; grid-template-columns:52px 1fr; gap:10px; background:var(--surface); border-radius:12px; padding:10px 12px; font-size:14px; }
+.ev b { font-family:'Jost', sans-serif; font-weight:600; font-variant-numeric:tabular-nums; }
+.ev span { color:var(--muted); font-size:12px; display:block; }
+.recent { display:flex; flex-direction:column; gap:6px; font-size:14px; }
+.recent a { text-decoration:none; }
+.recent span { color:var(--muted); font-size:12px; margin-right:8px; font-variant-numeric:tabular-nums; }
+.section { margin-top:22px; }
+.err { font-size:12px; color:var(--off); margin-top:8px; }
+button:focus-visible, a:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top"><h1>Штаб</h1><div><button id="theme">Тема</button> <span class="upd" id="upd"></span></div></div>
+
+  <div class="tiles" id="tiles"></div>
+  <div class="agents" id="agents"></div>
+
+  <div class="tabs" id="tabs">
+    <button class="on" data-tab="life">Жизнь</button>
+    <button data-tab="digital">Цифра</button>
+    <button data-tab="products">Продукты</button>
+    <button data-tab="calendar">Календарь</button>
+  </div>
+
+  <div class="list" id="list"></div>
+
+  <div id="calendar" hidden>
+    <div class="calhead"><button id="prev">‹</button><h2 id="calTitle"></h2><button id="next">›</button></div>
+    <div class="cal" id="cal"></div>
+    <h3>Ближайшее</h3>
+    <div class="events" id="events" style="margin-top:8px"></div>
+    <h3 style="margin-top:16px">Каждый день</h3>
+    <div class="events" id="daily" style="margin-top:8px"></div>
+    <p style="font-size:13px;color:var(--muted)">Гугл-календарь на две недели вперёд пуст, поэтому здесь даты из наших планов. <a href="https://calendar.google.com/">Открыть Google Calendar</a></p>
+  </div>
+
+  <div class="section" id="recentWrap">
+    <h2>Последние публикации на сайте</h2>
+    <div class="recent" id="recent" style="margin-top:8px"></div>
+  </div>
+  <div class="err" id="err"></div>
+</div>
+
+<script>
+(function () {
+  var KEY = 'hub-v1';
+  var data = {}, projects = { groups: [], events: [], daily: [] };
+  var tab = 'life';
+  try { tab = localStorage.getItem(KEY + '-tab') || 'life'; } catch (e) {}
+  var savedTheme = null; try { savedTheme = localStorage.getItem(KEY + '-theme'); } catch (e) {}
+  if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+  document.getElementById('theme').addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var dark = cur ? cur === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = dark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY + '-theme', next); } catch (e) {}
+  });
+
+  function get(path) {
+    return path.split('.').reduce(function (o, k) { return o && o[k] !== undefined ? o[k] : undefined; }, data);
+  }
+  function derived() {
+    var d = data.drafts && data.drafts.by_status || {};
+    data.drafts = data.drafts || {};
+    data.drafts.total = Object.keys(d).reduce(function (s, k) { return s + d[k]; }, 0);
+    var a = data.agents || {};
+    data.agents.alive = Object.keys(a).filter(function (k) { return a[k] === 'active'; }).length + '/' + Object.keys(a).length;
+    var s = data.sheet && data.sheet.by_status || {};
+    data.sheet = data.sheet || {};
+    data.sheet.published = s['опубликовано'] || 0;
+    data.sheet.pending = s['на одобрение'] || 0;
+  }
+
+  function renderTiles() {
+    var t = [
+      ['blog.count', 'статей на сайте', ''],
+      ['telegram.subscribers', 'подписчиков в канале', 'gold'],
+      ['drafts.total', 'черновиков в вульте', ''],
+      ['sheet.pending', 'тем ждут одобрения', ''],
+      ['sheet.published', 'тем опубликовано', ''],
+      ['media.reels_rendered', 'рилсов отрендерено', '']
+    ];
+    document.getElementById('tiles').innerHTML = t.map(function (x) {
+      var v = get(x[0]); return '<div class="tile ' + x[2] + '"><b>' + (v === undefined ? '–' : v) + '</b><span>' + x[1] + '</span></div>';
+    }).join('');
+    var a = data.agents || {}, names = { alfred:'Альфред', tolkien:'Толкин', holmes:'Холмс', zoya:'Зоя' };
+    document.getElementById('agents').innerHTML = Object.keys(names).map(function (k) {
+      return '<span><i class="' + (a[k] === 'active' ? 'on' : '') + '"></i>' + names[k] + '</span>';
+    }).join('');
+    document.getElementById('upd').textContent = data.updated ? 'данные: ' + data.updated : '';
+    var errs = data.errors ? Object.keys(data.errors) : [];
+    document.getElementById('err').textContent = errs.length ? 'Не обновилось: ' + errs.join(', ') : '';
+  }
+
+  var open = {};
+  try { open = JSON.parse(localStorage.getItem(KEY + '-open') || '{}'); } catch (e) {}
+  function renderList() {
+    var wrap = document.getElementById('list'), cal = document.getElementById('calendar');
+    var g = projects.groups.filter(function (x) { return x.id === tab; })[0];
+    cal.hidden = tab !== 'calendar'; wrap.hidden = tab === 'calendar';
+    document.getElementById('recentWrap').hidden = tab === 'calendar';
+    if (!g) { wrap.innerHTML = ''; return; }
+    wrap.innerHTML = '';
+    g.projects.forEach(function (p) {
+      var card = document.createElement('div');
+      card.className = 'card' + (open[p.id] ? ' open' : ''); card.id = p.id;
+      var st = p.status === 'идёт' ? 'run' : p.status === 'решение' ? 'dec' : 'pause';
+      var counters = (p.counters || []).map(function (c) {
+        var parts = c.split(':'), v = get(parts[0]);
+        return '<span><b>' + (v === undefined ? '–' : v) + '</b> ' + parts[1] + '</span>';
+      }).join('');
+      var done = (p.done || []).map(function (x) { return '<li><i>✓</i><span>' + x + '</span></li>'; }).join('');
+      var todo = (p.todo || []).map(function (x) { return '<li class="todo"><i>○</i><span>' + x + '</span></li>'; }).join('');
+      var links = (p.links || []).map(function (l) { return '<a href="' + l.url + '" target="_blank" rel="noopener">' + l.name + '</a>'; }).join('');
+      card.innerHTML = '<div class="head"><h3></h3><span class="pill ' + st + '">' + p.status + '</span><span class="tri">▶</span></div>' +
+        '<div class="sum"></div><div class="body">' +
+        (counters ? '<div class="counters">' + counters + '</div>' : '') +
+        '<div class="cols"><div><h4>Сделано</h4><ul>' + (done || '<li><i></i><span class="sum">пока ничего</span></li>') + '</ul></div>' +
+        '<div><h4>Не сделано</h4><ul>' + (todo || '<li><i></i><span class="sum">всё закрыто</span></li>') + '</ul></div></div>' +
+        (p.next ? '<div class="next"><b>Следующий шаг:</b> ' + p.next + '</div>' : '') +
+        (links ? '<div class="links">' + links + '</div>' : '') + '</div>';
+      card.querySelector('h3').textContent = p.name;
+      card.querySelector('.sum').textContent = p.summary || '';
+      card.querySelector('.head').addEventListener('click', function () {
+        open[p.id] = !open[p.id]; card.classList.toggle('open', open[p.id]);
+        try { localStorage.setItem(KEY + '-open', JSON.stringify(open)); } catch (e) {}
+      });
+      wrap.appendChild(card);
+    });
+  }
+
+  var view = new Date(); view.setDate(1);
+  function renderCal() {
+    var months = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+    document.getElementById('calTitle').textContent = months[view.getMonth()] + ' ' + view.getFullYear();
+    var grid = document.getElementById('cal'); grid.innerHTML = '';
+    ['пн','вт','ср','чт','пт','сб','вс'].forEach(function (w) { var d = document.createElement('div'); d.className = 'wd'; d.textContent = w; grid.appendChild(d); });
+    var first = (view.getDay() + 6) % 7, days = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+    var prevDays = new Date(view.getFullYear(), view.getMonth(), 0).getDate();
+    var today = new Date(), iso = function (y, m, d) { return y + '-' + String(m + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0'); };
+    var has = {}; (projects.events || []).forEach(function (e) { has[e.date] = true; });
+    for (var i = 0; i < 42; i++) {
+      var cell = document.createElement('div'), n = i - first + 1, cls = 'd';
+      var y = view.getFullYear(), m = view.getMonth(), dd = n;
+      if (n < 1) { cls += ' other'; dd = prevDays + n; m -= 1; } else if (n > days) { cls += ' other'; dd = n - days; m += 1; }
+      var key = iso(new Date(y, m, dd).getFullYear(), new Date(y, m, dd).getMonth(), dd);
+      if (has[key]) cls += ' has';
+      if (key === iso(today.getFullYear(), today.getMonth(), today.getDate())) cls += ' today';
+      cell.className = cls; cell.textContent = dd; grid.appendChild(cell);
+      if (n >= days && (i + 1) % 7 === 0) break;
+    }
+    var up = (projects.events || []).slice().sort(function (a, b) { return a.date < b.date ? -1 : 1; })
+      .filter(function (e) { return e.date >= iso(today.getFullYear(), today.getMonth(), today.getDate()); }).slice(0, 8);
+    document.getElementById('events').innerHTML = up.map(function (e) {
+      var d = new Date(e.date + 'T00:00:00');
+      return '<div class="ev"><b>' + d.getDate() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '</b><div>' + e.title + '<span>' + ['вс','пн','вт','ср','чт','пт','сб'][d.getDay()] + '</span></div></div>';
+    }).join('') || '<div class="sum">Ничего не запланировано</div>';
+    document.getElementById('daily').innerHTML = (projects.daily || []).map(function (e) {
+      return '<div class="ev"><b>' + e.time + '</b><div>' + e.title + '</div></div>';
+    }).join('');
+  }
+  document.getElementById('prev').addEventListener('click', function () { view.setMonth(view.getMonth() - 1); renderCal(); });
+  document.getElementById('next').addEventListener('click', function () { view.setMonth(view.getMonth() + 1); renderCal(); });
+
+  function renderRecent() {
+    var r = data.blog && data.blog.recent || [];
+    document.getElementById('recent').innerHTML = r.map(function (a) {
+      return '<a href="' + a.url + '" target="_blank" rel="noopener"><span>' + a.date + '</span>' + a.title + '</a>';
+    }).join('');
+  }
+
+  document.querySelectorAll('#tabs button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      tab = b.dataset.tab; try { localStorage.setItem(KEY + '-tab', tab); } catch (e) {}
+      document.querySelectorAll('#tabs button').forEach(function (x) { x.classList.toggle('on', x === b); });
+      renderList();
+    });
+  });
+  document.querySelectorAll('#tabs button').forEach(function (x) { x.classList.toggle('on', x.dataset.tab === tab); });
+
+  Promise.all([
+    fetch('data.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return {}; }),
+    fetch('projects.json?' + Date.now()).then(function (r) { return r.json(); })
+  ]).then(function (res) {
+    data = res[0] || {}; projects = res[1];
+    derived(); renderTiles(); renderList(); renderCal(); renderRecent();
+    if (location.hash) { var el = document.getElementById(location.hash.slice(1)); if (el) { el.classList.add('open'); el.scrollIntoView(); } }
+  });
+})();
+</script>
+</body>
+</html>
