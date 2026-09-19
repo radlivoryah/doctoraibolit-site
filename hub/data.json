@@ -111,8 +111,13 @@
   ]
  },
  "blog": {
-  "count": 39,
+  "count": 40,
   "recent": [
+   {
+    "date": "2026-09-19",
+    "title": "ИИ присылает свежие исследования каждое утро: настройка за пять минут",
+    "url": "https://doctoraibolit.online/blog/ii-prisylaet-issledovaniya-kazhdoe-utro.html"
+   },
    {
     "date": "2026-09-16",
     "title": "Где брать готовые промпты: пять источников, из которых беру я",
@@ -132,25 +137,20 @@
     "date": "2026-08-05",
     "title": "Восстановил фото из девяностых одним промптом: инструкция без пластиковых лиц",
     "url": "https://doctoraibolit.online/blog/vosstanovit-staroe-foto-nejrosetyu.html"
-   },
-   {
-    "date": "2026-07-23",
-    "title": "Выписка за 90 секунд: как я собираю документацию с ИИ и не вляпываюсь",
-    "url": "https://doctoraibolit.online/blog/chatgpt-dlya-dokumentacii-vracha.html"
    }
   ]
  },
  "media": {
-  "reels_rendered": 23,
-  "carousels": 25
+  "reels_rendered": 26,
+  "carousels": 26
  },
  "sheet": {
   "topics": 107,
   "by_status": {
    "на одобрение": 61,
-   "опубликовано": 12,
+   "опубликовано": 13,
    "без статуса": 24,
-   "идея": 10
+   "идея": 9
   },
   "status_col": "Статус",
   "url": "https://docs.google.com/spreadsheets/d/1-dV-xavJeCNc6oniRlLTDyRwtu-JghhXx_g2KHHmAtE"
@@ -168,5 +168,5 @@
  "errors": {
   "telegram": "no bot access in environment"
  },
- "updated": "2026-09-19 10:20"
+ "updated": "2026-09-19 11:20"
 }
