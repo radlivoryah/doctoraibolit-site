@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>Ильдар Хайров: ИИ в практике врача</title>
+<link>https://doctoraibolit.online/blog/</link>
+<description>Как практикующий врач применяет ИИ: инструменты, запросы, границы. Статьи из личной практики.</description>
+<language>ru</language>
+<lastBuildDate>Sun, 20 Sep 2026 22:24:58 +0300</lastBuildDate>
+<item>
+<title>ИИ присылает свежие исследования каждое утро</title>
+<link>https://doctoraibolit.online/blog/ii-prisylaet-issledovaniya-kazhdoe-utro.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/ii-prisylaet-issledovaniya-kazhdoe-utro.html</guid>
+<pubDate>Sat, 19 Sep 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Самый простой и неочевидный способ использовать ИИ: настроил один раз, и каждое утро приходят свежие статьи по твоей теме. Три способа и готовый запрос.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/ii-prisylaet-issledovaniya-kazhdoe-utro.png" type="image/png"/>
+</item>
+<item>
+<title>Где брать готовые промпты: пять источников</title>
+<link>https://doctoraibolit.online/blog/gde-brat-gotovye-prompty.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/gde-brat-gotovye-prompty.html</guid>
+<pubDate>Wed, 16 Sep 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Писать запрос с нуля не нужно. Пять мест, откуда беру промпты я, и правило, без которого чужой промпт не работает.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/gde-brat-gotovye-prompty.png" type="image/png"/>
+</item>
+<item>
+<title>Телефон в кровати: не сила воли, а протокол</title>
+<link>https://doctoraibolit.online/blog/telefon-pered-snom-vecherniy-protokol.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/telefon-pered-snom-vecherniy-protokol.html</guid>
+<pubDate>Thu, 06 Aug 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Почему решимость проигрывает ленте, пять рабочих шагов и промпт, который соберет протокол под ваши часы.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/telefon-pered-snom-vecherniy-protokol.png" type="image/png"/>
+</item>
+<item>
+<title>Как прочитать состав на любой этикетке</title>
+<link>https://doctoraibolit.online/blog/kak-chitat-sostav-na-etiketke-nejrosetyu.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/kak-chitat-sostav-na-etiketke-nejrosetyu.html</guid>
+<pubDate>Thu, 06 Aug 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Перевод с любого языка, сахар в чайных ложках, соль, добавки и главная ловушка с порциями. Промпт внутри.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/kak-chitat-sostav-na-etiketke-nejrosetyu.png" type="image/png"/>
+</item>
+<item>
+<title>Восстановил фото из девяностых одним промптом</title>
+<link>https://doctoraibolit.online/blog/vosstanovit-staroe-foto-nejrosetyu.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/vosstanovit-staroe-foto-nejrosetyu.html</guid>
+<pubDate>Wed, 05 Aug 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Готовый промпт для реставрации старых снимков и правило, из-за которого лица перестают быть чужими.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/vosstanovit-staroe-foto-nejrosetyu.png" type="image/png"/>
+</item>
+<item>
+<title>Боль прошла — а зуб цел? Почему «отпустило» — плохой знак</title>
+<link>https://doctoraibolit.online/blog/bol-proshla-zub-cel.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/bol-proshla-zub-cel.html</guid>
+<pubDate>Wed, 22 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Зуб болел и вдруг перестал — кажется, пронесло. Чаще это не выздоровление, а гибель нерва. Разбираю по стадиям.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/bol-proshla.png" type="image/png"/>
+</item>
+<item>
+<title>8 привычек, которые тихо убивают твои дёсны</title>
+<link>https://doctoraibolit.online/blog/8-privychek-desny.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/8-privychek-desny.html</guid>
+<pubDate>Wed, 22 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Дёсны не ноют, как зуб, — они молча отступают. 8 привычек, что ведут к пародонтиту, и как их убрать.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/8-privychek-desny.png" type="image/png"/>
+</item>
+<item>
+<title>Как писать промпты: инструкция для врача и человека</title>
+<link>https://doctoraibolit.online/blog/kak-pisat-prompty-dlya-vracha.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/kak-pisat-prompty-dlya-vracha.html</guid>
+<pubDate>Wed, 22 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Промпт решает, получишь ты пользу или воду. Формула из 4 частей и медицинские примеры.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/kak-pisat-prompty-dlya-vracha.png" type="image/png"/>
+</item>
+<item>
+<title>Промпты для ChatGPT: формула и рабочие шаблоны</title>
+<link>https://doctoraibolit.online/blog/prompty-chatgpt-shablony-dlya-vracha.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/prompty-chatgpt-shablony-dlya-vracha.html</guid>
+<pubDate>Wed, 22 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Роль + контекст + задача + формат. Готовые шаблоны для приёма, пациентов, учёбы и быта.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/prompty-chatgpt-shablony-dlya-vracha.png" type="image/png"/>
+</item>
+<item>
+<title>ИИ-агент простыми словами: не советчик, а сотрудник</title>
+<link>https://doctoraibolit.online/blog/ii-agent-prostymi-slovami-sotrudnik.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/ii-agent-prostymi-slovami-sotrudnik.html</guid>
+<pubDate>Wed, 22 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Чат отвечает, агент делает. Что такое ИИ-агент и с чего начать, на живом примере.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/ii-agent-prostymi-slovami-sotrudnik.png" type="image/png"/>
+</item>
+<item>
+<title>5 бесплатных ИИ для новичка: с чего начать</title>
+<link>https://doctoraibolit.online/blog/5-besplatnyh-ii-dlya-novichka.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/5-besplatnyh-ii-dlya-novichka.html</guid>
+<pubDate>Wed, 22 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Пять бесплатных нейросетей, которыми я пользуюсь между пациентами и дома. Без карты и VPN.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/5-besplatnyh-ii-dlya-novichka.png" type="image/png"/>
+</item>
+<item>
+<title>ИИ-ментор для врача: 7 промптов учиться быстрее</title>
+<link>https://doctoraibolit.online/blog/ii-mentor-dlya-vracha-7-promptov.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/ii-mentor-dlya-vracha-7-promptov.html</guid>
+<pubDate>Wed, 22 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Не готовые ответы, а строгий репетитор. 7 промптов, чтобы осваивать новое вдвое быстрее.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/ii-mentor-dlya-vracha-7-promptov.png" type="image/png"/>
+</item>
+<item>
+<title>Кровь на щётке. Это не «так бывает», это сигнал</title>
+<link>https://doctoraibolit.online/blog/krovotochat-desny.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/krovotochat-desny.html</guid>
+<pubDate>Wed, 22 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Здоровая десна при чистке не кровит. Кровь — первая стадия воспаления. Разбор по стадиям и что делать.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/krovotochat-desny.png" type="image/png"/>
+</item>
+<item>
+<title>4 страха, из-за которых врач не берёт ИИ</title>
+<link>https://doctoraibolit.online/blog/4-straha-vrachey-pered-ii.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/4-straha-vrachey-pered-ii.html</guid>
+<pubDate>Wed, 22 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Заменит, сложно, врёт, врачебная тайна. Разбираю каждый страх и как начать без риска.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/4-straha-vrachey-pered-ii.png" type="image/png"/>
+</item>
+<item>
+<title>Нейросети с нуля: как начать за один вечер</title>
+<link>https://doctoraibolit.online/blog/kak-nachat-polzovatsya-neyrosetyami-2026.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/kak-nachat-polzovatsya-neyrosetyami-2026.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Четыре шага, формула запроса и готовые промпты, чтобы начать с нуля за вечер. Без кода.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/kak-nachat-polzovatsya-neyrosetyami-2026.png" type="image/png"/>
+</item>
+<item>
+<title>Claude или ChatGPT: что брать под свои задачи</title>
+<link>https://doctoraibolit.online/blog/claude-ili-chatgpt-2026-chto-vybrat.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/claude-ili-chatgpt-2026-chto-vybrat.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Где сильнее каждый и как выбрать за вечер тестом на своей реальной задаче.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/claude-ili-chatgpt-2026-chto-vybrat.png" type="image/png"/>
+</item>
+<item>
+<title>20 стилей ИИ-картинок: какие промпты вписывать</title>
+<link>https://doctoraibolit.online/blog/stili-ii-kartinok-gotovye-prompty.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/stili-ii-kartinok-gotovye-prompty.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Стили и готовые промпты: что вписать в генератор и что получишь. С формулой.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/stili-ii-kartinok-gotovye-prompty.png" type="image/png"/>
+</item>
+<item>
+<title>Заработок на нейросетях: где деньги правда есть</title>
+<link>https://doctoraibolit.online/blog/zarabotok-na-neyrosetyah-2026-chto-realno-rabotaet.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/zarabotok-na-neyrosetyah-2026-chto-realno-rabotaet.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Что реально приносит деньги на ИИ, а где развод. Честно, от практика, с цифрами.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/zarabotok-na-neyrosetyah-2026-chto-realno-rabotaet.png" type="image/png"/>
+</item>
+<item>
+<title>ИИ-фотосессия: экспертные кадры без фотографа</title>
+<link>https://doctoraibolit.online/blog/ii-fotosessiya-prompty-poshagovo.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/ii-fotosessiya-prompty-poshagovo.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Пошагово: референсы, формула промпта, готовые шаблоны и разбор брака.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/ii-fotosessiya-prompty-poshagovo.png" type="image/png"/>
+</item>
+<item>
+<title>AI-портреты из одного селфи: 15 промптов</title>
+<link>https://doctoraibolit.online/blog/ai-portrety-iz-odnogo-selfi-15-promptov.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/ai-portrety-iz-odnogo-selfi-15-promptov.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Деловой хедшот и киношные аватарки из одного селфи. Главный приём и промпты.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/ai-portrety-iz-odnogo-selfi-15-promptov.png" type="image/png"/>
+</item>
+<item>
+<title>Нейросеть рисует по описанию: сервисы 2026</title>
+<link>https://doctoraibolit.online/blog/neyroset-risuet-po-opisaniyu-2026.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/neyroset-risuet-po-opisaniyu-2026.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Пять рабочих сервисов и формула промпта из шести кирпичей, чтобы попасть с первого раза.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/neyroset-risuet-po-opisaniyu-2026.png" type="image/png"/>
+</item>
+<item>
+<title>Nano Banana: генерирую и правлю картинки Google</title>
+<link>https://doctoraibolit.online/blog/nano-banana-kak-polzovatsya.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/nano-banana-kak-polzovatsya.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Что за генератор, как запустить из России и какие промпты работают. На примерах.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/nano-banana-kak-polzovatsya.png" type="image/png"/>
+</item>
+<item>
+<title>10 фраз, которые меняют ответ ChatGPT и Claude</title>
+<link>https://doctoraibolit.online/blog/frazy-menyayushchie-otvet-chatgpt-claude.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/frazy-menyayushchie-otvet-chatgpt-claude.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Не секретные команды, а 10 рабочих фраз. Что каждая меняет в ответе и когда её ставить.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/frazy-menyayushchie-otvet-chatgpt-claude.png" type="image/png"/>
+</item>
+<item>
+<title>Запах нейросети: как вычистить ИИ из текста</title>
+<link>https://doctoraibolit.online/blog/kak-ubrat-zapah-neyroseti-iz-teksta.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/kak-ubrat-zapah-neyroseti-iz-teksta.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Что выдаёт машину в тексте и как это вычистить. Штампы, конструкции, ритм, тире. С примерами.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/kak-ubrat-zapah-neyroseti-iz-teksta.png" type="image/png"/>
+</item>
+<item>
+<title>Нейросети для видео в 2026: с чего начать</title>
+<link>https://doctoraibolit.online/blog/neyroseti-dlya-video-2026-s-chego-nachat.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/neyroseti-dlya-video-2026-s-chego-nachat.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Kling, Runway, Veo, Pika. Что для чего, как платить из России и как сделать первый ролик.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/neyroseti-dlya-video-2026-s-chego-nachat.png" type="image/png"/>
+</item>
+<item>
+<title>Оживил фото за 5 секунд: видео из картинки</title>
+<link>https://doctoraibolit.online/blog/kak-ozhivit-foto-v-video-neyrosetyu.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/kak-ozhivit-foto-v-video-neyrosetyu.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Как оживить любое фото в видео: сервисы, промпты движения, где ломается лицо и как чинить.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/kak-ozhivit-foto-v-video-neyrosetyu.png" type="image/png"/>
+</item>
+<item>
+<title>Suno из России: музыка и джингл за минуту</title>
+<link>https://doctoraibolit.online/blog/suno-muzyka-i-dzhingl-iz-rossii.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/suno-muzyka-i-dzhingl-iz-rossii.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Доступ из РФ, оплата рублями, промпт под музыку и джингл для рилсов, права на коммерцию.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/suno-muzyka-i-dzhingl-iz-rossii.png" type="image/png"/>
+</item>
+<item>
+<title>Контент-план на месяц за час нейросетью</title>
+<link>https://doctoraibolit.online/blog/kontent-plan-nejrosetyu-za-chas.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/kontent-plan-nejrosetyu-za-chas.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Три готовых промпта, подготовка файлов и проверка логики продаж. Месяц контента за час.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/kontent-plan-nejrosetyu-za-chas.png" type="image/png"/>
+</item>
+<item>
+<title>Посты в Telegram с ИИ: почему они всё равно мёртвые</title>
+<link>https://doctoraibolit.online/blog/posty-v-telegram-s-ii-golos-brenda.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/posty-v-telegram-s-ii-golos-brenda.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Голос бренда, структура, хуки и готовые промпты. Как сделать посты живыми, а не серыми.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/posty-v-telegram-s-ii-golos-brenda.png" type="image/png"/>
+</item>
+<item>
+<title>Карусель Instagram на нейросети: чтобы дочитывали</title>
+<link>https://doctoraibolit.online/blog/karusel-instagram-na-neiroseti.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/karusel-instagram-na-neiroseti.html</guid>
+<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Скелет, структура слайдов, готовые промпты и визуал. Одна карусель кормит пять площадок.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/karusel-instagram-na-neiroseti.png" type="image/png"/>
+</item>
+</channel>
+</rss>
