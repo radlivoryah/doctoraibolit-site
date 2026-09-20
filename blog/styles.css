@@ -1,9 +1,11 @@
 /* Блог «Полезные статьи» — статические SEO-страницы в бренд-эстетике лендинга */
 :root{
-  --bg:#0A0A0A; --gold:#E8A020; --gold-light:#f6b94a; --gold-soft:rgba(232,160,32,0.15);
-  --gold-line:rgba(232,160,32,0.2); --teal:#0D7377; --teal-light:#2bd4c8;
-  --white:#F5F0E8; --muted:rgba(245,240,232,0.45); --card-bg:rgba(255,255,255,0.03);
-  --card-border:rgba(232,160,32,0.15); --card-border-hover:rgba(232,160,32,0.28);
+  --bg:#FFFFFF; --bg-2:#F6F7F9; --bg-3:#EEF0F3;
+  --gold:#B97A12; --gold-light:#E8A020; --gold-soft:rgba(232,160,32,0.14);
+  --gold-line:rgba(26,46,74,0.14); --teal:#0D7377; --teal-light:#0F8F8C;
+  --white:#14161A; --muted:rgba(20,22,26,0.58); --muted-2:rgba(20,22,26,0.72); --muted-3:rgba(20,22,26,0.85);
+  --card-bg:#F6F7F9; --card-border:rgba(26,46,74,0.12); --card-border-hover:rgba(232,160,32,0.45);
+  --navy:#1A2E4A;
   --maxw:720px; --font-head:'Montserrat',system-ui,sans-serif; --font-body:'Inter',system-ui,sans-serif;
 }
 *{box-sizing:border-box}
@@ -41,7 +43,7 @@ a:hover{color:var(--gold-light)}
 .card{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--card-border);
   border-radius:16px;overflow:hidden;transition:.2s;height:100%}
 .card:hover{border-color:var(--card-border-hover);transform:translateY(-3px)}
-.card .thumb{aspect-ratio:4/3;width:100%;object-fit:cover;background:#0A0A0A;display:block;border-bottom:1px solid var(--card-border)}
+.card .thumb{aspect-ratio:4/3;width:100%;object-fit:cover;background:#FFFFFF;display:block;border-bottom:1px solid var(--card-border)}
 .card .body{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1}
 .tag{display:inline-block;align-self:flex-start;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--teal-light);border:1px solid rgba(13,115,119,0.4);border-radius:999px;
