@@ -474,22 +474,42 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
   });
 
   /* ---------- деньги ---------- */
+  /* Суммы взяты из вульта: memory/personal/finance/subscriptions.md, запись от 22.06.2026. */
+  var SEED_VER = 2;
   var SUB_SEED = [
-    { name:'Claude', note:'основная модель, на ней работают все агенты', amount:null, cur:'usd', period:'мес', day:'' },
-    { name:'ElevenLabs', note:'клон голоса и озвучка рилсов', amount:null, cur:'usd', period:'мес', day:'' },
-    { name:'HiggsField', note:'генерация картинок и видео', amount:null, cur:'usd', period:'мес', day:'' },
-    { name:'HikerAPI', note:'аналитика Instagram, оплата по балансу', amount:null, cur:'usd', period:'разово', day:'' },
-    { name:'TranscriptAPI', note:'расшифровка видео с YouTube', amount:null, cur:'usd', period:'разово', day:'' },
-    { name:'Wispr Flow', note:'голосовой ввод текста', amount:null, cur:'usd', period:'мес', day:'' },
-    { name:'Obsidian Sync', note:'синхронизация базы знаний', amount:null, cur:'usd', period:'год', day:'' },
-    { name:'Сервер США', note:'агенты, память, видеолаборатория', amount:null, cur:'rub', period:'мес', day:'' },
-    { name:'Сервер Россия', note:'магазин и приём оплаты', amount:null, cur:'rub', period:'мес', day:'' },
-    { name:'Сервер Германия', note:'VPN и копии памяти', amount:null, cur:'rub', period:'мес', day:'' },
+    { name:'Claude', note:'основная модель, на ней работают все агенты (вульт: 100 $/мес)', amount:100, cur:'usd', period:'мес', day:'21' },
+    { name:'Hostinger (сервер США)', note:'агенты, память, видеолаборатория (вульт: 25 $/мес)', amount:25, cur:'usd', period:'мес', day:'11' },
+    { name:'HiggsField', note:'генерация картинок и видео (вульт: 330 $/год, до 23.01.2027)', amount:330, cur:'usd', period:'год', day:'' },
+    { name:'Wispr Flow', note:'голосовой ввод текста (вульт: 15 $/мес)', amount:15, cur:'usd', period:'мес', day:'21' },
+    { name:'Яндекс 360 (Диск)', note:'вульт: 2999 ₽/год, до 09.04.2027', amount:2999, cur:'rub', period:'год', day:'' },
+    { name:'Мегафон', note:'вульт: 828 ₽/мес', amount:828, cur:'rub', period:'мес', day:'21' },
+    { name:'HikerAPI', note:'аналитика Instagram, пополнение баланса (вульт: 10 $)', amount:10, cur:'usd', period:'разово', day:'' },
+    { name:'KIE AI', note:'вульт: 5 $ разово, оставалось 972 из 1000 кредитов', amount:5, cur:'usd', period:'разово', day:'' },
+    { name:'CapCut Pro', note:'вульт: 14 $/мес, помечен как не продлеваемый. Проверить', amount:14, cur:'usd', period:'мес', day:'05' },
+    { name:'ElevenLabs', note:'клон голоса и озвучка рилсов. Суммы в вульте нет', amount:null, cur:'usd', period:'мес', day:'' },
+    { name:'TranscriptAPI', note:'расшифровка видео с YouTube. Суммы в вульте нет', amount:null, cur:'usd', period:'разово', day:'' },
+    { name:'Obsidian Sync', note:'синхронизация базы знаний. Суммы в вульте нет', amount:null, cur:'usd', period:'год', day:'' },
+    { name:'Сервер Россия', note:'магазин и приём оплаты, Beget. Суммы в вульте нет', amount:null, cur:'rub', period:'мес', day:'' },
+    { name:'Сервер Германия', note:'VPN и копии памяти. Суммы в вульте нет', amount:null, cur:'rub', period:'мес', day:'' },
     { name:'Домен doctoraibolit.online', note:'сайт, мини-аппы, лендинги', amount:null, cur:'rub', period:'год', day:'' },
-    { name:'Домен zoloteletoyvizor.com', note:'почта для фермы аккаунтов', amount:null, cur:'rub', period:'год', day:'' }
+    { name:'Домен zoloteletoyvizor.com', note:'почта для фермы аккаунтов, Hostinger, на год', amount:null, cur:'rub', period:'год', day:'' }
   ];
   function subs() {
-    if (!st.subs) { st.subs = SUB_SEED.map(function (x, i) { x.id = 'seed' + i; return x; }); save(); }
+    if (!st.subs) {
+      st.subs = SUB_SEED.map(function (x, i) { x.id = 'seed' + i; return x; });
+      st.subsVer = SEED_VER; save();
+      return st.subs;
+    }
+    if (st.subsVer !== SEED_VER) {
+      /* Дозаполняем то, что Шеф ещё не трогал, и добавляем новые позиции. */
+      SUB_SEED.forEach(function (seed, i) {
+        var old = st.subs.filter(function (x) { return x.name === seed.name; })[0];
+        if (!old) { var copy = JSON.parse(JSON.stringify(seed)); copy.id = 'seed' + SEED_VER + '-' + i; st.subs.push(copy); return; }
+        if (old.amount == null && seed.amount != null) { old.amount = seed.amount; old.cur = seed.cur; old.period = seed.period; }
+        if (!old.note || old.note.indexOf('вульт') < 0) { old.note = seed.note; }
+      });
+      st.subsVer = SEED_VER; save();
+    }
     return st.subs;
   }
   function monthly(x) {
