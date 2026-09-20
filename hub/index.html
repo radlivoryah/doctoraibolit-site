@@ -142,6 +142,14 @@ h3 { font-size:16px; }
 .addtask { display:grid; grid-template-columns:1fr auto; gap:6px; margin-top:8px; }
 .addtask input { border:1px solid var(--line); background:var(--ground); color:var(--ink); border-radius:10px; padding:8px 12px; font:inherit; font-size:14px; min-width:0; }
 .addtask button { border:0; background:var(--accent); color:#fff; border-radius:10px; padding:8px 14px; font:inherit; font-weight:600; cursor:pointer; }
+.subs { display:flex; flex-direction:column; gap:6px; }
+.sub-row { display:grid; grid-template-columns:1.4fr 0.7fr 0.6fr 0.8fr 26px; gap:6px; align-items:center; }
+.sub-row.head { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding:0 4px; }
+.sub-row input, .sub-row select { border:1px solid var(--line); background:var(--ground); color:var(--ink); border-radius:9px; padding:8px 9px; font:inherit; font-size:14px; min-width:0; }
+.sub-row input.amount { text-align:right; font-variant-numeric:tabular-nums; }
+.sub-row button { border:0; background:none; color:var(--muted); cursor:pointer; font-size:16px; }
+.sub-row .note { grid-column:1 / -1; font-size:12px; color:var(--muted); padding:0 4px 4px; }
+@media (max-width:640px) { .sub-row { grid-template-columns:1fr 1fr; } .sub-row.head { display:none; } .sub-row button { grid-column:2; justify-self:end; } }
 .notes { width:100%; border:1px solid var(--line); background:var(--ground); color:var(--ink); border-radius:10px; padding:9px 12px; font:inherit; font-size:14px; resize:vertical; min-height:64px; }
 .toggle { border:0; background:none; color:var(--muted); font:inherit; font-size:13px; cursor:pointer; padding:0; text-align:left; }
 .toggle::before { content:'▸ '; }
@@ -197,6 +205,16 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
       <div class="list" id="habits"></div>
     </section>
 
+    <section id="v-money" hidden>
+      <h2>Подписки и расходы</h2>
+      <p class="muted">Всё, за что идёт оплата. Правь прямо здесь: суммы, даты и статусы сохраняются на этом устройстве. Пустая сумма значит, что я её не знаю.</p>
+      <div class="grid" id="moneyTiles"></div>
+      <div class="subs" id="subs" style="margin-top:12px"></div>
+      <form class="form" id="subForm" style="margin-top:12px"><input id="subName" placeholder="Сервис" required><input id="subAmount" type="number" step="0.01" placeholder="Сумма"><button type="submit">Добавить</button></form>
+      <p class="muted" style="font-size:13px">Курс для пересчёта долларов в рубли задаётся в поле ниже, чтобы итог считался в одной валюте.</p>
+      <div class="form" style="grid-template-columns:auto 120px"><span class="muted" style="align-self:center">Курс доллара</span><input id="rate" type="number" step="0.1"></div>
+    </section>
+
     <section id="v-calendar" hidden>
       <h2>Календарь</h2>
       <div class="calhead" style="margin-top:10px"><button id="prev">‹</button><h3 id="calTitle"></h3><button id="next">›</button></div>
@@ -215,7 +233,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
   var st = load();
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; } }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
-  st.scores = st.scores || {}; st.goals = st.goals || []; st.habits = st.habits || []; st.open = st.open || {}; st.tasks = st.tasks || {}; st.showDone = st.showDone || {}; st.lists = st.lists || {}; st.notes = st.notes || {};
+  st.scores = st.scores || {}; st.goals = st.goals || []; st.habits = st.habits || []; st.open = st.open || {}; st.tasks = st.tasks || {}; st.showDone = st.showDone || {}; st.lists = st.lists || {}; st.notes = st.notes || {}; st.rate = st.rate || 100; st.subs = st.subs || null;
   // Older builds kept tasks in st.tasks[pid]; they now live in st.lists[pid].tasks.
   Object.keys(st.tasks).forEach(function (pid) { st.lists[pid] = st.lists[pid] || {}; st.lists[pid].tasks = (st.lists[pid].tasks || []).concat(st.tasks[pid]); }); st.tasks = {};
   var DEFAULT_LISTS = [{ id: 'tasks', name: 'Задачи', done: true, placeholder: 'Задача или цель' }];
@@ -238,7 +256,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 
   /* ---------- navigation ---------- */
   var view = 'home', groupId = null;
-  var VIEWS = [['home', 'Главная'], ['life', 'Жизнь'], ['digital', 'Цифра'], ['products', 'Продукты'], ['goals', 'Цели'], ['habits', 'Привычки'], ['calendar', 'Календарь']];
+  var VIEWS = [['home', 'Главная'], ['life', 'Жизнь'], ['digital', 'Цифра'], ['products', 'Продукты'], ['goals', 'Цели'], ['habits', 'Привычки'], ['money', 'Деньги'], ['calendar', 'Календарь']];
   function renderNav() {
     var nav = document.getElementById('nav'), chips = document.getElementById('chips');
     nav.innerHTML = ''; chips.innerHTML = '';
@@ -257,7 +275,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     var h = location.hash.replace('#', '') || 'home', parts = h.split('/');
     view = VIEWS.some(function (v) { return v[0] === parts[0]; }) ? parts[0] : 'home';
     var pid = parts[1] || null;
-    ['home', 'group', 'goals', 'habits', 'calendar'].forEach(function (id) { document.getElementById('v-' + id).hidden = true; });
+    ['home', 'group', 'goals', 'habits', 'money', 'calendar'].forEach(function (id) { document.getElementById('v-' + id).hidden = true; });
     var g = P.groups.filter(function (x) { return x.id === view; })[0];
     if (g) { groupId = g.id; document.getElementById('v-group').hidden = false; renderGroup(g, pid); }
     else { document.getElementById('v-' + view).hidden = false; }
@@ -455,6 +473,70 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     st.habits.push({ id: String(Date.now()), text: t, log: {} }); save(); e.target.reset(); renderHabits();
   });
 
+  /* ---------- деньги ---------- */
+  var SUB_SEED = [
+    { name:'Claude', note:'основная модель, на ней работают все агенты', amount:null, cur:'usd', period:'мес', day:'' },
+    { name:'ElevenLabs', note:'клон голоса и озвучка рилсов', amount:null, cur:'usd', period:'мес', day:'' },
+    { name:'HiggsField', note:'генерация картинок и видео', amount:null, cur:'usd', period:'мес', day:'' },
+    { name:'HikerAPI', note:'аналитика Instagram, оплата по балансу', amount:null, cur:'usd', period:'разово', day:'' },
+    { name:'TranscriptAPI', note:'расшифровка видео с YouTube', amount:null, cur:'usd', period:'разово', day:'' },
+    { name:'Wispr Flow', note:'голосовой ввод текста', amount:null, cur:'usd', period:'мес', day:'' },
+    { name:'Obsidian Sync', note:'синхронизация базы знаний', amount:null, cur:'usd', period:'год', day:'' },
+    { name:'Сервер США', note:'агенты, память, видеолаборатория', amount:null, cur:'rub', period:'мес', day:'' },
+    { name:'Сервер Россия', note:'магазин и приём оплаты', amount:null, cur:'rub', period:'мес', day:'' },
+    { name:'Сервер Германия', note:'VPN и копии памяти', amount:null, cur:'rub', period:'мес', day:'' },
+    { name:'Домен doctoraibolit.online', note:'сайт, мини-аппы, лендинги', amount:null, cur:'rub', period:'год', day:'' },
+    { name:'Домен zoloteletoyvizor.com', note:'почта для фермы аккаунтов', amount:null, cur:'rub', period:'год', day:'' }
+  ];
+  function subs() {
+    if (!st.subs) { st.subs = SUB_SEED.map(function (x, i) { x.id = 'seed' + i; return x; }); save(); }
+    return st.subs;
+  }
+  function monthly(x) {
+    var a = parseFloat(x.amount); if (!a) return 0;
+    var rub = x.cur === 'usd' ? a * (parseFloat(st.rate) || 0) : a;
+    return x.period === 'год' ? rub / 12 : x.period === 'мес' ? rub : 0;
+  }
+  function money(v) { return Math.round(v).toLocaleString('ru-RU') + ' \u20bd'; }
+  function renderMoney() {
+    var list = subs();
+    var perMonth = list.reduce(function (s, x) { return s + monthly(x); }, 0);
+    var unknown = list.filter(function (x) { return !parseFloat(x.amount); }).length;
+    document.getElementById('moneyTiles').innerHTML =
+      '<div class="tile"><b>' + money(perMonth) + '</b><span>в месяц</span></div>' +
+      '<div class="tile"><b>' + money(perMonth * 12) + '</b><span>в год</span></div>' +
+      '<div class="tile"><b>' + list.length + '</b><span>позиций</span></div>' +
+      '<div class="tile"><b>' + unknown + '</b><span>без суммы</span></div>';
+    document.getElementById('rate').value = st.rate;
+    var wrap = document.getElementById('subs');
+    wrap.innerHTML = '<div class="sub-row head"><span>Сервис</span><span>Сумма</span><span>Валюта</span><span>Период</span><span></span></div>' +
+      list.map(function (x) {
+        return '<div class="sub-row" data-id="' + x.id + '">' +
+          '<input class="nm" value="' + (x.name || '').replace(/"/g, '&quot;') + '">' +
+          '<input class="amount am" type="number" step="0.01" placeholder="?" value="' + (x.amount == null ? '' : x.amount) + '">' +
+          '<select class="cu"><option value="rub"' + (x.cur === 'rub' ? ' selected' : '') + '>руб</option><option value="usd"' + (x.cur === 'usd' ? ' selected' : '') + '>$</option></select>' +
+          '<select class="pe"><option' + (x.period === 'мес' ? ' selected' : '') + '>мес</option><option' + (x.period === 'год' ? ' selected' : '') + '>год</option><option' + (x.period === 'разово' ? ' selected' : '') + '>разово</option></select>' +
+          '<button title="Удалить">\u00d7</button>' +
+          (x.note ? '<span class="note">' + x.note + '</span>' : '') + '</div>';
+      }).join('');
+    wrap.querySelectorAll('.sub-row[data-id]').forEach(function (row) {
+      var x = list.filter(function (i) { return i.id === row.dataset.id; })[0]; if (!x) return;
+      row.querySelector('.nm').addEventListener('change', function (e) { x.name = e.target.value; save(); });
+      row.querySelector('.am').addEventListener('change', function (e) { x.amount = e.target.value === '' ? null : parseFloat(e.target.value); save(); renderMoney(); });
+      row.querySelector('.cu').addEventListener('change', function (e) { x.cur = e.target.value; save(); renderMoney(); });
+      row.querySelector('.pe').addEventListener('change', function (e) { x.period = e.target.value; save(); renderMoney(); });
+      row.querySelector('button').addEventListener('click', function () { st.subs = list.filter(function (i) { return i !== x; }); save(); renderMoney(); });
+    });
+  }
+  document.getElementById('subForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var n = document.getElementById('subName').value.trim(); if (!n) return;
+    var a = document.getElementById('subAmount').value;
+    subs().push({ id: String(Date.now()), name: n, note: '', amount: a === '' ? null : parseFloat(a), cur: 'rub', period: 'мес', day: '' });
+    save(); e.target.reset(); renderMoney();
+  });
+  document.getElementById('rate').addEventListener('change', function (e) { st.rate = parseFloat(e.target.value) || 0; save(); renderMoney(); });
+
   /* ---------- calendar ---------- */
   var cur = new Date(); cur.setDate(1);
   function renderCal() {
@@ -484,7 +566,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     fetch('projects.json?' + Date.now()).then(function (r) { return r.json(); })
   ]).then(function (res) {
     data = res[0] || {}; P = res[1]; derived();
-    renderHome(); renderGoals(); renderHabits(); renderCal(); route();
+    renderHome(); renderGoals(); renderHabits(); renderMoney(); renderCal(); route();
   });
 })();
 </script>
