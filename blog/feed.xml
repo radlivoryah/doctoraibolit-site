@@ -5,7 +5,16 @@
 <link>https://doctoraibolit.online/blog/</link>
 <description>Как практикующий врач применяет ИИ: инструменты, запросы, границы. Статьи из личной практики.</description>
 <language>ru</language>
-<lastBuildDate>Sun, 20 Sep 2026 22:24:58 +0300</lastBuildDate>
+<lastBuildDate>Tue, 22 Sep 2026 00:41:17 +0300</lastBuildDate>
+<item>
+<title>Робот победил человека в клетке: что произошло на самом деле</title>
+<link>https://doctoraibolit.online/blog/robot-pobedil-cheloveka-chto-na-samom-dele.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/robot-pobedil-cheloveka-chto-na-samom-dele.html</guid>
+<pubDate>Tue, 22 Sep 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Роботом управлял человек в очках виртуальной реальности. Та же подмена работает в рекламе медицинских сервисов. Метод проверки и три вопроса к любому инструменту.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/robot-pobedil-cheloveka.webp" type="image/png"/>
+</item>
 <item>
 <title>ИИ присылает свежие исследования каждое утро</title>
 <link>https://doctoraibolit.online/blog/ii-prisylaet-issledovaniya-kazhdoe-utro.html</link>
@@ -266,15 +275,6 @@
 <author>Ильдар Хайров</author>
 <description>Голос бренда, структура, хуки и готовые промпты. Как сделать посты живыми, а не серыми.</description>
 <enclosure url="https://doctoraibolit.online/blog/img/posty-v-telegram-s-ii-golos-brenda.png" type="image/png"/>
-</item>
-<item>
-<title>Карусель Instagram на нейросети: чтобы дочитывали</title>
-<link>https://doctoraibolit.online/blog/karusel-instagram-na-neiroseti.html</link>
-<guid isPermaLink="true">https://doctoraibolit.online/blog/karusel-instagram-na-neiroseti.html</guid>
-<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
-<author>Ильдар Хайров</author>
-<description>Скелет, структура слайдов, готовые промпты и визуал. Одна карусель кормит пять площадок.</description>
-<enclosure url="https://doctoraibolit.online/blog/img/karusel-instagram-na-neiroseti.png" type="image/png"/>
 </item>
 </channel>
 </rss>
