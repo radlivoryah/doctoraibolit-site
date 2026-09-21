@@ -143,6 +143,20 @@ h3 { font-size:16px; }
 .addtask input { border:1px solid var(--line); background:var(--ground); color:var(--ink); border-radius:10px; padding:8px 12px; font:inherit; font-size:14px; min-width:0; }
 .addtask button { border:0; background:var(--accent); color:#fff; border-radius:10px; padding:8px 14px; font:inherit; font-weight:600; cursor:pointer; }
 .subs { display:flex; flex-direction:column; gap:6px; }
+.tabs { display:flex; gap:6px; margin:10px 0 14px; }
+.tabs a { padding:8px 14px; border-radius:999px; background:var(--surface); color:var(--ink); text-decoration:none; font-size:14px; font-weight:500; }
+.tabs a.on { background:var(--accent); color:#fff; }
+.fold { background:var(--surface); border-radius:14px; margin-bottom:8px; overflow:hidden; }
+.fold > summary { list-style:none; cursor:pointer; padding:12px 14px; display:flex; align-items:center; gap:10px; font-weight:600; color:var(--navy); }
+.fold > summary::-webkit-details-marker { display:none; }
+.fold > summary .val { margin-left:auto; font-variant-numeric:tabular-nums; color:var(--accent); font-weight:600; }
+.fold > summary .sm { font-weight:400; color:var(--muted); font-size:13px; }
+.fold .inner { padding:0 14px 12px; }
+.trow { display:grid; grid-template-columns:1fr auto auto; gap:10px; padding:7px 0; border-top:1px solid var(--line); font-size:14px; }
+.trow b { font-weight:600; color:var(--ink); }
+.trow .n { font-variant-numeric:tabular-nums; }
+.trow .up { color:var(--ok); }
+.trow .down { color:var(--off); }
 .sub-row { display:grid; grid-template-columns:1.4fr 0.7fr 0.6fr 0.8fr 26px; gap:6px; align-items:center; }
 .sub-row.head { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding:0 4px; }
 .sub-row input, .sub-row select { border:1px solid var(--line); background:var(--ground); color:var(--ink); border-radius:9px; padding:8px 9px; font:inherit; font-size:14px; min-width:0; }
@@ -207,13 +221,27 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     </section>
 
     <section id="v-money" hidden>
-      <h2>Подписки и расходы</h2>
-      <p class="muted">Всё, за что идёт оплата. Правь прямо здесь: суммы, даты и статусы сохраняются на этом устройстве. Пустая сумма значит, что я её не знаю.</p>
-      <div class="grid" id="moneyTiles"></div>
-      <div class="subs" id="subs" style="margin-top:12px"></div>
-      <form class="form" id="subForm" style="margin-top:12px"><input id="subName" placeholder="Сервис" required><input id="subAmount" type="number" step="0.01" placeholder="Сумма"><button type="submit">Добавить</button></form>
-      <p class="muted" style="font-size:13px">Курс для пересчёта долларов в рубли задаётся в поле ниже, чтобы итог считался в одной валюте.</p>
-      <div class="form" style="grid-template-columns:auto 120px"><span class="muted" style="align-self:center">Курс доллара</span><input id="rate" type="number" step="0.1"></div>
+      <h2>Финансы</h2>
+      <div class="tabs" id="moneyTabs"><a href="#money">Подписки</a><a href="#money/crypto">Крипта</a></div>
+
+      <div id="tab-subs">
+        <p class="muted">Всё, за что идёт оплата. Правь прямо здесь: суммы, даты и статусы сохраняются на этом устройстве. Пустая сумма значит, что я её не знаю.</p>
+        <div class="grid" id="moneyTiles"></div>
+        <div class="subs" id="subs" style="margin-top:12px"></div>
+        <form class="form" id="subForm" style="margin-top:12px"><input id="subName" placeholder="Сервис" required><input id="subAmount" type="number" step="0.01" placeholder="Сумма"><button type="submit">Добавить</button></form>
+        <p class="muted" style="font-size:13px">Курс для пересчёта долларов в рубли задаётся в поле ниже, чтобы итог считался в одной валюте.</p>
+        <div class="form" style="grid-template-columns:auto 120px"><span class="muted" style="align-self:center">Курс доллара</span><input id="rate" type="number" step="0.1"></div>
+      </div>
+
+      <div id="tab-crypto" hidden>
+        <p class="muted" id="cryptoWhen">Последний обход кошельков. Отчёты снимаются дважды в день.</p>
+        <div class="grid" id="cryptoTiles"></div>
+        <div id="cryptoWallets" style="margin-top:12px"></div>
+        <h3 style="margin-top:22px">Избранные токены</h3>
+        <div id="cryptoFollow" style="margin-top:8px"></div>
+        <h3 style="margin-top:22px">История обходов</h3>
+        <div id="cryptoHistory" style="margin-top:8px"></div>
+      </div>
     </section>
 
     <section id="v-calendar" hidden>
@@ -230,7 +258,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 <script>
 (function () {
   var KEY = 'pulse-v1';
-  var data = {}, P = { groups: [], events: [], daily: [], areas: [] }, backlog = { items: [] };
+  var data = {}, P = { groups: [], events: [], daily: [], areas: [] }, backlog = { items: [] }, crypto = { checkpoints: [] };
   var st = load();
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; } }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
@@ -257,7 +285,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 
   /* ---------- navigation ---------- */
   var view = 'home', groupId = null;
-  var VIEWS = [['home', 'Главная'], ['life', 'Жизнь'], ['digital', 'Цифра'], ['products', 'Продукты'], ['goals', 'Цели'], ['habits', 'Привычки'], ['money', 'Деньги'], ['calendar', 'Календарь']];
+  var VIEWS = [['home', 'Главная'], ['life', 'Жизнь'], ['digital', 'Цифра'], ['products', 'Продукты'], ['goals', 'Цели'], ['habits', 'Привычки'], ['money', 'Финансы'], ['calendar', 'Календарь']];
   function renderNav() {
     var nav = document.getElementById('nav'), chips = document.getElementById('chips');
     nav.innerHTML = ''; chips.innerHTML = '';
@@ -280,6 +308,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     var g = P.groups.filter(function (x) { return x.id === view; })[0];
     if (g) { groupId = g.id; document.getElementById('v-group').hidden = false; renderGroup(g, pid); }
     else { document.getElementById('v-' + view).hidden = false; }
+    if (view === 'money') moneyTab();
     renderNav();
     if (!pid) window.scrollTo(0, 0);
   }
@@ -574,6 +603,70 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
   });
   document.getElementById('rate').addEventListener('change', function (e) { st.rate = parseFloat(e.target.value) || 0; save(); renderMoney(); });
 
+  /* ---------- crypto ---------- */
+  function usd(v) { return (Math.round(v * 100) / 100).toLocaleString('ru-RU') + ' $'; }
+  function signed(v) { return (v >= 0 ? '+' : '') + usd(v); }
+  function tokenRows(tokens) {
+    return tokens.map(function (t) {
+      var cls = t.pnl > 0 ? 'up' : t.pnl < 0 ? 'down' : '';
+      return '<div class="trow"><b>' + t.name + '</b><span class="n">' + usd(t.value) +
+        '</span><span class="n ' + cls + '">' + signed(t.pnl) + '</span></div>';
+    }).join('');
+  }
+  function walletFold(w, open) {
+    var note = w.note ? '<span class="sm">' + w.note + '</span>' : '';
+    var body = w.tokens.length ? tokenRows(w.tokens) : '<div class="trow"><span class="muted">позиций нет</span><span></span><span></span></div>';
+    return '<details class="fold"' + (open && w.tokens.length ? ' open' : '') + '><summary>' + w.name +
+      ' <span class="sm">' + w.chain + '</span>' + note + '<span class="val">' + usd(w.value) +
+      '</span></summary><div class="inner">' + body + '</div></details>';
+  }
+  function renderCrypto() {
+    var list = crypto.checkpoints || [];
+    var when = document.getElementById('cryptoWhen');
+    if (!when) return;
+    if (!list.length) {
+      when.textContent = 'Обходов пока нет.';
+      document.getElementById('cryptoTiles').innerHTML = '';
+      document.getElementById('cryptoWallets').innerHTML = '';
+      document.getElementById('cryptoFollow').innerHTML = '';
+      document.getElementById('cryptoHistory').innerHTML = '';
+      return;
+    }
+    var last = list[0];
+    when.textContent = 'Последний обход: ' + last.when + '. Кошельки снимаются в 9:30 и 22:30.';
+    var live = last.wallets.filter(function (w) { return w.value > 0; }).length;
+    var silent = last.wallets.filter(function (w) { return w.note; }).length;
+    document.getElementById('cryptoTiles').innerHTML =
+      '<div class="tile"><b>' + usd(last.total) + '</b><span>в кошельках</span></div>' +
+      '<div class="tile"><b>' + signed(last.unreal) + '</b><span>нереализованный</span></div>' +
+      '<div class="tile"><b>' + live + '</b><span>кошельков с позициями</span></div>' +
+      '<div class="tile"><b>' + silent + '</b><span>пустых или без ответа</span></div>';
+    document.getElementById('cryptoWallets').innerHTML =
+      last.wallets.map(function (w) { return walletFold(w, true); }).join('');
+    document.getElementById('cryptoFollow').innerHTML = (last.follow || []).map(function (f) {
+      var rows = f.tokens.map(function (t) {
+        var cls = t.day > 0 ? 'up' : t.day < 0 ? 'down' : '';
+        return '<div class="trow"><b>' + t.name + '</b><span class="n">' + t.price + ' $</span>' +
+          '<span class="n ' + cls + '">' + (t.day > 0 ? '+' : '') + t.day + '%</span></div>';
+      }).join('') || '<div class="trow"><span class="muted">пусто</span><span></span><span></span></div>';
+      return '<details class="fold"><summary>' + f.chain + '<span class="val">' + f.tokens.length +
+        '</span></summary><div class="inner">' + rows + '</div></details>';
+    }).join('');
+    document.getElementById('cryptoHistory').innerHTML = list.slice(1).map(function (p) {
+      return '<details class="fold"><summary>' + p.when + '<span class="val">' + usd(p.total) +
+        '</span></summary><div class="inner">' +
+        p.wallets.map(function (w) { return walletFold(w, false); }).join('') + '</div></details>';
+    }).join('') || '<div class="muted">Это первый обход, истории пока нет.</div>';
+  }
+  function moneyTab() {
+    var crypt = location.hash.indexOf('money/crypto') >= 0;
+    document.getElementById('tab-subs').hidden = crypt;
+    document.getElementById('tab-crypto').hidden = !crypt;
+    document.querySelectorAll('#moneyTabs a').forEach(function (a) {
+      a.className = ((a.getAttribute('href').indexOf('crypto') >= 0) === crypt) ? 'on' : '';
+    });
+  }
+
   /* ---------- calendar ---------- */
   var cur = new Date(); cur.setDate(1);
   function renderCal() {
@@ -601,10 +694,11 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
   Promise.all([
     fetch('data.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return {}; }),
     fetch('projects.json?' + Date.now()).then(function (r) { return r.json(); }),
-    fetch('backlog.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return { items: [] }; })
+    fetch('backlog.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return { items: [] }; }),
+    fetch('crypto.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return { checkpoints: [] }; })
   ]).then(function (res) {
-    data = res[0] || {}; P = res[1]; backlog = res[2] || { items: [] }; derived();
-    renderHome(); renderGoals(); renderHabits(); renderMoney(); renderCal(); route();
+    data = res[0] || {}; P = res[1]; backlog = res[2] || { items: [] }; crypto = res[3] || { checkpoints: [] }; derived();
+    renderHome(); renderGoals(); renderHabits(); renderMoney(); renderCrypto(); renderCal(); route();
   });
 })();
 </script>

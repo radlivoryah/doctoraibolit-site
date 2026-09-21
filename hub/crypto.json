@@ -1,0 +1,942 @@
+{
+ "updated": "21.09 09:30",
+ "checkpoints": [
+  {
+   "when": "21.09 09:30",
+   "total": 367.79,
+   "unreal": -885.39,
+   "wallets": [
+    {
+     "name": "GMGN",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "пусто",
+     "tokens": []
+    },
+    {
+     "name": "GMGN",
+     "chain": "robinhood",
+     "value": 20.58,
+     "note": "",
+     "tokens": [
+      {
+       "name": "ROBINCAT",
+       "value": 19.53,
+       "pnl": -79.54
+      },
+      {
+       "name": "WOJAK",
+       "value": 1.05,
+       "pnl": -11.67
+      }
+     ]
+    },
+    {
+     "name": "GMGN",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Phantom",
+     "chain": "sol",
+     "value": 18.63,
+     "note": "",
+     "tokens": [
+      {
+       "name": "mSOL",
+       "value": 17.1,
+       "pnl": 0.0
+      },
+      {
+       "name": "POPCAT",
+       "value": 1.53,
+       "pnl": 0.0
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "sol",
+     "value": 322.55,
+     "note": "",
+     "tokens": [
+      {
+       "name": "CATE",
+       "value": 137.96,
+       "pnl": 58.33
+      },
+      {
+       "name": "EMBER",
+       "value": 89.71,
+       "pnl": -8.51
+      },
+      {
+       "name": "Groyper",
+       "value": 72.73,
+       "pnl": -36.35
+      },
+      {
+       "name": "LIBRA",
+       "value": 12.75,
+       "pnl": -360.61
+      },
+      {
+       "name": "Shrek",
+       "value": 8.02,
+       "pnl": -12.02
+      },
+      {
+       "name": "NPC",
+       "value": 1.37,
+       "pnl": -48.28
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Uniswap",
+     "chain": "eth",
+     "value": 6.05,
+     "note": "",
+     "tokens": [
+      {
+       "name": "DOGGO",
+       "value": 3.32,
+       "pnl": -257.17
+      },
+      {
+       "name": "SABAI",
+       "value": 1.72,
+       "pnl": -104.36
+      },
+      {
+       "name": "SPONGE",
+       "value": 1.01,
+       "pnl": -25.22
+      }
+     ]
+    }
+   ],
+   "follow": [
+    {
+     "chain": "ETH",
+     "tokens": []
+    },
+    {
+     "chain": "ROBINHOOD",
+     "tokens": [
+      {
+       "name": "CASHCAT",
+       "price": 0.171654,
+       "cap": 171654300.0,
+       "day": 2
+      },
+      {
+       "name": "ROBINCAT",
+       "price": 0.00212839,
+       "cap": 2128285.0,
+       "day": -14
+      },
+      {
+       "name": "RAM",
+       "price": 0.0514165,
+       "cap": 2680869.0,
+       "day": 5
+      }
+     ]
+    },
+    {
+     "chain": "SOL",
+     "tokens": [
+      {
+       "name": "EMBER",
+       "price": 0.0115808,
+       "cap": 11487129.0,
+       "day": 28
+      },
+      {
+       "name": "onkey",
+       "price": 1.18448e-05,
+       "cap": 11087.0,
+       "day": -23
+      },
+      {
+       "name": "Groyper",
+       "price": 0.000173424,
+       "cap": 173358.0,
+       "day": 3
+      },
+      {
+       "name": "URANUS",
+       "price": 0.00517597,
+       "cap": 517509.0,
+       "day": -10
+      },
+      {
+       "name": "Fartcoin",
+       "price": 0.170713,
+       "cap": 170708432.0,
+       "day": 6
+      },
+      {
+       "name": "$1",
+       "price": 0.000668157,
+       "cap": 667918.0,
+       "day": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "when": "20.09 09:30",
+   "total": 353.87,
+   "unreal": -786.9,
+   "wallets": [
+    {
+     "name": "GMGN",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "пусто",
+     "tokens": []
+    },
+    {
+     "name": "GMGN",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Phantom",
+     "chain": "sol",
+     "value": 17.99,
+     "note": "",
+     "tokens": [
+      {
+       "name": "mSOL",
+       "value": 16.54,
+       "pnl": 0.0
+      },
+      {
+       "name": "POPCAT",
+       "value": 1.45,
+       "pnl": 0.0
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "sol",
+     "value": 330.01,
+     "note": "",
+     "tokens": [
+      {
+       "name": "CATE",
+       "value": 168.55,
+       "pnl": 88.93
+      },
+      {
+       "name": "EMBER",
+       "value": 70.29,
+       "pnl": -27.94
+      },
+      {
+       "name": "Groyper",
+       "value": 69.09,
+       "pnl": -39.98
+      },
+      {
+       "name": "LIBRA",
+       "value": 12.75,
+       "pnl": -360.61
+      },
+      {
+       "name": "Shrek",
+       "value": 8.02,
+       "pnl": -12.02
+      },
+      {
+       "name": "NPC",
+       "value": 1.31,
+       "pnl": -48.34
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Uniswap",
+     "chain": "eth",
+     "value": 5.86,
+     "note": "",
+     "tokens": [
+      {
+       "name": "DOGGO",
+       "value": 3.25,
+       "pnl": -257.23
+      },
+      {
+       "name": "SABAI",
+       "value": 1.6,
+       "pnl": -104.48
+      },
+      {
+       "name": "SPONGE",
+       "value": 1.01,
+       "pnl": -25.22
+      }
+     ]
+    }
+   ],
+   "follow": [
+    {
+     "chain": "ETH",
+     "tokens": []
+    },
+    {
+     "chain": "SOL",
+     "tokens": [
+      {
+       "name": "EMBER",
+       "price": 0.00904588,
+       "cap": 8974773.0,
+       "day": -23
+      },
+      {
+       "name": "onkey",
+       "price": 1.53659e-05,
+       "cap": 14383.0,
+       "day": -22
+      },
+      {
+       "name": "Groyper",
+       "price": 0.000167803,
+       "cap": 167740.0,
+       "day": -2
+      },
+      {
+       "name": "URANUS",
+       "price": 0.00574387,
+       "cap": 574289.0,
+       "day": -4
+      },
+      {
+       "name": "Fartcoin",
+       "price": 0.160962,
+       "cap": 160957127.0,
+       "day": 1
+      },
+      {
+       "name": "$1",
+       "price": 0.000658216,
+       "cap": 657981.0,
+       "day": -3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "when": "19.09 09:30",
+   "total": 338.77,
+   "unreal": -784.01,
+   "wallets": [
+    {
+     "name": "GMGN",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "пусто",
+     "tokens": []
+    },
+    {
+     "name": "GMGN",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Phantom",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "sol",
+     "value": 332.91,
+     "note": "",
+     "tokens": [
+      {
+       "name": "CATE",
+       "value": 149.61,
+       "pnl": 69.99
+      },
+      {
+       "name": "EMBER",
+       "value": 91.07,
+       "pnl": -7.16
+      },
+      {
+       "name": "Groyper",
+       "value": 70.14,
+       "pnl": -38.93
+      },
+      {
+       "name": "LIBRA",
+       "value": 12.75,
+       "pnl": -360.61
+      },
+      {
+       "name": "Shrek",
+       "value": 8.02,
+       "pnl": -12.02
+      },
+      {
+       "name": "NPC",
+       "value": 1.31,
+       "pnl": -48.34
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Uniswap",
+     "chain": "eth",
+     "value": 5.86,
+     "note": "",
+     "tokens": [
+      {
+       "name": "DOGGO",
+       "value": 3.25,
+       "pnl": -257.23
+      },
+      {
+       "name": "SABAI",
+       "value": 1.6,
+       "pnl": -104.48
+      },
+      {
+       "name": "SPONGE",
+       "value": 1.01,
+       "pnl": -25.22
+      }
+     ]
+    }
+   ],
+   "follow": [
+    {
+     "chain": "ETH",
+     "tokens": []
+    },
+    {
+     "chain": "SOL",
+     "tokens": [
+      {
+       "name": "EMBER",
+       "price": 0.0119133,
+       "cap": 11822979.0,
+       "day": -4
+      },
+      {
+       "name": "onkey",
+       "price": 1.97232e-05,
+       "cap": 18462.0,
+       "day": 31
+      },
+      {
+       "name": "Groyper",
+       "price": 0.000170364,
+       "cap": 170300.0,
+       "day": 41
+      },
+      {
+       "name": "URANUS",
+       "price": 0.00581366,
+       "cap": 581268.0,
+       "day": 12
+      },
+      {
+       "name": "Fartcoin",
+       "price": 0.159689,
+       "cap": 159684282.0,
+       "day": 5
+      },
+      {
+       "name": "$1",
+       "price": 0.000676436,
+       "cap": 676196.0,
+       "day": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "when": "19.09 03:35",
+   "total": 344.45,
+   "unreal": -778.32,
+   "wallets": [
+    {
+     "name": "GMGN",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "пусто",
+     "tokens": []
+    },
+    {
+     "name": "GMGN",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Phantom",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "sol",
+     "value": 338.57,
+     "note": "",
+     "tokens": [
+      {
+       "name": "CATE",
+       "value": 145.95,
+       "pnl": 66.33
+      },
+      {
+       "name": "EMBER",
+       "value": 95.94,
+       "pnl": -2.29
+      },
+      {
+       "name": "Groyper",
+       "value": 74.59,
+       "pnl": -34.48
+      },
+      {
+       "name": "LIBRA",
+       "value": 12.75,
+       "pnl": -360.61
+      },
+      {
+       "name": "Shrek",
+       "value": 8.02,
+       "pnl": -12.02
+      },
+      {
+       "name": "NPC",
+       "value": 1.31,
+       "pnl": -48.34
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Uniswap",
+     "chain": "eth",
+     "value": 5.89,
+     "note": "",
+     "tokens": [
+      {
+       "name": "DOGGO",
+       "value": 3.28,
+       "pnl": -257.2
+      },
+      {
+       "name": "SABAI",
+       "value": 1.6,
+       "pnl": -104.48
+      },
+      {
+       "name": "SPONGE",
+       "value": 1.01,
+       "pnl": -25.22
+      }
+     ]
+    }
+   ],
+   "follow": [
+    {
+     "chain": "ETH",
+     "tokens": []
+    },
+    {
+     "chain": "SOL",
+     "tokens": [
+      {
+       "name": "EMBER",
+       "price": 0.0122319,
+       "cap": 12142394.0,
+       "day": -1
+      },
+      {
+       "name": "onkey",
+       "price": 2.02517e-05,
+       "cap": 18956.0,
+       "day": 73
+      },
+      {
+       "name": "Groyper",
+       "price": 0.000181161,
+       "cap": 181092.0,
+       "day": 62
+      },
+      {
+       "name": "URANUS",
+       "price": 0.00577255,
+       "cap": 577158.0,
+       "day": 19
+      },
+      {
+       "name": "Fartcoin",
+       "price": 0.16202,
+       "cap": 162015928.0,
+       "day": 11
+      },
+      {
+       "name": "$1",
+       "price": 0.000692933,
+       "cap": 692687.0,
+       "day": 9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "when": "19.09 03:18",
+   "total": 344.45,
+   "unreal": -778.32,
+   "wallets": [
+    {
+     "name": "GMGN",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "пусто",
+     "tokens": []
+    },
+    {
+     "name": "GMGN",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Phantom",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "sol",
+     "value": 338.57,
+     "note": "",
+     "tokens": [
+      {
+       "name": "CATE",
+       "value": 145.95,
+       "pnl": 66.33
+      },
+      {
+       "name": "EMBER",
+       "value": 95.94,
+       "pnl": -2.29
+      },
+      {
+       "name": "Groyper",
+       "value": 74.59,
+       "pnl": -34.48
+      },
+      {
+       "name": "LIBRA",
+       "value": 12.75,
+       "pnl": -360.61
+      },
+      {
+       "name": "Shrek",
+       "value": 8.02,
+       "pnl": -12.02
+      },
+      {
+       "name": "NPC",
+       "value": 1.31,
+       "pnl": -48.34
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Uniswap",
+     "chain": "eth",
+     "value": 5.89,
+     "note": "",
+     "tokens": [
+      {
+       "name": "DOGGO",
+       "value": 3.28,
+       "pnl": -257.2
+      },
+      {
+       "name": "SABAI",
+       "value": 1.6,
+       "pnl": -104.48
+      },
+      {
+       "name": "SPONGE",
+       "value": 1.01,
+       "pnl": -25.22
+      }
+     ]
+    }
+   ],
+   "follow": [
+    {
+     "chain": "ETH",
+     "tokens": []
+    },
+    {
+     "chain": "SOL",
+     "tokens": [
+      {
+       "name": "EMBER",
+       "price": 0.0122319,
+       "cap": 12142394.0,
+       "day": -1
+      },
+      {
+       "name": "onkey",
+       "price": 2.02517e-05,
+       "cap": 18956.0,
+       "day": 73
+      },
+      {
+       "name": "Groyper",
+       "price": 0.000181161,
+       "cap": 181092.0,
+       "day": 62
+      },
+      {
+       "name": "URANUS",
+       "price": 0.00577255,
+       "cap": 577158.0,
+       "day": 19
+      },
+      {
+       "name": "Fartcoin",
+       "price": 0.16202,
+       "cap": 162015928.0,
+       "day": 11
+      },
+      {
+       "name": "$1",
+       "price": 0.000692933,
+       "cap": 692687.0,
+       "day": 9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "when": "19.09 03:08",
+   "total": 344.45,
+   "unreal": -778.32,
+   "wallets": [
+    {
+     "name": "GMGN",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Phantom",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "sol",
+     "value": 338.57,
+     "note": "",
+     "tokens": [
+      {
+       "name": "CATE",
+       "value": 145.95,
+       "pnl": 66.33
+      },
+      {
+       "name": "EMBER",
+       "value": 95.94,
+       "pnl": -2.29
+      },
+      {
+       "name": "Groyper",
+       "value": 74.59,
+       "pnl": -34.48
+      },
+      {
+       "name": "LIBRA",
+       "value": 12.75,
+       "pnl": -360.61
+      },
+      {
+       "name": "Shrek",
+       "value": 8.02,
+       "pnl": -12.02
+      },
+      {
+       "name": "NPC",
+       "value": 1.31,
+       "pnl": -48.34
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Uniswap",
+     "chain": "eth",
+     "value": 5.89,
+     "note": "",
+     "tokens": [
+      {
+       "name": "DOGGO",
+       "value": 3.28,
+       "pnl": -257.2
+      },
+      {
+       "name": "SABAI",
+       "value": 1.6,
+       "pnl": -104.48
+      },
+      {
+       "name": "SPONGE",
+       "value": 1.01,
+       "pnl": -25.22
+      }
+     ]
+    }
+   ],
+   "follow": [
+    {
+     "chain": "SOL",
+     "tokens": []
+    }
+   ]
+  },
+  {
+   "when": "19.09 02:59",
+   "total": 5.89,
+   "unreal": -386.91,
+   "wallets": [
+    {
+     "name": "GMGN",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Phantom",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Uniswap",
+     "chain": "eth",
+     "value": 5.89,
+     "note": "",
+     "tokens": [
+      {
+       "name": "DOGGO",
+       "value": 3.28,
+       "pnl": -257.2
+      },
+      {
+       "name": "SABAI",
+       "value": 1.6,
+       "pnl": -104.48
+      },
+      {
+       "name": "SPONGE",
+       "value": 1.01,
+       "pnl": -25.22
+      }
+     ]
+    }
+   ],
+   "follow": [
+    {
+     "chain": "SOL",
+     "tokens": []
+    }
+   ]
+  }
+ ]
+}
