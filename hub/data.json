@@ -111,8 +111,13 @@
   ]
  },
  "blog": {
-  "count": 40,
+  "count": 41,
   "recent": [
+   {
+    "date": "2026-09-22",
+    "title": "Робот победил человека в клетке: что произошло на самом деле и чему это учит врача",
+    "url": "https://doctoraibolit.online/blog/robot-pobedil-cheloveka-chto-na-samom-dele.html"
+   },
    {
     "date": "2026-09-19",
     "title": "ИИ присылает свежие исследования каждое утро: настройка за пять минут",
@@ -132,11 +137,6 @@
     "date": "2026-08-06",
     "title": "Как прочитать состав на любой этикетке: разбираю индонезийскую упаковку нейросетью",
     "url": "https://doctoraibolit.online/blog/kak-chitat-sostav-na-etiketke-nejrosetyu.html"
-   },
-   {
-    "date": "2026-08-05",
-    "title": "Восстановил фото из девяностых одним промптом: инструкция без пластиковых лиц",
-    "url": "https://doctoraibolit.online/blog/vosstanovit-staroe-foto-nejrosetyu.html"
    }
   ]
  },
@@ -145,10 +145,10 @@
   "carousels": 26
  },
  "sheet": {
-  "topics": 132,
+  "topics": 133,
   "by_status": {
    "на одобрение": 61,
-   "опубликовано": 13,
+   "опубликовано": 14,
    "без статуса": 24,
    "идея": 34
   },
@@ -168,5 +168,5 @@
  "errors": {
   "telegram": "no bot access in environment"
  },
- "updated": "2026-09-22 00:20"
+ "updated": "2026-09-22 01:20"
 }
