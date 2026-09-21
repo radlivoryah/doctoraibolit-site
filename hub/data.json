@@ -141,7 +141,7 @@
   ]
  },
  "media": {
-  "reels_rendered": 26,
+  "reels_rendered": 27,
   "carousels": 26
  },
  "sheet": {
@@ -168,5 +168,5 @@
  "errors": {
   "telegram": "no bot access in environment"
  },
- "updated": "2026-09-21 11:20"
+ "updated": "2026-09-21 12:20"
 }
