@@ -180,6 +180,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
         <div class="panel"><h3>Колесо баланса</h3><div class="wheel"><svg id="wheel" viewBox="0 0 360 360" role="img" aria-label="Колесо баланса"></svg><div class="sliders" id="sliders"></div></div><p class="muted" style="margin:8px 0 0">Оценка от 1 до 10 по каждому направлению. Двигай ползунки, значения сохраняются на этом телефоне.</p></div>
         <div>
           <div class="panel"><h3>Задачи на сегодня</h3><div class="tasks" id="homeTasks"></div></div>
+          <div class="panel" style="margin-top:14px"><h3>Хвосты</h3><div class="tasks" id="backlog"></div><p class="muted" style="margin:8px 0 0">Незакрытые дела, которые веду я. Галочка убирает пункт с доски.</p></div>
           <div class="panel" style="margin-top:14px"><h3>Проекты по группам</h3><div class="rings" id="rings"></div></div>
           <div class="panel" style="margin-top:14px"><h3>Ближайшее</h3><div class="list" id="homeEvents"></div></div>
           <div class="panel" style="margin-top:14px"><h3>Цели</h3><div class="list" id="homeGoals"></div></div>
@@ -229,11 +230,11 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 <script>
 (function () {
   var KEY = 'pulse-v1';
-  var data = {}, P = { groups: [], events: [], daily: [], areas: [] };
+  var data = {}, P = { groups: [], events: [], daily: [], areas: [] }, backlog = { items: [] };
   var st = load();
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; } }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
-  st.scores = st.scores || {}; st.goals = st.goals || []; st.habits = st.habits || []; st.open = st.open || {}; st.tasks = st.tasks || {}; st.showDone = st.showDone || {}; st.lists = st.lists || {}; st.notes = st.notes || {}; st.rate = st.rate || 100; st.subs = st.subs || null;
+  st.scores = st.scores || {}; st.goals = st.goals || []; st.habits = st.habits || []; st.open = st.open || {}; st.tasks = st.tasks || {}; st.showDone = st.showDone || {}; st.lists = st.lists || {}; st.notes = st.notes || {}; st.rate = st.rate || 100; st.subs = st.subs || null; st.backlogDone = st.backlogDone || {};
   // Older builds kept tasks in st.tasks[pid]; they now live in st.lists[pid].tasks.
   Object.keys(st.tasks).forEach(function (pid) { st.lists[pid] = st.lists[pid] || {}; st.lists[pid].tasks = (st.lists[pid].tasks || []).concat(st.tasks[pid]); }); st.tasks = {};
   var DEFAULT_LISTS = [{ id: 'tasks', name: 'Задачи', done: true, placeholder: 'Задача или цель' }];
@@ -366,8 +367,24 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     });
   }
   function rerender() { renderHome(); if (groupId) { var g = P.groups.filter(function (x) { return x.id === groupId; })[0]; if (g && !document.getElementById('v-group').hidden) renderGroup(g, null); } }
+  /* Хвосты приходят файлом от агента: правим их не здесь, а в backlog.json. */
+  function renderBacklog() {
+    var wrap = document.getElementById('backlog'); if (!wrap) return;
+    var list = (backlog.items || []).filter(function (x) { return !st.backlogDone[x.id]; });
+    if (!list.length) { wrap.innerHTML = '<div class="muted">Хвостов нет.</div>'; return; }
+    wrap.innerHTML = list.map(function (x) {
+      return '<div class="task" data-bid="' + x.id + '"><input type="checkbox" aria-label="убрать"><div><span>' +
+        x.title + '</span>' + (x.note ? '<small> · ' + x.note + '</small>' : '') + '</div></div>';
+    }).join('');
+    wrap.querySelectorAll('.task').forEach(function (el) {
+      el.querySelector('input').addEventListener('change', function () {
+        st.backlogDone[el.dataset.bid] = todayIso(); save(); renderBacklog();
+      });
+    });
+  }
+
   function renderHome() {
-    renderTiles(); renderWheel(); renderRings();
+    renderTiles(); renderWheel(); renderRings(); renderBacklog();
     var open = allTasks().filter(function (x) { return !x.t.done; });
     document.getElementById('homeTasks').innerHTML = open.length ? open.map(function (x) { return taskHtml(x, true); }).join('') : '<div class="muted">Задач нет. Добавляй их внутри проектов, они соберутся здесь.</div>';
     bindTasks(document.getElementById('homeTasks'));
@@ -583,9 +600,10 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 
   Promise.all([
     fetch('data.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return {}; }),
-    fetch('projects.json?' + Date.now()).then(function (r) { return r.json(); })
+    fetch('projects.json?' + Date.now()).then(function (r) { return r.json(); }),
+    fetch('backlog.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return { items: [] }; })
   ]).then(function (res) {
-    data = res[0] || {}; P = res[1]; derived();
+    data = res[0] || {}; P = res[1]; backlog = res[2] || { items: [] }; derived();
     renderHome(); renderGoals(); renderHabits(); renderMoney(); renderCal(); route();
   });
 })();
