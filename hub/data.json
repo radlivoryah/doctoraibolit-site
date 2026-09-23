@@ -148,8 +148,13 @@
   ]
  },
  "blog": {
-  "count": 41,
+  "count": 42,
   "recent": [
+   {
+    "date": "2026-09-23",
+    "title": "12 подписок на ИИ, а ставка на один навык: что я оставил и что можно заменить",
+    "url": "https://doctoraibolit.online/blog/12-podpisok-na-ii-odin-navyk.html"
+   },
    {
     "date": "2026-09-22",
     "title": "Робот победил человека в клетке: что произошло на самом деле и чему это учит врача",
@@ -169,17 +174,12 @@
     "date": "2026-08-06",
     "title": "Телефон в кровати: почему сила воли не работает и какой протокол работает",
     "url": "https://doctoraibolit.online/blog/telefon-pered-snom-vecherniy-protokol.html"
-   },
-   {
-    "date": "2026-08-06",
-    "title": "Как прочитать состав на любой этикетке: разбираю индонезийскую упаковку нейросетью",
-    "url": "https://doctoraibolit.online/blog/kak-chitat-sostav-na-etiketke-nejrosetyu.html"
    }
   ]
  },
  "media": {
-  "reels_rendered": 43,
-  "carousels": 26
+  "reels_rendered": 46,
+  "carousels": 27
  },
  "sheet": {
   "topics": 133,
@@ -205,5 +205,5 @@
  "errors": {
   "telegram": "no bot access in environment"
  },
- "updated": "2026-09-23 15:20"
+ "updated": "2026-09-23 16:20"
 }
