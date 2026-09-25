@@ -1,21 +1,66 @@
 {
   "areas": [
-    {"id": "health", "name": "Здоровье", "score": 5},
-    {"id": "family", "name": "Семья", "score": 5},
-    {"id": "clinic", "name": "Клиника", "score": 5},
-    {"id": "money", "name": "Деньги", "score": 5},
-    {"id": "content", "name": "Контент", "score": 5},
-    {"id": "learning", "name": "Обучение", "score": 5},
-    {"id": "sport", "name": "Спорт", "score": 5},
-    {"id": "rest", "name": "Отдых", "score": 5}
+    {
+      "id": "health",
+      "name": "Здоровье",
+      "score": 5
+    },
+    {
+      "id": "family",
+      "name": "Семья",
+      "score": 5
+    },
+    {
+      "id": "clinic",
+      "name": "Клиника",
+      "score": 5
+    },
+    {
+      "id": "money",
+      "name": "Деньги",
+      "score": 5
+    },
+    {
+      "id": "content",
+      "name": "Контент",
+      "score": 5
+    },
+    {
+      "id": "learning",
+      "name": "Обучение",
+      "score": 5
+    },
+    {
+      "id": "sport",
+      "name": "Спорт",
+      "score": 5
+    },
+    {
+      "id": "rest",
+      "name": "Отдых",
+      "score": 5
+    }
   ],
   "events": [
-    {"date": "2026-10-01", "title": "Обновление ключа Threads (автоматически, 04:00)", "project": "insta"}
+    {
+      "date": "2026-10-01",
+      "title": "Обновление ключа Threads (автоматически, 04:00)",
+      "project": "insta"
+    }
   ],
   "daily": [
-    {"time": "09:00", "title": "Толкин: дневной прогон по таблице тем"},
-    {"time": "04:30", "title": "Дамп памяти gbrain"},
-    {"time": "каждый час", "title": "Обновление цифр в Пульсе"}
+    {
+      "time": "09:00",
+      "title": "Толкин: дневной прогон по таблице тем"
+    },
+    {
+      "time": "04:30",
+      "title": "Дамп памяти gbrain"
+    },
+    {
+      "time": "каждый час",
+      "title": "Обновление цифр в Пульсе"
+    }
   ],
   "groups": [
     {
@@ -28,8 +73,19 @@
           "status": "идёт",
           "summary": "Пациенты и идеи по практике. Списки заполняешь сам, они хранятся только на этом устройстве.",
           "lists": [
-            {"id": "patients", "name": "Пациенты", "done": true, "placeholder": "Пациент и что по нему", "doneLabel": "закончено"},
-            {"id": "ideas", "name": "Идеи по клинике и практике", "done": false, "placeholder": "Идея"}
+            {
+              "id": "patients",
+              "name": "Пациенты",
+              "done": true,
+              "placeholder": "Пациент и что по нему",
+              "doneLabel": "закончено"
+            },
+            {
+              "id": "ideas",
+              "name": "Идеи по клинике и практике",
+              "done": false,
+              "placeholder": "Идея"
+            }
           ],
           "links": []
         },
@@ -45,8 +101,15 @@
           "name": "Автоном",
           "status": "идёт",
           "summary": "Дом на 35 дней, рюкзак и меню со счётчиками куплено/нужно.",
-          "done": ["Списки и меню собраны, 18.09"],
-          "links": [{"name": "Открыть Автоном", "url": "https://doctoraibolit.online/kit/"}]
+          "done": [
+            "Списки и меню собраны, 18.09"
+          ],
+          "links": [
+            {
+              "name": "Открыть Автоном",
+              "url": "https://doctoraibolit.online/kit/"
+            }
+          ]
         },
         {
           "id": "finance",
@@ -66,50 +129,178 @@
           "name": "Сайт doctoraibolit.online",
           "status": "идёт",
           "summary": "GitHub Pages, деплой скриптом. Единая ссылка для всех соцсетей: главная.",
-          "counters": ["blog.count:статей в блоге"],
-          "pages": [
-            {"name": "Главная", "url": "https://doctoraibolit.online/", "what": "Кто я, чем помогаю, ссылки на канал и методичку"},
-            {"name": "Статьи", "url": "https://doctoraibolit.online/blog/", "what": "Блог про ИИ для врачей и пациентов"},
-            {"name": "Методичка", "url": "https://doctoraibolit.online/metodichka.html", "what": "Лендинг «ИИ в практике врача», 1 799 руб., оплата на сайте pay.doctoraibolit.online"},
-            {"name": "Старт", "url": "https://doctoraibolit.online/start.html", "what": "Страница-хаб, на неё ведёт ссылка из шапки инстаграма"},
-            {"name": "Цены", "url": "https://doctoraibolit.online/docs/price.html", "what": "Цены и тарифы, кнопка «Купить»"},
-            {"name": "Оплата и возврат", "url": "https://doctoraibolit.online/docs/payment.html", "what": "Как оплатить и получить файл, кнопка «Купить»"},
-            {"name": "Оферта", "url": "https://doctoraibolit.online/docs/oferta.html", "what": "Публичная оферта"},
-            {"name": "Политика", "url": "https://doctoraibolit.online/docs/privacy.html", "what": "Политика обработки персональных данных"},
-            {"name": "Соглашение", "url": "https://doctoraibolit.online/docs/soglashenie.html", "what": "Пользовательское соглашение"},
-            {"name": "Магазин", "url": "https://pay.doctoraibolit.online/", "what": "Приём оплаты через Платегу на российском сервере"},
-            {"name": "Айболит Learn", "url": "https://doctoraibolit.online/app/", "what": "Мини-апп: методичка, консультация, база знаний. Бот @Alfredradlibot_bot"},
-            {"name": "Автоном", "url": "https://doctoraibolit.online/kit/", "what": "Списки на 35 дней, рюкзак, меню"},
-            {"name": "Пульс", "url": "https://doctoraibolit.online/hub/", "what": "Этот дашборд"}
+          "counters": [
+            "blog.count:статей в блоге"
           ],
-          "done": ["Кнопки «Купить» на методичке, ценах и оплате ведут в бота продаж, 18.09", "Контраст на странице методички починен, 18.09", "PDF методички пересобран: 24 страницы, 18.09"],
-          "links": [{"name": "Репозиторий", "url": "https://github.com/radlivoryah/doctoraibolit-site"}]
+          "pages": [
+            {
+              "name": "Главная",
+              "url": "https://doctoraibolit.online/",
+              "what": "Кто я, чем помогаю, ссылки на канал и методичку"
+            },
+            {
+              "name": "Статьи",
+              "url": "https://doctoraibolit.online/blog/",
+              "what": "Блог про ИИ для врачей и пациентов"
+            },
+            {
+              "name": "Методичка",
+              "url": "https://doctoraibolit.online/metodichka.html",
+              "what": "Лендинг «ИИ в практике врача», 1 799 руб., оплата на сайте pay.doctoraibolit.online"
+            },
+            {
+              "name": "Старт",
+              "url": "https://doctoraibolit.online/start.html",
+              "what": "Страница-хаб, на неё ведёт ссылка из шапки инстаграма"
+            },
+            {
+              "name": "Цены",
+              "url": "https://doctoraibolit.online/docs/price.html",
+              "what": "Цены и тарифы, кнопка «Купить»"
+            },
+            {
+              "name": "Оплата и возврат",
+              "url": "https://doctoraibolit.online/docs/payment.html",
+              "what": "Как оплатить и получить файл, кнопка «Купить»"
+            },
+            {
+              "name": "Оферта",
+              "url": "https://doctoraibolit.online/docs/oferta.html",
+              "what": "Публичная оферта"
+            },
+            {
+              "name": "Политика",
+              "url": "https://doctoraibolit.online/docs/privacy.html",
+              "what": "Политика обработки персональных данных"
+            },
+            {
+              "name": "Соглашение",
+              "url": "https://doctoraibolit.online/docs/soglashenie.html",
+              "what": "Пользовательское соглашение"
+            },
+            {
+              "name": "Магазин",
+              "url": "https://pay.doctoraibolit.online/",
+              "what": "Приём оплаты через Платегу на российском сервере"
+            },
+            {
+              "name": "Айболит Learn",
+              "url": "https://doctoraibolit.online/app/",
+              "what": "Мини-апп: методичка, консультация, база знаний. Бот @Alfredradlibot_bot"
+            },
+            {
+              "name": "Автоном",
+              "url": "https://doctoraibolit.online/kit/",
+              "what": "Списки на 35 дней, рюкзак, меню"
+            },
+            {
+              "name": "Пульс",
+              "url": "https://doctoraibolit.online/hub/",
+              "what": "Этот дашборд"
+            }
+          ],
+          "done": [
+            "Кнопки «Купить» на методичке, ценах и оплате ведут в бота продаж, 18.09",
+            "Контраст на странице методички починен, 18.09",
+            "PDF методички пересобран: 24 страницы, 18.09"
+          ],
+          "links": [
+            {
+              "name": "Репозиторий",
+              "url": "https://github.com/radlivoryah/doctoraibolit-site"
+            }
+          ]
         },
         {
           "id": "tg",
           "name": "Telegram-канал",
           "status": "идёт",
           "summary": "@ai_bolit_ildar. Публикую я по готовности текста.",
-          "counters": ["telegram.subscribers:подписчиков"],
-          "done": ["Пост со сборником 30 промптов, 16.09"],
-          "links": [{"name": "Канал", "url": "https://t.me/ai_bolit_ildar"}]
+          "counters": [
+            "telegram.subscribers:подписчиков"
+          ],
+          "done": [
+            "Пост со сборником 30 промптов, 16.09"
+          ],
+          "links": [
+            {
+              "name": "Канал",
+              "url": "https://t.me/ai_bolit_ildar"
+            }
+          ]
         },
         {
           "id": "insta",
           "name": "Instagram и Threads",
           "status": "идёт",
           "summary": "Новый аккаунт @doctor_ai.bolit, ссылка в шапке на start.html. Threads: @dr.il_rashidovich, публикую я.",
-          "done": ["Три рилса темы 20 опубликованы, 18.09", "Ветка Threads темы 20 опубликована, 18.09", "Карусель темы 20 в новой палитре отправлена, 18.09"],
-          "links": [{"name": "@doctor_ai.bolit", "url": "https://www.instagram.com/doctor_ai.bolit/"}, {"name": "Threads", "url": "https://www.threads.com/@dr.il_rashidovich"}]
+          "done": [
+            "Три рилса темы 20 опубликованы, 18.09",
+            "Ветка Threads темы 20 опубликована, 18.09",
+            "Карусель темы 20 в новой палитре отправлена, 18.09"
+          ],
+          "links": [
+            {
+              "name": "@doctor_ai.bolit",
+              "url": "https://www.instagram.com/doctor_ai.bolit/"
+            },
+            {
+              "name": "Threads",
+              "url": "https://www.threads.com/@dr.il_rashidovich"
+            }
+          ]
+        },
+        {
+          "id": "farm",
+          "name": "Ферма Threads",
+          "status": "идёт",
+          "summary": "5 аккаунтов на старте: почта, отдельный профиль антидетекта и свой мобильный прокси на каждый. Трафик на блог. Этапы отмечаешь галочкой.",
+          "lists": [
+            {
+              "id": "steps",
+              "name": "Этапы",
+              "done": true,
+              "doneLabel": "сделано",
+              "seed": [
+                "1. Почты: 5 ящиков на домене фермы, креды в secrets",
+                "2. Выбрать провайдера мобильных прокси (Альфред сравнит 3), оплатить 5 портов",
+                "3. Dolphin Anty: аккаунт и 5 профилей, у каждого свой прокси",
+                "4. Регистрация: по одному аккаунту в день, Instagram, затем Threads",
+                "5. Прогрев неделю руками: лайки, подписки, ответы, без ссылок",
+                "6. Токен Threads API на каждый аккаунт, подключить автопостинг",
+                "7. Угол для каждого аккаунта и ветки из статей блога",
+                "8. Через 2 недели: сколько выжило, решение о масштабе до 10-20"
+              ]
+            }
+          ],
+          "links": [
+            {
+              "name": "Блог",
+              "url": "https://doctoraibolit.online/blog/"
+            }
+          ]
         },
         {
           "id": "content",
           "name": "Контент-фабрика",
           "status": "идёт",
           "summary": "Ты надиктовываешь, я собираю все форматы. Таблица тем: Толкин ведёт, прогон в 09:00. Первая волна: личный ИИ-ассистент и адаптация 10 роликов Пронина и Решетникова.",
-          "counters": ["drafts.total:черновиков в вульте", "sheet.topics:тем в таблице", "media.reels_rendered:рилсов отрендерено", "media.carousels:каруселей собрано"],
-          "done": ["Тема 20 закрыта целиком, 18.09", "10 тем-адаптаций записаны в таблицу, ID 98-107, 19.09"],
-          "links": [{"name": "Таблица тем", "url": "https://docs.google.com/spreadsheets/d/1-dV-xavJeCNc6oniRlLTDyRwtu-JghhXx_g2KHHmAtE"}]
+          "counters": [
+            "drafts.total:черновиков в вульте",
+            "sheet.topics:тем в таблице",
+            "media.reels_rendered:рилсов отрендерено",
+            "media.carousels:каруселей собрано"
+          ],
+          "done": [
+            "Тема 20 закрыта целиком, 18.09",
+            "10 тем-адаптаций записаны в таблицу, ID 98-107, 19.09"
+          ],
+          "links": [
+            {
+              "name": "Таблица тем",
+              "url": "https://docs.google.com/spreadsheets/d/1-dV-xavJeCNc6oniRlLTDyRwtu-JghhXx_g2KHHmAtE"
+            }
+          ]
         },
         {
           "id": "video",
@@ -123,8 +314,23 @@
           "name": "Стая агентов",
           "status": "идёт",
           "summary": "Альфред, Толкин, Холмс, помощник Зои. Альфред и Толкин на Fable 5.1 с 17.09, тест до вечера 18.09.",
-          "counters": ["agents.alive:агентов в строю"],
-          "links": [{"name": "Альфред", "url": "https://t.me/alfredfirstchanel_bot"}, {"name": "Толкин", "url": "https://t.me/johnronaldtolkien_bot"}, {"name": "Холмс", "url": "https://t.me/sherlokholmesradli_bot"}]
+          "counters": [
+            "agents.alive:агентов в строю"
+          ],
+          "links": [
+            {
+              "name": "Альфред",
+              "url": "https://t.me/alfredfirstchanel_bot"
+            },
+            {
+              "name": "Толкин",
+              "url": "https://t.me/johnronaldtolkien_bot"
+            },
+            {
+              "name": "Холмс",
+              "url": "https://t.me/sherlokholmesradli_bot"
+            }
+          ]
         },
         {
           "id": "infra",
@@ -144,16 +350,40 @@
           "name": "Методичка «ИИ в практике врача»",
           "status": "идёт",
           "summary": "24 страницы, 9 разделов, 7 сценариев. 1 799 руб. (с 25.09), продажа на сайте и через бота, СБП через Платегу.",
-          "done": ["Первая продажа, 06.09", "Цена 2 299 руб. на сайте и 2017 в боте, 18.09", "PDF пересобран, 18.09"],
-          "links": [{"name": "Лендинг", "url": "https://doctoraibolit.online/metodichka.html"}, {"name": "Бот продаж", "url": "https://t.me/doctorAImetod_bot"}]
+          "done": [
+            "Первая продажа, 06.09",
+            "Цена 2 299 руб. на сайте и 2017 в боте, 18.09",
+            "PDF пересобран, 18.09"
+          ],
+          "links": [
+            {
+              "name": "Лендинг",
+              "url": "https://doctoraibolit.online/metodichka.html"
+            },
+            {
+              "name": "Бот продаж",
+              "url": "https://t.me/doctorAImetod_bot"
+            }
+          ]
         },
         {
           "id": "miniapp",
           "name": "Айболит Learn",
           "status": "идёт",
           "summary": "Мини-апп с методичкой, консультацией и базой знаний на боте @Alfredradlibot_bot.",
-          "done": ["Прототип на боте, 18.09"],
-          "links": [{"name": "Открыть", "url": "https://doctoraibolit.online/app/"}, {"name": "Бот", "url": "https://t.me/Alfredradlibot_bot"}]
+          "done": [
+            "Прототип на боте, 18.09"
+          ],
+          "links": [
+            {
+              "name": "Открыть",
+              "url": "https://doctoraibolit.online/app/"
+            },
+            {
+              "name": "Бот",
+              "url": "https://t.me/Alfredradlibot_bot"
+            }
+          ]
         },
         {
           "id": "clinics",
