@@ -262,11 +262,23 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
   var st = load();
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; } }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
-  st.scores = st.scores || {}; st.goals = st.goals || []; st.habits = st.habits || []; st.open = st.open || {}; st.tasks = st.tasks || {}; st.showDone = st.showDone || {}; st.lists = st.lists || {}; st.notes = st.notes || {}; st.rate = st.rate || 100; st.subs = st.subs || null; st.backlogDone = st.backlogDone || {};
+  st.scores = st.scores || {}; st.goals = st.goals || []; st.habits = st.habits || []; st.open = st.open || {}; st.tasks = st.tasks || {}; st.showDone = st.showDone || {}; st.lists = st.lists || {}; st.notes = st.notes || {}; st.rate = st.rate || 100; st.subs = st.subs || null; st.backlogDone = st.backlogDone || {}; st.seeded = st.seeded || {};
   // Older builds kept tasks in st.tasks[pid]; they now live in st.lists[pid].tasks.
   Object.keys(st.tasks).forEach(function (pid) { st.lists[pid] = st.lists[pid] || {}; st.lists[pid].tasks = (st.lists[pid].tasks || []).concat(st.tasks[pid]); }); st.tasks = {};
   var DEFAULT_LISTS = [{ id: 'tasks', name: 'Задачи', done: true, placeholder: 'Задача или цель' }];
   function listsOf(p) { return p.lists || DEFAULT_LISTS; }
+  /* A list in projects.json may carry "seed": agent-written steps copied once into the
+     device's list, after which the operator ticks or deletes them like his own. */
+  function seedLists() {
+    (P.groups || []).forEach(function (g) { g.projects.forEach(function (p) { (p.lists || []).forEach(function (L) {
+      (L.seed || []).forEach(function (text) {
+        var key = p.id + '/' + L.id + '/' + text; if (st.seeded[key]) return;
+        items(p.id, L.id).push({ id: String(Date.now()) + Math.random().toString(36).slice(2, 6), text: text, done: null, created: todayIso() });
+        st.seeded[key] = todayIso();
+      });
+    }); }); });
+    save();
+  }
   function items(pid, lid) { st.lists[pid] = st.lists[pid] || {}; return st.lists[pid][lid] = st.lists[pid][lid] || []; }
 
   var tg = window.Telegram && window.Telegram.WebApp;
@@ -707,7 +719,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     fetch('backlog.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return { items: [] }; }),
     fetch('crypto.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return { checkpoints: [] }; })
   ]).then(function (res) {
-    data = res[0] || {}; P = res[1]; backlog = res[2] || { items: [] }; crypto = res[3] || { checkpoints: [] }; derived();
+    data = res[0] || {}; P = res[1]; backlog = res[2] || { items: [] }; crypto = res[3] || { checkpoints: [] }; derived(); seedLists();
     renderHome(); renderGoals(); renderHabits(); renderMoney(); renderCrypto(); renderCal(); route();
   });
 })();
