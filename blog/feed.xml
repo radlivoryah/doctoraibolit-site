@@ -5,7 +5,16 @@
 <link>https://doctoraibolit.online/blog/</link>
 <description>Как практикующий врач применяет ИИ: инструменты, запросы, границы. Статьи из личной практики.</description>
 <language>ru</language>
-<lastBuildDate>Wed, 23 Sep 2026 16:00:00 +0300</lastBuildDate>
+<lastBuildDate>Fri, 25 Sep 2026 16:00:00 +0300</lastBuildDate>
+<item>
+<title>Обычный чат или свой ИИ-агент</title>
+<link>https://doctoraibolit.online/blog/obychnyy-chat-ili-svoy-ii-agent.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/obychnyy-chat-ili-svoy-ii-agent.html</guid>
+<pubDate>Fri, 25 Sep 2026 16:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Чат каждый раз знакомится заново. Агент помнит каждую поправку и сам раздает задачи. Когда врачу есть смысл переходить.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/obychnyy-chat-ili-svoy-ii-agent.png" type="image/png"/>
+</item>
 <item>
 <title>12 подписок на ИИ, а ставка на один навык</title>
 <link>https://doctoraibolit.online/blog/12-podpisok-na-ii-odin-navyk.html</link>
