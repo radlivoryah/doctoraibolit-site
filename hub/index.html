@@ -194,7 +194,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
         <div class="panel"><h3>Колесо баланса</h3><div class="wheel"><svg id="wheel" viewBox="0 0 360 360" role="img" aria-label="Колесо баланса"></svg><div class="sliders" id="sliders"></div></div><p class="muted" style="margin:8px 0 0">Оценка от 1 до 10 по каждому направлению. Двигай ползунки, значения сохраняются на этом телефоне.</p></div>
         <div>
           <div class="panel"><h3>Задачи на сегодня</h3><div class="tasks" id="homeTasks"></div></div>
-          <div class="panel" style="margin-top:14px"><h3>Хвосты</h3><div class="tasks" id="backlog"></div><p class="muted" style="margin:8px 0 0">Незакрытые дела, которые веду я. Галочка убирает пункт с доски.</p></div>
+          <div class="panel" style="margin-top:14px"><h3>Хвосты</h3><div class="tasks" id="backlog"></div><p class="muted" style="margin:8px 0 0">Дела, которые веду я. Галочка отмечает пункт сделанным и опускает его вниз.</p></div>
           <div class="panel" style="margin-top:14px"><h3>Проекты по группам</h3><div class="rings" id="rings"></div></div>
           <div class="panel" style="margin-top:14px"><h3>Ближайшее</h3><div class="list" id="homeEvents"></div></div>
           <div class="panel" style="margin-top:14px"><h3>Цели</h3><div class="list" id="homeGoals"></div></div>
@@ -399,15 +399,23 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
   /* Хвосты приходят файлом от агента: правим их не здесь, а в backlog.json. */
   function renderBacklog() {
     var wrap = document.getElementById('backlog'); if (!wrap) return;
-    var list = (backlog.items || []).filter(function (x) { return !st.backlogDone[x.id]; });
-    if (!list.length) { wrap.innerHTML = '<div class="muted">Хвостов нет.</div>'; return; }
-    wrap.innerHTML = list.map(function (x) {
-      return '<div class="task" data-bid="' + x.id + '"><input type="checkbox" aria-label="убрать"><div><span>' +
-        x.title + '</span>' + (x.note ? '<small> · ' + x.note + '</small>' : '') + '</div></div>';
+    var items = backlog.items || [];
+    if (!items.length) { wrap.innerHTML = '<div class="muted">Хвостов нет.</div>'; return; }
+    /* Closed items stay on the board, ticked and moved to the bottom. */
+    function doneOn(x) { return x.done || st.backlogDone[x.id] || ''; }
+    var open = items.filter(function (x) { return !doneOn(x); });
+    var closed = items.filter(function (x) { return doneOn(x); })
+      .sort(function (a, b) { return doneOn(b) < doneOn(a) ? -1 : 1; });
+    wrap.innerHTML = open.concat(closed).map(function (x) {
+      var d = doneOn(x);
+      return '<div class="task' + (d ? ' done' : '') + '" data-bid="' + x.id + '"><input type="checkbox" aria-label="готово"' +
+        (d ? ' checked' : '') + (x.done ? ' disabled' : '') + '><div><span>' + (d ? '✓ ' : '') + x.title + '</span>' +
+        (x.note && !d ? '<small> · ' + x.note + '</small>' : '') + (d ? '<small> · сделано ' + d + '</small>' : '') + '</div></div>';
     }).join('');
     wrap.querySelectorAll('.task').forEach(function (el) {
-      el.querySelector('input').addEventListener('change', function () {
-        st.backlogDone[el.dataset.bid] = todayIso(); save(); renderBacklog();
+      el.querySelector('input').addEventListener('change', function (e) {
+        if (e.target.checked) st.backlogDone[el.dataset.bid] = todayIso(); else delete st.backlogDone[el.dataset.bid];
+        save(); renderBacklog();
       });
     });
   }
