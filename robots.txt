@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /hub/
+Disallow: /dl/
+
+Sitemap: https://doctoraibolit.online/sitemap.xml
