@@ -70,7 +70,7 @@
           "pages": [
             {"name": "Главная", "url": "https://doctoraibolit.online/", "what": "Кто я, чем помогаю, ссылки на канал и методичку"},
             {"name": "Статьи", "url": "https://doctoraibolit.online/blog/", "what": "Блог про ИИ для врачей и пациентов"},
-            {"name": "Методичка", "url": "https://doctoraibolit.online/metodichka.html", "what": "Лендинг «ИИ в практике врача», 2 299 руб., кнопки «Купить» ведут в бота"},
+            {"name": "Методичка", "url": "https://doctoraibolit.online/metodichka.html", "what": "Лендинг «ИИ в практике врача», 1 799 руб., оплата на сайте pay.doctoraibolit.online"},
             {"name": "Старт", "url": "https://doctoraibolit.online/start.html", "what": "Страница-хаб, на неё ведёт ссылка из шапки инстаграма"},
             {"name": "Цены", "url": "https://doctoraibolit.online/docs/price.html", "what": "Цены и тарифы, кнопка «Купить»"},
             {"name": "Оплата и возврат", "url": "https://doctoraibolit.online/docs/payment.html", "what": "Как оплатить и получить файл, кнопка «Купить»"},
@@ -143,7 +143,7 @@
           "id": "metodichka",
           "name": "Методичка «ИИ в практике врача»",
           "status": "идёт",
-          "summary": "24 страницы, 9 разделов, 7 сценариев. 2 299 руб., продажа через бота @doctorAImetod_bot, СБП через Платегу.",
+          "summary": "24 страницы, 9 разделов, 7 сценариев. 1 799 руб. (с 25.09), продажа на сайте и через бота, СБП через Платегу.",
           "done": ["Первая продажа, 06.09", "Цена 2 299 руб. на сайте и 2017 в боте, 18.09", "PDF пересобран, 18.09"],
           "links": [{"name": "Лендинг", "url": "https://doctoraibolit.online/metodichka.html"}, {"name": "Бот продаж", "url": "https://t.me/doctorAImetod_bot"}]
         },
