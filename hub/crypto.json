@@ -1,6 +1,244 @@
 {
- "updated": "25.09 09:30",
+ "updated": "25.09 22:30",
  "checkpoints": [
+  {
+   "when": "25.09 22:30",
+   "total": 860.48,
+   "unreal": -1129.0,
+   "wallets": [
+    {
+     "name": "GMGN",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "пусто",
+     "tokens": []
+    },
+    {
+     "name": "GMGN",
+     "chain": "robinhood",
+     "value": 244.4,
+     "note": "",
+     "tokens": [
+      {
+       "name": "RAM",
+       "value": 217.89,
+       "pnl": -15.68
+      },
+      {
+       "name": "ROBINCAT",
+       "value": 26.51,
+       "pnl": -72.56
+      }
+     ]
+    },
+    {
+     "name": "GMGN",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Phantom",
+     "chain": "sol",
+     "value": 20.36,
+     "note": "",
+     "tokens": [
+      {
+       "name": "mSOL",
+       "value": 18.62,
+       "pnl": 0.0
+      },
+      {
+       "name": "POPCAT",
+       "value": 1.74,
+       "pnl": 0.0
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "sol",
+     "value": 346.18,
+     "note": "",
+     "tokens": [
+      {
+       "name": "CATE",
+       "value": 159.67,
+       "pnl": 80.04
+      },
+      {
+       "name": "EMBER",
+       "value": 105.49,
+       "pnl": 7.27
+      },
+      {
+       "name": "Groyper",
+       "value": 71.63,
+       "pnl": -37.45
+      },
+      {
+       "name": "Shrek",
+       "value": 8.02,
+       "pnl": -12.02
+      },
+      {
+       "name": "NPC",
+       "value": 1.37,
+       "pnl": -48.28
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "eth",
+     "value": 243.57,
+     "note": "",
+     "tokens": [
+      {
+       "name": "uPEG",
+       "value": 92.01,
+       "pnl": -31.67
+      },
+      {
+       "name": "PEPE",
+       "value": 66.94,
+       "pnl": -155.9
+      },
+      {
+       "name": "SPX",
+       "value": 49.2,
+       "pnl": -49.66
+      },
+      {
+       "name": "BITCOIN",
+       "value": 16.38,
+       "pnl": -133.24
+      },
+      {
+       "name": "XRP",
+       "value": 9.35,
+       "pnl": -88.82
+      },
+      {
+       "name": "CATALORIAN",
+       "value": 4.9,
+       "pnl": -94.74
+      },
+      {
+       "name": "MARS",
+       "value": 3.65,
+       "pnl": -86.04
+      },
+      {
+       "name": "DJT",
+       "value": 1.15,
+       "pnl": -3.84
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "robinhood",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Uniswap",
+     "chain": "eth",
+     "value": 5.97,
+     "note": "",
+     "tokens": [
+      {
+       "name": "DOGGO",
+       "value": 3.24,
+       "pnl": -257.25
+      },
+      {
+       "name": "SABAI",
+       "value": 1.72,
+       "pnl": -104.36
+      },
+      {
+       "name": "SPONGE",
+       "value": 1.01,
+       "pnl": -25.22
+      }
+     ]
+    }
+   ],
+   "follow": [
+    {
+     "chain": "ETH",
+     "tokens": []
+    },
+    {
+     "chain": "ROBINHOOD",
+     "tokens": [
+      {
+       "name": "CASHCAT",
+       "price": 0.187796,
+       "cap": 187795640.0,
+       "day": 16
+      },
+      {
+       "name": "ROBINCAT",
+       "price": 0.00312985,
+       "cap": 3129699.0,
+       "day": 18
+      },
+      {
+       "name": "RAM",
+       "price": 0.0457211,
+       "cap": 2349665.0,
+       "day": -1
+      }
+     ]
+    },
+    {
+     "chain": "SOL",
+     "tokens": [
+      {
+       "name": "EMBER",
+       "price": 0.0139911,
+       "cap": 13849303.0,
+       "day": -7
+      },
+      {
+       "name": "onkey",
+       "price": 1.09206e-05,
+       "cap": 10220.0,
+       "day": 0
+      },
+      {
+       "name": "Groyper",
+       "price": 0.000173977,
+       "cap": 173911.0,
+       "day": 5
+      },
+      {
+       "name": "URANUS",
+       "price": 0.00490045,
+       "cap": 489962.0,
+       "day": 0
+      },
+      {
+       "name": "Fartcoin",
+       "price": 0.191467,
+       "cap": 191450790.0,
+       "day": 1
+      },
+      {
+       "name": "$1",
+       "price": 0.000750055,
+       "cap": 749787.0,
+       "day": 3
+      }
+     ]
+    }
+   ]
+  },
   {
    "when": "25.09 09:30",
    "total": 498.03,
