@@ -147,8 +147,13 @@
   ]
  },
  "blog": {
-  "count": 42,
+  "count": 43,
   "recent": [
+   {
+    "date": "2026-09-25",
+    "title": "Обычный чат или свой ИИ-агент: в чем разница и когда переходить",
+    "url": "https://doctoraibolit.online/blog/obychnyy-chat-ili-svoy-ii-agent.html"
+   },
    {
     "date": "2026-09-23",
     "title": "12 подписок на ИИ, а ставка на один навык: что я оставил и что можно заменить",
@@ -168,11 +173,6 @@
     "date": "2026-09-16",
     "title": "Где брать готовые промпты: пять источников, из которых беру я",
     "url": "https://doctoraibolit.online/blog/gde-brat-gotovye-prompty.html"
-   },
-   {
-    "date": "2026-08-06",
-    "title": "Телефон в кровати: почему сила воли не работает и какой протокол работает",
-    "url": "https://doctoraibolit.online/blog/telefon-pered-snom-vecherniy-protokol.html"
    }
   ]
  },
@@ -204,5 +204,5 @@
  "errors": {
   "telegram": "no bot access in environment"
  },
- "updated": "2026-09-25 15:20"
+ "updated": "2026-09-25 16:20"
 }
