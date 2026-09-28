@@ -347,7 +347,15 @@
       "note": "Шеф и Зоя 27.09: идея понравилась, вернемся. Старт: рубрика «POV: стоматолог женат на гинекологе» в личных аккаунтах через Collab, 10-12 роликов; исследование outbox-media/research-2026-09-26-parnye-blogi-vrachey.md",
       "project": "kontent",
       "added": "2026-09-27"
+    },
+    {
+      "id": "49",
+      "title": "Головоломка «Ромб из восьми» (в кладовке)",
+      "note": "28.09 Шеф: тема закрыта, в кладовку. Артефакт https://claude.ai/artifact/DSWaJm492rTSyxiqdpkrRQ, файл outbox-media/romb/romb.html",
+      "project": "produkty",
+      "added": "2026-09-28",
+      "done": "2026-09-28"
     }
   ],
-  "updated": "2026-09-27"
+  "updated": "2026-09-28"
 }
