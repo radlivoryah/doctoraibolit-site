@@ -1,0 +1,58 @@
+# Ильдар Хайров: ИИ в практике врача
+
+> Статьи практикующего стоматолога-ортопеда о нейросетях: как врачу и обычному человеку пользоваться ChatGPT, Claude и другими ИИ-инструментами, что им можно поручать и чего нельзя. Плюс статьи о здоровье зубов для пациентов. Все проверено на практике.
+
+Автор: Ильдар Хайров. Практикующий стоматолог-ортопед из Москвы, на приеме с 2017 года. Полтора года встраивает ИИ в свой прием и в быт и пишет только о том, что проверил сам. Telegram-канал: https://t.me/ai_bolit_ildar
+
+## ИИ
+
+- [Обычный чат или свой ИИ-агент](https://doctoraibolit.online/blog/obychnyy-chat-ili-svoy-ii-agent.html): Чат каждый раз знакомится заново. Агент помнит каждую поправку и сам раздает задачи. Когда врачу есть смысл переходить.
+- [12 подписок на ИИ, а ставка на один навык](https://doctoraibolit.online/blog/12-podpisok-na-ii-odin-navyk.html): На чем реально держится моя работа с ИИ, что можно заменить бесплатным и почему не стоит гнаться за каждой новой моделью.
+- [Робот победил человека в клетке: что произошло на самом деле](https://doctoraibolit.online/blog/robot-pobedil-cheloveka-chto-na-samom-dele.html): Роботом управлял человек в очках виртуальной реальности. Та же подмена работает в рекламе медицинских сервисов. Метод проверки и три вопроса к любому инструменту.
+- [ИИ присылает свежие исследования каждое утро](https://doctoraibolit.online/blog/ii-prisylaet-issledovaniya-kazhdoe-utro.html): Самый простой и неочевидный способ использовать ИИ: настроил один раз, и каждое утро приходят свежие статьи по твоей теме. Три способа и готовый запрос.
+- [Где брать готовые промпты: пять источников](https://doctoraibolit.online/blog/gde-brat-gotovye-prompty.html): Писать запрос с нуля не нужно. Пять мест, откуда беру промпты я, и правило, без которого чужой промпт не работает.
+- [Телефон в кровати: не сила воли, а протокол](https://doctoraibolit.online/blog/telefon-pered-snom-vecherniy-protokol.html): Почему решимость проигрывает ленте, пять рабочих шагов и промпт, который соберет протокол под ваши часы.
+- [Как прочитать состав на любой этикетке](https://doctoraibolit.online/blog/kak-chitat-sostav-na-etiketke-nejrosetyu.html): Перевод с любого языка, сахар в чайных ложках, соль, добавки и главная ловушка с порциями. Промпт внутри.
+- [Восстановил фото из девяностых одним промптом](https://doctoraibolit.online/blog/vosstanovit-staroe-foto-nejrosetyu.html): Готовый промпт для реставрации старых снимков и правило, из-за которого лица перестают быть чужими.
+- [Как писать промпты: инструкция для врача и человека](https://doctoraibolit.online/blog/kak-pisat-prompty-dlya-vracha.html): Промпт решает, получишь ты пользу или воду. Формула из 4 частей и медицинские примеры.
+- [Промпты для ChatGPT: формула и рабочие шаблоны](https://doctoraibolit.online/blog/prompty-chatgpt-shablony-dlya-vracha.html): Роль + контекст + задача + формат. Готовые шаблоны для приёма, пациентов, учёбы и быта.
+- [ИИ-агент простыми словами: не советчик, а сотрудник](https://doctoraibolit.online/blog/ii-agent-prostymi-slovami-sotrudnik.html): Чат отвечает, агент делает. Что такое ИИ-агент и с чего начать, на живом примере.
+- [5 бесплатных ИИ для новичка: с чего начать](https://doctoraibolit.online/blog/5-besplatnyh-ii-dlya-novichka.html): Пять бесплатных нейросетей, которыми я пользуюсь между пациентами и дома. Без карты и VPN.
+- [ИИ-ментор для врача: 7 промптов учиться быстрее](https://doctoraibolit.online/blog/ii-mentor-dlya-vracha-7-promptov.html): Не готовые ответы, а строгий репетитор. 7 промптов, чтобы осваивать новое вдвое быстрее.
+- [4 страха, из-за которых врач не берёт ИИ](https://doctoraibolit.online/blog/4-straha-vrachey-pered-ii.html): Заменит, сложно, врёт, врачебная тайна. Разбираю каждый страх и как начать без риска.
+- [Нейросети с нуля: как начать за один вечер](https://doctoraibolit.online/blog/kak-nachat-polzovatsya-neyrosetyami-2026.html): Четыре шага, формула запроса и готовые промпты, чтобы начать с нуля за вечер. Без кода.
+- [Claude или ChatGPT: что брать под свои задачи](https://doctoraibolit.online/blog/claude-ili-chatgpt-2026-chto-vybrat.html): Где сильнее каждый и как выбрать за вечер тестом на своей реальной задаче.
+- [20 стилей ИИ-картинок: какие промпты вписывать](https://doctoraibolit.online/blog/stili-ii-kartinok-gotovye-prompty.html): Стили и готовые промпты: что вписать в генератор и что получишь. С формулой.
+- [Заработок на нейросетях: где деньги правда есть](https://doctoraibolit.online/blog/zarabotok-na-neyrosetyah-2026-chto-realno-rabotaet.html): Что реально приносит деньги на ИИ, а где развод. Честно, от практика, с цифрами.
+- [ИИ-фотосессия: экспертные кадры без фотографа](https://doctoraibolit.online/blog/ii-fotosessiya-prompty-poshagovo.html): Пошагово: референсы, формула промпта, готовые шаблоны и разбор брака.
+- [AI-портреты из одного селфи: 15 промптов](https://doctoraibolit.online/blog/ai-portrety-iz-odnogo-selfi-15-promptov.html): Деловой хедшот и киношные аватарки из одного селфи. Главный приём и промпты.
+- [Нейросеть рисует по описанию: сервисы 2026](https://doctoraibolit.online/blog/neyroset-risuet-po-opisaniyu-2026.html): Пять рабочих сервисов и формула промпта из шести кирпичей, чтобы попасть с первого раза.
+- [Nano Banana: генерирую и правлю картинки Google](https://doctoraibolit.online/blog/nano-banana-kak-polzovatsya.html): Что за генератор, как запустить из России и какие промпты работают. На примерах.
+- [10 фраз, которые меняют ответ ChatGPT и Claude](https://doctoraibolit.online/blog/frazy-menyayushchie-otvet-chatgpt-claude.html): Не секретные команды, а 10 рабочих фраз. Что каждая меняет в ответе и когда её ставить.
+- [Запах нейросети: как вычистить ИИ из текста](https://doctoraibolit.online/blog/kak-ubrat-zapah-neyroseti-iz-teksta.html): Что выдаёт машину в тексте и как это вычистить. Штампы, конструкции, ритм, тире. С примерами.
+- [Нейросети для видео в 2026: с чего начать](https://doctoraibolit.online/blog/neyroseti-dlya-video-2026-s-chego-nachat.html): Kling, Runway, Veo, Pika. Что для чего, как платить из России и как сделать первый ролик.
+- [Оживил фото за 5 секунд: видео из картинки](https://doctoraibolit.online/blog/kak-ozhivit-foto-v-video-neyrosetyu.html): Как оживить любое фото в видео: сервисы, промпты движения, где ломается лицо и как чинить.
+- [Suno из России: музыка и джингл за минуту](https://doctoraibolit.online/blog/suno-muzyka-i-dzhingl-iz-rossii.html): Доступ из РФ, оплата рублями, промпт под музыку и джингл для рилсов, права на коммерцию.
+- [Контент-план на месяц за час нейросетью](https://doctoraibolit.online/blog/kontent-plan-nejrosetyu-za-chas.html): Три готовых промпта, подготовка файлов и проверка логики продаж. Месяц контента за час.
+- [Посты в Telegram с ИИ: почему они всё равно мёртвые](https://doctoraibolit.online/blog/posty-v-telegram-s-ii-golos-brenda.html): Голос бренда, структура, хуки и готовые промпты. Как сделать посты живыми, а не серыми.
+- [Карусель Instagram на нейросети: чтобы дочитывали](https://doctoraibolit.online/blog/karusel-instagram-na-neiroseti.html): Скелет, структура слайдов, готовые промпты и визуал. Одна карусель кормит пять площадок.
+- [Сценарии Reels нейросетью: ролик за 15 минут](https://doctoraibolit.online/blog/scenarii-reels-neyrosetyu-2026.html): Хук за 2 секунды, удержание, панч, тайминг по кадрам и готовые промпты.
+- [Threads с нейросетью: как вести ветки](https://doctoraibolit.online/blog/threads-s-neyrosetyu-kak-vesti-vetki.html): Формат тредов-веток, хуки в первой строке, готовые промпты и место площадки в системе.
+- [12 промптов ChatGPT для Reels в охват](https://doctoraibolit.online/blog/12-promptov-chatgpt-dlya-reels-v-ohvat.html): Хуки, сценарии, темы и разбор провалов. Промпты, которые двигают именно охват.
+- [Промпты Claude для роста в Instagram](https://doctoraibolit.online/blog/prompty-claude-dlya-rosta-instagram.html): Хуки, сценарии по кадрам, обложки, рубрики. Конкретные промпты, которые можно копировать.
+- [ИИ-навыки, за которые реально платят в 2026](https://doctoraibolit.online/blog/ii-navyki-za-kotorye-platyat-2026.html): Какие навыки приносят деньги, реальные цифры и как учиться, чтобы получить клиента.
+- [Фриланс на нейросетях: как начать с нуля](https://doctoraibolit.online/blog/freelance-na-neyrosetyah-2026-kak-nachat.html): Какую услугу выбрать, где брать первые заказы и сколько это реально приносит. Без сказок.
+- [Бизнес-план нейросетью за вечер](https://doctoraibolit.online/blog/biznes-plan-neyrosetyu-za-vecher.html): Готовые промпты, проверка юнит-экономики, стресс-тест рисков и что нельзя доверять машине.
+- [Первый цифровой продукт за вечер с ИИ](https://doctoraibolit.online/blog/pervyy-cifrovoy-produkt-za-vecher-s-ii.html): Как за вечер собрать мини-продукт и продавать снова и снова. Шаги, приём оплаты, грабли.
+- [Выписка за 90 секунд: документация с ИИ](https://doctoraibolit.online/blog/chatgpt-dlya-dokumentacii-vracha.html): Пошаговая схема для врача: сырьё тезисами, роль и структура, обезличивание, проверка головой.
+
+## Стоматология
+
+- [Боль прошла — а зуб цел? Почему «отпустило» — плохой знак](https://doctoraibolit.online/blog/bol-proshla-zub-cel.html): Зуб болел и вдруг перестал — кажется, пронесло. Чаще это не выздоровление, а гибель нерва. Разбираю по стадиям.
+- [8 привычек, которые тихо убивают твои дёсны](https://doctoraibolit.online/blog/8-privychek-desny.html): Дёсны не ноют, как зуб, — они молча отступают. 8 привычек, что ведут к пародонтиту, и как их убрать.
+- [Кровь на щётке. Это не «так бывает», это сигнал](https://doctoraibolit.online/blog/krovotochat-desny.html): Здоровая десна при чистке не кровит. Кровь — первая стадия воспаления. Разбор по стадиям и что делать.
+- [Мост или имплант: что выбрать, когда выпал зуб](https://doctoraibolit.online/blog/most-ili-implant.html): Чем отличаются, плюсы и минусы, обточка соседей и убыль кости. Честно, как на приёме.
+
+## Продукты
+
+- [Методичка «ИИ в практике врача»](https://doctoraibolit.online/metodichka.html): PDF на 24 страницы для практикующего врача: что поручать ИИ, что не поручать никогда и как сформулировать запрос, чтобы получить рабочий ответ.

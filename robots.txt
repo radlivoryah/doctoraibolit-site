@@ -1,4 +1,97 @@
+# Search engines and all other bots
 User-agent: *
+Disallow: /hub/
+Disallow: /dl/
+
+# AI crawlers allowed explicitly: needed to be cited by ChatGPT, Claude,
+# Perplexity, Gemini, Alisa and AI Overviews.
+User-agent: GPTBot
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: YandexAdditional
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: YandexAdditionalBot
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: MistralAI-User
+Allow: /
+Disallow: /hub/
+Disallow: /dl/
+
+User-agent: cohere-ai
+Allow: /
 Disallow: /hub/
 Disallow: /dl/
 
