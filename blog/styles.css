@@ -43,7 +43,7 @@ a:hover{color:var(--gold-light)}
 .card{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--card-border);
   border-radius:16px;overflow:hidden;transition:.2s;height:100%}
 .card:hover{border-color:var(--card-border-hover);transform:translateY(-3px)}
-.card .thumb{aspect-ratio:4/3;width:100%;object-fit:cover;background:#FFFFFF;display:block;border-bottom:1px solid var(--card-border)}
+.card .thumb{aspect-ratio:1200/630;width:100%;object-fit:cover;background:#FFFFFF;display:block;border-bottom:1px solid var(--card-border)}
 .card .body{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1}
 .tag{display:inline-block;align-self:flex-start;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--teal-light);border:1px solid rgba(13,115,119,0.4);border-radius:999px;
@@ -81,3 +81,22 @@ article.post .prompt p:last-child{margin:0}
 .foot{border-top:1px solid var(--gold-line);padding:34px 0;color:var(--muted);font-size:14px;text-align:center}
 
 @media (max-width:560px){body{font-size:17px}.card{padding:20px 20px}}
+
+/* Product CTA and related articles at the end of a post */
+article.post .product{background:var(--card-bg);border:1px solid var(--gold);border-radius:14px;
+  padding:24px 26px;margin:40px 0 8px}
+article.post .product-kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+article.post .product-title{font-family:var(--font-head);font-weight:700;font-size:21px;color:var(--white);margin-bottom:8px}
+article.post .product p{margin:0 0 16px;color:var(--muted)}
+article.post .product-btn{display:inline-block;background:var(--gold);color:#fff;border-radius:999px;
+  padding:10px 20px;font-weight:600;font-size:15px}
+article.post .product-btn:hover{opacity:.9}
+article.post .related{margin:36px 0 24px}
+article.post .related h2{margin:0 0 16px}
+.rel-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rel-card{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:12px;overflow:hidden;color:var(--white);font-size:15px;line-height:1.35;transition:.2s}
+.rel-card:hover{border-color:var(--card-border-hover);transform:translateY(-2px)}
+.rel-card img{width:100%;aspect-ratio:1200/630;object-fit:cover;display:block;border-bottom:1px solid var(--card-border)}
+.rel-card span{padding:12px 14px}
+@media (max-width:600px){.rel-list{grid-template-columns:1fr}}
