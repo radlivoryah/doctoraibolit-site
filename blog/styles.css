@@ -100,3 +100,12 @@ article.post .related h2{margin:0 0 16px}
 .rel-card img{width:100%;aspect-ratio:1200/630;object-fit:cover;display:block;border-bottom:1px solid var(--card-border)}
 .rel-card span{padding:12px 14px}
 @media (max-width:600px){.rel-list{grid-template-columns:1fr}}
+/* Reading time and date line under the byline */
+article.post .art-info{color:var(--muted);font-size:13px;margin:-14px 0 24px}
+/* Author box */
+article.post .author-box{display:flex;gap:16px;align-items:flex-start;border-top:1px solid var(--card-border);
+  border-bottom:1px solid var(--card-border);padding:20px 0;margin:28px 0 8px}
+article.post .author-box img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none}
+article.post .author-name{font-family:var(--font-head);font-weight:700;color:var(--white);margin-bottom:4px}
+article.post .author-box p{margin:0 0 6px;color:var(--muted);font-size:15px}
+article.post .author-box a{color:var(--gold);font-size:14px}
