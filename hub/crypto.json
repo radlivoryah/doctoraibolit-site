@@ -1,6 +1,218 @@
 {
- "updated": "29.09 22:30",
+ "updated": "30.09 09:30",
  "checkpoints": [
+  {
+   "when": "30.09 09:30",
+   "total": 444.26,
+   "unreal": -1161.0,
+   "wallets": [
+    {
+     "name": "GMGN",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "пусто",
+     "tokens": []
+    },
+    {
+     "name": "GMGN",
+     "chain": "robinhood",
+     "value": 202.0,
+     "note": "",
+     "tokens": [
+      {
+       "name": "RAM",
+       "value": 180.3,
+       "pnl": -25.8
+      },
+      {
+       "name": "ROBINCAT",
+       "value": 21.7,
+       "pnl": -77.37
+      }
+     ]
+    },
+    {
+     "name": "GMGN",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Phantom",
+     "chain": "sol",
+     "value": 19.65,
+     "note": "",
+     "tokens": [
+      {
+       "name": "mSOL",
+       "value": 18.07,
+       "pnl": 0.0
+      },
+      {
+       "name": "POPCAT",
+       "value": 1.58,
+       "pnl": 0.0
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "eth",
+     "value": 216.73,
+     "note": "",
+     "tokens": [
+      {
+       "name": "uPEG",
+       "value": 72.36,
+       "pnl": -51.31
+      },
+      {
+       "name": "PEPE",
+       "value": 64.14,
+       "pnl": -158.71
+      },
+      {
+       "name": "SPX",
+       "value": 45.64,
+       "pnl": -53.21
+      },
+      {
+       "name": "BITCOIN",
+       "value": 15.6,
+       "pnl": -134.02
+      },
+      {
+       "name": "XRP",
+       "value": 9.78,
+       "pnl": -88.39
+      },
+      {
+       "name": "CATALORIAN",
+       "value": 4.41,
+       "pnl": -95.24
+      },
+      {
+       "name": "MARS",
+       "value": 3.67,
+       "pnl": -86.02
+      },
+      {
+       "name": "DJT",
+       "value": 1.15,
+       "pnl": -3.84
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "robinhood",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Uniswap",
+     "chain": "eth",
+     "value": 5.87,
+     "note": "",
+     "tokens": [
+      {
+       "name": "DOGGO",
+       "value": 3.15,
+       "pnl": -257.33
+      },
+      {
+       "name": "SABAI",
+       "value": 1.72,
+       "pnl": -104.37
+      },
+      {
+       "name": "SPONGE",
+       "value": 1.01,
+       "pnl": -25.22
+      }
+     ]
+    }
+   ],
+   "follow": [
+    {
+     "chain": "ETH",
+     "tokens": []
+    },
+    {
+     "chain": "ROBINHOOD",
+     "tokens": [
+      {
+       "name": "CASHCAT",
+       "price": 0.172821,
+       "cap": 172820600.0,
+       "day": -2
+      },
+      {
+       "name": "ROBINCAT",
+       "price": 0.00236473,
+       "cap": 2364614.0,
+       "day": -21
+      },
+      {
+       "name": "RAM",
+       "price": 0.037272,
+       "cap": 1802273.0,
+       "day": 1
+      }
+     ]
+    },
+    {
+     "chain": "SOL",
+     "tokens": [
+      {
+       "name": "EMBER",
+       "price": 0.00782333,
+       "cap": 7734898.0,
+       "day": -17
+      },
+      {
+       "name": "onkey",
+       "price": 1.29096e-05,
+       "cap": 12082.0,
+       "day": 4
+      },
+      {
+       "name": "Groyper",
+       "price": 0.000180543,
+       "cap": 180475.0,
+       "day": 1
+      },
+      {
+       "name": "URANUS",
+       "price": 0.00413198,
+       "cap": 413128.0,
+       "day": -4
+      },
+      {
+       "name": "Fartcoin",
+       "price": 0.177672,
+       "cap": 177657278.0,
+       "day": 6
+      },
+      {
+       "name": "$1",
+       "price": 0.000693245,
+       "cap": 692996.0,
+       "day": -2
+      }
+     ]
+    }
+   ]
+  },
   {
    "when": "29.09 22:30",
    "total": 226.3,
