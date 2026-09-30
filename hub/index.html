@@ -172,6 +172,15 @@ h3 { font-size:16px; }
 .page { display:grid; grid-template-columns:1fr auto; gap:8px; align-items:center; background:var(--ground); border:1px solid var(--line); border-radius:12px; padding:9px 12px; font-size:14px; }
 .page small { display:block; color:var(--muted); font-size:12px; }
 .page a { font-weight:600; text-decoration:none; white-space:nowrap; }
+.plant .when { font-variant-numeric:tabular-nums; font-size:13px; color:var(--muted); margin:4px 0 8px; }
+.plant .when b { color:var(--ink); }
+.plant .when.due b { color:#b3261e; }
+.plant dl { margin:0; display:grid; grid-template-columns:auto 1fr; gap:4px 10px; font-size:14px; }
+.plant dt { color:var(--muted); }
+.plant dd { margin:0; }
+.plant .act { margin-top:10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.plant .act button { border:0; border-radius:999px; padding:7px 14px; background:var(--accent); color:#fff; font:inherit; font-size:13px; cursor:pointer; }
+.plant .act small { color:var(--muted); font-size:12px; }
 button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 </style>
 </head>
@@ -244,6 +253,15 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
       </div>
     </section>
 
+    <section id="v-plants" hidden>
+      <h2>Зеленые</h2>
+      <p class="muted" id="plantsHome"></p>
+      <div class="cards" id="plants" style="margin-top:12px"></div>
+      <div class="panel" style="margin-top:14px"><h3>Правила сезона</h3><p class="muted" id="plantsSeason" style="margin:0 0 8px"></p><div class="list" id="plantsRules"></div></div>
+      <div class="panel" style="margin-top:14px"><h3>Удобрения</h3><div class="list" id="plantsFert"></div></div>
+      <p class="muted">Кнопка «Полил» запоминает дату на этом телефоне. Чтобы сдвинулись напоминания в Telegram, напиши Альфреду «полил папоротник» или «полил все».</p>
+    </section>
+
     <section id="v-calendar" hidden>
       <h2>Календарь</h2>
       <div class="calhead" style="margin-top:10px"><button id="prev">‹</button><h3 id="calTitle"></h3><button id="next">›</button></div>
@@ -258,11 +276,11 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 <script>
 (function () {
   var KEY = 'pulse-v1';
-  var data = {}, P = { groups: [], events: [], daily: [], areas: [] }, backlog = { items: [] }, crypto = { checkpoints: [] };
+  var data = {}, P = { groups: [], events: [], daily: [], areas: [] }, backlog = { items: [] }, crypto = { checkpoints: [] }, plants = { plants: [] };
   var st = load();
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; } }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
-  st.scores = st.scores || {}; st.goals = st.goals || []; st.habits = st.habits || []; st.open = st.open || {}; st.tasks = st.tasks || {}; st.showDone = st.showDone || {}; st.lists = st.lists || {}; st.notes = st.notes || {}; st.rate = st.rate || 100; st.subs = st.subs || null; st.backlogDone = st.backlogDone || {}; st.seeded = st.seeded || {};
+  st.scores = st.scores || {}; st.goals = st.goals || []; st.habits = st.habits || []; st.open = st.open || {}; st.tasks = st.tasks || {}; st.showDone = st.showDone || {}; st.lists = st.lists || {}; st.notes = st.notes || {}; st.rate = st.rate || 100; st.subs = st.subs || null; st.backlogDone = st.backlogDone || {}; st.seeded = st.seeded || {}; st.watered = st.watered || {};
   // Older builds kept tasks in st.tasks[pid]; they now live in st.lists[pid].tasks.
   Object.keys(st.tasks).forEach(function (pid) { st.lists[pid] = st.lists[pid] || {}; st.lists[pid].tasks = (st.lists[pid].tasks || []).concat(st.tasks[pid]); }); st.tasks = {};
   var DEFAULT_LISTS = [{ id: 'tasks', name: 'Задачи', done: true, placeholder: 'Задача или цель' }];
@@ -297,7 +315,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 
   /* ---------- navigation ---------- */
   var view = 'home', groupId = null;
-  var VIEWS = [['home', 'Главная'], ['life', 'Жизнь'], ['digital', 'Цифра'], ['products', 'Продукты'], ['goals', 'Цели'], ['habits', 'Привычки'], ['money', 'Финансы'], ['calendar', 'Календарь']];
+  var VIEWS = [['home', 'Главная'], ['life', 'Жизнь'], ['digital', 'Цифра'], ['products', 'Продукты'], ['goals', 'Цели'], ['habits', 'Привычки'], ['money', 'Финансы'], ['plants', 'Зеленые'], ['calendar', 'Календарь']];
   function renderNav() {
     var nav = document.getElementById('nav'), chips = document.getElementById('chips');
     nav.innerHTML = ''; chips.innerHTML = '';
@@ -316,7 +334,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     var h = location.hash.replace('#', '') || 'home', parts = h.split('/');
     view = VIEWS.some(function (v) { return v[0] === parts[0]; }) ? parts[0] : 'home';
     var pid = parts[1] || null;
-    ['home', 'group', 'goals', 'habits', 'money', 'calendar'].forEach(function (id) { document.getElementById('v-' + id).hidden = true; });
+    ['home', 'group', 'goals', 'habits', 'money', 'plants', 'calendar'].forEach(function (id) { document.getElementById('v-' + id).hidden = true; });
     var g = P.groups.filter(function (x) { return x.id === view; })[0];
     if (g) { groupId = g.id; document.getElementById('v-group').hidden = false; renderGroup(g, pid); }
     else { document.getElementById('v-' + view).hidden = false; }
@@ -689,6 +707,38 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     });
   }
 
+  /* ---------- plants ---------- */
+  /* Care plan comes from plants.json (agent-edited); "Полил" marks are per device. */
+  function addDays(isoDate, n) { var p = isoDate.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2] + n); return iso(d.getFullYear(), d.getMonth(), d.getDate()); }
+  function daysBetween(a, b) { var pa = a.split('-'), pb = b.split('-'); return Math.round((new Date(+pb[0], +pb[1] - 1, +pb[2]) - new Date(+pa[0], +pa[1] - 1, +pa[2])) / 86400000); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function renderPlants() {
+    var t = todayIso();
+    document.getElementById('plantsHome').textContent = plants.home || '';
+    document.getElementById('plantsSeason').textContent = plants.season || '';
+    document.getElementById('plantsRules').innerHTML = (plants.rules || []).map(function (r) { return '<div>' + esc(r) + '</div>'; }).join('');
+    document.getElementById('plantsFert').innerHTML = (plants.fertilizers || []).map(function (f) { return '<div><b>' + esc(f.for) + '.</b> ' + esc(f.what) + '. ' + esc(f.how) + '.</div>'; }).join('');
+    var list = (plants.plants || []).map(function (p) {
+      var last = p.last_watered, mine = st.watered[p.id];
+      if (mine && mine > last) last = mine;
+      var next = addDays(last, p.every_days), left = daysBetween(t, next);
+      return { p: p, last: last, next: next, left: left };
+    }).sort(function (a, b) { return a.left - b.left; });
+    document.getElementById('plants').innerHTML = list.map(function (x) {
+      var p = x.p, due = x.left <= 0;
+      var whenTxt = due ? 'пора проверить землю' : 'проверить через ' + x.left + ' дн.';
+      var pill = p.state === 'норма' ? 'run' : (p.state === 'укореняются' ? 'pause' : 'dec');
+      return '<div class="card plant"><div class="head"><h3>' + esc(p.name) + (p.count > 1 ? ' × ' + p.count : '') + '</h3><span class="pill ' + pill + '">' + esc(p.state) + '</span></div>' +
+        '<div class="when' + (due ? ' due' : '') + '">Полив: <b>' + whenTxt + '</b> · последний ' + x.last + ' · раз в ~' + p.every_days + ' дн.</div>' +
+        '<dl><dt>Полив</dt><dd>' + esc(p.water) + '</dd><dt>Зима</dt><dd>' + esc(p.winter) + '</dd><dt>Сейчас</dt><dd>' + esc(p.now) + '</dd></dl>' +
+        '<div class="act"><button type="button" data-water="' + esc(p.id) + '">Полил сегодня</button>' + (st.watered[p.id] ? '<small>отмечено ' + st.watered[p.id] + '</small>' : '') + '</div></div>';
+    }).join('');
+  }
+  document.getElementById('plants').addEventListener('click', function (e) {
+    var id = e.target.getAttribute && e.target.getAttribute('data-water'); if (!id) return;
+    st.watered[id] = todayIso(); save(); renderPlants();
+  });
+
   /* ---------- calendar ---------- */
   var cur = new Date(); cur.setDate(1);
   function renderCal() {
@@ -717,10 +767,11 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     fetch('data.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return {}; }),
     fetch('projects.json?' + Date.now()).then(function (r) { return r.json(); }),
     fetch('backlog.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return { items: [] }; }),
-    fetch('crypto.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return { checkpoints: [] }; })
+    fetch('crypto.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return { checkpoints: [] }; }),
+    fetch('plants.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return { plants: [] }; })
   ]).then(function (res) {
-    data = res[0] || {}; P = res[1]; backlog = res[2] || { items: [] }; crypto = res[3] || { checkpoints: [] }; derived(); seedLists();
-    renderHome(); renderGoals(); renderHabits(); renderMoney(); renderCrypto(); renderCal(); route();
+    data = res[0] || {}; P = res[1]; backlog = res[2] || { items: [] }; crypto = res[3] || { checkpoints: [] }; plants = res[4] || { plants: [] }; derived(); seedLists();
+    renderHome(); renderGoals(); renderHabits(); renderMoney(); renderCrypto(); renderPlants(); renderCal(); route();
   });
 })();
 </script>
