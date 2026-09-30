@@ -186,34 +186,8 @@
   ]
  },
  "blog": {
-  "count": 73,
-  "recent": [
-   {
-    "date": "2026-09-30",
-    "title": "Цифровой двойник для видео: как снимать контент без съемок (HeyGen и аналоги)",
-    "url": "https://doctoraibolit.online/blog/cifrovoy-dvoynik-dlya-video.html"
-   },
-   {
-    "date": "2026-09-30",
-    "title": "ИИ для частной клиники: 10 задач, которые можно отдать нейросети уже сейчас",
-    "url": "https://doctoraibolit.online/blog/ii-dlya-chastnoy-kliniki.html"
-   },
-   {
-    "date": "2026-09-30",
-    "title": "Как вести Instagram без своего лица с помощью ИИ: для врача и эксперта",
-    "url": "https://doctoraibolit.online/blog/instagram-bez-lica-s-ii.html"
-   },
-   {
-    "date": "2026-09-30",
-    "title": "Как отличить текст нейросети от человеческого: признаки, детекторы и что с этим делать (2026)",
-    "url": "https://doctoraibolit.online/blog/kak-otlichit-tekst-neyroseti.html"
-   },
-   {
-    "date": "2026-09-30",
-    "title": "Как попасть в ответы нейросетей: GEO для сайта врача и клиники (2026)",
-    "url": "https://doctoraibolit.online/blog/kak-popast-v-otvety-neyrosetey.html"
-   }
-  ]
+  "count": 0,
+  "recent": []
  },
  "media": {
   "reels_rendered": 50,
@@ -243,5 +217,5 @@
  "errors": {
   "telegram": "no bot access in environment"
  },
- "updated": "2026-10-01 00:20"
+ "updated": "2026-10-01 01:20"
 }
