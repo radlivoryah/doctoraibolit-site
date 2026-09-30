@@ -109,3 +109,24 @@ article.post .author-box img{width:64px;height:64px;border-radius:50%;object-fit
 article.post .author-name{font-family:var(--font-head);font-weight:700;color:var(--white);margin-bottom:4px}
 article.post .author-box p{margin:0 0 6px;color:var(--muted);font-size:15px}
 article.post .author-box a{color:var(--gold);font-size:14px}
+/* Long-read template (30.09): short answer, glossary, checklist, FAQ, sources */
+article.post .tldr{background:var(--gold-soft);border-left:3px solid var(--gold);border-radius:12px;padding:18px 22px;margin:8px 0 30px}
+article.post .tldr b{display:block;font-family:var(--font-head);color:var(--white);margin-bottom:6px}
+article.post .tldr p{margin:0}
+article.post .glossary{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:18px 22px;margin:24px 0}
+article.post .glossary dt{font-weight:600;color:var(--white);margin-top:10px}
+article.post .glossary dt:first-child{margin-top:0}
+article.post .glossary dd{margin:2px 0 0;color:var(--muted-2)}
+article.post .warn{border:1px solid rgba(200,60,40,.35);background:rgba(200,60,40,.06);border-radius:12px;padding:16px 20px;margin:24px 0}
+article.post .checklist{list-style:none;padding:0;margin:16px 0 24px}
+article.post .checklist li{padding:8px 0 8px 30px;position:relative;border-bottom:1px solid var(--card-border)}
+article.post .checklist li:before{content:"✓";position:absolute;left:4px;color:var(--gold);font-weight:700}
+article.post table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:.95em}
+article.post th,article.post td{border:1px solid var(--card-border);padding:10px 12px;text-align:left;vertical-align:top}
+article.post th{background:var(--card-bg);color:var(--white)}
+article.post details.faq{border:1px solid var(--card-border);border-radius:10px;padding:12px 16px;margin:10px 0}
+article.post details.faq summary{cursor:pointer;font-weight:600;color:var(--white)}
+article.post details.faq p{margin:10px 0 0}
+article.post .sources{font-size:.9em;color:var(--muted-2)}
+article.post .sources li{margin:4px 0}
+@media (max-width:600px){article.post table{display:block;overflow-x:auto}}
