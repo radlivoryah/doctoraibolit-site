@@ -5,7 +5,97 @@
 <link>https://doctoraibolit.online/blog/</link>
 <description>Как практикующий врач применяет ИИ: инструменты, запросы, границы. Статьи из личной практики.</description>
 <language>ru</language>
-<lastBuildDate>Fri, 25 Sep 2026 10:00:00 +0300</lastBuildDate>
+<lastBuildDate>Wed, 30 Sep 2026 10:00:00 +0300</lastBuildDate>
+<item>
+<title>Расшифровка анализов нейросетью без вреда себе</title>
+<link>https://doctoraibolit.online/blog/rasshifrovka-analizov-neyrosetyu.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/rasshifrovka-analizov-neyrosetyu.html</guid>
+<pubDate>Wed, 30 Sep 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Что ИИ делает с бланком анализов хорошо, где ошибается и какие личные данные убрать до загрузки. Плюс готовый запрос и признаки, при которых звонить 103.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/rasshifrovka-analizov-neyrosetyu.png" type="image/png"/>
+</item>
+<item>
+<title>ИИ в медицине в России: где он работает в 2026</title>
+<link>https://doctoraibolit.online/blog/ii-v-medicine-v-rossii.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/ii-v-medicine-v-rossii.html</guid>
+<pubDate>Wed, 30 Sep 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Снимки, медкарты, подсказки врачу: реальные примеры медицинского ИИ в России по официальным источникам, цифры московского эксперимента и что говорит закон.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/ii-v-medicine-v-rossii.png" type="image/png"/>
+</item>
+<item>
+<title>Нейросеть для рентгена и МРТ: что умеет ИИ</title>
+<link>https://doctoraibolit.online/blog/neyroset-dlya-rentgena-i-mrt.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/neyroset-dlya-rentgena-i-mrt.html</guid>
+<pubDate>Wed, 30 Sep 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Медицинский ИИ для снимков и ChatGPT это разные вещи. Что показывают исследования, почему чат-бот не прочитает МРТ и как пациенту не принять фантазию за заключение.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/neyroset-dlya-rentgena-i-mrt.png" type="image/png"/>
+</item>
+<item>
+<title>Нейросеть-врач онлайн: как спрашивать про симптомы</title>
+<link>https://doctoraibolit.online/blog/neyroset-vrach-onlayn.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/neyroset-vrach-onlayn.html</guid>
+<pubDate>Wed, 30 Sep 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Можно ли спрашивать ИИ про симптомы: что показало исследование на 1298 людях, что говорит закон о телемедицине, шаблон вопроса и признаки, когда звонить в скорую.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/neyroset-vrach-onlayn.png" type="image/png"/>
+</item>
+<item>
+<title>Нейросети в стоматологии: что уже умеют</title>
+<link>https://doctoraibolit.online/blog/neyroseti-v-stomatologii.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/neyroseti-v-stomatologii.html</guid>
+<pubDate>Wed, 30 Sep 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Стоматолог-ортопед о том, как ИИ ищет кариес и очаги на снимках, что показали исследования, почему ChatGPT снимок зубов не прочитает и что это значит для вас.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/neyroseti-v-stomatologii.png" type="image/png"/>
+</item>
+<item>
+<title>Claude с нуля: вход, русский язык, модели</title>
+<link>https://doctoraibolit.online/blog/kak-polzovatsya-claude-poshagovo.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/kak-polzovatsya-claude-poshagovo.html</guid>
+<pubDate>Wed, 30 Sep 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Пошагово: как войти в Claude, как сделать, чтобы он всегда отвечал по-русски, какая версия последняя и нужен ли платный тариф.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/kak-polzovatsya-claude-poshagovo.png" type="image/png"/>
+</item>
+<item>
+<title>ChatGPT с нуля: вход, русский язык, тарифы</title>
+<link>https://doctoraibolit.online/blog/kak-polzovatsya-chatgpt-2026.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/kak-polzovatsya-chatgpt-2026.html</guid>
+<pubDate>Wed, 30 Sep 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Как войти в ChatGPT, включить русский интерфейс, чем Instant отличается от Think и какой тариф нужен новичку на самом деле.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/kak-polzovatsya-chatgpt-2026.png" type="image/png"/>
+</item>
+<item>
+<title>Нейросеть для презентаций: слайды за вечер</title>
+<link>https://doctoraibolit.online/blog/neyroset-dlya-prezentaciy.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/neyroset-dlya-prezentaciy.html</guid>
+<pubDate>Wed, 30 Sep 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>ГигаЧат, Алиса AI, Gamma и Claude: что умеет каждый, что бесплатно и пошаговый план, как собрать доклад за один вечер.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/neyroset-dlya-prezentaciy.png" type="image/png"/>
+</item>
+<item>
+<title>ИИ-помощник для врача: что есть в России</title>
+<link>https://doctoraibolit.online/blog/ii-pomoshchnik-dlya-vracha.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/ii-pomoshchnik-dlya-vracha.html</guid>
+<pubDate>Wed, 30 Sep 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Яндекс Мед, Diagnocat, Webiomed, Третье мнение: что заявляют сервисы, с чего начать и почему диагноз все равно ставит врач.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/ii-pomoshchnik-dlya-vracha.png" type="image/png"/>
+</item>
+<item>
+<title>Нейросеть для текста: бесплатно и по-живому</title>
+<link>https://doctoraibolit.online/blog/neyroset-dlya-napisaniya-teksta.html</link>
+<guid isPermaLink="true">https://doctoraibolit.online/blog/neyroset-dlya-napisaniya-teksta.html</guid>
+<pubDate>Wed, 30 Sep 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<description>Алиса AI, ГигаЧат, ChatGPT и Claude для текстов на русском и пять шагов, после которых текст звучит как человек, а не как робот.</description>
+<enclosure url="https://doctoraibolit.online/blog/img/neyroset-dlya-napisaniya-teksta.png" type="image/png"/>
+</item>
 <item>
 <title>Обычный чат или свой ИИ-агент</title>
 <link>https://doctoraibolit.online/blog/obychnyy-chat-ili-svoy-ii-agent.html</link>
@@ -185,96 +275,6 @@
 <author>Ильдар Хайров</author>
 <description>Стили и готовые промпты: что вписать в генератор и что получишь. С формулой.</description>
 <enclosure url="https://doctoraibolit.online/blog/img/stili-ii-kartinok-gotovye-prompty.png" type="image/png"/>
-</item>
-<item>
-<title>Заработок на нейросетях: где деньги правда есть</title>
-<link>https://doctoraibolit.online/blog/zarabotok-na-neyrosetyah-2026-chto-realno-rabotaet.html</link>
-<guid isPermaLink="true">https://doctoraibolit.online/blog/zarabotok-na-neyrosetyah-2026-chto-realno-rabotaet.html</guid>
-<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
-<author>Ильдар Хайров</author>
-<description>Что реально приносит деньги на ИИ, а где развод. Честно, от практика, с цифрами.</description>
-<enclosure url="https://doctoraibolit.online/blog/img/zarabotok-na-neyrosetyah-2026-chto-realno-rabotaet.png" type="image/png"/>
-</item>
-<item>
-<title>ИИ-фотосессия: экспертные кадры без фотографа</title>
-<link>https://doctoraibolit.online/blog/ii-fotosessiya-prompty-poshagovo.html</link>
-<guid isPermaLink="true">https://doctoraibolit.online/blog/ii-fotosessiya-prompty-poshagovo.html</guid>
-<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
-<author>Ильдар Хайров</author>
-<description>Пошагово: референсы, формула промпта, готовые шаблоны и разбор брака.</description>
-<enclosure url="https://doctoraibolit.online/blog/img/ii-fotosessiya-prompty-poshagovo.png" type="image/png"/>
-</item>
-<item>
-<title>AI-портреты из одного селфи: 15 промптов</title>
-<link>https://doctoraibolit.online/blog/ai-portrety-iz-odnogo-selfi-15-promptov.html</link>
-<guid isPermaLink="true">https://doctoraibolit.online/blog/ai-portrety-iz-odnogo-selfi-15-promptov.html</guid>
-<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
-<author>Ильдар Хайров</author>
-<description>Деловой хедшот и киношные аватарки из одного селфи. Главный приём и промпты.</description>
-<enclosure url="https://doctoraibolit.online/blog/img/ai-portrety-iz-odnogo-selfi-15-promptov.png" type="image/png"/>
-</item>
-<item>
-<title>Нейросеть рисует по описанию: сервисы 2026</title>
-<link>https://doctoraibolit.online/blog/neyroset-risuet-po-opisaniyu-2026.html</link>
-<guid isPermaLink="true">https://doctoraibolit.online/blog/neyroset-risuet-po-opisaniyu-2026.html</guid>
-<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
-<author>Ильдар Хайров</author>
-<description>Пять рабочих сервисов и формула промпта из шести кирпичей, чтобы попасть с первого раза.</description>
-<enclosure url="https://doctoraibolit.online/blog/img/neyroset-risuet-po-opisaniyu-2026.png" type="image/png"/>
-</item>
-<item>
-<title>Nano Banana: генерирую и правлю картинки Google</title>
-<link>https://doctoraibolit.online/blog/nano-banana-kak-polzovatsya.html</link>
-<guid isPermaLink="true">https://doctoraibolit.online/blog/nano-banana-kak-polzovatsya.html</guid>
-<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
-<author>Ильдар Хайров</author>
-<description>Что за генератор, как запустить из России и какие промпты работают. На примерах.</description>
-<enclosure url="https://doctoraibolit.online/blog/img/nano-banana-kak-polzovatsya.png" type="image/png"/>
-</item>
-<item>
-<title>10 фраз, которые меняют ответ ChatGPT и Claude</title>
-<link>https://doctoraibolit.online/blog/frazy-menyayushchie-otvet-chatgpt-claude.html</link>
-<guid isPermaLink="true">https://doctoraibolit.online/blog/frazy-menyayushchie-otvet-chatgpt-claude.html</guid>
-<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
-<author>Ильдар Хайров</author>
-<description>Не секретные команды, а 10 рабочих фраз. Что каждая меняет в ответе и когда её ставить.</description>
-<enclosure url="https://doctoraibolit.online/blog/img/frazy-menyayushchie-otvet-chatgpt-claude.png" type="image/png"/>
-</item>
-<item>
-<title>Запах нейросети: как вычистить ИИ из текста</title>
-<link>https://doctoraibolit.online/blog/kak-ubrat-zapah-neyroseti-iz-teksta.html</link>
-<guid isPermaLink="true">https://doctoraibolit.online/blog/kak-ubrat-zapah-neyroseti-iz-teksta.html</guid>
-<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
-<author>Ильдар Хайров</author>
-<description>Что выдаёт машину в тексте и как это вычистить. Штампы, конструкции, ритм, тире. С примерами.</description>
-<enclosure url="https://doctoraibolit.online/blog/img/kak-ubrat-zapah-neyroseti-iz-teksta.png" type="image/png"/>
-</item>
-<item>
-<title>Нейросети для видео в 2026: с чего начать</title>
-<link>https://doctoraibolit.online/blog/neyroseti-dlya-video-2026-s-chego-nachat.html</link>
-<guid isPermaLink="true">https://doctoraibolit.online/blog/neyroseti-dlya-video-2026-s-chego-nachat.html</guid>
-<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
-<author>Ильдар Хайров</author>
-<description>Kling, Runway, Veo, Pika. Что для чего, как платить из России и как сделать первый ролик.</description>
-<enclosure url="https://doctoraibolit.online/blog/img/neyroseti-dlya-video-2026-s-chego-nachat.png" type="image/png"/>
-</item>
-<item>
-<title>Оживил фото за 5 секунд: видео из картинки</title>
-<link>https://doctoraibolit.online/blog/kak-ozhivit-foto-v-video-neyrosetyu.html</link>
-<guid isPermaLink="true">https://doctoraibolit.online/blog/kak-ozhivit-foto-v-video-neyrosetyu.html</guid>
-<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
-<author>Ильдар Хайров</author>
-<description>Как оживить любое фото в видео: сервисы, промпты движения, где ломается лицо и как чинить.</description>
-<enclosure url="https://doctoraibolit.online/blog/img/kak-ozhivit-foto-v-video-neyrosetyu.png" type="image/png"/>
-</item>
-<item>
-<title>Suno из России: музыка и джингл за минуту</title>
-<link>https://doctoraibolit.online/blog/suno-muzyka-i-dzhingl-iz-rossii.html</link>
-<guid isPermaLink="true">https://doctoraibolit.online/blog/suno-muzyka-i-dzhingl-iz-rossii.html</guid>
-<pubDate>Thu, 23 Jul 2026 10:00:00 +0300</pubDate>
-<author>Ильдар Хайров</author>
-<description>Доступ из РФ, оплата рублями, промпт под музыку и джингл для рилсов, права на коммерцию.</description>
-<enclosure url="https://doctoraibolit.online/blog/img/suno-muzyka-i-dzhingl-iz-rossii.png" type="image/png"/>
 </item>
 </channel>
 </rss>
