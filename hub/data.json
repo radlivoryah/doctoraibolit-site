@@ -205,7 +205,7 @@
   "url": "https://docs.google.com/spreadsheets/d/1-dV-xavJeCNc6oniRlLTDyRwtu-JghhXx_g2KHHmAtE"
  },
  "telegram": {
-  "subscribers": 10,
+  "subscribers": 11,
   "channel": "@ai_bolit_ildar"
  },
  "agents": {
@@ -217,5 +217,5 @@
  "errors": {
   "telegram": "no bot access in environment"
  },
- "updated": "2026-10-02 00:20"
+ "updated": "2026-10-02 01:20"
 }
