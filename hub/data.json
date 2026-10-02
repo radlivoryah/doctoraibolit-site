@@ -214,6 +214,8 @@
   "holmes": "active",
   "zoya": "active"
  },
- "errors": {},
- "updated": "2026-10-02 02:36"
+ "errors": {
+  "telegram": "no bot access in environment"
+ },
+ "updated": "2026-10-02 03:20"
 }
