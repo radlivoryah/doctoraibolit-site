@@ -190,7 +190,7 @@
   "recent": []
  },
  "media": {
-  "reels_rendered": 50,
+  "reels_rendered": 52,
   "carousels": 28
  },
  "sheet": {
@@ -217,5 +217,5 @@
  "errors": {
   "telegram": "no bot access in environment"
  },
- "updated": "2026-10-03 16:20"
+ "updated": "2026-10-03 17:20"
 }
