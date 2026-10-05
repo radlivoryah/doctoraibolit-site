@@ -1,6 +1,128 @@
 {
- "updated": "04.10 21:30",
+ "updated": "05.10 21:30",
  "checkpoints": [
+  {
+   "when": "05.10 21:30",
+   "total": 257.04,
+   "unreal": -885.68,
+   "wallets": [
+    {
+     "name": "GMGN",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "пусто",
+     "tokens": []
+    },
+    {
+     "name": "GMGN",
+     "chain": "robinhood",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "GMGN",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Phantom",
+     "chain": "sol",
+     "value": 19.95,
+     "note": "",
+     "tokens": [
+      {
+       "name": "mSOL",
+       "value": 18.35,
+       "pnl": 0.0
+      },
+      {
+       "name": "POPCAT",
+       "value": 1.6,
+       "pnl": 0.0
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "sol",
+     "value": 231.27,
+     "note": "",
+     "tokens": [
+      {
+       "name": "CATE",
+       "value": 92.82,
+       "pnl": 13.2
+      },
+      {
+       "name": "Groyper",
+       "value": 82.94,
+       "pnl": -26.14
+      },
+      {
+       "name": "EMBER",
+       "value": 33.24,
+       "pnl": -64.99
+      },
+      {
+       "name": "LIBRA",
+       "value": 12.74,
+       "pnl": -360.62
+      },
+      {
+       "name": "Shrek",
+       "value": 8.02,
+       "pnl": -12.02
+      },
+      {
+       "name": "NPC",
+       "value": 1.51,
+       "pnl": -48.15
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "robinhood",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Uniswap",
+     "chain": "eth",
+     "value": 5.83,
+     "note": "",
+     "tokens": [
+      {
+       "name": "DOGGO",
+       "value": 3.12,
+       "pnl": -257.37
+      },
+      {
+       "name": "SABAI",
+       "value": 1.7,
+       "pnl": -104.38
+      },
+      {
+       "name": "SPONGE",
+       "value": 1.01,
+       "pnl": -25.22
+      }
+     ]
+    }
+   ],
+   "follow": []
+  },
   {
    "when": "04.10 21:30",
    "total": 724.66,
