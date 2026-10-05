@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex">
 <title>Пульс</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="pulse-sync.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Commissioner:wght@400;500;600&display=swap">
 <style>
 :root {
@@ -279,23 +280,44 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
   var data = {}, P = { groups: [], events: [], daily: [], areas: [] }, backlog = { items: [] }, crypto = { checkpoints: [] }, plants = { plants: [] };
   var st = load();
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; } }
-  function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
-  st.scores = st.scores || {}; st.goals = st.goals || []; st.habits = st.habits || []; st.open = st.open || {}; st.tasks = st.tasks || {}; st.showDone = st.showDone || {}; st.lists = st.lists || {}; st.notes = st.notes || {}; st.rate = st.rate || 100; st.subs = st.subs || null; st.backlogDone = st.backlogDone || {}; st.seeded = st.seeded || {}; st.watered = st.watered || {};
-  // Older builds kept tasks in st.tasks[pid]; they now live in st.lists[pid].tasks.
-  Object.keys(st.tasks).forEach(function (pid) { st.lists[pid] = st.lists[pid] || {}; st.lists[pid].tasks = (st.lists[pid].tasks || []).concat(st.tasks[pid]); }); st.tasks = {};
+  function store() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
+  /* Every change is stamped and pushed to Telegram CloudStorage (pulse-sync.js), so the
+     phone and the desktop app show the same state. */
+  var pushTimer = null;
+  function save() { st.updatedAt = Date.now(); store(); clearTimeout(pushTimer); pushTimer = setTimeout(syncNow, 1500); }
+  function forget(id) { st.deleted[id] = todayIso(); }
+  function normalize() {
+    st.scores = st.scores || {}; st.goals = st.goals || []; st.habits = st.habits || []; st.open = st.open || {}; st.tasks = st.tasks || {}; st.showDone = st.showDone || {}; st.lists = st.lists || {}; st.notes = st.notes || {}; st.rate = st.rate || 100; st.subs = st.subs || null; st.backlogDone = st.backlogDone || {}; st.seeded = st.seeded || {}; st.watered = st.watered || {}; st.deleted = st.deleted || {};
+    // Older builds kept tasks in st.tasks[pid]; they now live in st.lists[pid].tasks.
+    Object.keys(st.tasks).forEach(function (pid) { st.lists[pid] = st.lists[pid] || {}; st.lists[pid].tasks = (st.lists[pid].tasks || []).concat(st.tasks[pid]); }); st.tasks = {};
+  }
+  normalize();
+  var META = 'pulse-sync-meta', booted = false;
+  function syncNow() {
+    if (!window.PulseSync) return;
+    PulseSync.sync({
+      get: function () { return st; },
+      set: function (s) { st = s; normalize(); store(); },
+      metaGet: function () { try { return JSON.parse(localStorage.getItem(META) || '{}'); } catch (e) { return {}; } },
+      metaSet: function (m) { try { localStorage.setItem(META, JSON.stringify(m)); } catch (e) {} },
+      done: function (changed) { if (changed && booted) renderAll(); }
+    });
+  }
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) syncNow(); });
   var DEFAULT_LISTS = [{ id: 'tasks', name: 'Задачи', done: true, placeholder: 'Задача или цель' }];
   function listsOf(p) { return p.lists || DEFAULT_LISTS; }
   /* A list in projects.json may carry "seed": agent-written steps copied once into the
      device's list, after which the operator ticks or deletes them like his own. */
   function seedLists() {
+    var added = false;
     (P.groups || []).forEach(function (g) { g.projects.forEach(function (p) { (p.lists || []).forEach(function (L) {
       (L.seed || []).forEach(function (text) {
         var key = p.id + '/' + L.id + '/' + text; if (st.seeded[key]) return;
         items(p.id, L.id).push({ id: String(Date.now()) + Math.random().toString(36).slice(2, 6), text: text, done: null, created: todayIso() });
-        st.seeded[key] = todayIso();
+        st.seeded[key] = todayIso(); added = true;
       });
     }); }); });
-    save();
+    if (added) save();
   }
   function items(pid, lid) { st.lists[pid] = st.lists[pid] || {}; return st.lists[pid][lid] = st.lists[pid][lid] || []; }
 
@@ -422,7 +444,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
       var list = items(el.dataset.pid, el.dataset.lid), t = list.filter(function (x) { return x.id === el.dataset.id; })[0]; if (!t) return;
       var chk = el.querySelector('input');
       if (chk) chk.addEventListener('change', function (e) { t.done = e.target.checked ? todayIso() : null; save(); rerender(); });
-      el.querySelector('button').addEventListener('click', function () { st.lists[el.dataset.pid][el.dataset.lid] = list.filter(function (x) { return x !== t; }); save(); rerender(); });
+      el.querySelector('button').addEventListener('click', function () { forget(t.id); st.lists[el.dataset.pid][el.dataset.lid] = list.filter(function (x) { return x !== t; }); save(); rerender(); });
     });
   }
   function rerender() { renderHome(); if (groupId) { var g = P.groups.filter(function (x) { return x.id === groupId; })[0]; if (g && !document.getElementById('v-group').hidden) renderGroup(g, null); } }
@@ -519,7 +541,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     root.querySelectorAll('.goal').forEach(function (el) {
       var g = st.goals.filter(function (x) { return x.id === el.dataset.id; })[0]; if (!g) return;
       el.querySelector('input').addEventListener('change', function (e) { g.done = e.target.checked ? todayIso() : null; save(); renderGoals(); renderHome(); });
-      el.querySelector('button').addEventListener('click', function () { st.goals = st.goals.filter(function (x) { return x !== g; }); save(); renderGoals(); renderHome(); });
+      el.querySelector('button').addEventListener('click', function () { forget(g.id); st.goals = st.goals.filter(function (x) { return x !== g; }); save(); renderGoals(); renderHome(); });
     });
   }
   function renderGoals() {
@@ -549,7 +571,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     el.querySelectorAll('.habit').forEach(function (row) {
       var h = st.habits.filter(function (x) { return x.id === row.dataset.id; })[0];
       row.querySelector('.today').addEventListener('click', function () { if (h.log[today]) delete h.log[today]; else h.log[today] = 1; save(); renderHabits(); });
-      row.querySelector('.del').addEventListener('click', function () { st.habits = st.habits.filter(function (x) { return x !== h; }); save(); renderHabits(); });
+      row.querySelector('.del').addEventListener('click', function () { forget(h.id); st.habits = st.habits.filter(function (x) { return x !== h; }); save(); renderHabits(); });
     });
   }
   document.getElementById('habitForm').addEventListener('submit', function (e) {
@@ -631,7 +653,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
       row.querySelector('.am').addEventListener('change', function (e) { x.amount = e.target.value === '' ? null : parseFloat(e.target.value); save(); renderMoney(); });
       row.querySelector('.cu').addEventListener('change', function (e) { x.cur = e.target.value; save(); renderMoney(); });
       row.querySelector('.pe').addEventListener('change', function (e) { x.period = e.target.value; save(); renderMoney(); });
-      row.querySelector('button').addEventListener('click', function () { st.subs = list.filter(function (i) { return i !== x; }); save(); renderMoney(); });
+      row.querySelector('button').addEventListener('click', function () { forget(x.id); st.subs = list.filter(function (i) { return i !== x; }); save(); renderMoney(); });
     });
   }
   document.getElementById('subForm').addEventListener('submit', function (e) {
@@ -771,8 +793,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     fetch('plants.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return { plants: [] }; })
   ]).then(function (res) {
     data = res[0] || {}; P = res[1]; backlog = res[2] || { items: [] }; crypto = res[3] || { checkpoints: [] }; plants = res[4] || { plants: [] }; derived(); seedLists();
-    renderHome(); renderGoals(); renderHabits(); renderMoney(); renderCrypto(); renderPlants(); renderCal(); route();
+    renderAll(); booted = true; syncNow();
   });
+  function renderAll() { renderHome(); renderGoals(); renderHabits(); renderMoney(); renderCrypto(); renderPlants(); renderCal(); route(); }
 })();
 </script>
 </body>
