@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex">
 <title>Пульс</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script src="pulse-sync.js"></script>
+<script src="pulse-sync.js?v=2"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Commissioner:wght@400;500;600&display=swap">
 <style>
 :root {
@@ -183,10 +183,13 @@ h3 { font-size:16px; }
 .plant .act button { border:0; border-radius:999px; padding:7px 14px; background:var(--accent); color:#fff; font:inherit; font-size:13px; cursor:pointer; }
 .plant .act small { color:var(--muted); font-size:12px; }
 button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+.syncst{position:fixed;left:12px;bottom:12px;z-index:50;font:12px/1.2 inherit;padding:6px 10px;border-radius:14px;border:1px solid #d9d4c7;background:#fff;color:#0d7377;cursor:pointer;max-width:calc(100vw - 24px)}
+.syncst.bad{color:#a33}
 </style>
 </head>
 <body>
 <div class="shell">
+  <button class="syncst" id="syncst" type="button">… синхронизация</button>
   <aside class="side">
     <div class="brand"><i></i><div><h1>Пульс</h1><small>вся жизнь на одном экране</small></div></div>
     <nav class="nav" id="nav"></nav>
@@ -300,10 +303,19 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
       set: function (s) { st = s; normalize(); store(); },
       metaGet: function () { try { return JSON.parse(localStorage.getItem(META) || '{}'); } catch (e) { return {}; } },
       metaSet: function (m) { try { localStorage.setItem(META, JSON.stringify(m)); } catch (e) {} },
-      done: function (changed) { if (changed && booted) renderAll(); }
+      done: function (changed) { if (changed && booted) renderAll(); },
+      status: function (text, ok) {
+        var el = document.getElementById('syncst'); if (!el) return;
+        var t = new Date(); el.textContent = (ok ? '● ' : '○ ') + text + ' ' + ('0' + t.getHours()).slice(-2) + ':' + ('0' + t.getMinutes()).slice(-2);
+        el.className = 'syncst' + (ok ? '' : ' bad');
+      }
     });
   }
+  var SYNC_POLL_MS = 60000; // desktop webviews do not always fire visibilitychange
   document.addEventListener('visibilitychange', function () { if (!document.hidden) syncNow(); });
+  window.addEventListener('focus', syncNow);
+  setInterval(function () { if (!document.hidden) syncNow(); }, SYNC_POLL_MS);
+  document.getElementById('syncst').addEventListener('click', function () { this.textContent = '… синхронизация'; syncNow(); });
   var DEFAULT_LISTS = [{ id: 'tasks', name: 'Задачи', done: true, placeholder: 'Задача или цель' }];
   function listsOf(p) { return p.lists || DEFAULT_LISTS; }
   /* A list in projects.json may carry "seed": agent-written steps copied once into the
