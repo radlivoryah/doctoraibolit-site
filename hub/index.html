@@ -797,6 +797,17 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
   document.getElementById('prev').addEventListener('click', function () { cur.setMonth(cur.getMonth() - 1); renderCal(); });
   document.getElementById('next').addEventListener('click', function () { cur.setMonth(cur.getMonth() + 1); renderCal(); });
 
+  /* Telegram webviews keep a stale copy of this page; build.txt is fetched fresh and a
+     mismatch reloads once with a new query string. Bump BUILD and build.txt together. */
+  var BUILD = '3';
+  fetch('build.txt?' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function (b) {
+    b = b.trim();
+    if (b && b !== BUILD && sessionStorage.getItem('pulse-reload') !== b) {
+      sessionStorage.setItem('pulse-reload', b);
+      location.replace(location.pathname + '?b=' + b + location.hash);
+    }
+  }).catch(function () {});
+
   Promise.all([
     fetch('data.json?' + Date.now()).then(function (r) { return r.json(); }).catch(function () { return {}; }),
     fetch('projects.json?' + Date.now()).then(function (r) { return r.json(); }),
