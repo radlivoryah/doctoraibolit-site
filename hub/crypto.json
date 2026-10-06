@@ -1,6 +1,180 @@
 {
- "updated": "05.10 21:30",
+ "updated": "06.10 21:30",
  "checkpoints": [
+  {
+   "when": "06.10 21:30",
+   "total": 701.33,
+   "unreal": -1678.0,
+   "wallets": [
+    {
+     "name": "GMGN",
+     "chain": "eth",
+     "value": 0.0,
+     "note": "пусто",
+     "tokens": []
+    },
+    {
+     "name": "GMGN",
+     "chain": "robinhood",
+     "value": 216.03,
+     "note": "",
+     "tokens": [
+      {
+       "name": "RAM",
+       "value": 206.03,
+       "pnl": -43.5
+      },
+      {
+       "name": "ROBINCAT",
+       "value": 10.01,
+       "pnl": -89.06
+      }
+     ]
+    },
+    {
+     "name": "GMGN",
+     "chain": "sol",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Phantom",
+     "chain": "sol",
+     "value": 20.07,
+     "note": "",
+     "tokens": [
+      {
+       "name": "mSOL",
+       "value": 18.48,
+       "pnl": 0.0
+      },
+      {
+       "name": "POPCAT",
+       "value": 1.59,
+       "pnl": 0.0
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "sol",
+     "value": 250.53,
+     "note": "",
+     "tokens": [
+      {
+       "name": "CATE",
+       "value": 96.5,
+       "pnl": 16.87
+      },
+      {
+       "name": "Groyper",
+       "value": 83.26,
+       "pnl": -25.81
+      },
+      {
+       "name": "EMBER",
+       "value": 48.5,
+       "pnl": -49.73
+      },
+      {
+       "name": "LIBRA",
+       "value": 12.74,
+       "pnl": -360.62
+      },
+      {
+       "name": "Shrek",
+       "value": 8.02,
+       "pnl": -12.02
+      },
+      {
+       "name": "NPC",
+       "value": 1.51,
+       "pnl": -48.15
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "eth",
+     "value": 208.88,
+     "note": "",
+     "tokens": [
+      {
+       "name": "uPEG",
+       "value": 64.95,
+       "pnl": -58.73
+      },
+      {
+       "name": "PEPE",
+       "value": 64.38,
+       "pnl": -158.47
+      },
+      {
+       "name": "SPX",
+       "value": 45.89,
+       "pnl": -52.97
+      },
+      {
+       "name": "BITCOIN",
+       "value": 15.58,
+       "pnl": -134.03
+      },
+      {
+       "name": "XRP",
+       "value": 9.29,
+       "pnl": -88.88
+      },
+      {
+       "name": "CATALORIAN",
+       "value": 4.02,
+       "pnl": -95.63
+      },
+      {
+       "name": "MARS",
+       "value": 3.64,
+       "pnl": -86.06
+      },
+      {
+       "name": "DJT",
+       "value": 1.15,
+       "pnl": -3.84
+      }
+     ]
+    },
+    {
+     "name": "AlphaDex",
+     "chain": "robinhood",
+     "value": 0.0,
+     "note": "нет ответа",
+     "tokens": []
+    },
+    {
+     "name": "Uniswap",
+     "chain": "eth",
+     "value": 5.83,
+     "note": "",
+     "tokens": [
+      {
+       "name": "DOGGO",
+       "value": 3.12,
+       "pnl": -257.37
+      },
+      {
+       "name": "SABAI",
+       "value": 1.7,
+       "pnl": -104.38
+      },
+      {
+       "name": "SPONGE",
+       "value": 1.01,
+       "pnl": -25.22
+      }
+     ]
+    }
+   ],
+   "follow": []
+  },
   {
    "when": "05.10 21:30",
    "total": 257.04,
