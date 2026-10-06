@@ -121,10 +121,14 @@
 
   /* ---------- Telegram CloudStorage adapter ---------- */
 
+  /** @returns {{cs: object|null, why: string}} storage or the reason it is unavailable */
   function cloud() {
     var tg = root.Telegram && root.Telegram.WebApp;
-    if (!tg || !tg.CloudStorage || !tg.isVersionAtLeast || !tg.isVersionAtLeast('6.9')) return null;
-    return tg.CloudStorage;
+    if (!tg || !tg.initData) return { cs: null, why: 'открыто не из Telegram, синхронизации нет' };
+    if (!tg.CloudStorage || !tg.isVersionAtLeast || !tg.isVersionAtLeast('6.9')) {
+      return { cs: null, why: 'старый Telegram (' + (tg.version || '?') + '), обновите приложение' };
+    }
+    return { cs: tg.CloudStorage, why: '' };
   }
 
   function read(cs, cb) {
@@ -151,25 +155,39 @@
     });
   }
 
+  var WHAT = { push: 'отправлено в облако', take: 'получено из облака', merge: 'объединено' };
+  var STUCK_MS = 20000; // a CloudStorage call that never answers must not block later syncs
+
   /**
    * Sync this device with the cloud.
-   * @param {object} opts get(): state, set(state), metaGet(), metaSet(meta), done(changed)
+   * @param {object} opts get(): state, set(state), metaGet(), metaSet(meta), done(changed),
+   *   status(text, ok) optional, reports what happened for the on-page indicator
    */
   function sync(opts) {
-    var cs = cloud();
-    if (!cs || sync.busy) return;
-    sync.busy = true;
-    function finish(changed) { sync.busy = false; if (opts.done) opts.done(changed); }
+    var say = opts.status || function () {};
+    var c = cloud();
+    if (!c.cs) return say(c.why, false);
+    if (sync.busy && Date.now() - sync.busy < STUCK_MS) return;
+    var token = sync.busy = Date.now();
+    var cs = c.cs;
+    function finish(changed, err, action) {
+      if (sync.busy !== token) return;
+      sync.busy = 0;
+      if (err) say('ошибка синхронизации: ' + (err.message || err), false);
+      else say('синхронизировано' + (WHAT[action] ? ', ' + WHAT[action] : ''), true);
+      if (opts.done) opts.done(changed);
+    }
+    setTimeout(function () { if (sync.busy === token) finish(false, 'облако не ответило'); }, STUCK_MS);
     read(cs, function (err, remote, slot) {
-      if (err) return finish(false);
+      if (err) return finish(false, err);
       var local = opts.get(), meta = opts.metaGet(), action = plan(local, remote, meta);
-      if (action === 'none') return finish(false);
-      if (action === 'take') { opts.set(remote); meta.cloudTs = remote.updatedAt || 0; opts.metaSet(meta); return finish(true); }
+      if (action === 'none') return finish(false, null, action);
+      if (action === 'take') { opts.set(remote); meta.cloudTs = remote.updatedAt || 0; opts.metaSet(meta); return finish(true, null, action); }
       var next = action === 'merge' ? merge(local, remote) : local;
       if (action === 'merge') { next.updatedAt = Date.now(); opts.set(next); }
       write(cs, next, slot, function (e) {
         if (!e) { meta.cloudTs = next.updatedAt || 0; meta.mergedOnce = true; opts.metaSet(meta); }
-        finish(action === 'merge');
+        finish(action === 'merge', e, action);
       });
     });
   }
