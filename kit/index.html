@@ -94,6 +94,7 @@ h1 { font-size:24px; }
 .hint a { color:var(--ink); }
 @media (max-width:420px) { .item { grid-template-columns:1fr auto; } .item .del { grid-column:2; grid-row:1; } .item .qty { grid-column:1 / -1; } .summary b { font-size:19px; } }
 @media print { .foot, .tools, .tabs, .top .theme { display:none; } .cat.closed .body { display:block; } .item .del { display:none; } }
+.item.buy { display:flex; justify-content:space-between; gap:12px; padding-top:8px; padding-bottom:8px; } .item.buy .qty { white-space:nowrap; color:var(--muted, inherit); }
 button:focus-visible, input:focus-visible { outline:2px solid var(--gold); outline-offset:1px; }
 </style>
 </head>
@@ -102,7 +103,7 @@ button:focus-visible, input:focus-visible { outline:2px solid var(--gold); outli
   <div class="top"><h1>Автоном</h1><button class="theme" id="theme">Тема</button></div>
   <div class="sub">На двоих: дом на 35 дней без выхода, рюкзак на случай ухода и меню на все 35 дней. Отметки хранятся в этом браузере.</div>
 
-  <div class="tabs"><button class="on" data-list="home">Дом</button><button data-list="bag">Рюкзак</button><button data-list="menu">Меню</button></div>
+  <div class="tabs"><button class="on" data-list="home">Дом</button><button data-list="bag">Рюкзак</button><button data-list="menu">Меню</button><button data-list="buy">Покупки</button></div>
 
   <div id="listUi">
     <div class="summary"><div><b id="sDone">0</b><span>позиций закрыто</span></div><div><b id="sTotal">0</b><span>всего позиций</span></div><div><b id="sPct">0%</b><span>готовность</span></div></div>
@@ -120,6 +121,12 @@ button:focus-visible, input:focus-visible { outline:2px solid var(--gold); outli
     <div id="menuDays" class="menu"></div>
     <div class="cat" id="favCat"></div>
     <p class="hint">Расход по меню за 35 дней: крупы и макароны около 16 кг, консервов 35 банок, масла 0,7 л, орехов и сухофруктов 2,5 кг, сладкого 2 кг. Это укладывается в вкладку «Дом».</p>
+  </div>
+
+  <div id="buyUi" hidden>
+    <div class="intro">Все покупки по вкладкам «Дом» и «Рюкзак» на одной странице. Сверху то, что уже куплено, ниже то, что осталось докупить. Цифры меняются на вкладках, здесь только сводка.</div>
+    <div class="summary"><div><b id="bHave">0</b><span>есть в запасе</span></div><div><b id="bPart">0</b><span>из них не до нормы</span></div><div><b id="bNeed">0</b><span>докупить</span></div></div>
+    <div id="buyLists"></div>
   </div>
 
   <p class="hint" id="sources">Нормы и состав сверены с <a href="https://www.ready.gov/kit" target="_blank" rel="noopener">ready.gov</a>, <a href="https://mchs.gov.ru/deyatelnost/bezopasnost-grazhdan/trevozhnyy-chemodanchik_2" target="_blank" rel="noopener">МЧС</a>, CDC и разборами lastday.club. Твой файл «Аварийный запас» от июля влит целиком: что там было куплено, уже стоит в поле «куплено».</p>
@@ -326,9 +333,11 @@ button:focus-visible, input:focus-visible { outline:2px solid var(--gold); outli
 
   function render() {
     var L = DATA[list];
-    var isMenu = list === 'menu';
-    document.getElementById('listUi').hidden = isMenu;
+    var isMenu = list === 'menu', isBuy = list === 'buy';
+    document.getElementById('listUi').hidden = isMenu || isBuy;
     document.getElementById('menuUi').hidden = !isMenu;
+    document.getElementById('buyUi').hidden = !isBuy;
+    if (isBuy) { renderBuy(); return; }
     if (isMenu) { renderMenu(); renderCats(L, document.getElementById('favCat')); return; }
     document.getElementById('intro').innerHTML = L.intro || '';
     var r = renderCats(L, root);
@@ -337,6 +346,43 @@ button:focus-visible, input:focus-visible { outline:2px solid var(--gold); outli
     var pct = r[1] ? Math.round(r[0] / r[1] * 100) : 0;
     document.getElementById('sPct').textContent = pct + '%';
     document.getElementById('bar').style.width = pct + '%';
+  }
+
+  // Purchases overview: bought vs still to buy across home and bag lists.
+  function renderBuy() {
+    var bought = [], toBuy = [], partial = 0;
+    ['home', 'bag'].forEach(function (lid) {
+      DATA[lid].cats.forEach(function (cat) {
+        cat.subs.forEach(function (sub) {
+          itemsOf(lid, cat, sub).forEach(function (it) {
+              var h = have(it), n = need(it), where = (lid === 'home' ? 'Дом' : 'Рюкзак') + ' / ' + cat.name;
+              if (h > 0) bought.push([it, h, n, where]);
+              if (n > h) toBuy.push([it, h, n, where]);
+              if (h > 0 && n > h) partial++;
+          });
+        });
+      });
+    });
+    document.getElementById('bHave').textContent = bought.length;
+    document.getElementById('bPart').textContent = partial;
+    document.getElementById('bNeed').textContent = toBuy.length;
+    var wrap = document.getElementById('buyLists'); wrap.innerHTML = '';
+    [['Уже куплено', bought, function (r) { return r[1] + (r[2] > r[1] ? ' из ' + r[2] : '') + ' ' + r[0].unit; }],
+     ['Докупить', toBuy, function (r) { return +(r[2] - r[1]).toFixed(2) + ' ' + r[0].unit; }]].forEach(function (blk) {
+      var el = document.createElement('section'); el.className = 'cat';
+      el.innerHTML = '<div class="cat-head"><h2></h2><span class="cnt">' + blk[1].length + '</span></div>';
+      el.querySelector('h2').textContent = blk[0];
+      var body = document.createElement('div'); body.className = 'body';
+      var last = '';
+      blk[1].forEach(function (r) {
+        if (r[3] !== last) { last = r[3]; var h = document.createElement('div'); h.className = 'sub-h'; h.textContent = last; body.appendChild(h); }
+        var row = document.createElement('div'); row.className = 'item buy' + (blk[0] === 'Уже куплено' && r[1] >= r[2] ? ' done' : '');
+        var nm = document.createElement('div'); nm.className = 'name'; nm.textContent = r[0].name;
+        var q = document.createElement('div'); q.className = 'qty'; q.textContent = blk[2](r);
+        row.appendChild(nm); row.appendChild(q); body.appendChild(row);
+      });
+      el.appendChild(body); wrap.appendChild(el);
+    });
   }
 
   function renderMenu() {
@@ -422,11 +468,13 @@ button:focus-visible, input:focus-visible { outline:2px solid var(--gold); outli
       lines.push('Меню на 35 дней');
       for (var d = 0; d < 35; d++) { var week = Math.floor(d / 7), i = d % 7; lines.push((d + 1) + '. Утро: ' + BREAKFASTS[(i + week) % 7] + ' | Вечер: ' + DINNERS[(i + week * 2) % 7] + ' | Перекус: ' + SNACKS[(i + week * 3) % 7]); }
     } else {
-      var L = DATA[list]; lines.push(L.title + ': докупить');
-      L.cats.forEach(function (cat) {
-        var rows = [];
-        cat.subs.forEach(function (sub) { itemsOf(list, cat, sub).forEach(function (it) { if (!isDone(it)) rows.push('- ' + it.name + ': ' + +(need(it) - have(it)).toFixed(2) + ' ' + it.unit); }); });
-        if (rows.length) { lines.push(''); lines.push(cat.name.toUpperCase()); lines = lines.concat(rows); }
+      (list === 'buy' ? ['home', 'bag'] : [list]).forEach(function (lid) {
+        var L = DATA[lid]; if (lines.length) lines.push(''); lines.push(L.title + ': докупить');
+        L.cats.forEach(function (cat) {
+          var rows = [];
+          cat.subs.forEach(function (sub) { itemsOf(lid, cat, sub).forEach(function (it) { if (!isDone(it)) rows.push('- ' + it.name + ': ' + +(need(it) - have(it)).toFixed(2) + ' ' + it.unit); }); });
+          if (rows.length) { lines.push(''); lines.push(cat.name.toUpperCase()); lines = lines.concat(rows); }
+        });
       });
     }
     var text = lines.join('\n');
