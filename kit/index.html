@@ -67,6 +67,7 @@ h1 { font-size:24px; }
 .item.done .name { color:var(--muted); text-decoration:line-through; text-decoration-color:var(--done); }
 .item .name { font-size:15px; }
 .item .note { display:block; font-size:12px; color:var(--muted); }
+.item a.mkt { display:block; width:fit-content; margin-top:3px; font-size:12px; font-weight:600; color:var(--gold); text-decoration:none; border-bottom:1px dotted currentColor; }
 .qty { display:flex; align-items:center; gap:4px; font-variant-numeric:tabular-nums; }
 .qty input { width:46px; border:1px solid var(--line); background:var(--surface); color:var(--ink); border-radius:8px; padding:6px 4px; font:inherit; font-size:14px; text-align:center; }
 .qty .sep { color:var(--muted); }
@@ -274,6 +275,8 @@ button:focus-visible, input:focus-visible { outline:2px solid var(--gold); outli
     'Лапша быстрая как тёплый перекус'
   ];
 
+  // Best-value Yandex Market offers per item id: [url, price, price per unit, unit label, title, checked date].
+  var LINKS = {"home:water:Питьевая:0": ["https://market.yandex.ru/card/voda-negazirovannaya/103809371271", 108, 21.6, "л", "Вода Черноголовский Источник, негазированная, пластиковая бутылка, 5 л", "07.11"], "home:water:Питьевая:1": ["https://market.yandex.ru/card/voda-detskaya-kalinov-rodnichok-s-rozhdeniya/103809381222", 68, 34, "л", "Вода детская Калинов Родничок, с рождения, без сахара, пластиковая бутылка, 2 л", "07.11"], "home:water:Питьевая:2": ["https://market.yandex.ru/card/kuvshin-akvafor-ultra-goluboy/103622623126", 478, 478, "шт", "Кувшин Аквафор Ультра, емкость 2.5 л, механическая фильтрация, голубого цвета", "07.11"], "home:food:Соль, сахар, специи:0": ["https://market.yandex.ru/card/sol-iletskaya-yodirovannaya-pishchevaya-pomol-1-3kg/4855886558", 210, 70, "кг", "Соль Илецкая пищевая йодированная помол №1 3кг, упаковка в пакетах", "07.11"]};
   var KEY = 'autonom-v2';
   var state = load();
   var list = state.list || 'home';
@@ -378,6 +381,7 @@ button:focus-visible, input:focus-visible { outline:2px solid var(--gold); outli
         if (r[3] !== last) { last = r[3]; var h = document.createElement('div'); h.className = 'sub-h'; h.textContent = last; body.appendChild(h); }
         var row = document.createElement('div'); row.className = 'item buy' + (blk[0] === 'Уже куплено' && r[1] >= r[2] ? ' done' : '');
         var nm = document.createElement('div'); nm.className = 'name'; nm.textContent = r[0].name;
+        var ml = blk[0] === 'Докупить' && marketLink(r[0]); if (ml) nm.appendChild(ml);
         var q = document.createElement('div'); q.className = 'qty'; q.textContent = blk[2](r);
         row.appendChild(nm); row.appendChild(q); body.appendChild(row);
       });
@@ -403,6 +407,7 @@ button:focus-visible, input:focus-visible { outline:2px solid var(--gold); outli
     row.className = 'item' + (isDone(it) ? ' done' : '');
     var name = document.createElement('div'); name.className = 'name'; name.textContent = it.name;
     if (it.note) { var n = document.createElement('span'); n.className = 'note'; n.textContent = it.note; name.appendChild(n); }
+    var ml = marketLink(it); if (ml) name.appendChild(ml);
     var qty = document.createElement('div'); qty.className = 'qty';
     var hv = document.createElement('input'); hv.type = 'number'; hv.min = 0; hv.step = 'any'; hv.inputMode = 'decimal'; hv.value = have(it); hv.setAttribute('aria-label', 'куплено'); hv.id = 'h-' + it.id;
     var nd = document.createElement('input'); nd.type = 'number'; nd.min = 0; nd.step = 'any'; nd.inputMode = 'decimal'; nd.value = need(it); nd.setAttribute('aria-label', 'нужно'); nd.id = 'n-' + it.id;
@@ -415,6 +420,13 @@ button:focus-visible, input:focus-visible { outline:2px solid var(--gold); outli
     del.addEventListener('click', function () { removeItem(it); });
     row.appendChild(name); row.appendChild(qty); row.appendChild(del);
     return row;
+  }
+  function marketLink(it) {
+    var l = LINKS[it.id]; if (!l) return null;
+    var a = document.createElement('a'); a.className = 'mkt'; a.href = l[0]; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = 'Маркет: ' + l[1] + ' ₽' + (l[2] && l[2] !== l[1] ? ', ' + String(l[2]).replace('.', ',') + ' ₽/' + l[3] : '');
+    a.title = l[4] + ' (цена на ' + l[5] + ')';
+    return a;
   }
   function renderAdd(cat, sub) {
     var f = document.createElement('form'); f.className = 'add';
