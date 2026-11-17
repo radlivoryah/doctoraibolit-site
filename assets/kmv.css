@@ -1,0 +1,82 @@
+/* Khairov Multiverse hub mockup: dark premium, emerald accent. */
+:root{--bg:#F7F8F6;--card:#FFFFFF;--line:#E2E6E9;--txt:#0F1418;--mut:#55606A;--acc:#0F8A68;--acc2:#0F8A68;--todo:#B7791F}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:Inter,sans-serif;font-size:17px;line-height:1.55}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:5;background:#F7F8F6E6;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:Montserrat,sans-serif;font-weight:900;font-size:19px;letter-spacing:.5px;text-transform:uppercase}
+.logo b{color:var(--acc)}
+nav{display:flex;gap:22px;font-weight:600;font-size:15px;color:var(--mut)}
+nav a:hover{color:var(--txt)}
+.btn{display:inline-block;background:var(--acc);color:#fff;font-weight:700;padding:13px 22px;border-radius:12px;font-size:16px}
+.btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+h1,h2,h3{font-family:Montserrat,sans-serif;font-weight:900;line-height:1.05;letter-spacing:-.5px}
+h1{font-size:64px;text-transform:uppercase}
+h1 em{font-style:normal;color:var(--acc)}
+h2{font-size:36px;margin-bottom:22px}
+h3{font-size:22px;margin-bottom:8px}
+.kick{font-family:Montserrat,sans-serif;font-weight:700;color:var(--acc);letter-spacing:4px;font-size:13px;text-transform:uppercase;margin-bottom:14px}
+.lead{color:var(--mut);font-size:19px;max-width:560px;margin:18px 0 28px}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding:56px 0 64px}
+.duo{position:relative;height:520px}
+.duo img{position:absolute;bottom:0;height:500px;width:300px;object-fit:cover;border-radius:22px;border:1px solid var(--line)}
+.duo .a{left:0;transform:rotate(-3deg)}.duo .b{right:10px;top:0;transform:rotate(3deg)}
+.duo::before{content:"";position:absolute;inset:40px;background:radial-gradient(circle,#0F8A6826,transparent 65%)}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.person{display:grid;grid-template-columns:180px 1fr;gap:22px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 6px 24px #0F14180D;transition:border-color .2s}
+.person:hover{border-color:var(--acc2)}
+.person img{width:180px;height:230px;object-fit:cover;border-radius:14px}
+.person p{color:var(--mut);font-size:15px;margin-bottom:14px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tags span{font-size:12px;font-weight:600;border:1px solid var(--line);border-radius:20px;padding:3px 10px;color:var(--mut)}
+.more{color:var(--acc);font-weight:700}
+.pod{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center}
+.pod img{width:100%;border-radius:18px;border:1px solid var(--line)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 6px 24px #0F14180D}
+.card p{color:var(--mut);font-size:15px;margin-bottom:12px}
+.price{font-family:Montserrat,sans-serif;font-weight:900;font-size:26px;color:var(--txt);margin:6px 0 14px}
+.todo{background:#FFF4D6;border:1px dashed var(--todo);color:var(--todo);border-radius:6px;padding:1px 6px;font-size:.92em}
+footer{padding:40px 0 60px;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .soc{display:flex;gap:16px;font-weight:600;color:var(--txt)}
+.ph{display:grid;grid-template-columns:360px 1fr;gap:44px;align-items:center;padding:56px 20px 64px}
+.ph img{width:360px;height:460px;object-fit:cover;border-radius:22px;border:1px solid var(--line)}
+.list li{margin:0 0 10px 20px;color:var(--mut)}
+.list li b{color:var(--txt)}
+@media (max-width:820px){
+  body{font-size:16px}
+  nav{display:none}
+  h1{font-size:40px}h2{font-size:28px}
+  .hero,.pod,.people,.grid3,.ph{grid-template-columns:1fr}
+  .duo{height:380px}.duo img{height:360px;width:52%}
+  .person{grid-template-columns:110px 1fr}.person img{width:110px;height:150px}
+  .ph img{width:100%;height:420px}
+  section{padding:44px 0}
+}
+
+/* Digital products rail: fixed on the right on wide screens, a block in the flow on narrow ones. */
+.rail{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 8px 28px #0F14181A;margin:0 20px 24px}
+.rail-h{font-family:Montserrat,sans-serif;font-weight:800;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+.ri{display:block;padding:10px 0;border-top:1px solid var(--line)}
+.ri b{display:block;font-size:14px;line-height:1.3;margin:2px 0}
+.rk{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
+.rp{font-family:Montserrat,sans-serif;font-weight:800;color:var(--acc);font-size:15px}
+.ri:hover b{color:var(--acc)}
+.rail-all{display:block;margin-top:8px;font-weight:700;color:var(--acc);font-size:14px}
+@media (min-width:1280px){
+  body.has-rail{padding-right:280px}
+  .rail{position:fixed;right:20px;top:84px;width:250px;margin:0;z-index:4}
+}
+@media (max-width:1279px){ .rail{max-width:1120px} }
+@media (min-width:821px) and (max-width:1279px){
+  .rail{display:grid;grid-template-columns:repeat(4,1fr);gap:0 16px;margin:16px auto 8px}
+  .rail-h,.rail-all{grid-column:1/-1}
+}
+footer .fl{max-width:760px}
+footer .fl p{margin-bottom:8px}
+footer .docs{display:flex;flex-wrap:wrap;gap:6px 14px}
+footer .docs a{text-decoration:underline;text-underline-offset:2px}

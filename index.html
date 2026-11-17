@@ -1,213 +1,110 @@
 <!doctype html>
-<html lang="ru">
-<head>
-<!-- Yandex.Metrika counter -->
+<html lang="ru"><head>
 <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113066474', 'ym');
-
-    ym(113066474, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
+for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=113066474','ym');
+ym(113066474,'init',{ssr:true,webvisor:true,clickmap:true,referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/113066474" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+<noscript><div><img src="https://mc.yandex.ru/watch/113066474" style="position:absolute;left:-9999px" alt=""></div></noscript>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Хайров Мультиверс: семья врачей о здоровье и ИИ</title>
+<meta name="description" content="Стоматолог-ортопед Ильдар Хайров и акушер-гинеколог Зоя Хайрова: подкаст, ролики и статьи о здоровье и ИИ в медицине.">
+<link rel="canonical" href="https://khairovmultiverse.com/">
+<meta property="og:title" content="Хайров Мультиверс: семья врачей о здоровье и ИИ"><meta property="og:description" content="Стоматолог-ортопед Ильдар Хайров и акушер-гинеколог Зоя Хайрова: подкаст, ролики и статьи о здоровье и ИИ в медицине.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://khairovmultiverse.com/">
+<meta property="og:image" content="https://khairovmultiverse.com/img/kmv/podcast-1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/kmv.css">
+</head><body class="has-rail">
+<header><div class="wrap">
+  <a class="logo" href="/">Хайров <b>Мультиверс</b></a>
+  <nav><a href="/ildar/">Ильдар</a><a href="/zoya/">Зоя</a><a href="/#podcast">Подкаст</a><a href="/blog/">Блог</a><a href="/ildar/#ai">Продукты</a></nav>
+</div></header>
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ильдар Хайров · нейросети в практике врача</title>
-<meta name="description" content="Стоматолог-ортопед, который собрал себе помощника на нейросетях. Методичка для врачей 1 799 руб., гайд, курс, консультация и помощник под ключ." />
-<link rel="canonical" href="https://khairovmultiverse.com/" />
-<meta property="og:title" content="Ильдар Хайров · нейросети в практике врача" />
-<meta property="og:description" content="Методичка, гайд, курс и помощник на нейросетях от практикующего стоматолога." />
-<meta property="og:type" content="website" />
-<link rel="alternate" type="application/rss+xml" title="Полезные статьи" href="/blog/feed.xml" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="blog/styles.css" />
-<style>
-  .home-hero { padding: 56px 0 36px; display: flex; gap: 28px; align-items: center; }
-  .home-hero img { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; flex: none;
-    border: 3px solid #f3e2bd; }
-  .home-hero h1 { font-family: var(--font-head); font-weight: 800; font-size: clamp(28px, 5.4vw, 40px);
-    line-height: 1.12; margin: 0 0 12px; }
-  .home-hero p { margin: 0; color: var(--muted-2); font-size: 18px; }
-  .kicker { font-family: var(--font-head); font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
-    color: var(--gold); margin: 0 0 10px; }
 
-  .section-title { font-family: var(--font-head); font-weight: 800; font-size: 26px; margin: 26px 0 18px; }
-
-  .offers { display: grid; gap: 18px; }
-  .offer { border: 1px solid var(--card-border); border-radius: 16px; padding: 24px 26px; background: #fff; }
-  .offer.main { border: 2px solid var(--gold-light); background: #fffdf7; }
-  .offer-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
-  .offer h3 { font-family: var(--font-head); font-weight: 800; font-size: 21px; margin: 0; line-height: 1.25; }
-  .offer .price { font-family: var(--font-head); font-weight: 800; font-size: 24px; white-space: nowrap; }
-  .offer .price small { font-size: 13px; font-weight: 600; color: var(--muted); margin-left: 6px; }
-  .offer p { margin: 10px 0 0; font-size: 16px; line-height: 1.6; color: var(--muted-3); }
-  .offer ul { margin: 12px 0 0; padding-left: 20px; font-size: 15px; line-height: 1.6; color: var(--muted-3); }
-  .offer .get { margin-top: 12px; font-size: 15px; }
-  .offer .get b { color: var(--white); }
-  .actions { margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .btn { display: inline-block; padding: 13px 26px; border-radius: 999px; font-family: var(--font-head);
-    font-weight: 800; font-size: 15px; text-decoration: none; }
-  .btn.primary { background: var(--gold-light); color: #1a1a1a; }
-  .btn.primary:hover { background: #d4900f; color: #1a1a1a; }
-  .btn.ghost { border: 1.5px solid var(--gold-light); color: #8a5a06; }
-  .btn.ghost:hover { background: var(--gold-soft); color: #8a5a06; }
-  .note { font-size: 13px; color: var(--muted); }
-
-  .free { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .free a.card-link { display: block; border: 1px solid var(--card-border); border-radius: 16px;
-    padding: 22px 24px; background: var(--card-bg); color: var(--white); }
-  .free a.card-link:hover { border-color: var(--card-border-hover); }
-  .free h3 { font-family: var(--font-head); font-weight: 700; font-size: 18px; margin: 0 0 6px; }
-  .free p { margin: 0; font-size: 15px; color: var(--muted-2); line-height: 1.55; }
-  .free .go { display: inline-block; margin-top: 10px; font-size: 14px; color: var(--gold); font-weight: 600; }
-
-  .about { margin: 8px 0 0; font-size: 17px; color: var(--muted-3); }
-  .contacts { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 14px; font-size: 16px; }
-
-  .foot { border-top: 1px solid var(--gold-line); margin-top: 56px; padding: 26px 0 40px;
-    font-size: 14px; color: var(--muted); }
-  .foot nav { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 10px; }
-  .foot nav a { color: var(--muted-2); }
-
-  @media (max-width: 600px) {
-    .home-hero { flex-direction: column; align-items: flex-start; gap: 18px; padding-top: 36px; }
-    .home-hero img { width: 88px; height: 88px; }
-    .free { grid-template-columns: 1fr; }
-    .offer { padding: 20px; }
-  }
-</style>
-</head>
-<body>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="/">khairovmultiverse<span>.com</span></a>
-    <nav><a href="/metodichka.html">Методичка</a><a href="https://t.me/ai_bolit_ildar">Канал</a></nav>
+<div class="wrap">
+<div class="hero">
+  <div>
+    <p class="kick">Семья врачей</p>
+    <h1>Медицина будущего <em>уже сегодня</em></h1>
+    <p class="lead">Стоматолог-ортопед и акушер-гинеколог. Честно говорим о здоровье, разбираем мифы и показываем, как искусственный интеллект меняет медицину.</p>
+    <a class="btn" href="#people">Выбрать врача</a>
+    <a class="btn ghost" href="#podcast">Смотреть подкаст</a>
   </div>
-</header>
+  <div class="duo"><img class="a" src="/img/kmv/ildar-podcast.jpg" alt="Ильдар Хайров"><img class="b" src="/img/kmv/zoya.jpg" alt="Зоя Хайрова"></div>
+</div>
+</div>
+<aside class="rail" aria-label="Цифровые продукты">
+  <p class="rail-h">Цифровые продукты</p>
+  <a class="ri" href="/metodichka.html"><span class="rk">PDF · 24 стр.</span><b>Методичка «ИИ в практике врача»</b><span class="rp">1 799 ₽</span></a>
+  <a class="ri" href="https://t.me/doctorAImetod_bot?start=free"><span class="rk">Бесплатно</span><b>30 запросов для врача</b><span class="rp">0 ₽</span></a>
+  <a class="ri" href="https://t.me/il_khairov"><span class="rk">Онлайн, 2-3 часа</span><b>Персональная консультация по ИИ</b><span class="rp">25 000 ₽</span></a>
+  <a class="ri" href="https://t.me/il_khairov"><span class="rk">1-2 недели</span><b>ИИ-помощник под ключ</b><span class="rp">от 50 000 ₽</span></a>
+  <a class="rail-all" href="/ildar/#ai">Все продукты →</a>
+</aside>
 
-<main class="wrap">
-  <section class="home-hero">
-    <img src="photo-avatar.png" alt="Ильдар Хайров" width="112" height="112" />
-    <div>
-      <p class="kicker">Стоматолог-ортопед · Москва</p>
-      <h1>Помогаю врачам внедрить нейросети в практику</h1>
-      <p>Полтора года встраиваю нейросети в свой прием и не бросаю стоматологию. Здесь то, что проверено на моей практике: методичка, консультация и личный помощник на нейросетях.</p>
-    </div>
-  </section>
 
-  <h2 class="section-title" id="buy">Что можно купить</h2>
-  <div class="offers">
-    <article class="offer main">
-      <div class="offer-head">
-        <h3>Методичка «ИИ в практике врача»</h3>
-        <div class="price">1 799 руб.<small>разово</small></div>
-      </div>
-      <p>PDF на 24 страницы для практикующего врача: что поручать нейросети, что не поручать никогда и как сформулировать запрос, чтобы получить рабочий ответ.</p>
-      <ul>
-        <li>семь сценариев с приема с готовыми запросами;</li>
-        <li>формула запроса и чек-лист на 30 секунд;</li>
-        <li>четыре зоны, куда нейросети пускать нельзя.</li>
-      </ul>
-      <p class="get"><b>Что получаешь:</b> файл PDF для скачивания сразу после оплаты, доступ бессрочный.</p>
-      <div class="actions">
-        <a class="btn primary" href="https://pay.doctoraibolit.online/">Купить за 1 799 руб.</a>
-        <a class="btn ghost" href="/metodichka.html">Подробнее</a>
-      </div>
-    </article>
-
-    <article class="offer">
-      <div class="offer-head">
-        <h3>Гайд «Личный секретарь в кармане»</h3>
-        <div class="price">4 999 руб.<small>скоро</small></div>
-      </div>
-      <p>Как собрать своего помощника на нейросетях по шагам: он живет в Telegram, понимает голосовые, помнит контекст и закрывает рутину. Так я собрал своего Альфреда.</p>
-      <div class="actions">
-        <a class="btn ghost" href="https://t.me/ai_bolit_ildar">Узнать о выходе в канале</a>
-      </div>
-    </article>
-
-    <article class="offer">
-      <div class="offer-head">
-        <h3>Курс «Собери своего Альфреда»</h3>
-        <div class="price">лист ожидания</div>
-      </div>
-      <p>Собираем помощника вместе: от подписок и сервера до памяти, навыков и ночной работы. Короткие видео по шагам и готовые промпты для агента.</p>
-      <div class="actions">
-        <a class="btn ghost" href="https://t.me/il_khairov">Записаться в лист ожидания</a>
-      </div>
-    </article>
-
-    <article class="offer">
-      <div class="offer-head">
-        <h3>Персональная консультация</h3>
-        <div class="price">25 000 руб.<small>за встречу</small></div>
-      </div>
-      <p>Встреча онлайн один на один, 2-3 часа. Разбираем твои задачи и специальность и собираем план внедрения нейросетей.</p>
-      <p class="get"><b>Что получаешь:</b> карту внедрения (инструменты, сценарии, порядок шагов) и запись встречи.</p>
-      <div class="actions">
-        <a class="btn ghost" href="https://t.me/il_khairov">Записаться в Telegram</a>
-        <span class="note">Дату и оплату согласуем в переписке</span>
-      </div>
-    </article>
-
-    <article class="offer">
-      <div class="offer-head">
-        <h3>Помощник под ключ</h3>
-        <div class="price">от 50 000 руб.<small>настройка</small></div>
-      </div>
-      <p>Соберу агента под твои задачи, как своего Альфреда. Он живет в Telegram, понимает голосовые и закрывает рутину: записи, документы, поиск, напоминания. Работает на твоем сервере и помнит контекст.</p>
-      <p class="get"><b>Что получаешь:</b> работающего помощника за 1-2 недели и месяц сопровождения.</p>
-      <div class="actions">
-        <a class="btn ghost" href="https://t.me/il_khairov">Обсудить задачу</a>
-        <span class="note">Стоимость зависит от задач</span>
-      </div>
-    </article>
-  </div>
-
-  <h2 class="section-title">Бесплатно</h2>
-  <div class="free">
-    <a class="card-link" href="https://t.me/doctorAImetod_bot?start=free">
-      <h3>30 запросов для врача</h3>
-      <p>Готовые формулировки: снимок словами пациента, план приема, ответ на возражение по цене, письмо коллеге.</p>
-      <span class="go">Скачать в Telegram →</span>
+<section id="people"><div class="wrap">
+  <p class="kick">К кому вы пришли</p>
+  <h2>Два врача, две страницы</h2>
+  <div class="people">
+    <a class="person" href="/ildar/">
+      <img src="/img/kmv/ildar.png" alt="">
+      <div><h3>Ильдар Хайров</h3>
+        <p>Стоматолог-ортопед, на приеме с 2017 года. Импланты, коронки, протезирование. Рассказывает, как ИИ помогает врачу и пациенту.</p>
+        <div class="tags"><span>Импланты</span><span>Протезирование</span><span>ИИ для врачей</span></div>
+        <span class="more">Страница Ильдара →</span></div>
     </a>
-    <a class="card-link" href="https://t.me/ai_bolit_ildar">
-      <h3>Telegram-канал</h3>
-      <p>Как я и мой помощник Альфред ведем контент, бизнес и быт на нейросетях. Разборы и находки.</p>
-      <span class="go">Подписаться →</span>
+    <a class="person" href="/zoya/">
+      <img src="/img/kmv/zoya.jpg" alt="">
+      <div><h3>Зоя Хайрова</h3>
+        <p>Акушер-гинеколог. Планирование беременности, обследования, ежегодный осмотр. Без осуждения и страшилок.</p>
+        <div class="tags"><span>Планирование беременности</span><span>Гинекология</span><span>Женское здоровье</span></div>
+        <span class="more">Страница Зои →</span></div>
     </a>
   </div>
+</div></section>
 
-  <h2 class="section-title">Обо мне</h2>
-  <p class="about">Практикующий стоматолог-ортопед. Нейросети мое хобби: в свободное время я собрал себе помощника Альфреда, и теперь он ведет со мной контент, бизнес и быт. Здесь делюсь тем, что работает в кабинете и дома.</p>
-  <div class="contacts">
-    <a href="https://t.me/ai_bolit_ildar">Канал @ai_bolit_ildar</a>
-    <a href="https://t.me/il_khairov">Telegram @il_khairov</a>
-    <a href="mailto:il.khairov@gmail.com">il.khairov@gmail.com</a>
+<section id="podcast"><div class="wrap pod">
+  <img src="/img/kmv/podcast-1.png" alt="Подкаст «В гостях у Хайровых», выпуск 1">
+  <div>
+    <p class="kick">Подкаст</p>
+    <h2>В гостях у Хайровых</h2>
+    <p class="lead">Два врача за одним столом: как мы пришли в медицину, что пациентам важно знать и где ИИ помогает, а где врет.</p>
+    <a class="btn" href="https://www.tiktok.com/@dr.khairov.multiverse">Нарезки выпуска</a>
+    <p class="lead" style="font-size:14px;margin-top:12px">Полный выпуск 1 скоро на YouTube.</p>
   </div>
-</main>
+</div></section>
 
-<footer class="foot">
-  <div class="wrap">
-    <nav>
-      <a href="/docs/price.html">Цены</a>
-      <a href="/docs/oferta.html">Оферта</a>
-      <a href="/docs/soglashenie.html">Пользовательское соглашение</a>
-      <a href="/docs/privacy.html">Политика конфиденциальности</a>
-      <a href="/docs/soglasie-pd.html">Согласие на обработку данных</a>
-      <a href="/docs/payment.html">Оплата и возврат</a>
-    </nav>
+<section><div class="wrap">
+  <p class="kick">Рубрики в соцсетях</p>
+  <h2>Короткие ролики</h2>
+  <div class="grid3">
+    <div class="card"><h3>Ночной зуб</h3><p>Что делать, если зуб заболел ночью, выбили, раздуло щеку. Коротко и по делу.</p><a class="more" href="https://www.tiktok.com/@dr.khairov.multiverse">TikTok →</a></div>
+    <div class="card"><h3>Мультики Доктора</h3><p>Доктор и Бармалей разбирают мифы о зубах. Смешно, но по клиническим рекомендациям.</p><a class="more" href="https://www.instagram.com/dr.khairov.multiverse/">Instagram →</a></div>
+    <div class="card"><h3>Нарезки подкаста</h3><p>Самое полезное из выпусков: вопросы пациентов и ответы врачей за минуту.</p><a class="more" href="https://www.youtube.com/watch?v=ofiwLo_HpRE">YouTube →</a></div>
+  </div>
+</div></section>
+
+<section id="blog"><div class="wrap">
+  <p class="kick">Блог</p>
+  <h2>Статьи врачей</h2>
+  <div class="grid3">
+    <a class="card" href="/blog/"><h3>Выбили зуб: что делать в первые 30 минут</h3><p>Зуб с корнем можно вернуть. Как поднять, в чем везти и что сделает врач.</p><span class="more">Скоро в блоге →</span></a>
+    <div class="card"><h3>Статьи Зои</h3><p>Здесь будут статьи о планировании беременности и женском здоровье.</p><span class="more">Скоро</span></div>
+    <a class="card" href="/blog/"><h3>Все статьи</h3><p>Здоровые зубы, нейросети в медицине и в жизни, свой ИИ-ассистент.</p><span class="more">В блог →</span></a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fl">
+    <p>© 2026 Хайров Мультиверс, khairovmultiverse.com</p>
     <p>Материалы носят информационный характер, не являются медицинской услугой и не заменяют очного обращения к врачу.</p>
-    <p>Кодовое слово: Платежка</p>
-    <p>© 2026 khairovmultiverse.com</p>
+    <p class="docs"><a href="/docs/price.html">Цены</a><a href="/docs/oferta.html">Оферта</a><a href="/docs/soglashenie.html">Пользовательское соглашение</a><a href="/docs/privacy.html">Политика конфиденциальности</a><a href="/docs/soglasie-pd.html">Согласие на обработку данных</a><a href="/docs/payment.html">Оплата и возврат</a></p>
   </div>
-</footer>
-</body>
-</html>
+  <div class="soc"><a href="https://t.me/ai_bolit_ildar">Telegram</a><a href="https://www.tiktok.com/@dr.khairov.multiverse">TikTok</a><a href="https://www.instagram.com/dr.khairov.multiverse/">Instagram</a><a href="mailto:il.khairov@gmail.com">Почта</a></div>
+</div></footer>
+</body></html>
