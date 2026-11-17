@@ -433,7 +433,7 @@ function FinalCTA() {
 function Footer() {
   return (
     <footer>
-      <p className="foot-name">doctoraibolit.online</p>
+      <p className="foot-name">khairovmultiverse.com</p>
       <p className="foot-meta">Стоматолог-ортопед · AI-практик · Москва</p>
       <div className="foot-links">
         <a href="https://t.me/il_khairov">@il_khairov</a>

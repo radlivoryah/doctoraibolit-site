@@ -95,4 +95,4 @@ Allow: /
 Disallow: /hub/
 Disallow: /dl/
 
-Sitemap: https://doctoraibolit.online/sitemap.xml
+Sitemap: https://khairovmultiverse.com/sitemap.xml
