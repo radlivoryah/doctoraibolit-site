@@ -130,3 +130,5 @@ article.post details.faq p{margin:10px 0 0}
 article.post .sources{font-size:.9em;color:var(--muted-2)}
 article.post .sources li{margin:4px 0}
 @media (max-width:600px){article.post table{display:block;overflow-x:auto}}
+.foot p{margin:0 0 8px}
+.foot .soc{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;font-weight:600}

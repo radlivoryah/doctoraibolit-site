@@ -80,3 +80,4 @@ footer .fl{max-width:760px}
 footer .fl p{margin-bottom:8px}
 footer .docs{display:flex;flex-wrap:wrap;gap:6px 14px}
 footer .docs a{text-decoration:underline;text-underline-offset:2px}
+footer .soc{flex-wrap:wrap;gap:8px 16px}
