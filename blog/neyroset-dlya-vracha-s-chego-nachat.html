@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113066474', 'ym');
+
+    ym(113066474, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113066474" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Нейросеть для врача: с чего начать</title>
+<meta name="description" content="Начинать стоит с текстов, где ошибку легко заметить: письма, объяснения для пациентов, пересказ статей, план выступления. Разобрано, что нейросети не поручать, как обезличивать данные по 152-ФЗ и 323-ФЗ, формула запроса и проверка ответа." />
+<meta name="author" content="Ильдар Хайров" />
+<meta name="rubric" content="vrachu" />
+<meta name="published" content="2026-11-23" />
+<meta name="updated" content="2026-11-23" />
+<meta name="reviewed" content="2026-11-23" />
+<link rel="canonical" href="https://khairovmultiverse.com/blog/neyroset-dlya-vracha-s-chego-nachat.html" />
+<meta property="og:title" content="Нейросеть для врача: первые задачи и красные линии" />
+<meta property="og:description" content="С каких задач начать, чего не поручать, как не нарушить врачебную тайну и как проверить ответ, прежде чем он уйдет пациенту." />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/blog/blog.css" />
+<link rel="alternate" type="application/rss+xml" title="Ильдар Хайров: нейросети и здоровье" href="/blog/feed.xml" />
+<!-- seo:head:start -->
+<meta property="og:url" content="https://khairovmultiverse.com/blog/neyroset-dlya-vracha-s-chego-nachat.html" />
+<meta property="og:image" content="https://khairovmultiverse.com/blog/img/neyroset-dlya-vracha-s-chego-nachat.png" />
+<meta property="og:site_name" content="Ильдар Хайров" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="article:published_time" content="2026-11-23" />
+<meta property="article:modified_time" content="2026-11-23" />
+<meta property="article:section" content="Врачу" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://khairovmultiverse.com/blog/img/neyroset-dlya-vracha-s-chego-nachat.png" />
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://khairovmultiverse.com/blog/neyroset-dlya-vracha-s-chego-nachat.html#article",
+   "headline": "Нейросеть для врача: с чего начать",
+   "description": "Начинать стоит с текстов, где ошибку легко заметить: письма, объяснения для пациентов, пересказ статей, план выступления. Разобрано, что нейросети не поручать, как обезличивать данные по 152-ФЗ и 323-ФЗ, формула запроса и проверка ответа.",
+   "image": "https://khairovmultiverse.com/blog/img/neyroset-dlya-vracha-s-chego-nachat.png",
+   "datePublished": "2026-11-23",
+   "dateModified": "2026-11-23",
+   "inLanguage": "ru",
+   "author": {
+    "@type": "Person",
+    "name": "Ильдар Хайров",
+    "jobTitle": "стоматолог-ортопед",
+    "description": "Практикующий стоматолог-ортопед, на приеме с 2017 года. Полтора года встраиваю ИИ в свой прием и в быт и пишу только о том, что проверил сам.",
+    "url": "https://khairovmultiverse.com/ob-avtore/",
+    "image": "https://khairovmultiverse.com/photo-avatar.png",
+    "sameAs": [
+     "https://t.me/dr_khairov_multiverse"
+    ]
+   },
+   "publisher": {
+    "@type": "Person",
+    "name": "Ильдар Хайров",
+    "url": "https://khairovmultiverse.com/"
+   },
+   "mainEntityOfPage": "https://khairovmultiverse.com/blog/neyroset-dlya-vracha-s-chego-nachat.html",
+   "articleSection": "Врачу",
+   "timeRequired": "PT10M"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Главная",
+     "item": "https://khairovmultiverse.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Статьи",
+     "item": "https://khairovmultiverse.com/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Врачу",
+     "item": "https://khairovmultiverse.com/blog/vrachu/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 4,
+     "name": "Нейросеть для врача: с чего начать",
+     "item": "https://khairovmultiverse.com/blog/neyroset-dlya-vracha-s-chego-nachat.html"
+    }
+   ]
+  },
+  {
+   "@type": "MedicalWebPage",
+   "@id": "https://khairovmultiverse.com/blog/neyroset-dlya-vracha-s-chego-nachat.html",
+   "url": "https://khairovmultiverse.com/blog/neyroset-dlya-vracha-s-chego-nachat.html",
+   "name": "Нейросеть для врача: с чего начать",
+   "inLanguage": "ru",
+   "lastReviewed": "2026-11-23",
+   "reviewedBy": {
+    "@type": "Person",
+    "name": "Ильдар Хайров",
+    "jobTitle": "стоматолог-ортопед",
+    "url": "https://khairovmultiverse.com/ob-avtore/"
+   },
+   "mainEntity": {
+    "@id": "https://khairovmultiverse.com/blog/neyroset-dlya-vracha-s-chego-nachat.html#article"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Можно ли врачу пользоваться ChatGPT в работе?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Можно, если нейросеть готовит черновики и объяснения, а решения и проверку оставляет врач. ВОЗ называет административную работу, обучение и ответы на вопросы пациентов среди основных сценариев применения. Данные пациентов в запрос попадать не должны."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Можно ли загружать в нейросеть данные пациента?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Без согласия пациента нельзя: сведения о диагнозе и состоянии здоровья составляют врачебную тайну по статье 13 закона 323-ФЗ, а по 152-ФЗ это специальная категория персональных данных. Отправляйте только обезличенный контекст: пол, возраст, клиническую суть, без имени, дат и номеров документов."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Какие задачи врачу лучше всего отдать нейросети в начале?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Черновики писем и ответов пациентам, памятки простым языком, пересказ статей, план выступления. Во всех этих задачах вы эксперт и быстро заметите ошибку, а экономия времени ощутима сразу."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Можно ли спрашивать у нейросети дозировки препаратов?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Использовать ответ без проверки нельзя. Дозы, критерии и сроки сверяются с инструкцией и клиническими рекомендациями, а в текстах для пациентов лучше прямо запретить модели добавлять препараты и дозы, которых нет в вашем списке."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Как понять, что нейросеть выдумала источник?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Открыть ссылку и найти статью в PubMed или на сайте журнала по названию. Несуществующий DOI, не тот год, другие авторы или вывод, которого нет в аннотации, означают, что ссылке верить нельзя. Даже у новых моделей выдуманные ссылки встречаются, поэтому проверка нужна каждый раз."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Что писать в запросе, чтобы ответ был точнее?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Пять частей: роль, задача, контекст, формат и ограничения. Добавьте собственные данные и рекомендации вместо того, чтобы ждать их от модели, и разрешите ей задать уточняющий вопрос, если информации не хватает."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<!-- seo:head:end -->
+</head>
+<body>
+<!-- blocks:header:start -->
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="/">Ильдар <span>Хайров</span></a>
+    <nav aria-label="Основная навигация">
+      <a class="hide-m" href="/blog/">Статьи</a>
+      <a class="hide-m" href="/ob-avtore/">Об авторе</a>
+      <a class="hide-m" href="/produkty/">Продукты</a>
+      <a class="btn-tg" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=tg_header&amp;utm_campaign=channel" data-goal="tg_header">Telegram-канал</a>
+    </nav>
+  </div>
+</header>
+<!-- blocks:header:end -->
+<div class="journal">
+<!-- blocks:sidenav:start -->
+<nav class="sidenav" aria-label="Разделы сайта">
+    <a class="nav-item" href="/">Главная</a>
+    <a class="nav-item" href="/blog/">Все статьи</a>
+    <a class="nav-item" href="/ob-avtore/">Об авторе</a>
+    <a class="nav-item" href="/redpolitika/">Как мы проверяем статьи</a>
+    <a class="nav-item" href="/produkty/">Продукты</a>
+    <p class="grp">Рубрики</p>
+    <a class="nav-item" href="/blog/zdorovye-zuby/"><span>Здоровые зубы</span><b>7</b></a>
+    <a class="nav-item" href="/blog/zdorovie/"><span>Нейросети и здоровье</span><b>2</b></a>
+    <a class="nav-item" href="/blog/v-zhizni/"><span>Нейросети в жизни</span><b>0</b></a>
+    <a class="nav-item" href="/blog/assistent/"><span>Свой ИИ-ассистент</span><b>0</b></a>
+    <a class="nav-item on" href="/blog/vrachu/"><span>Врачу</span><b>1</b></a>
+    <a class="nav-item" href="/blog/ii/"><span>Искусственный интеллект помимо стоматологии</span><b>0</b></a>
+  </nav>
+<!-- blocks:sidenav:end -->
+  <div class="col-main">
+    <article class="wcard art">
+      <header>
+<!-- seo:info:start -->
+<p class="crumbs"><a href="/">Главная</a> / <a href="/blog/">Статьи</a> / <a href="/blog/vrachu/">Врачу</a></p>
+<p class="meta"><a href="/blog/vrachu/">Врачу</a> · 10 мин · обновлено 23 ноября 2026</p>
+<!-- seo:info:end -->
+        <h1>Нейросеть для врача: с чего начать</h1>
+        <p class="lede">Начинать стоит с текстов, где ошибку легко заметить: письма, объяснения для пациентов, пересказ статей, план выступления. Разобрано, что нейросети не поручать, как обезличивать данные по 152-ФЗ и 323-ФЗ, формула запроса и проверка ответа.</p>
+<!-- blocks:byline:start -->
+<p class="byline"><img src="/photo-avatar.png" alt="" width="36" height="36" /><a href="/ob-avtore/">Ильдар Хайров</a> · стоматолог-ортопед, на приеме с 2017 года <a class="checked" href="/redpolitika/">Проверено врачом: 23 ноября 2026</a></p>
+<!-- blocks:byline:end -->
+      </header>
+      <img class="cover-img" src="/blog/img/neyroset-dlya-vracha-s-chego-nachat.png" alt="Нейросеть для врача: с чего начать, обложка статьи" width="1200" height="630" />
+<!-- blocks:toc-m:start -->
+<details class="toc-m"><summary>Содержание</summary><ol>
+  <li><a href="#korotko">Коротко: главное и четыре термина</a></li>
+  <li><a href="#pervye-zadachi">С каких задач начать</a></li>
+  <li><a href="#chego-ne-poruchat">Чего не поручать</a></li>
+  <li><a href="#obezlichivanie">Обезличивание данных</a></li>
+  <li><a href="#formula">Формула запроса</a></li>
+  <li><a href="#proverka">Как проверить ответ</a></li>
+  <li><a href="#chek-list">Чек-лист</a></li>
+  <li><a href="#faq">Частые вопросы</a></li>
+</ol></details>
+<!-- blocks:toc-m:end -->
+
+      <div class="prose">
+<div class="callout callout-main"><p>Начинать стоит с задач, где нейросеть пишет черновик, а вы его быстро проверяете: письма и ответы пациентам, памятки простым языком, пересказ статьи, план выступления. Диагноз, тактику лечения и юридически значимые документы ей не поручают. Данные пациента отправляют только обезличенными: врачебную тайну охраняет статья 13 закона 323-ФЗ, сведения о здоровье по 152-ФЗ относятся к специальной категории персональных данных. И любой ответ перед использованием читает врач.</p></div>
+
+        <p>Большинство врачей пробуют нейросеть одинаково: задают ей сложный клинический вопрос, получают гладкий, местами неверный ответ и закрывают вкладку с мыслью «игрушка». Зря, потому что сила этих моделей в другом. Они хорошо пишут, сокращают, переводят с медицинского на человеческий и обратно, раскладывают хаос по пунктам. Это та самая работа, которая съедает вечер после приема. Ниже о том, с каких задач начать, где проходят красные линии и как проверять результат, чтобы нейросеть разгружала, а не добавляла рисков.</p>
+
+        <h2 id="korotko" data-short="Коротко: главное и четыре термина">Коротко: главное и четыре термина</h2>
+        <div class="callout callout-short"><ul>
+          <li>Первые задачи: тексты, где вы эксперт и сразу увидите ошибку.</li>
+          <li>Не поручать: диагноз, выбор тактики, документы, которые вы подписываете как юридически значимые.</li>
+          <li>Ни ФИО, ни даты рождения, ни номеров карт и полисов в запросе. Только обезличенный клинический контекст.</li>
+          <li>Хороший запрос: роль, задача, контекст, формат, ограничения.</li>
+          <li>Цифры, дозы и ссылки в ответе проверяются по первоисточнику. Всегда.</li>
+        </ul></div>
+        <dl class="glossary">
+          <dt>Языковая модель</dt><dd>Нейросеть, которая порождает текст, предсказывая вероятное продолжение. Отсюда и сила (связный текст), и слабость (правдоподобные ошибки).</dd>
+          <dt>Галлюцинация</dt><dd>Уверенно сформулированное утверждение без опоры на факты: несуществующая статья, неверная доза, выдуманный критерий.</dd>
+          <dt>Обезличивание</dt><dd>По 152-ФЗ действия, после которых без дополнительной информации нельзя определить, кому принадлежат данные.</dd>
+          <dt>Предвзятость автоматизации</dt><dd>Склонность доверять ответу машины и пропускать ошибки, которые человек заметил бы сам. ВОЗ отдельно предупреждает о ней врачей.</dd>
+        </dl>
+
+        <h2 id="pervye-zadachi" data-short="С каких задач начать">С каких задач врачу начать работу с нейросетью?</h2>
+        <p>С тех, где результат вы оцениваете за минуту, потому что знаете предмет лучше модели. ВОЗ в руководстве 2024 года по большим мультимодальным моделям среди основных сценариев в здравоохранении называет как раз канцелярскую и административную работу, обучение и ответы на письменные вопросы пациентов. Вот с чего удобно стартовать:</p>
+        <ol class="steps">
+          <li><span><b>Черновики писем и ответов.</b> Ответ пациенту в мессенджере, письмо коллеге, обращение в администрацию. Вы диктуете суть, нейросеть собирает вежливый связный текст.</span></li>
+          <li><span><b>Объяснения для пациентов.</b> Памятка после процедуры, объяснение плана лечения простыми словами, ответы на типичные вопросы. Медицинскую часть вы задаете сами, нейросеть отвечает за понятность.</span></li>
+          <li><span><b>Пересказ статей.</b> Вставьте текст статьи или рекомендации и попросите выжимку: дизайн, выборка, главные результаты, ограничения. Пересказ не заменяет чтение, но помогает решить, читать ли целиком.</span></li>
+          <li><span><b>Подготовка выступлений.</b> План доклада, структура слайдов, вопросы, которые могут задать из зала, упрощение сложного слайда.</span></li>
+        </ol>
+        <p>Почему именно черновик пациенту, а не клинический вопрос? В исследовании в JAMA Internal Medicine (2023) специалисты сравнивали ответы врачей и ChatGPT на 195 вопросов пациентов с форума, и в 78,6% из 585 оценок предпочли ответ чат-бота: он был подробнее и звучал внимательнее. Сами авторы делают из этого осторожный вывод: модель стоит проверять как помощника, который готовит черновик, а врач его правит. Это и есть разумная точка входа.</p>
+
+        <h2 id="chego-ne-poruchat" data-short="Чего не поручать">Чего нельзя поручать нейросети?</h2>
+        <p>Решений, за которые вы отвечаете по закону и перед пациентом. Нейросеть не видит пациента, не держит в голове всю историю болезни и не отвечает за исход, а пишет так уверенно, что ошибку легко пропустить.</p>
+        <ul>
+          <li><b>Диагноз.</b> Дифференциальный ряд для самопроверки можно обсудить с моделью без данных пациента, но диагноз остается клиническим решением врача.</li>
+          <li><b>Тактика лечения.</b> Выбор метода, препарата, дозы, отмены. Медицинская помощь в России оказывается на основе клинических рекомендаций (статья 37 закона 323-ФЗ), а не на основе ответа чата.</li>
+          <li><b>Юридические документы.</b> Информированное добровольное согласие, медицинская документация, ответы на претензии. Шаблон можно набросать, но содержание и финальный текст проверяет врач, а лучше и юрист клиники.</li>
+        </ul>
+        <div class="callout callout-note"><p>Удобный тест: если ошибка в тексте может навредить пациенту или лечь в основу решения о лечении, этот текст пишете вы, а нейросеть в лучшем случае помогает с формулировками.</p></div>
+
+        <!-- cta:inline:start -->
+<div class="cta-inline">
+  <p><strong>Методичка «ИИ в практике врача».</strong> 1 799 ₽. 24 страницы: что поручать нейросети, что не поручать никогда и как сформулировать запрос, чтобы получить рабочий ответ. Семь сценариев с приема и чек-лист на 30 секунд.</p>
+  <a class="btn" href="/metodichka.html?utm_source=blog&amp;utm_medium=cta_inline&amp;utm_campaign=metodichka&amp;utm_content=neyroset-dlya-vracha-s-chego-nachat" data-goal="cta_inline">Подробнее о методичке</a>
+</div>
+<!-- cta:inline:end -->
+
+        <!-- blocks:third:start -->
+<a class="wide-offer" href="/metodichka.html?utm_source=blog&amp;utm_medium=article_third&amp;utm_campaign=metodichka&amp;utm_content=neyroset-dlya-vracha-s-chego-nachat" data-goal="article_third">
+  <span class="body"><span class="k">Для практикующего врача</span><b>Методичка «ИИ в практике врача» <span class="price">1 799 ₽</span></b><span class="txt">24 страницы: что поручать нейросети, что не поручать никогда и как сформулировать запрос, чтобы получить рабочий ответ. Семь сценариев с приема и чек-лист на 30 секунд.</span></span>
+  <span class="btn">Подробнее о методичке</span>
+</a>
+<!-- blocks:third:end -->
+        <h2 id="obezlichivanie" data-short="Обезличивание данных">Как не нарушить врачебную тайну и 152-ФЗ?</h2>
+        <p>Не отправлять в нейросеть ничего, что позволяет понять, о каком пациенте идет речь. Статья 13 закона 323-ФЗ относит к врачебной тайне сам факт обращения за помощью, состояние здоровья, диагноз и иные сведения, полученные при обследовании и лечении, а передавать их другим лицам допускается с письменного согласия пациента или в случаях, прямо перечисленных в законе. Закон 152-ФЗ относит сведения о состоянии здоровья к специальной категории персональных данных, а передачу данных компании в другой стране отдельно регулирует как трансграничную.</p>
+        <table>
+          <thead><tr><th>Убрать из запроса</th><th>Заменить на</th></tr></thead>
+          <tbody>
+            <tr><td>ФИО, инициалы, дата рождения</td><td>Пол и возраст: «женщина, 52 года»</td></tr>
+            <tr><td>Номер карты, полиса, СНИЛС, телефон, адрес</td><td>Ничего, для задачи они не нужны</td></tr>
+            <tr><td>Точные даты визитов</td><td>Относительные сроки: «через 3 месяца после операции»</td></tr>
+            <tr><td>Редкие детали, по которым узнают человека (профессия, должность, необычный случай)</td><td>Убрать или обобщить</td></tr>
+            <tr><td>Снимки и сканы с шапкой</td><td>Обрезать шапку, проверить метаданные файла</td></tr>
+          </tbody>
+        </table>
+        <p class="src">Основа таблицы: 323-ФЗ, статья 13; 152-ФЗ, статьи 3 и 10.</p>
+        <p>Обезличенный запрос по-прежнему полезен: модели для объяснения памятки не нужно знать, как зовут пациента. Корпоративные сервисы с договором об обработке данных меняют картину, но это решение клиники и ее юриста, а не повод вставлять карту в бесплатный чат.</p>
+
+        <h2 id="formula" data-short="Формула запроса">Как сформулировать запрос, чтобы ответ был полезным?</h2>
+        <p>Дать модели то, что вы дали бы толковому ассистенту в первый день: кто он, что сделать, для кого, в каком виде и чего делать нельзя. Короткий запрос «напиши памятку после удаления зуба» даст среднюю памятку из интернета. Запрос по формуле даст вашу.</p>
+        <ol class="steps">
+          <li><span><b>Роль:</b> «Ты помогаешь стоматологу готовить тексты для пациентов».</span></li>
+          <li><span><b>Задача:</b> «Напиши памятку после удаления зуба мудрости».</span></li>
+          <li><span><b>Контекст:</b> ваши собственные рекомендации списком, без данных пациента.</span></li>
+          <li><span><b>Формат:</b> «Не больше 150 слов, короткие пункты, на "вы", без терминов».</span></li>
+          <li><span><b>Ограничения:</b> «Не добавляй препаратов и доз, которых нет в моем списке. Если чего-то не хватает, спроси».</span></li>
+        </ol>
+        <p>Последний пункт самый важный. Модель стремится заполнить пробелы, и разрешение спросить вместо того, чтобы додумать, снимает часть выдумок. Семь готовых сценариев с приема с запросами, формулой и чек-листом собраны в методичке «ИИ в практике врача» (<a href="/metodichka.html">подробнее</a>), а 30 запросов для врача бесплатно лежат в боте <a href="https://t.me/doctorAImetod_bot?start=free">@doctorAImetod_bot</a>.</p>
+
+        <h2 id="proverka" data-short="Как проверить ответ">Как проверить ответ нейросети перед использованием?</h2>
+        <p>Читать его так, как читаете работу ординатора: с допущением, что ошибка есть, пока не доказано обратное. Даже хорошие результаты не отменяют проверки. В исследовании в Nature Medicine (2024) специально адаптированные модели пересказывали клинические тексты, и врачи в большинстве случаев оценили их пересказы как равноценные (45%) или лучшие (36%), чем у экспертов. Но в том же исследовании авторы отдельно разбирают ошибки и типы выдуманной информации, которые встречались у моделей.</p>
+        <ul>
+          <li>Цифры, дозы, сроки, критерии: сверить с клиническими рекомендациями или инструкцией.</li>
+          <li>Ссылки: открыть каждую и убедиться, что статья существует и говорит именно это. Модели выдумывают источники, и правдоподобно оформленная ссылка ничего не доказывает.</li>
+          <li>Пересказ статьи: сверить главный вывод с аннотацией и таблицей результатов.</li>
+          <li>Текст пациенту: прочитать глазами пациента. Нет ли обещаний результата и лишних назначений.</li>
+        </ul>
+        <div class="hl-frame"><p><b>Нейросеть пишет черновик. Подпись под текстом все равно ваша.</b></p></div>
+        <p>Подробный порядок проверки для пациентов разобран в статье <a href="/blog/kak-proverit-medicinskiy-sovet-neyroseti.html">«Как проверить медицинский совет нейросети»</a>, ее удобно давать тем, кто приходит на прием с распечаткой из чата.</p>
+
+        <h2 id="chek-list" data-short="Чек-лист">Чек-лист: врач начинает работать с нейросетью</h2>
+        <ul class="checklist">
+          <li>Первая задача из тех, где вы сразу видите ошибку: письмо, памятка, пересказ, план доклада.</li>
+          <li>Диагноз, тактику и юридические документы модель не решает.</li>
+          <li>В запросе нет ФИО, дат рождения, номеров карт, полисов и узнаваемых деталей.</li>
+          <li>Запрос по формуле: роль, задача, контекст, формат, ограничения.</li>
+          <li>Модели разрешено переспросить вместо того, чтобы додумывать.</li>
+          <li>Цифры и ссылки проверены по первоисточнику, текст прочитан перед отправкой.</li>
+        </ul>
+
+        <div class="callout callout-legal"><p>Статья не является юридической консультацией и не заменяет клинические рекомендации. Ответственность за диагноз, лечение и обращение с данными пациентов остается за врачом и медицинской организацией. Порядок работы с внешними сервисами согласуйте с юристом клиники.</p></div>
+      </div>
+
+      <section class="faq prose" aria-label="Частые вопросы">
+        <h2 id="faq">Частые вопросы</h2>
+<details class="faq"><summary>Можно ли врачу пользоваться ChatGPT в работе?</summary><p>Можно, если нейросеть готовит черновики и объяснения, а решения и проверку оставляет врач. ВОЗ называет административную работу, обучение и ответы на вопросы пациентов среди основных сценариев применения. Данные пациентов в запрос попадать не должны.</p></details>
+        <details class="faq"><summary>Можно ли загружать в нейросеть данные пациента?</summary><p>Без согласия пациента нельзя: сведения о диагнозе и состоянии здоровья составляют врачебную тайну по статье 13 закона 323-ФЗ, а по 152-ФЗ это специальная категория персональных данных. Отправляйте только обезличенный контекст: пол, возраст, клиническую суть, без имени, дат и номеров документов.</p></details>
+        <details class="faq"><summary>Какие задачи врачу лучше всего отдать нейросети в начале?</summary><p>Черновики писем и ответов пациентам, памятки простым языком, пересказ статей, план выступления. Во всех этих задачах вы эксперт и быстро заметите ошибку, а экономия времени ощутима сразу.</p></details>
+        <details class="faq"><summary>Можно ли спрашивать у нейросети дозировки препаратов?</summary><p>Использовать ответ без проверки нельзя. Дозы, критерии и сроки сверяются с инструкцией и клиническими рекомендациями, а в текстах для пациентов лучше прямо запретить модели добавлять препараты и дозы, которых нет в вашем списке.</p></details>
+        <details class="faq"><summary>Как понять, что нейросеть выдумала источник?</summary><p>Открыть ссылку и найти статью в PubMed или на сайте журнала по названию. Несуществующий DOI, не тот год, другие авторы или вывод, которого нет в аннотации, означают, что ссылке верить нельзя. Даже у новых моделей выдуманные ссылки встречаются, поэтому проверка нужна каждый раз.</p></details>
+        <details class="faq"><summary>Что писать в запросе, чтобы ответ был точнее?</summary><p>Пять частей: роль, задача, контекст, формат и ограничения. Добавьте собственные данные и рекомендации вместо того, чтобы ждать их от модели, и разрешите ей задать уточняющий вопрос, если информации не хватает.</p></details>
+      </section>
+
+      <section class="prose">
+        <h2 id="istochniki" class="no-toc">Источники</h2>
+        <ol class="sources">
+<li><a href="https://www.who.int/publications/i/item/9789240084759" rel="nofollow noopener" target="_blank">World Health Organization. Ethics and governance of artificial intelligence for health: Guidance on large multi-modal models. Geneva: WHO, 2024. ISBN 978-92-4-008475-9</a> (<a href="https://www.who.int/news/item/18-01-2024-who-releases-ai-ethics-and-governance-guidance-for-large-multi-modal-models" rel="nofollow noopener" target="_blank">пресс-релиз ВОЗ от 18.01.2024</a>)</li>
+          <li><a href="https://www.consultant.ru/document/cons_doc_LAW_121895/9f906d460f9454a8a0d290738d9fc2798c1e865a/" rel="nofollow noopener" target="_blank">Федеральный закон от 21.11.2011 N 323-ФЗ «Об основах охраны здоровья граждан в Российской Федерации», статья 13 «Соблюдение врачебной тайны»</a> (<a href="https://www.consultant.ru/document/cons_doc_LAW_121895/f7964563436c4bb0aed73d388df1a95d9103b632/" rel="nofollow noopener" target="_blank">статья 37</a>). КонсультантПлюс</li>
+          <li><a href="https://www.consultant.ru/document/cons_doc_LAW_61801/26edb2934b899bf9c74c3a8f7e574651c6565e6d/" rel="nofollow noopener" target="_blank">Федеральный закон от 27.07.2006 N 152-ФЗ «О персональных данных», статья 10 «Специальные категории персональных данных»</a> (<a href="https://www.consultant.ru/document/cons_doc_LAW_61801/4f41fe599ce341751e4e34dc50a4b676674c1416/" rel="nofollow noopener" target="_blank">статья 3, понятия обезличивания и трансграничной передачи</a>). КонсультантПлюс</li>
+          <li><a href="https://www.nature.com/articles/s41591-024-02855-5" rel="nofollow noopener" target="_blank">Van Veen D. et al. Adapted large language models can outperform medical experts in clinical text summarization. Nature Medicine, 2024; 30(4): 1134-1142</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10148230/" rel="nofollow noopener" target="_blank">Ayers J. W. et al. Comparing Physician and Artificial Intelligence Chatbot Responses to Patient Questions Posted to a Public Social Media Forum. JAMA Internal Medicine, 2023; 183(6): 589-596</a></li>
+        </ol>
+      </section>
+
+<!-- blocks:end:start -->
+<div class="like-row"><button class="like" type="button" data-like="neyroset-dlya-vracha-s-chego-nachat" data-goal="article_like">Полезно</button><span>Статья помогла? Отметьте, так я вижу, о чем писать дальше.</span></div>
+<section class="related" aria-label="Рекомендуем прочитать">
+  <h2>Рекомендуем прочитать</h2>
+  <div class="rel-grid">
+    <a class="rel" href="/blog/chatgpt-o-zdorove-mozhno-li.html"><span class="rel-meta">Нейросети и здоровье · 11 мин</span><b>Можно ли спрашивать ChatGPT о здоровье: что можно, что нельзя</b></a>
+    <a class="rel" href="/blog/kak-proverit-medicinskiy-sovet-neyroseti.html"><span class="rel-meta">Нейросети и здоровье · 10 мин</span><b>Как проверить медицинский совет нейросети</b></a>
+    <a class="rel" href="/blog/vybili-zub-chto-delat.html"><span class="rel-meta">Здоровые зубы · 9 мин</span><b>Выбили зуб: что делать в первые 30 минут</b></a>
+    <a class="rel" href="/blog/flyus-chto-delat.html"><span class="rel-meta">Здоровые зубы · 10 мин</span><b>Флюс: что делать и чего нельзя</b></a>
+  </div>
+</section>
+<aside class="author-box">
+  <img src="/photo-avatar.png" alt="Ильдар Хайров" width="64" height="64" />
+  <div><div class="name"><a href="/ob-avtore/">Ильдар Хайров</a></div>
+    <p>Практикующий стоматолог-ортопед, на приеме с 2017 года. Полтора года встраиваю ИИ в свой прием и в быт и пишу только о том, что проверил сам.</p>
+    <a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=tg_author&amp;utm_campaign=channel&amp;utm_content=neyroset-dlya-vracha-s-chego-nachat" data-goal="tg_author">Telegram-канал: заметки врача и разборы нейросетей</a></div>
+</aside>
+<!-- blocks:end:end -->
+    </article>
+<!-- blocks:lead:start -->
+<section class="lead" aria-label="Для практикующего врача">
+  <div><span class="when">1 799 ₽</span>
+    <h2>Методичка «ИИ в практике врача»</h2>
+    <p>24 страницы: что поручать нейросети, что не поручать никогда и как сформулировать запрос, чтобы получить рабочий ответ. Семь сценариев с приема и чек-лист на 30 секунд.</p></div>
+  <div><a class="btn" href="/metodichka.html?utm_source=blog&amp;utm_medium=lead_block&amp;utm_campaign=metodichka&amp;utm_content=neyroset-dlya-vracha-s-chego-nachat" data-goal="lead_block">Подробнее о методичке</a>
+    <a class="all" href="/produkty/">Все продукты</a></div>
+</section>
+<!-- blocks:lead:end -->
+  </div>
+<!-- blocks:aside:start -->
+<aside class="col-aside">
+<a class="side-offer" href="/metodichka.html?utm_source=blog&amp;utm_medium=offer_side&amp;utm_campaign=metodichka&amp;utm_content=neyroset-dlya-vracha-s-chego-nachat" data-goal="offer_side">
+  <span class="body"><span class="k">Для практикующего врача</span><b>Методичка «ИИ в практике врача» <span class="price">1 799 ₽</span></b><span class="txt">24 страницы: что поручать нейросети, что не поручать никогда и как сформулировать запрос, чтобы получить рабочий ответ. Семь сценариев с приема и чек-лист на 30 секунд.</span></span>
+  <span class="btn">Подробнее о методичке</span>
+</a>
+<div class="wcard author-card">
+  <img src="/photo-avatar.png" alt="" width="56" height="56" />
+  <span class="role">Автор</span>
+  <b><a href="/ob-avtore/">Ильдар Хайров</a></b>
+  <p>Стоматолог-ортопед, на приеме с 2017 года. Пишу о том, что вижу на приеме и проверяю сам.</p>
+</div>
+<nav class="wcard toc" aria-label="Содержание статьи"><h4>Содержание</h4><ol>
+    <li><a href="#korotko" data-toc="korotko">1. Коротко: главное и четыре термина</a></li>
+    <li><a href="#pervye-zadachi" data-toc="pervye-zadachi">2. С каких задач начать</a></li>
+    <li><a href="#chego-ne-poruchat" data-toc="chego-ne-poruchat">3. Чего не поручать</a></li>
+    <li><a href="#obezlichivanie" data-toc="obezlichivanie">4. Обезличивание данных</a></li>
+    <li><a href="#formula" data-toc="formula">5. Формула запроса</a></li>
+    <li><a href="#proverka" data-toc="proverka">6. Как проверить ответ</a></li>
+    <li><a href="#chek-list" data-toc="chek-list">7. Чек-лист</a></li>
+    <li><a href="#faq" data-toc="faq">8. Частые вопросы</a></li>
+  </ol></nav>
+</aside>
+<!-- blocks:aside:end -->
+</div>
+<!-- blocks:footer:start -->
+<footer class="site-footer">
+  <div class="cols">
+    <div class="about"><b>Ильдар Хайров</b><br /><span>Стоматолог-ортопед. Нейросети в медицине и в жизни</span></div>
+    <div><p class="fh">Рубрики</p><div class="links"><a href="/blog/zdorovye-zuby/">Здоровые зубы</a><a href="/blog/zdorovie/">Нейросети и здоровье</a><a href="/blog/v-zhizni/">Нейросети в жизни</a><a href="/blog/assistent/">Свой ИИ-ассистент</a><a href="/blog/vrachu/">Врачу</a><a href="/blog/ii/">Искусственный интеллект помимо стоматологии</a></div></div>
+    <div><p class="fh">Продукты</p><div class="links"><a href="/metodichka.html?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=metodichka" data-goal="footer">Методичка «ИИ в практике врача», 1 799 ₽</a><a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=guide" data-goal="footer">Гайд «Личный секретарь в кармане», 4 999 ₽</a><a href="https://t.me/il_khairov?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=agents" data-goal="footer">ИИ-агент под ключ</a><a href="/ildar/?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=priem#priem" data-goal="footer">Запись на прием к стоматологу</a></div></div>
+    <div><p class="fh">Блог</p><div class="links"><a href="/blog/">Все статьи</a><a href="/ob-avtore/">Об авторе</a><a href="/redpolitika/">Как мы проверяем статьи</a><a href="/blog/feed.xml">RSS</a><a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=channel" data-goal="footer">Telegram-канал</a></div></div>
+    <div><p class="fh">Соцсети</p><div class="links"><a href="https://t.me/dr_khairov_multiverse">Telegram</a><a href="https://www.instagram.com/dr.khairov.multiverse/">Instagram</a><a href="https://www.tiktok.com/@dr.khairov.multiverse">TikTok</a><a href="https://www.youtube.com/@dr_khairov_multiverse">YouTube</a><a href="https://www.threads.net/@dr.khairov.multiverse">Threads</a></div></div>
+  </div>
+  <div class="legal">
+    <p>Материалы носят информационный характер, не являются медицинской услугой и не заменяют очного обращения к врачу.</p>
+    <p><a href="/docs/price.html">Цены</a> · <a href="/docs/oferta.html">Оферта</a> · <a href="/docs/privacy.html">Политика конфиденциальности</a> · <a href="/docs/payment.html">Оплата и возврат</a> · © khairovmultiverse.com</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var goal = function (name) { if (window.ym) ym(113066474, 'reachGoal', name); };
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-goal]') : null;
+    if (el) goal(el.getAttribute('data-goal'));
+  });
+  var like = document.querySelector('[data-like]');
+  if (like) {
+    var key = 'like:' + like.getAttribute('data-like');
+    try { if (localStorage.getItem(key)) like.classList.add('on'); } catch (err) {}
+    like.addEventListener('click', function () {
+      like.classList.add('on');
+      try { localStorage.setItem(key, '1'); } catch (err) {}
+    });
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('[data-toc]'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var set = function (id) { links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-toc') === id); }); };
+  var io = new IntersectionObserver(function (es) {
+    var vis = es.filter(function (x) { return x.isIntersecting; });
+    if (vis.length) set(vis[0].target.id);
+  }, { rootMargin: '-70px 0px -65% 0px' });
+  links.forEach(function (a) { var el = document.getElementById(a.getAttribute('data-toc')); if (el) io.observe(el); });
+  set(links[0].getAttribute('data-toc'));
+})();
+</script>
+<!-- blocks:footer:end -->
+</body>
+</html>

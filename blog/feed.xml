@@ -1,10 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
-<title>Ильдар Хайров: ИИ в практике врача</title>
+<title>Ильдар Хайров: нейросети и здоровье глазами врача</title>
 <link>https://khairovmultiverse.com/blog/</link>
-<description>Как практикующий врач применяет ИИ: инструменты, запросы, границы. Статьи из личной практики.</description>
+<description>Блог стоматолога-ортопеда: здоровые зубы, нейросети в медицине и в жизни, свой ИИ-ассистент. Проверено на практике.</description>
 <language>ru</language>
-<lastBuildDate>Mon, 23 Nov 2026 19:20:07 +0300</lastBuildDate>
+<lastBuildDate>Mon, 23 Nov 2026 10:00:00 +0300</lastBuildDate>
+<item>
+<title>Зуб болел и перестал: почему это опасно</title>
+<link>https://khairovmultiverse.com/blog/zub-bolel-i-perestal.html</link>
+<guid isPermaLink="true">https://khairovmultiverse.com/blog/zub-bolel-i-perestal.html</guid>
+<pubDate>Mon, 23 Nov 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<category>Здоровые зубы</category>
+<description>Если зуб сильно болел и вдруг перестал, нередко это значит, что нерв внутри погиб, а воспаление тихо ушло к корню. Разбираем, что происходит в зубе, почему это опасно (хронический периодонтит, киста, флюс) и что делать, даже если ничего не болит.</description>
+<enclosure url="https://khairovmultiverse.com/blog/img/zub-bolel-i-perestal.png" type="image/png"/>
+</item>
+<item>
+<title>Выбили зуб: что делать в первые 30 минут</title>
+<link>https://khairovmultiverse.com/blog/vybili-zub-chto-delat.html</link>
+<guid isPermaLink="true">https://khairovmultiverse.com/blog/vybili-zub-chto-delat.html</guid>
+<pubDate>Mon, 23 Nov 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<category>Здоровые зубы</category>
+<description>Выбили зуб с корнем? Его можно вернуть. Стоматолог объясняет: как поднять зуб, в чем везти, почему важны первые 30 минут и что сделает врач.</description>
+<enclosure url="https://khairovmultiverse.com/blog/img/vybili-zub-chto-delat.png" type="image/png"/>
+</item>
+<item>
+<title>Сколько служит пломба и когда ее менять</title>
+<link>https://khairovmultiverse.com/blog/skolko-sluzhit-plomba.html</link>
+<guid isPermaLink="true">https://khairovmultiverse.com/blog/skolko-sluzhit-plomba.html</guid>
+<pubDate>Mon, 23 Nov 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<category>Здоровые зубы</category>
+<description>Фиксированного срока у пломбы нет: в большинстве исследований за год из строя выходит от 1 до 3% жевательных композитных пломб, и срок зависит от размера, риска кариеса и нагрузки. Стоматолог разбирает, по каким признакам пломбу меняют или чинят и почему целую пломбу «по сроку» не трогают.</description>
+<enclosure url="https://khairovmultiverse.com/blog/img/skolko-sluzhit-plomba.png" type="image/png"/>
+</item>
+<item>
+<title>Можно ли отбеливать зубы и вредно ли это</title>
+<link>https://khairovmultiverse.com/blog/otbelivanie-zubov-vredno-li.html</link>
+<guid isPermaLink="true">https://khairovmultiverse.com/blog/otbelivanie-zubov-vredno-li.html</guid>
+<pubDate>Mon, 23 Nov 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<category>Здоровые зубы</category>
+<description>Отбеливать здоровые зубы взрослым можно: частые побочные эффекты, чувствительность и раздражение десны, обычно временные. Стоматолог разбирает, кому нельзя, почему пломбы и коронки не светлеют, работают ли сода, лимон и уголь и сколько перекиси разрешено в средствах для дома в ЕС и ЕАЭС.</description>
+<enclosure url="https://khairovmultiverse.com/blog/img/otbelivanie-zubov-vredno-li.png" type="image/png"/>
+</item>
+<item>
+<title>Нейросеть для врача: с чего начать</title>
+<link>https://khairovmultiverse.com/blog/neyroset-dlya-vracha-s-chego-nachat.html</link>
+<guid isPermaLink="true">https://khairovmultiverse.com/blog/neyroset-dlya-vracha-s-chego-nachat.html</guid>
+<pubDate>Mon, 23 Nov 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<category>Врачу</category>
+<description>Начинать стоит с текстов, где ошибку легко заметить: письма, объяснения для пациентов, пересказ статей, план выступления. Разобрано, что нейросети не поручать, как обезличивать данные по 152-ФЗ и 323-ФЗ, формула запроса и проверка ответа.</description>
+<enclosure url="https://khairovmultiverse.com/blog/img/neyroset-dlya-vracha-s-chego-nachat.png" type="image/png"/>
+</item>
+<item>
+<title>Как проверить медицинский совет нейросети</title>
+<link>https://khairovmultiverse.com/blog/kak-proverit-medicinskiy-sovet-neyroseti.html</link>
+<guid isPermaLink="true">https://khairovmultiverse.com/blog/kak-proverit-medicinskiy-sovet-neyroseti.html</guid>
+<pubDate>Mon, 23 Nov 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<category>Нейросети и здоровье</category>
+<description>Попросите источники и откройте каждый, сверьте ответ с клиническими рекомендациями Минздрава, задайте вопрос заново и покажите ответ врачу. Разобрано, как распознать выдуманные ссылки и галлюцинации и какие ответы нейросети должны насторожить сразу.</description>
+<enclosure url="https://khairovmultiverse.com/blog/img/kak-proverit-medicinskiy-sovet-neyroseti.png" type="image/png"/>
+</item>
+<item>
+<title>Имплант или мост: что выбрать</title>
+<link>https://khairovmultiverse.com/blog/implant-ili-most.html</link>
+<guid isPermaLink="true">https://khairovmultiverse.com/blog/implant-ili-most.html</guid>
+<pubDate>Mon, 23 Nov 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<category>Здоровые зубы</category>
+<description>Имплант заменяет один зуб и не трогает соседей, мост опирается на соседние зубы, и их обтачивают под коронки. Стоматолог разбирает, чем они отличаются: кость, гигиена, противопоказания, сроки лечения, что говорят обзоры о сроке службы и как врач выбирает по снимку и КТ.</description>
+<enclosure url="https://khairovmultiverse.com/blog/img/implant-ili-most.png" type="image/png"/>
+</item>
+<item>
+<title>Флюс: что делать и чего нельзя</title>
+<link>https://khairovmultiverse.com/blog/flyus-chto-delat.html</link>
+<guid isPermaLink="true">https://khairovmultiverse.com/blog/flyus-chto-delat.html</guid>
+<pubDate>Mon, 23 Nov 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<category>Здоровые зубы</category>
+<description>Флюс это гнойное воспаление надкостницы челюсти от больного зуба, и лечит его только стоматолог-хирург, в тот же день. Разбираем, почему флюс нельзя греть, полоскать горячим, лечить антибиотиками самому и вскрывать, и при каких признаках вызывать скорую.</description>
+<enclosure url="https://khairovmultiverse.com/blog/img/flyus-chto-delat.png" type="image/png"/>
+</item>
+<item>
+<title>Можно ли спрашивать ChatGPT о здоровье: что можно, что нельзя</title>
+<link>https://khairovmultiverse.com/blog/chatgpt-o-zdorove-mozhno-li.html</link>
+<guid isPermaLink="true">https://khairovmultiverse.com/blog/chatgpt-o-zdorove-mozhno-li.html</guid>
+<pubDate>Mon, 23 Nov 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<category>Нейросети и здоровье</category>
+<description>Спрашивать можно, если нейросеть помогает понять и подготовиться, а решает врач. Разобрано, что ей поручать, где граница (диагноз, лекарства, отмена лечения, срочные симптомы), какие данные не отправлять и почему она уверенно ошибается.</description>
+<enclosure url="https://khairovmultiverse.com/blog/img/chatgpt-o-zdorove-mozhno-li.png" type="image/png"/>
+</item>
+<item>
+<title>Болит зуб ночью: что делать до утра</title>
+<link>https://khairovmultiverse.com/blog/bolit-zub-nochyu-chto-delat.html</link>
+<guid isPermaLink="true">https://khairovmultiverse.com/blog/bolit-zub-nochyu-chto-delat.html</guid>
+<pubDate>Mon, 23 Nov 2026 10:00:00 +0300</pubDate>
+<author>Ильдар Хайров</author>
+<category>Здоровые зубы</category>
+<description>Зуб разболелся ночью: примите обезболивающее из аптечки строго по инструкции, не жуйте на эту сторону и утром идите к стоматологу. Разбираем, что реально помогает до утра, чего не делать, о чем говорит ночная боль и когда звонить в скорую.</description>
+<enclosure url="https://khairovmultiverse.com/blog/img/bolit-zub-nochyu-chto-delat.png" type="image/png"/>
+</item>
 </channel>
 </rss>
