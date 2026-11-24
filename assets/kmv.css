@@ -57,6 +57,18 @@ footer .soc{display:flex;gap:16px;font-weight:600;color:var(--txt)}
   .ph img{width:100%;height:420px}
   section{padding:44px 0}
 }
+/* Zoya page: subtitle, inline links, booking row, source notes (25.11) */
+.ph picture{display:block}
+.ph .sub{font-weight:600;font-size:17px;margin:14px 0 0;max-width:560px}
+.ph .links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-weight:600;font-size:15px}
+.ph .links a,.note a{color:var(--acc);text-decoration:underline;text-underline-offset:2px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.note{color:var(--mut);font-size:13px;margin-top:14px}
+.card .note{margin:0}
+.h3gap{margin:40px 0 14px}
+.list.cols{columns:2;column-gap:40px}
+.list.cols li{break-inside:avoid}
+@media (max-width:820px){.list.cols{columns:1}.ph img{object-position:center 20%}}
 
 /* Digital products rail: fixed on the right on wide screens, a block in the flow on narrow ones. */
 .rail{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 8px 28px #0F14181A;margin:0 20px 24px}
