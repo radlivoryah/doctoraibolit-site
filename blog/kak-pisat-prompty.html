@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113066474', 'ym');
+
+    ym(113066474, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113066474" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Как писать промпты для нейросети: 7 правил и шаблоны</title>
+<meta name="description" content="Хороший промпт называет ситуацию, задачу, формат ответа и ограничения, а первый ответ правят как черновик. Разбираем 7 правил из руководств OpenAI, Anthropic и Google, 5 готовых шаблонов для жизни и частые ошибки." />
+<meta name="author" content="Ильдар Хайров" />
+<meta name="rubric" content="v-zhizni" />
+<meta name="published" content="2026-11-26" />
+<meta name="updated" content="2026-11-26" />
+<link rel="canonical" href="https://khairovmultiverse.com/blog/kak-pisat-prompty.html" />
+<meta property="og:title" content="Нейросеть отвечает мимо? Дело в запросе" />
+<meta property="og:description" content="Семь правил промпта из руководств OpenAI, Anthropic и Google и пять шаблонов: письмо, план недели, документ, прием врача, учеба." />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/blog/blog.css" />
+<link rel="alternate" type="application/rss+xml" title="Ильдар Хайров: нейросети и здоровье" href="/blog/feed.xml" />
+<!-- seo:head:start -->
+<meta property="og:url" content="https://khairovmultiverse.com/blog/kak-pisat-prompty.html" />
+<meta property="og:image" content="https://khairovmultiverse.com/blog/img/kak-pisat-prompty.png" />
+<meta property="og:site_name" content="Ильдар Хайров" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="article:published_time" content="2026-11-26" />
+<meta property="article:modified_time" content="2026-11-26" />
+<meta property="article:section" content="Нейросети в жизни" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://khairovmultiverse.com/blog/img/kak-pisat-prompty.png" />
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://khairovmultiverse.com/blog/kak-pisat-prompty.html#article",
+   "headline": "Как писать промпты для нейросети: 7 правил и шаблоны",
+   "description": "Хороший промпт называет ситуацию, задачу, формат ответа и ограничения, а первый ответ правят как черновик. Разбираем 7 правил из руководств OpenAI, Anthropic и Google, 5 готовых шаблонов для жизни и частые ошибки.",
+   "image": "https://khairovmultiverse.com/blog/img/kak-pisat-prompty.png",
+   "datePublished": "2026-11-26",
+   "dateModified": "2026-11-26",
+   "inLanguage": "ru",
+   "author": {
+    "@type": "Person",
+    "name": "Ильдар Хайров",
+    "jobTitle": "стоматолог-ортопед",
+    "description": "Практикующий стоматолог-ортопед, на приеме с 2017 года. Полтора года встраиваю ИИ в свой прием и в быт и пишу только о том, что проверил сам.",
+    "url": "https://khairovmultiverse.com/ob-avtore/",
+    "image": "https://khairovmultiverse.com/photo-avatar.png",
+    "sameAs": [
+     "https://t.me/dr_khairov_multiverse"
+    ]
+   },
+   "publisher": {
+    "@type": "Person",
+    "name": "Ильдар Хайров",
+    "url": "https://khairovmultiverse.com/"
+   },
+   "mainEntityOfPage": "https://khairovmultiverse.com/blog/kak-pisat-prompty.html",
+   "articleSection": "Нейросети в жизни",
+   "timeRequired": "PT13M"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Главная",
+     "item": "https://khairovmultiverse.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Статьи",
+     "item": "https://khairovmultiverse.com/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Нейросети в жизни",
+     "item": "https://khairovmultiverse.com/blog/v-zhizni/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 4,
+     "name": "Как писать промпты для нейросети: 7 правил и шаблоны",
+     "item": "https://khairovmultiverse.com/blog/kak-pisat-prompty.html"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Что такое промпт простыми словами?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Промпт это ваш запрос к нейросети: вопрос, задание или инструкция, иногда вместе с текстом, который нужно обработать. От того, насколько ясно он написан, зависит, насколько точно нейросеть попадет в то, что вам нужно."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Как правильно составить промпт для нейросети?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Опишите ситуацию и кто вы, сформулируйте задачу одной фразой, укажите формат и длину ответа, добавьте ограничения и, если есть, образец. В конце можно попросить нейросеть задать уточняющие вопросы. Первый ответ правьте точечно в том же чате."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Нужно ли писать нейросети «ты эксперт»?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Одна строка роли помогает задать тон, и в руководстве Anthropic это отдельный прием. Но сама компания пишет, что современным моделям громкая роль часто не нужна. Пользы больше от описания ситуации: для кого результат, что уже есть и зачем вам ответ."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Почему нейросеть отвечает не то, что я просил?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Чаще всего ей не хватило контекста или задача была расплывчатой, и она угадала средний вариант. Добавьте подробности, точный формат и образец, а запрет вроде «не пиши сложно» замените указанием, как писать. Помогает и просьба задать вопросы перед ответом."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Работают ли эти правила для ChatGPT, Claude, Gemini и других нейросетей?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Да. Правила в статье взяты из официальных руководств OpenAI, Anthropic и Google, и по сути они совпадают: ясная задача, контекст, формат, примеры и правка ответа. Детали оформления у разных сервисов отличаются, но для бытовых задач это не важно."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Можно ли с помощью промпта узнать диагноз?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Нет. Нейросеть не осматривает вас и может уверенно ошибаться, поэтому диагноз и лечение определяет только врач. Промпт полезен, чтобы подготовиться к приему: собрать жалобы по времени и составить вопросы врачу. При острых симптомах звоните 103 или 112."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<!-- seo:head:end -->
+</head>
+<body>
+<!-- blocks:header:start -->
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="/">Ильдар <span>Хайров</span></a>
+    <nav aria-label="Основная навигация">
+      <a class="hide-m" href="/blog/">Статьи</a>
+      <a class="hide-m" href="/ob-avtore/">Об авторе</a>
+      <a class="hide-m" href="/produkty/">Продукты</a>
+      <a class="btn-tg" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=tg_header&amp;utm_campaign=channel" data-goal="tg_header">Telegram-канал</a>
+    </nav>
+  </div>
+</header>
+<!-- blocks:header:end -->
+<div class="journal">
+<!-- blocks:sidenav:start -->
+<nav class="sidenav" aria-label="Разделы сайта">
+    <a class="nav-item" href="/">Главная</a>
+    <a class="nav-item" href="/blog/">Все статьи</a>
+    <a class="nav-item" href="/ob-avtore/">Об авторе</a>
+    <a class="nav-item" href="/redpolitika/">Как мы проверяем статьи</a>
+    <a class="nav-item" href="/produkty/">Продукты</a>
+    <p class="grp">Рубрики</p>
+    <a class="nav-item" href="/blog/zdorovye-zuby/"><span>Здоровые зубы</span><b>13</b></a>
+    <a class="nav-item" href="/blog/zdorovie/"><span>Нейросети и здоровье</span><b>4</b></a>
+    <a class="nav-item on" href="/blog/v-zhizni/"><span>Нейросети в жизни</span><b>1</b></a>
+    <a class="nav-item" href="/blog/assistent/"><span>Свой ИИ-ассистент</span><b>1</b></a>
+    <a class="nav-item" href="/blog/vrachu/"><span>Врачу</span><b>1</b></a>
+    <a class="nav-item" href="/blog/ii/"><span>Искусственный интеллект помимо стоматологии</span><b>0</b></a>
+  </nav>
+<!-- blocks:sidenav:end -->
+  <div class="col-main">
+    <article class="wcard art">
+      <header>
+<!-- seo:info:start -->
+<p class="crumbs"><a href="/">Главная</a> / <a href="/blog/">Статьи</a> / <a href="/blog/v-zhizni/">Нейросети в жизни</a></p>
+<p class="meta"><a href="/blog/v-zhizni/">Нейросети в жизни</a> · 13 мин · обновлено 26 ноября 2026</p>
+<!-- seo:info:end -->
+        <h1>Как писать промпты для нейросети: 7 правил и шаблоны</h1>
+        <p class="lede">Почему нейросеть отвечает мимо и как это исправить без программирования: семь правил из официальных руководств, пять шаблонов под письмо, план, документ, прием врача и учебу.</p>
+<!-- blocks:byline:start -->
+<p class="byline"><img src="/photo-avatar.png" alt="" width="36" height="36" /><a href="/ob-avtore/">Ильдар Хайров</a> · стоматолог-ортопед, на приеме с 2017 года</p>
+<!-- blocks:byline:end -->
+      </header>
+      <img class="cover-img" src="/blog/img/kak-pisat-prompty.png" alt="Как писать промпты для нейросети: 7 правил и шаблоны, обложка статьи" width="1200" height="630" />
+<!-- blocks:toc-m:start -->
+<details class="toc-m"><summary>Содержание</summary><ol>
+  <li><a href="#korotko">Коротко: главное и четыре термина</a></li>
+  <li><a href="#pravila-1-3">Правила 1-3: роль, задача, формат</a></li>
+  <li><a href="#pravila-4-5">Правила 4-5: примеры и ограничения</a></li>
+  <li><a href="#pravila-6-7">Правила 6-7: вопросы и правка</a></li>
+  <li><a href="#shablony">Пять готовых шаблонов</a></li>
+  <li><a href="#oshibki">Частые ошибки</a></li>
+  <li><a href="#nado-li-uchit">Нужно ли учить промпт-инжиниринг</a></li>
+  <li><a href="#chek-list">Чек-лист</a></li>
+  <li><a href="#faq">Частые вопросы</a></li>
+</ol></details>
+<!-- blocks:toc-m:end -->
+
+      <div class="prose">
+        <div class="callout callout-main"><p>Хороший промпт для нейросети отвечает на четыре вопроса: кто вы и в какой ситуации, что нужно сделать, в каком виде нужен ответ и чего делать нельзя. Если у вас есть образец, покажите его, а если данных не хватает, попросите нейросеть сначала задать вам вопросы. Первый ответ почти никогда не бывает финальным: его правят следующими сообщениями, как черновик. Ниже семь правил из официальных руководств OpenAI, Anthropic и Google и пять готовых шаблонов под обычную жизнь.</p></div>
+
+        <p>Чаще всего нейросеть отвечает «мимо» не потому, что она глупая, а потому, что ей написали одну строку вроде «напиши письмо начальнику» и ждут, что она сама догадается, какому начальнику, о чем, каким тоном и на сколько строк. Человек на ее месте переспросил бы. Нейросеть не переспрашивает, она угадывает, и угадывает средне. В руководстве Anthropic есть простая проверка, которую стоит запомнить: покажите свой запрос коллеге, который ничего не знает о задаче, и попросите выполнить. Если коллега растеряется, нейросеть растеряется тоже.</p>
+
+        <h2 id="korotko" data-short="Коротко: главное и четыре термина">Коротко: главное и четыре термина</h2>
+        <div class="callout callout-short"><ul>
+          <li>Пишите нейросети как новому сотруднику: умному, но без контекста.</li>
+          <li>Задача одной фразой в начале, подробности после нее.</li>
+          <li>Сразу называйте формат: список, таблица, письмо, сколько строк.</li>
+          <li>Образец работает лучше длинного описания того, что вы хотите.</li>
+          <li>Говорите, что делать, а не только чего не делать, и объясняйте зачем.</li>
+          <li>Первый ответ это черновик. Правьте его точечно в том же чате.</li>
+        </ul></div>
+        <dl class="glossary">
+          <dt>Промпт</dt><dd>Запрос, который вы пишете нейросети: вопрос, задание, инструкция вместе с текстом, который нужно обработать.</dd>
+          <dt>Контекст</dt><dd>Все, что нейросеть должна знать, чтобы ответить под вас: кто вы, для кого результат, что уже есть, что было раньше.</dd>
+          <dt>Few-shot (запрос с примерами)</dt><dd>Промпт, в котором вы показываете один или несколько образцов того, что хотите получить. Без образцов такой запрос называют zero-shot.</dd>
+          <dt>Итерация</dt><dd>Один круг правки: получили ответ, сказали, что поменять, получили новый вариант.</dd>
+        </dl>
+
+        <h2 id="pravila-1-3" data-short="Правила 1-3: роль, задача, формат">Правила 1-3: с чего начинать запрос к нейросети?</h2>
+        <p>С трех вещей: кто вы и в какой ситуации, что конкретно нужно и в каком виде вы хотите ответ. Эти три строки закрывают большую часть промахов, и все три производителя пишут о них в своих руководствах почти одними словами.</p>
+        <p><b>Правило 1. Роль и контекст.</b> Одна строка роли («ты опытный редактор деловых писем») задает тон, и Anthropic прямо пишет, что даже одно предложение роли меняет результат. Но в своем же блоге компания оговаривается: у современных моделей громкая роль часто не нужна, важнее рассказать ситуацию. Поэтому не тратьте силы на «ты лучший в мире эксперт», лучше напишите, что происходит: «я пишу управляющей компании, третий раз за месяц течет крыша, прошлые обращения остались без ответа». Anthropic советует объяснять и причину просьбы: зная зачем, нейросеть сама додумывает правильные мелочи.</p>
+        <p><b>Правило 2. Задача одним предложением.</b> OpenAI советует ставить инструкцию в начало запроса и отделять ее от остального текста, например строкой из трех решеток ###. Если задачу не получается сказать одной фразой, скорее всего, это две задачи, и их лучше дать по очереди: Google в своем руководстве тоже советует разбивать сложное на отдельные запросы.</p>
+        <p><b>Правило 3. Формат ответа.</b> Длина, структура, стиль. Не «покороче», а «пять пунктов по одной строке»; не «понятно», а «простыми словами, без терминов, для человека 70 лет». В рекомендациях OpenAI это отдельный пункт: меньше расплывчатых описаний, больше точных мер вроде числа предложений.</p>
+        <div class="hl-frame"><p><b>Кто я и что происходит. Что сделать. В каком виде. Этих трех строк хватает для большинства бытовых задач.</b></p></div>
+
+        <h2 id="pravila-4-5" data-short="Правила 4-5: примеры и ограничения">Правила 4-5: зачем нейросети примеры и ограничения?</h2>
+        <p>Пример показывает то, что трудно объяснить словами: ваш тон, длину, манеру. Ограничения убирают то, что вам точно не нужно. Вместе они экономят больше всего кругов правки.</p>
+        <p><b>Правило 4. Примеры.</b> OpenAI пишет, что желаемый формат лучше показать на примере, чем описать. Google в руководстве к Gemini идет дальше и рекомендует добавлять примеры всегда, но предупреждает: оформляйте их одинаково, иначе ответ скопирует разнобой. Anthropic для лучшего результата называет 3-5 примеров. В быту часто хватает одного своего образца: вставьте старое письмо, которое вам нравится, и напишите «в таком же тоне».</p>
+        <p><b>Правило 5. Ограничения.</b> Что нельзя, сколько максимум, о чем не писать. И здесь есть тонкость, которую отмечают и OpenAI, и Anthropic: запрет работает хуже, чем указание, что делать вместо него. «Не пиши сложно» слабее, чем «пиши короткими предложениями, без терминов». А если объяснить причину ограничения, нейросеть начинает применять его шире, в похожих местах, о которых вы не подумали.</p>
+        <div class="callout callout-note"><p>Было: «Напиши поздравление коллеге». Стало: «Напиши поздравление с днем рождения коллеге Марине из бухгалтерии, мы на ты, она любит горы и недавно ходила на Эльбрус. Три-четыре предложения, тепло, без стихов и без слов "желаю счастья и здоровья". Вот как я обычно поздравляю: [вставьте свое старое поздравление]».</p></div>
+
+        <!-- cta:inline:start -->
+<div class="cta-inline">
+  <p><strong>«Личный секретарь в кармане».</strong> 4 999 ₽. Как собрать своего помощника на нейросетях по шагам: он живет в Telegram, понимает голосовые, помнит контекст и закрывает рутину. Так я собрал своего Альфреда.</p>
+  <a class="btn" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=cta_inline&amp;utm_campaign=guide&amp;utm_content=kak-pisat-prompty" data-goal="cta_inline">Узнать о выходе в канале</a>
+</div>
+<!-- cta:inline:end -->
+
+        <!-- blocks:third:start -->
+<a class="wide-offer" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=article_third&amp;utm_campaign=guide&amp;utm_content=kak-pisat-prompty" data-goal="article_third">
+  <span class="body"><span class="k">Гайд, скоро</span><b>«Личный секретарь в кармане» <span class="price">4 999 ₽</span></b><span class="txt">Как собрать своего помощника на нейросетях по шагам: он живет в Telegram, понимает голосовые, помнит контекст и закрывает рутину. Так я собрал своего Альфреда.</span></span>
+  <span class="btn">Узнать о выходе в канале</span>
+</a>
+<!-- blocks:third:end -->
+        <h2 id="pravila-6-7" data-short="Правила 6-7: вопросы и правка">Правила 6-7: как довести ответ нейросети до нужного?</h2>
+        <p>Дать ей спросить и потом править ответ по частям. Это два самых недооцененных приема: люди либо принимают первый вариант, либо стирают все и пишут запрос заново.</p>
+        <p><b>Правило 6. Попросите уточняющие вопросы.</b> Когда задача большая, а вы сами не знаете, что ей сообщить, допишите в конце: «Прежде чем отвечать, задай мне 3-5 вопросов, которых тебе не хватает, по одному». Это не правило из руководств, а рабочий прием, и он хорошо дополняет одну строку из блога Anthropic: если данных недостаточно для вывода, пусть нейросеть так и скажет, а не додумывает. Добавляйте эту фразу в любые запросы, где выдумка может навредить.</p>
+        <p><b>Правило 7. Итерации.</b> Anthropic пишет прямо: первый промпт редко срабатывает идеально, проверяйте и правьте. Править удобнее в том же чате и точечно: «второй абзац короче», «убери канцелярит», «сделай три варианта заголовка». Google добавляет два наблюдения: другая формулировка того же запроса часто дает другой ответ, и даже порядок частей в промпте может влиять на результат. Если вы третий раз правите одно и то же, вернитесь к правилам 1-3: скорее всего, в исходном запросе не хватает контекста.</p>
+        <ol class="steps">
+          <li>Написали запрос по формуле: ситуация, задача, формат.</li>
+          <li>Получили ответ и прочитали его целиком, а не только начало.</li>
+          <li>Назвали одну-две конкретные правки, а не «сделай лучше».</li>
+          <li>Получилось то, что нужно: сохраните запрос как шаблон на будущее.</li>
+        </ol>
+
+        <h2 id="shablony" data-short="Пять готовых шаблонов">Готовые шаблоны промптов: письмо, план, документ, врач, учеба</h2>
+        <p>Скопируйте шаблон, замените то, что в квадратных скобках, и отправьте. Каждый собран по тем же семи правилам, поэтому его легко переделать под свою задачу.</p>
+
+        <h3>Шаблон 1. Письмо или сообщение</h3>
+        <div class="callout callout-note"><p>«Мне нужно написать [кому: управляющей компании, учителю сына, арендодателю]. Ситуация: [что произошло, что уже пробовали]. Цель письма: [чего вы хотите добиться]. Тон: вежливо, но твердо. Объем до [10] строк, в конце один понятный вопрос или просьба. Не добавляй фактов, которых нет в моем описании. Если чего-то не хватает, сначала спроси меня».</p></div>
+
+        <h3>Шаблон 2. План на неделю</h3>
+        <div class="callout callout-note"><p>«Помоги составить план на неделю. Обязательные дела: [список]. Рабочие часы: [например, будни с 9 до 18]. Что важно не потерять: [спорт, семья, сон, хобби]. Сделай таблицу: день, утро, день, вечер. Не ставь больше [трех] крупных дел в один день и оставь один вечер свободным. Перед таблицей задай мне до пяти вопросов, если чего-то не хватает».</p></div>
+
+        <h3>Шаблон 3. Разбор документа</h3>
+        <div class="callout callout-note"><p>«Ниже текст [договора аренды, оферты, письма от банка]. Объясни простыми словами, что он значит для меня: 1) главное в пяти пунктах, 2) мои обязанности и сроки, 3) что может обернуться для меня деньгами или штрафом. Опирайся только на этот текст, а если чего-то в нем нет, так и напиши. ### [вставьте текст без паспортных данных, номеров счетов и подписей]».</p></div>
+        <p>Разбор документа нейросетью помогает понять текст, но не заменяет юриста, если на кону крупные деньги или суд.</p>
+
+        <h3>Шаблон 4. Подготовка к приему врача</h3>
+        <div class="callout callout-note"><p>«Я иду на прием к [терапевту, стоматологу, другому врачу]. Вот мои жалобы своими словами: [что беспокоит, с какого времени, что усиливает и что облегчает]. Не ставь диагноз и не советуй лекарства. Помоги мне: 1) разложить жалобы по времени коротким списком, 2) составить 5-7 вопросов врачу по важности, 3) напомнить, какие документы и прошлые анализы взять с собой. Если в описании есть признаки, с которыми нельзя ждать планового приема, скажи об этом в самом начале».</p></div>
+        <div class="callout callout-warn"><p>Не вставляйте в чат ФИО, номер полиса, паспорт и фото документов. Нейросеть не врач и не ставит диагноз: ее ответ только помогает подготовить разговор. При сильной боли, высокой температуре, отеке, затрудненном дыхании или глотании не ждите приема и звоните 103 или 112. Как отличить разумный ответ нейросети о здоровье от опасного, разобрано в статье <a href="/blog/kak-proverit-medicinskiy-sovet-neyroseti.html">«Как проверить медицинский совет нейросети»</a>, а подробный разбор подготовки с готовыми запросами есть в статье <a href="/blog/podgotovka-k-priemu-vracha-s-neyrosetyu.html">«Как подготовиться к приему врача с нейросетью»</a>.</p></div>
+
+        <h3>Шаблон 5. Учеба</h3>
+        <div class="callout callout-note"><p>«Я изучаю [тему]. Мой уровень: [новичок, помню школьную программу, уже работаю с этим]. Объясни [понятие] простыми словами на примере из жизни, потом дай три вопроса, чтобы я проверил себя. Мои ответы не подсказывай: дождись, пока я напишу, и разбери ошибки. Если в теме есть спорные места, скажи об этом и не выдавай мнение за факт».</p></div>
+
+        <h2 id="oshibki" data-short="Частые ошибки">Какие ошибки в промптах встречаются чаще всего?</h2>
+        <p>Почти все они сводятся к одному: нейросети не дали того, что знаете только вы. Вот как это выглядит и как исправить.</p>
+        <table>
+          <thead><tr><th>Ошибка</th><th>Как исправить</th></tr></thead>
+          <tbody>
+            <tr><td>Одна строка без ситуации: «напиши пост»</td><td>Добавьте, для кого, зачем и что уже есть</td></tr>
+            <tr><td>Расплывчатые слова: «покороче», «получше», «интереснее»</td><td>Число строк, пунктов, конкретный тон, образец</td></tr>
+            <tr><td>Пять задач в одном сообщении</td><td>Одна задача на запрос, остальные следом</td></tr>
+            <tr><td>Только запреты: «не пиши сложно, не лей воду»</td><td>Скажите, как писать: «короткие предложения, без терминов»</td></tr>
+            <tr><td>Приняли первый ответ или стерли и начали заново</td><td>Точечные правки в том же чате</td></tr>
+            <tr><td>Поверили цифрам и фактам на слово</td><td>Попросите источник и проверьте его сами</td></tr>
+            <tr><td>Вставили в чат паспорт, пароли, номера карт</td><td>Убирайте личные данные до отправки</td></tr>
+          </tbody>
+        </table>
+        <p class="src">Строки 1-5 опираются на руководства OpenAI, Anthropic и Google по составлению промптов, строки 6-7 общие правила безопасной работы с нейросетями.</p>
+        <p>Отдельно про факты. Хорошо написанный промпт улучшает ответ, но не делает его правдой: нейросеть может уверенно ошибиться в дате, цифре или законе. Все, от чего зависят деньги, здоровье или документы, проверяйте по первоисточнику.</p>
+
+        <h2 id="nado-li-uchit" data-short="Нужно ли учить промпт-инжиниринг">Нужно ли учить промпт-инжиниринг, чтобы пользоваться нейросетью?</h2>
+        <p>Для жизни и обычной работы нет. В систематическом обзоре The Prompt Report (Schulhoff и соавторы, 2024) описано 58 техник составления текстовых промптов, но это карта для разработчиков и исследователей, а не обязательная программа для того, кто пишет письмо или план. Обычному человеку хватает семи правил из этой статьи и привычки сохранять удачные запросы.</p>
+        <p>Удобный способ начать: заведите заметку «Мои промпты» и складывайте туда запросы, которые сработали с первого-второго раза. Через месяц у вас будет своя библиотека шаблонов, и половина задач будет решаться копированием одной строки. Если вы врач и хотите сразу готовые запросы под прием, есть бесплатные «30 запросов для врача» в боте <a href="https://t.me/doctorAImetod_bot?start=free">@doctorAImetod_bot</a>.</p>
+
+        <h2 id="chek-list" data-short="Чек-лист">Чек-лист: промпт перед отправкой</h2>
+        <ul class="checklist">
+          <li>Написал, кто я и в какой ситуации.</li>
+          <li>Задача сформулирована одной фразой в начале.</li>
+          <li>Указан формат: длина, структура, тон.</li>
+          <li>Есть образец, если важен стиль.</li>
+          <li>Ограничения сказаны как «делай так», а не только «не делай».</li>
+          <li>Попросил задать вопросы или честно сказать, если данных мало.</li>
+          <li>Убрал личные данные и документы.</li>
+          <li>Готов править ответ, а не принимать первый вариант.</li>
+        </ul>
+
+        <div class="callout callout-legal"><p>Статья учит составлять запросы к нейросетям и не заменяет консультацию специалиста. Ответы нейросети могут содержать ошибки. Вопросы здоровья решает только врач на очном приеме: нейросеть не ставит диагноз и не назначает лечение. Юридические и финансовые решения принимайте после проверки у профильного специалиста.</p></div>
+      </div>
+
+      <section class="faq prose" aria-label="Частые вопросы">
+        <h2 id="faq">Частые вопросы</h2>
+        <details class="faq"><summary>Что такое промпт простыми словами?</summary><p>Промпт это ваш запрос к нейросети: вопрос, задание или инструкция, иногда вместе с текстом, который нужно обработать. От того, насколько ясно он написан, зависит, насколько точно нейросеть попадет в то, что вам нужно.</p></details>
+        <details class="faq"><summary>Как правильно составить промпт для нейросети?</summary><p>Опишите ситуацию и кто вы, сформулируйте задачу одной фразой, укажите формат и длину ответа, добавьте ограничения и, если есть, образец. В конце можно попросить нейросеть задать уточняющие вопросы. Первый ответ правьте точечно в том же чате.</p></details>
+        <details class="faq"><summary>Нужно ли писать нейросети «ты эксперт»?</summary><p>Одна строка роли помогает задать тон, и в руководстве Anthropic это отдельный прием. Но сама компания пишет, что современным моделям громкая роль часто не нужна. Пользы больше от описания ситуации: для кого результат, что уже есть и зачем вам ответ.</p></details>
+        <details class="faq"><summary>Почему нейросеть отвечает не то, что я просил?</summary><p>Чаще всего ей не хватило контекста или задача была расплывчатой, и она угадала средний вариант. Добавьте подробности, точный формат и образец, а запрет вроде «не пиши сложно» замените указанием, как писать. Помогает и просьба задать вопросы перед ответом.</p></details>
+        <details class="faq"><summary>Работают ли эти правила для ChatGPT, Claude, Gemini и других нейросетей?</summary><p>Да. Правила в статье взяты из официальных руководств OpenAI, Anthropic и Google, и по сути они совпадают: ясная задача, контекст, формат, примеры и правка ответа. Детали оформления у разных сервисов отличаются, но для бытовых задач это не важно.</p></details>
+        <details class="faq"><summary>Можно ли с помощью промпта узнать диагноз?</summary><p>Нет. Нейросеть не осматривает вас и может уверенно ошибаться, поэтому диагноз и лечение определяет только врач. Промпт полезен, чтобы подготовиться к приему: собрать жалобы по времени и составить вопросы врачу. При острых симптомах звоните 103 или 112.</p></details>
+      </section>
+
+      <section class="prose">
+        <h2 id="istochniki" class="no-toc">Источники</h2>
+        <ol class="sources">
+          <li><a href="https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-the-openai-api" rel="nofollow noopener" target="_blank">OpenAI Help Center. Best practices for prompt engineering with the OpenAI API</a></li>
+          <li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" rel="nofollow noopener" target="_blank">Anthropic. Prompting best practices (документация Claude)</a></li>
+          <li><a href="https://claude.com/blog/best-practices-for-prompt-engineering" rel="nofollow noopener" target="_blank">Anthropic. Best practices for prompt engineering (блог Claude)</a></li>
+          <li><a href="https://aistudio.google.com/docs/prompting-strategies" rel="nofollow noopener" target="_blank">Google. Prompt design strategies (документация Gemini API)</a></li>
+          <li><a href="https://arxiv.org/abs/2406.06608" rel="nofollow noopener" target="_blank">Schulhoff S. et al. The Prompt Report: A Systematic Survey of Prompt Engineering Techniques. arXiv:2406.06608, 2024</a></li>
+        </ol>
+      </section>
+
+<!-- blocks:end:start -->
+<div class="like-row"><button class="like" type="button" data-like="kak-pisat-prompty" data-goal="article_like">Полезно</button><span>Статья помогла? Отметьте, так я вижу, о чем писать дальше.</span></div>
+<section class="related" aria-label="Рекомендуем прочитать">
+  <h2>Рекомендуем прочитать</h2>
+  <div class="rel-grid">
+    <a class="rel" href="/blog/rasshifrovka-analizov-neyrosetyu.html"><span class="rel-meta">Нейросети и здоровье · 13 мин</span><b>Расшифровка анализов нейросетью: как спросить и где она ошибается</b></a>
+    <a class="rel" href="/blog/podgotovka-k-priemu-vracha-s-neyrosetyu.html"><span class="rel-meta">Нейросети и здоровье · 13 мин</span><b>Как подготовиться к приему врача с нейросетью: список вопросов за 10 минут</b></a>
+    <a class="rel" href="/blog/otbelivanie-zubov-vredno-li.html"><span class="rel-meta">Здоровые зубы · 12 мин</span><b>Можно ли отбеливать зубы и вредно ли это</b></a>
+    <a class="rel" href="/blog/neyroset-dlya-vracha-s-chego-nachat.html"><span class="rel-meta">Врачу · 10 мин</span><b>Нейросеть для врача: с чего начать</b></a>
+  </div>
+</section>
+<aside class="author-box">
+  <img src="/photo-avatar.png" alt="Ильдар Хайров" width="64" height="64" />
+  <div><div class="name"><a href="/ob-avtore/">Ильдар Хайров</a></div>
+    <p>Практикующий стоматолог-ортопед, на приеме с 2017 года. Полтора года встраиваю ИИ в свой прием и в быт и пишу только о том, что проверил сам.</p>
+    <a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=tg_author&amp;utm_campaign=channel&amp;utm_content=kak-pisat-prompty" data-goal="tg_author">Telegram-канал: заметки врача и разборы нейросетей</a></div>
+</aside>
+<!-- blocks:end:end -->
+    </article>
+<!-- blocks:lead:start -->
+<section class="lead" aria-label="Гайд, скоро">
+  <div><span class="when">4 999 ₽</span>
+    <h2>«Личный секретарь в кармане»</h2>
+    <p>Как собрать своего помощника на нейросетях по шагам: он живет в Telegram, понимает голосовые, помнит контекст и закрывает рутину. Так я собрал своего Альфреда.</p></div>
+  <div><a class="btn" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=lead_block&amp;utm_campaign=guide&amp;utm_content=kak-pisat-prompty" data-goal="lead_block">Узнать о выходе в канале</a>
+    <a class="all" href="/produkty/">Все продукты</a></div>
+</section>
+<!-- blocks:lead:end -->
+  </div>
+<!-- blocks:aside:start -->
+<aside class="col-aside">
+<a class="side-offer" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=offer_side&amp;utm_campaign=guide&amp;utm_content=kak-pisat-prompty" data-goal="offer_side">
+  <span class="body"><span class="k">Гайд, скоро</span><b>«Личный секретарь в кармане» <span class="price">4 999 ₽</span></b><span class="txt">Как собрать своего помощника на нейросетях по шагам: он живет в Telegram, понимает голосовые, помнит контекст и закрывает рутину. Так я собрал своего Альфреда.</span></span>
+  <span class="btn">Узнать о выходе в канале</span>
+</a>
+<div class="wcard author-card">
+  <img src="/photo-avatar.png" alt="" width="56" height="56" />
+  <span class="role">Автор</span>
+  <b><a href="/ob-avtore/">Ильдар Хайров</a></b>
+  <p>Стоматолог-ортопед, на приеме с 2017 года. Пишу о том, что вижу на приеме и проверяю сам.</p>
+</div>
+<nav class="wcard toc" aria-label="Содержание статьи"><h4>Содержание</h4><ol>
+    <li><a href="#korotko" data-toc="korotko">1. Коротко: главное и четыре термина</a></li>
+    <li><a href="#pravila-1-3" data-toc="pravila-1-3">2. Правила 1-3: роль, задача, формат</a></li>
+    <li><a href="#pravila-4-5" data-toc="pravila-4-5">3. Правила 4-5: примеры и ограничения</a></li>
+    <li><a href="#pravila-6-7" data-toc="pravila-6-7">4. Правила 6-7: вопросы и правка</a></li>
+    <li><a href="#shablony" data-toc="shablony">5. Пять готовых шаблонов</a></li>
+    <li><a href="#oshibki" data-toc="oshibki">6. Частые ошибки</a></li>
+    <li><a href="#nado-li-uchit" data-toc="nado-li-uchit">7. Нужно ли учить промпт-инжиниринг</a></li>
+    <li><a href="#chek-list" data-toc="chek-list">8. Чек-лист</a></li>
+    <li><a href="#faq" data-toc="faq">9. Частые вопросы</a></li>
+  </ol></nav>
+</aside>
+<!-- blocks:aside:end -->
+</div>
+<!-- blocks:footer:start -->
+<footer class="site-footer">
+  <div class="cols">
+    <div class="about"><b>Ильдар Хайров</b><br /><span>Стоматолог-ортопед. Нейросети в медицине и в жизни</span></div>
+    <div><p class="fh">Рубрики</p><div class="links"><a href="/blog/zdorovye-zuby/">Здоровые зубы</a><a href="/blog/zdorovie/">Нейросети и здоровье</a><a href="/blog/v-zhizni/">Нейросети в жизни</a><a href="/blog/assistent/">Свой ИИ-ассистент</a><a href="/blog/vrachu/">Врачу</a><a href="/blog/ii/">Искусственный интеллект помимо стоматологии</a></div></div>
+    <div><p class="fh">Продукты</p><div class="links"><a href="/metodichka.html?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=metodichka" data-goal="footer">Методичка «ИИ в практике врача», 1 799 ₽</a><a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=guide" data-goal="footer">Гайд «Личный секретарь в кармане», 4 999 ₽</a><a href="https://t.me/il_khairov?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=agents" data-goal="footer">ИИ-агент под ключ</a><a href="/ildar/?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=priem#priem" data-goal="footer">Запись на прием к стоматологу</a></div></div>
+    <div><p class="fh">Блог</p><div class="links"><a href="/blog/">Все статьи</a><a href="/ob-avtore/">Об авторе</a><a href="/redpolitika/">Как мы проверяем статьи</a><a href="/blog/feed.xml">RSS</a><a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=channel" data-goal="footer">Telegram-канал</a></div></div>
+    <div><p class="fh">Соцсети</p><div class="links"><a href="https://t.me/dr_khairov_multiverse">Telegram</a><a href="https://www.instagram.com/dr.khairov.multiverse/">Instagram</a><a href="https://www.tiktok.com/@dr.khairov.multiverse">TikTok</a><a href="https://www.youtube.com/@dr_khairov_multiverse">YouTube</a><a href="https://www.threads.com/@doc_khairov">Threads</a></div></div>
+  </div>
+  <div class="legal">
+    <p>Материалы носят информационный характер, не являются медицинской услугой и не заменяют очного обращения к врачу.</p>
+    <p><a href="/docs/price.html">Цены</a> · <a href="/docs/oferta.html">Оферта</a> · <a href="/docs/privacy.html">Политика конфиденциальности</a> · <a href="/docs/payment.html">Оплата и возврат</a> · © khairovmultiverse.com</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var goal = function (name) { if (window.ym) ym(113066474, 'reachGoal', name); };
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-goal]') : null;
+    if (el) goal(el.getAttribute('data-goal'));
+  });
+  var like = document.querySelector('[data-like]');
+  if (like) {
+    var key = 'like:' + like.getAttribute('data-like');
+    try { if (localStorage.getItem(key)) like.classList.add('on'); } catch (err) {}
+    like.addEventListener('click', function () {
+      like.classList.add('on');
+      try { localStorage.setItem(key, '1'); } catch (err) {}
+    });
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('[data-toc]'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var set = function (id) { links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-toc') === id); }); };
+  var io = new IntersectionObserver(function (es) {
+    var vis = es.filter(function (x) { return x.isIntersecting; });
+    if (vis.length) set(vis[0].target.id);
+  }, { rootMargin: '-70px 0px -65% 0px' });
+  links.forEach(function (a) { var el = document.getElementById(a.getAttribute('data-toc')); if (el) io.observe(el); });
+  set(links[0].getAttribute('data-toc'));
+})();
+</script>
+<!-- blocks:footer:end -->
+</body>
+</html>
