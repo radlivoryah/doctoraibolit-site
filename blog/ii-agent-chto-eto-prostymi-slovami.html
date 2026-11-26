@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113066474', 'ym');
+
+    ym(113066474, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113066474" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ИИ-агент простыми словами: чем отличается от чат-бота</title>
+<meta name="description" content="Чат-бот отвечает на сообщение и ждет следующего, а ИИ-агент получает цель и сам делает шаги: планирует, работает с почтой, календарем и файлами, проверяет результат и помнит контекст. Разбираем, из чего он состоит, где ошибается, какие доступы ему давать и с чего начать." />
+<meta name="author" content="Ильдар Хайров" />
+<meta name="rubric" content="assistent" />
+<meta name="published" content="2026-11-26" />
+<meta name="updated" content="2026-11-26" />
+<link rel="canonical" href="https://khairovmultiverse.com/blog/ii-agent-chto-eto-prostymi-slovami.html" />
+<meta property="og:title" content="Чат-бот отвечает. Агент делает" />
+<meta property="og:description" content="Чем ИИ-агент отличается от чат-бота, что он уже умеет, где ошибается и какие доступы ему нельзя давать без вашего «да»." />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/blog/blog.css" />
+<link rel="alternate" type="application/rss+xml" title="Ильдар Хайров: нейросети и здоровье" href="/blog/feed.xml" />
+<!-- seo:head:start -->
+<meta property="og:url" content="https://khairovmultiverse.com/blog/ii-agent-chto-eto-prostymi-slovami.html" />
+<meta property="og:image" content="https://khairovmultiverse.com/blog/img/ii-agent-chto-eto-prostymi-slovami.png" />
+<meta property="og:site_name" content="Ильдар Хайров" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="article:published_time" content="2026-11-26" />
+<meta property="article:modified_time" content="2026-11-26" />
+<meta property="article:section" content="Свой ИИ-ассистент" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://khairovmultiverse.com/blog/img/ii-agent-chto-eto-prostymi-slovami.png" />
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://khairovmultiverse.com/blog/ii-agent-chto-eto-prostymi-slovami.html#article",
+   "headline": "ИИ-агент простыми словами: чем отличается от чат-бота",
+   "description": "Чат-бот отвечает на сообщение и ждет следующего, а ИИ-агент получает цель и сам делает шаги: планирует, работает с почтой, календарем и файлами, проверяет результат и помнит контекст. Разбираем, из чего он состоит, где ошибается, какие доступы ему давать и с чего начать.",
+   "image": "https://khairovmultiverse.com/blog/img/ii-agent-chto-eto-prostymi-slovami.png",
+   "datePublished": "2026-11-26",
+   "dateModified": "2026-11-26",
+   "inLanguage": "ru",
+   "author": {
+    "@type": "Person",
+    "name": "Ильдар Хайров",
+    "jobTitle": "стоматолог-ортопед",
+    "description": "Практикующий стоматолог-ортопед, на приеме с 2017 года. Полтора года встраиваю ИИ в свой прием и в быт и пишу только о том, что проверил сам.",
+    "url": "https://khairovmultiverse.com/ob-avtore/",
+    "image": "https://khairovmultiverse.com/photo-avatar.png",
+    "sameAs": [
+     "https://t.me/dr_khairov_multiverse"
+    ]
+   },
+   "publisher": {
+    "@type": "Person",
+    "name": "Ильдар Хайров",
+    "url": "https://khairovmultiverse.com/"
+   },
+   "mainEntityOfPage": "https://khairovmultiverse.com/blog/ii-agent-chto-eto-prostymi-slovami.html",
+   "articleSection": "Свой ИИ-ассистент",
+   "timeRequired": "PT12M"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Главная",
+     "item": "https://khairovmultiverse.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Статьи",
+     "item": "https://khairovmultiverse.com/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Свой ИИ-ассистент",
+     "item": "https://khairovmultiverse.com/blog/assistent/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 4,
+     "name": "ИИ-агент простыми словами: чем отличается от чат-бота",
+     "item": "https://khairovmultiverse.com/blog/ii-agent-chto-eto-prostymi-slovami.html"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Чем ИИ-агент отличается от ChatGPT?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Обычный чат отвечает на ваше сообщение, а следующий шаг делаете вы. Агент получает цель и сам выполняет шаги: работает с почтой, календарем, файлами, проверяет результат. Граница размыта: когда у чата включены поиск и подключения к сервисам, он тоже начинает вести себя как агент."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Нужно ли уметь программировать, чтобы пользоваться агентом?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Нет. Для старта хватит готового ассистента с подключениями к почте, календарю и диску. Правила работы агенту пишутся обычными словами. Программирование понадобится, только если вы захотите собрать свою систему с нуля."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Что такое MCP простыми словами?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Model Context Protocol, открытый стандарт, по которому нейросетевые приложения подключаются к внешним сервисам: файлам, базам данных, поиску. Авторы сравнивают его с портом USB-C. Один общий разъем вместо отдельной переходки к каждому сервису."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Безопасно ли давать агенту доступ к почте?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Безопаснее всего начинать с чтения: пересказать, найти, собрать список. Отправку писем от вашего имени и удаление стоит разрешать только с подтверждением каждого действия. Помните, что в письмах может прийти чужая команда для агента, поэтому права должны быть минимальными."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Агент написал «готово». Можно верить?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Проверяйте по факту. Агент работает на языковой модели, а она может уверенно ошибаться, и ошибка одного шага тянется в следующий. Попросите ссылку на событие, текст письма или файл с результатом и посмотрите сами."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Агент и автоматизация по сценарию: это одно и то же?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Нет. В автоматизации шаги прописаны заранее, и система идет по ним всегда одинаково. Агент сам решает, какой шаг следующий и каким инструментом его сделать. Поэтому он гибче, но и проверять его нужно внимательнее."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<!-- seo:head:end -->
+</head>
+<body>
+<!-- blocks:header:start -->
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="/">Ильдар <span>Хайров</span></a>
+    <nav aria-label="Основная навигация">
+      <a class="hide-m" href="/blog/">Статьи</a>
+      <a class="hide-m" href="/ob-avtore/">Об авторе</a>
+      <a class="hide-m" href="/produkty/">Продукты</a>
+      <a class="btn-tg" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=tg_header&amp;utm_campaign=channel" data-goal="tg_header">Telegram-канал</a>
+    </nav>
+  </div>
+</header>
+<!-- blocks:header:end -->
+<div class="journal">
+<!-- blocks:sidenav:start -->
+<nav class="sidenav" aria-label="Разделы сайта">
+    <a class="nav-item" href="/">Главная</a>
+    <a class="nav-item" href="/blog/">Все статьи</a>
+    <a class="nav-item" href="/ob-avtore/">Об авторе</a>
+    <a class="nav-item" href="/redpolitika/">Как мы проверяем статьи</a>
+    <a class="nav-item" href="/produkty/">Продукты</a>
+    <p class="grp">Рубрики</p>
+    <a class="nav-item" href="/blog/zdorovye-zuby/"><span>Здоровые зубы</span><b>12</b></a>
+    <a class="nav-item" href="/blog/zdorovie/"><span>Нейросети и здоровье</span><b>4</b></a>
+    <a class="nav-item" href="/blog/v-zhizni/"><span>Нейросети в жизни</span><b>0</b></a>
+    <a class="nav-item on" href="/blog/assistent/"><span>Свой ИИ-ассистент</span><b>1</b></a>
+    <a class="nav-item" href="/blog/vrachu/"><span>Врачу</span><b>1</b></a>
+    <a class="nav-item" href="/blog/ii/"><span>Искусственный интеллект помимо стоматологии</span><b>0</b></a>
+  </nav>
+<!-- blocks:sidenav:end -->
+  <div class="col-main">
+    <article class="wcard art">
+      <header>
+<!-- seo:info:start -->
+<p class="crumbs"><a href="/">Главная</a> / <a href="/blog/">Статьи</a> / <a href="/blog/assistent/">Свой ИИ-ассистент</a></p>
+<p class="meta"><a href="/blog/assistent/">Свой ИИ-ассистент</a> · 12 мин · обновлено 26 ноября 2026</p>
+<!-- seo:info:end -->
+        <h1>ИИ-агент простыми словами: чем отличается от чат-бота</h1>
+        <p class="lede">Чат-бот отвечает, агент делает. Объясняю без программирования: из чего состоит агент, что он уже умеет в обычной жизни и в работе, где ошибается и какие доступы ему можно доверить.</p>
+<!-- blocks:byline:start -->
+<p class="byline"><img src="/photo-avatar.png" alt="" width="36" height="36" /><a href="/ob-avtore/">Ильдар Хайров</a> · стоматолог-ортопед, на приеме с 2017 года</p>
+<!-- blocks:byline:end -->
+      </header>
+      <img class="cover-img" src="/blog/img/ii-agent-chto-eto-prostymi-slovami.png" alt="ИИ-агент простыми словами: чем отличается от чат-бота, обложка статьи" width="1200" height="630" />
+<!-- blocks:toc-m:start -->
+<details class="toc-m"><summary>Содержание</summary><ol>
+  <li><a href="#korotko">Коротко: главное и пять терминов</a></li>
+  <li><a href="#otlichie">Агент и чат-бот: разница</a></li>
+  <li><a href="#sostav">Из чего состоит агент</a></li>
+  <li><a href="#chto-umeet">Что агент умеет уже сейчас</a></li>
+  <li><a href="#oshibki">Где агент ошибается</a></li>
+  <li><a href="#dostupy">Какие доступы давать</a></li>
+  <li><a href="#s-chego-nachat">С чего начать без программирования</a></li>
+  <li><a href="#chek-list">Чек-лист</a></li>
+  <li><a href="#faq">Частые вопросы</a></li>
+</ol></details>
+<!-- blocks:toc-m:end -->
+
+      <div class="prose">
+        <div class="callout callout-main"><p>Чат-бот отвечает на ваше сообщение и ждет следующего: каждый шаг делаете вы сами. ИИ-агент получает цель и проходит путь к ней сам: разбивает задачу на шаги, вызывает инструменты (почту, календарь, файлы, поиск, таблицы), смотрит на результат каждого шага и поправляет себя, а нужное помнит между разговорами. Внутри у обоих часто одна и та же языковая модель, разница в том, что вокруг нее: инструменты, память и право действовать. Поэтому агента нужно проверять и держать в границах, особенно там, где деньги, удаление и письма от вашего имени.</p></div>
+
+        <p>Слово «агент» сейчас пишут почти на каждой кнопке с нейросетью, и отсюда путаница: одни думают, что это тот же чат, только дороже, другие ждут цифрового сотрудника, который все сделает сам и ни разу не ошибется. Правда где-то посередине, и она довольно простая. Чат-бот похож на справочную: спросили, получили ответ, дальше сами. Агент похож на помощника, которому вы говорите «разбери мне почту за неделю и поставь встречи в календарь», и он идет делать, а вы занимаетесь своими делами. Дальше по порядку, с опорой на документацию тех, кто эти системы строит: Anthropic, OpenAI, авторов стандарта MCP и специалистов по безопасности. Ссылки в конце.</p>
+
+        <h2 id="korotko" data-short="Коротко: главное и пять терминов">Коротко: главное и пять терминов</h2>
+        <div class="callout callout-short"><ul>
+          <li>Чат-бот отвечает текстом. Агент выполняет задачу по шагам и сам выбирает, чем пользоваться.</li>
+          <li>Агент состоит из языковой модели, инструментов, инструкций и памяти.</li>
+          <li>Агент тоже ошибается, и его «готово» не всегда значит «сделано». Результат проверяете вы.</li>
+          <li>Доступы даются по минимуму: сначала только чтение.</li>
+          <li>Деньги, удаление и отправка от вашего имени только после вашего подтверждения.</li>
+          <li>Программировать для старта не нужно: хватит готового ассистента с подключениями.</li>
+        </ul></div>
+        <dl class="glossary">
+          <dt>Языковая модель (LLM)</dt><dd>Нейросеть, которая понимает и пишет текст. Это «мозг» и чат-бота, и агента.</dd>
+          <dt>Инструменты (tool use)</dt><dd>Возможность модели не только писать, но и действовать: искать в интернете, читать файлы, создавать события в календаре, отправлять письма.</dd>
+          <dt>Память</dt><dd>То, что агент сохраняет между разговорами: ваши правила, договоренности, контекст прошлых задач.</dd>
+          <dt>MCP</dt><dd>Model Context Protocol, открытый стандарт подключения нейросетей к внешним сервисам. Авторы сравнивают его с портом USB-C: один разъем на много устройств.</dd>
+          <dt>Автономность</dt><dd>Насколько агент действует сам, без вашего подтверждения на каждом шаге.</dd>
+        </dl>
+
+        <h2 id="otlichie" data-short="Агент и чат-бот: разница">Чем ИИ-агент отличается от чат-бота?</h2>
+        <p>Тем, кто держит руль. В чат-боте вы задаете вопрос, читаете ответ и сами решаете, что делать дальше. Агент сам решает, какой шаг следующий и каким инструментом его сделать. Anthropic в своем разборе так и разделяет: есть системы, где модель и инструменты связаны заранее прописанным порядком, и есть агенты, где модель сама управляет ходом работы и выбором инструментов. OpenAI в руководстве по агентам говорит еще прямее: простой чат-бот, который отвечает на одно сообщение, агентом не считается.</p>
+        <table>
+          <thead><tr><th>Что сравниваем</th><th>Чат-бот</th><th>Агент</th></tr></thead>
+          <tbody>
+            <tr><td>С чего начинается работа</td><td>С вопроса</td><td>С цели: «сделай вот это»</td></tr>
+            <tr><td>Кто делает шаги</td><td>Вы, по одному сообщению</td><td>Агент сам планирует и идет по шагам</td></tr>
+            <tr><td>Чем пользуется</td><td>В основном текстом</td><td>Почтой, календарем, файлами, поиском, таблицами</td></tr>
+            <tr><td>Проверка по ходу</td><td>Вы читаете ответ</td><td>Агент смотрит на результат каждого шага и поправляет себя</td></tr>
+            <tr><td>Память</td><td>Обычно в пределах одного чата</td><td>Между разговорами, если память подключена</td></tr>
+            <tr><td>Цена ошибки</td><td>Неверный текст</td><td>Неверное действие: письмо ушло, файл удален</td></tr>
+          </tbody>
+        </table>
+        <p class="src">Таблица составлена по определениям из статьи Anthropic «Building effective agents» и руководства OpenAI «A practical guide to building agents».</p>
+        <p>Граница при этом размыта. В популярных чат-ботах уже есть поиск и подключения к сервисам, и когда вы просите такой чат «найди и сравни», он ведет себя как маленький агент. Так что смотреть стоит не на название продукта, а на то, кто делает шаги: вы или он.</p>
+
+        <h2 id="sostav" data-short="Из чего состоит агент">Из чего состоит ИИ-агент?</h2>
+        <p>Из четырех частей, и ни одна из них не магия. В руководстве OpenAI базовых частей три: модель, инструменты и инструкции. Anthropic добавляет к этому память и поиск по данным. Собираем вместе:</p>
+        <ul>
+          <li><b>Модель.</b> Языковая модель, которая рассуждает и принимает решения. Та же самая, что отвечает вам в чате.</li>
+          <li><b>Инструменты.</b> Руки агента: почта, календарь, диск, таблицы, поиск, мессенджер. Без них агент умеет только говорить.</li>
+          <li><b>Инструкции.</b> Правила работы словами: что можно, что нельзя, когда остановиться и спросить вас.</li>
+          <li><b>Память.</b> Чтобы не объяснять каждый раз заново, как вы любите получать отчеты и кого не беспокоить по выходным.</li>
+        </ul>
+        <p>Работает это все циклом: модель решает, что сделать, вызывает инструмент, получает результат, смотрит, приблизилась ли цель, и решает следующий шаг. В Anthropic так и пишут: агенты обычно и есть языковые модели, которые пользуются инструментами в цикле, опираясь на ответ среды. А подключать инструменты помогает MCP: вместо отдельной самодельной «переходки» к каждому сервису есть общий стандарт, по которому нейросетевые приложения вроде Claude или ChatGPT подключаются к файлам, базам данных и другим сервисам.</p>
+
+        <!-- cta:inline:start -->
+<div class="cta-inline">
+  <p><strong>«Личный секретарь в кармане».</strong> 4 999 ₽. Как собрать своего помощника на нейросетях по шагам: он живет в Telegram, понимает голосовые, помнит контекст и закрывает рутину. Так я собрал своего Альфреда.</p>
+  <a class="btn" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=cta_inline&amp;utm_campaign=guide&amp;utm_content=ii-agent-chto-eto-prostymi-slovami" data-goal="cta_inline">Узнать о выходе в канале</a>
+</div>
+<!-- cta:inline:end -->
+
+        <!-- blocks:third:start -->
+<a class="wide-offer" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=article_third&amp;utm_campaign=guide&amp;utm_content=ii-agent-chto-eto-prostymi-slovami" data-goal="article_third">
+  <span class="body"><span class="k">Гайд, скоро</span><b>«Личный секретарь в кармане» <span class="price">4 999 ₽</span></b><span class="txt">Как собрать своего помощника на нейросетях по шагам: он живет в Telegram, понимает голосовые, помнит контекст и закрывает рутину. Так я собрал своего Альфреда.</span></span>
+  <span class="btn">Узнать о выходе в канале</span>
+</a>
+<!-- blocks:third:end -->
+        <h2 id="chto-umeet" data-short="Что агент умеет уже сейчас">Что ИИ-агент умеет уже сейчас в жизни и в работе?</h2>
+        <p>Лучше всего агент справляется с рутиной, которая повторяется и которую легко проверить. Не с великими решениями, а с тем, что съедает вечер: разобрать, найти, записать, напомнить. Примеры задач, которые агенту по силам, если у него есть нужные подключения:</p>
+        <ul>
+          <li>разобрать почту и собрать короткий список писем, на которые правда нужно ответить;</li>
+          <li>найти свободное окно в календаре и поставить встречу;</li>
+          <li>превратить голосовое сообщение в задачу или напоминание;</li>
+          <li>следить за сроками подписок и платежей и напомнить заранее;</li>
+          <li>найти информацию по теме, сложить ее в таблицу и дать ссылки на источники;</li>
+          <li>собрать отчет из нескольких файлов и подготовить черновик письма или поста.</li>
+        </ul>
+        <p>У меня, например, свой агент-помощник в Telegram: он понимает голосовые, держит рутину, а остальные нейросети работают под его управлением. Мне не нужно открывать кучу разных сервисов, я пишу или говорю одному помощнику, а он уже сам решает, кому из них отдать задачу.</p>
+        <div class="hl-frame"><p><b>Агенту стоит отдавать то, что повторяется и что вы можете быстро проверить.</b></p></div>
+
+        <h2 id="oshibki" data-short="Где агент ошибается">Почему ИИ-агент ошибается и зачем проверять его «готово»?</h2>
+        <p>Потому что внутри та же языковая модель, а она умеет уверенно ошибаться. В профиле рисков генеративных нейросетей NIST это называется конфабуляцией: уверенно поданный, но неверный или выдуманный ответ, в народе «галлюцинация». У чат-бота такая ошибка остается текстом на экране. У агента она превращается в действие, и следующая ступенька строится уже на ней. Anthropic прямо пишет, что автономность агентов означает больше затрат и риск накопления ошибок.</p>
+        <p>Отсюда самая неприятная ситуация: агент пишет «готово», а сделано не все или не так. Встреча поставлена не на тот день, письмо ушло не тому адресату, в таблице половина строк. Агент не врет специально, он просто закончил свою цепочку и отчитался. Поэтому правило простое: «готово» проверяется по факту, а не по словам.</p>
+        <div class="callout callout-note"><p>Просите у агента доказательство: ссылку на созданное событие, текст отправленного письма, файл с результатом. И хотя бы первое время открывайте календарь или почту и смотрите сами. Если агент работает с медицинской информацией, проверяйте ее так же, как любой совет нейросети, об этом отдельная статья: <a href="/blog/kak-proverit-medicinskiy-sovet-neyroseti.html">как проверить медицинский совет нейросети</a>.</p></div>
+
+        <h2 id="dostupy" data-short="Какие доступы давать">Какие доступы давать ИИ-агенту, а какие нет?</h2>
+        <p>Минимальные, которых хватает для задачи. Так советует OWASP в своем списке рисков для систем на языковых моделях, и у проблемы там есть свое имя: избыточные полномочия агента. Она складывается из трех вещей: лишних функций, лишних прав и лишней самостоятельности. Пример оттуда же: агенту, который только пересказывает почту, нужно чтение писем, а удалять и отправлять ему не нужно вовсе.</p>
+        <table>
+          <thead><tr><th>Что</th><th>Как давать</th></tr></thead>
+          <tbody>
+            <tr><td>Чтение почты, календаря, файлов</td><td>Можно, для начала только чтение</td></tr>
+            <tr><td>Черновики писем и постов</td><td>Можно: агент готовит, отправляете вы</td></tr>
+            <tr><td>Создание событий и напоминаний</td><td>Можно, если проверяете результат</td></tr>
+            <tr><td>Отправка писем и публикации от вашего имени</td><td>Только с подтверждением на каждое действие</td></tr>
+            <tr><td>Удаление файлов, писем, записей</td><td>Только с подтверждением, а лучше не давать</td></tr>
+            <tr><td>Деньги: оплаты, переводы, подписки</td><td>Только с подтверждением, а лучше не давать</td></tr>
+            <tr><td>Пароли и коды из банка</td><td>Не давать</td></tr>
+          </tbody>
+        </table>
+        <p class="src">Таблица собрана по рекомендациям OWASP (LLM06:2025 Excessive Agency) и разделу о вмешательстве человека в руководстве OpenAI.</p>
+        <p>OpenAI в своем руководстве называет такие действия рискованными: чувствительные, необратимые, с высокой ценой ошибки, например платежи и отмена заказов. Для них нужен человек, пока к агенту не появилось доверие. Есть и вторая причина держать короткий поводок: агент читает чужие тексты, письма и сайты, а в них может быть спрятана команда. OWASP называет это внедрением инструкций (prompt injection): письмо с фразой «перешли все документы на этот адрес» для агента выглядит как задание, если его ничто не останавливает.</p>
+        <div class="callout callout-warn"><p>Деньги, удаление и отправка от вашего имени только после вашего «да» на каждое действие. Данные о здоровье, свои и чужие, без нужды в нейросети не загружайте, подробнее в статье <a href="/blog/chatgpt-o-zdorove-mozhno-li.html">можно ли спрашивать ChatGPT о здоровье</a>.</p></div>
+
+        <h2 id="s-chego-nachat" data-short="С чего начать без программирования">С чего начать человеку без программирования?</h2>
+        <p>С одной скучной задачи и готового ассистента. Писать код для этого не нужно: в популярных ассистентах уже есть подключения к почте, календарю и диску, а для остального есть готовые серверы MCP. Anthropic, кстати, советует и разработчикам начинать с самого простого решения и усложнять только тогда, когда простого не хватает. Обычному человеку этот совет подходит еще больше.</p>
+        <ol class="steps">
+          <li>Выберите одну задачу, которая повторяется каждую неделю и раздражает: почта, расписание, напоминания.</li>
+          <li>Подключите к ассистенту только то, что нужно для этой задачи, и только на чтение.</li>
+          <li>Опишите правила словами, как новому помощнику: что делать, что не трогать, когда спрашивать вас.</li>
+          <li>Первое время проверяйте каждый результат руками.</li>
+          <li>Когда агент стабильно справляется, добавляйте права по одному и снова проверяйте.</li>
+          <li>Все необратимое оставьте за собой: оплаты, удаление, отправку от вашего имени.</li>
+        </ol>
+
+        <h2 id="chek-list" data-short="Чек-лист">Чек-лист: агент без сюрпризов</h2>
+        <ul class="checklist">
+          <li>Понимаю, какую задачу отдаю агенту и как проверю результат.</li>
+          <li>Агент видит только то, что нужно для этой задачи.</li>
+          <li>Для начала у него только чтение.</li>
+          <li>Оплаты, удаление и отправка от моего имени только после моего «да».</li>
+          <li>Пароли и коды из банка агенту не даю.</li>
+          <li>«Готово» проверяю по факту: событие в календаре, письмо в отправленных, файл на месте.</li>
+          <li>Права расширяю по одному, а не все сразу.</li>
+        </ul>
+
+        <div class="callout callout-legal"><p>Статья справочная и не заменяет консультацию специалиста по информационной безопасности. Если агент помогает вам с вопросами здоровья, помните: он не ставит диагноз и не назначает лечение, это делает только врач на приеме.</p></div>
+      </div>
+
+      <section class="faq prose" aria-label="Частые вопросы">
+        <h2 id="faq">Частые вопросы</h2>
+        <details class="faq"><summary>Чем ИИ-агент отличается от ChatGPT?</summary><p>Обычный чат отвечает на ваше сообщение, а следующий шаг делаете вы. Агент получает цель и сам выполняет шаги: работает с почтой, календарем, файлами, проверяет результат. Граница размыта: когда у чата включены поиск и подключения к сервисам, он тоже начинает вести себя как агент.</p></details>
+        <details class="faq"><summary>Нужно ли уметь программировать, чтобы пользоваться агентом?</summary><p>Нет. Для старта хватит готового ассистента с подключениями к почте, календарю и диску. Правила работы агенту пишутся обычными словами. Программирование понадобится, только если вы захотите собрать свою систему с нуля.</p></details>
+        <details class="faq"><summary>Что такое MCP простыми словами?</summary><p>Model Context Protocol, открытый стандарт, по которому нейросетевые приложения подключаются к внешним сервисам: файлам, базам данных, поиску. Авторы сравнивают его с портом USB-C. Один общий разъем вместо отдельной переходки к каждому сервису.</p></details>
+        <details class="faq"><summary>Безопасно ли давать агенту доступ к почте?</summary><p>Безопаснее всего начинать с чтения: пересказать, найти, собрать список. Отправку писем от вашего имени и удаление стоит разрешать только с подтверждением каждого действия. Помните, что в письмах может прийти чужая команда для агента, поэтому права должны быть минимальными.</p></details>
+        <details class="faq"><summary>Агент написал «готово». Можно верить?</summary><p>Проверяйте по факту. Агент работает на языковой модели, а она может уверенно ошибаться, и ошибка одного шага тянется в следующий. Попросите ссылку на событие, текст письма или файл с результатом и посмотрите сами.</p></details>
+        <details class="faq"><summary>Агент и автоматизация по сценарию: это одно и то же?</summary><p>Нет. В автоматизации шаги прописаны заранее, и система идет по ним всегда одинаково. Агент сам решает, какой шаг следующий и каким инструментом его сделать. Поэтому он гибче, но и проверять его нужно внимательнее.</p></details>
+      </section>
+
+      <section class="prose">
+        <h2 id="istochniki" class="no-toc">Источники</h2>
+        <ol class="sources">
+          <li><a href="https://www.anthropic.com/research/building-effective-agents" rel="nofollow noopener" target="_blank">Anthropic. Building effective agents. 2024</a></li>
+          <li><a href="https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf" rel="nofollow noopener" target="_blank">OpenAI. A practical guide to building agents (PDF)</a></li>
+          <li><a href="https://modelcontextprotocol.io/docs/getting-started/intro" rel="nofollow noopener" target="_blank">Model Context Protocol. What is the Model Context Protocol (MCP)? Официальная документация</a></li>
+          <li><a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/" rel="nofollow noopener" target="_blank">OWASP Gen AI Security Project. LLM06:2025 Excessive Agency</a></li>
+          <li><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" rel="nofollow noopener" target="_blank">NIST AI 600-1. Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile. 2024 (PDF)</a>; обзор рамки на <a href="https://www.nist.gov/itl/ai-risk-management-framework" rel="nofollow noopener" target="_blank">сайте NIST</a></li>
+        </ol>
+      </section>
+
+<!-- blocks:end:start -->
+<div class="like-row"><button class="like" type="button" data-like="ii-agent-chto-eto-prostymi-slovami" data-goal="article_like">Полезно</button><span>Статья помогла? Отметьте, так я вижу, о чем писать дальше.</span></div>
+<section class="related" aria-label="Рекомендуем прочитать">
+  <h2>Рекомендуем прочитать</h2>
+  <div class="rel-grid">
+    <a class="rel" href="/blog/neyroset-dlya-vracha-s-chego-nachat.html"><span class="rel-meta">Врачу · 10 мин</span><b>Нейросеть для врача: с чего начать</b></a>
+    <a class="rel" href="/blog/podgotovka-k-priemu-vracha-s-neyrosetyu.html"><span class="rel-meta">Нейросети и здоровье · 13 мин</span><b>Как подготовиться к приему врача с нейросетью: список вопросов за 10 минут</b></a>
+    <a class="rel" href="/blog/implant-ili-most.html"><span class="rel-meta">Здоровые зубы · 13 мин</span><b>Имплант или мост: что выбрать</b></a>
+    <a class="rel" href="/blog/chatgpt-o-zdorove-mozhno-li.html"><span class="rel-meta">Нейросети и здоровье · 11 мин</span><b>Можно ли спрашивать ChatGPT о здоровье: что можно, что нельзя</b></a>
+  </div>
+</section>
+<aside class="author-box">
+  <img src="/photo-avatar.png" alt="Ильдар Хайров" width="64" height="64" />
+  <div><div class="name"><a href="/ob-avtore/">Ильдар Хайров</a></div>
+    <p>Практикующий стоматолог-ортопед, на приеме с 2017 года. Полтора года встраиваю ИИ в свой прием и в быт и пишу только о том, что проверил сам.</p>
+    <a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=tg_author&amp;utm_campaign=channel&amp;utm_content=ii-agent-chto-eto-prostymi-slovami" data-goal="tg_author">Telegram-канал: заметки врача и разборы нейросетей</a></div>
+</aside>
+<!-- blocks:end:end -->
+    </article>
+<!-- blocks:lead:start -->
+<section class="lead" aria-label="ИИ-агент под ключ">
+  <div><span class="when">от 50 000 ₽</span>
+    <h2>Соберу помощника под ваши задачи</h2>
+    <p>Агент живет в Telegram, понимает голосовые, работает на вашем сервере и помнит контекст. Работающий помощник за 1-2 недели и месяц сопровождения.</p></div>
+  <div><a class="btn" href="https://t.me/il_khairov?utm_source=blog&amp;utm_medium=lead_block&amp;utm_campaign=agents&amp;utm_content=ii-agent-chto-eto-prostymi-slovami" data-goal="lead_block">Обсудить задачу в Telegram</a>
+    <a class="all" href="/produkty/">Все продукты</a></div>
+</section>
+<!-- blocks:lead:end -->
+  </div>
+<!-- blocks:aside:start -->
+<aside class="col-aside">
+<a class="side-offer" href="https://t.me/il_khairov?utm_source=blog&amp;utm_medium=offer_side&amp;utm_campaign=agents&amp;utm_content=ii-agent-chto-eto-prostymi-slovami" data-goal="offer_side">
+  <span class="body"><span class="k">ИИ-агент под ключ</span><b>Соберу помощника под ваши задачи <span class="price">от 50 000 ₽</span></b><span class="txt">Агент живет в Telegram, понимает голосовые, работает на вашем сервере и помнит контекст. Работающий помощник за 1-2 недели и месяц сопровождения.</span></span>
+  <span class="btn">Обсудить задачу в Telegram</span>
+</a>
+<div class="wcard author-card">
+  <img src="/photo-avatar.png" alt="" width="56" height="56" />
+  <span class="role">Автор</span>
+  <b><a href="/ob-avtore/">Ильдар Хайров</a></b>
+  <p>Стоматолог-ортопед, на приеме с 2017 года. Пишу о том, что вижу на приеме и проверяю сам.</p>
+</div>
+<nav class="wcard toc" aria-label="Содержание статьи"><h4>Содержание</h4><ol>
+    <li><a href="#korotko" data-toc="korotko">1. Коротко: главное и пять терминов</a></li>
+    <li><a href="#otlichie" data-toc="otlichie">2. Агент и чат-бот: разница</a></li>
+    <li><a href="#sostav" data-toc="sostav">3. Из чего состоит агент</a></li>
+    <li><a href="#chto-umeet" data-toc="chto-umeet">4. Что агент умеет уже сейчас</a></li>
+    <li><a href="#oshibki" data-toc="oshibki">5. Где агент ошибается</a></li>
+    <li><a href="#dostupy" data-toc="dostupy">6. Какие доступы давать</a></li>
+    <li><a href="#s-chego-nachat" data-toc="s-chego-nachat">7. С чего начать без программирования</a></li>
+    <li><a href="#chek-list" data-toc="chek-list">8. Чек-лист</a></li>
+    <li><a href="#faq" data-toc="faq">9. Частые вопросы</a></li>
+  </ol></nav>
+</aside>
+<!-- blocks:aside:end -->
+</div>
+<!-- blocks:footer:start -->
+<footer class="site-footer">
+  <div class="cols">
+    <div class="about"><b>Ильдар Хайров</b><br /><span>Стоматолог-ортопед. Нейросети в медицине и в жизни</span></div>
+    <div><p class="fh">Рубрики</p><div class="links"><a href="/blog/zdorovye-zuby/">Здоровые зубы</a><a href="/blog/zdorovie/">Нейросети и здоровье</a><a href="/blog/v-zhizni/">Нейросети в жизни</a><a href="/blog/assistent/">Свой ИИ-ассистент</a><a href="/blog/vrachu/">Врачу</a><a href="/blog/ii/">Искусственный интеллект помимо стоматологии</a></div></div>
+    <div><p class="fh">Продукты</p><div class="links"><a href="/metodichka.html?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=metodichka" data-goal="footer">Методичка «ИИ в практике врача», 1 799 ₽</a><a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=guide" data-goal="footer">Гайд «Личный секретарь в кармане», 4 999 ₽</a><a href="https://t.me/il_khairov?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=agents" data-goal="footer">ИИ-агент под ключ</a><a href="/ildar/?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=priem#priem" data-goal="footer">Запись на прием к стоматологу</a></div></div>
+    <div><p class="fh">Блог</p><div class="links"><a href="/blog/">Все статьи</a><a href="/ob-avtore/">Об авторе</a><a href="/redpolitika/">Как мы проверяем статьи</a><a href="/blog/feed.xml">RSS</a><a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=channel" data-goal="footer">Telegram-канал</a></div></div>
+    <div><p class="fh">Соцсети</p><div class="links"><a href="https://t.me/dr_khairov_multiverse">Telegram</a><a href="https://www.instagram.com/dr.khairov.multiverse/">Instagram</a><a href="https://www.tiktok.com/@dr.khairov.multiverse">TikTok</a><a href="https://www.youtube.com/@dr_khairov_multiverse">YouTube</a><a href="https://www.threads.com/@doc_khairov">Threads</a></div></div>
+  </div>
+  <div class="legal">
+    <p>Материалы носят информационный характер, не являются медицинской услугой и не заменяют очного обращения к врачу.</p>
+    <p><a href="/docs/price.html">Цены</a> · <a href="/docs/oferta.html">Оферта</a> · <a href="/docs/privacy.html">Политика конфиденциальности</a> · <a href="/docs/payment.html">Оплата и возврат</a> · © khairovmultiverse.com</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var goal = function (name) { if (window.ym) ym(113066474, 'reachGoal', name); };
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-goal]') : null;
+    if (el) goal(el.getAttribute('data-goal'));
+  });
+  var like = document.querySelector('[data-like]');
+  if (like) {
+    var key = 'like:' + like.getAttribute('data-like');
+    try { if (localStorage.getItem(key)) like.classList.add('on'); } catch (err) {}
+    like.addEventListener('click', function () {
+      like.classList.add('on');
+      try { localStorage.setItem(key, '1'); } catch (err) {}
+    });
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('[data-toc]'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var set = function (id) { links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-toc') === id); }); };
+  var io = new IntersectionObserver(function (es) {
+    var vis = es.filter(function (x) { return x.isIntersecting; });
+    if (vis.length) set(vis[0].target.id);
+  }, { rootMargin: '-70px 0px -65% 0px' });
+  links.forEach(function (a) { var el = document.getElementById(a.getAttribute('data-toc')); if (el) io.observe(el); });
+  set(links[0].getAttribute('data-toc'));
+})();
+</script>
+<!-- blocks:footer:end -->
+</body>
+</html>
