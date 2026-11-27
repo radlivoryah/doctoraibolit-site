@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113066474', 'ym');
+
+    ym(113066474, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113066474" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Своя нейросеть на компьютере без облака: Ollama и LM Studio простыми словами</title>
+<meta name="description" content="Запустить нейросеть у себя можно бесплатно: Ollama и LM Studio скачивают открытую модель и работают без интернета, переписка не уходит в облако. Разбираем, чем они отличаются, как запустить первую модель, какой размер выбрать под вашу память и для каких задач это подходит." />
+<meta name="author" content="Ильдар Хайров" />
+<meta name="rubric" content="assistent" />
+<meta name="published" content="2026-11-27" />
+<meta name="updated" content="2026-11-27" />
+<link rel="canonical" href="https://khairovmultiverse.com/blog/svoya-neyroset-na-kompyutere-bez-oblaka.html" />
+<meta property="og:title" content="Нейросеть, которая никому не рассказывает ваши секреты" />
+<meta property="og:description" content="Ollama и LM Studio без программирования: как запустить модель на своем компьютере, какую выбрать под память и где у локальной нейросети потолок." />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/blog/blog.css" />
+<link rel="alternate" type="application/rss+xml" title="Ильдар Хайров: нейросети и здоровье" href="/blog/feed.xml" />
+<!-- seo:head:start -->
+<meta property="og:url" content="https://khairovmultiverse.com/blog/svoya-neyroset-na-kompyutere-bez-oblaka.html" />
+<meta property="og:image" content="https://khairovmultiverse.com/blog/img/svoya-neyroset-na-kompyutere-bez-oblaka.png" />
+<meta property="og:site_name" content="Ильдар Хайров" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="article:published_time" content="2026-11-27" />
+<meta property="article:modified_time" content="2026-11-27" />
+<meta property="article:section" content="Свой ИИ-ассистент" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://khairovmultiverse.com/blog/img/svoya-neyroset-na-kompyutere-bez-oblaka.png" />
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://khairovmultiverse.com/blog/svoya-neyroset-na-kompyutere-bez-oblaka.html#article",
+   "headline": "Своя нейросеть на компьютере без облака: Ollama и LM Studio простыми словами",
+   "description": "Запустить нейросеть у себя можно бесплатно: Ollama и LM Studio скачивают открытую модель и работают без интернета, переписка не уходит в облако. Разбираем, чем они отличаются, как запустить первую модель, какой размер выбрать под вашу память и для каких задач это подходит.",
+   "image": "https://khairovmultiverse.com/blog/img/svoya-neyroset-na-kompyutere-bez-oblaka.png",
+   "datePublished": "2026-11-27",
+   "dateModified": "2026-11-27",
+   "inLanguage": "ru",
+   "author": {
+    "@type": "Person",
+    "name": "Ильдар Хайров",
+    "jobTitle": "стоматолог-ортопед",
+    "description": "Практикующий стоматолог-ортопед, на приеме с 2017 года. Полтора года встраиваю ИИ в свой прием и в быт и пишу только о том, что проверил сам.",
+    "url": "https://khairovmultiverse.com/ob-avtore/",
+    "image": "https://khairovmultiverse.com/photo-avatar.png",
+    "sameAs": [
+     "https://t.me/dr_khairov_multiverse"
+    ]
+   },
+   "publisher": {
+    "@type": "Person",
+    "name": "Ильдар Хайров",
+    "url": "https://khairovmultiverse.com/"
+   },
+   "mainEntityOfPage": "https://khairovmultiverse.com/blog/svoya-neyroset-na-kompyutere-bez-oblaka.html",
+   "articleSection": "Свой ИИ-ассистент",
+   "timeRequired": "PT14M"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Главная",
+     "item": "https://khairovmultiverse.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Статьи",
+     "item": "https://khairovmultiverse.com/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Свой ИИ-ассистент",
+     "item": "https://khairovmultiverse.com/blog/assistent/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 4,
+     "name": "Своя нейросеть на компьютере без облака: Ollama и LM Studio простыми словами",
+     "item": "https://khairovmultiverse.com/blog/svoya-neyroset-na-kompyutere-bez-oblaka.html"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Можно ли установить нейросеть на компьютер бесплатно?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Да. Ollama распространяется под открытой лицензией MIT, а LM Studio бесплатна для дома и работы с июля 2025 года. Открытые модели в их библиотеках тоже скачиваются бесплатно. Платить придется только железом: нужен компьютер с достаточным объемом памяти и местом на диске."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Работает ли локальная нейросеть без интернета?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Да, после того как вы скачали модель. LM Studio по документации может работать полностью офлайн, интернет нужен только для поиска и загрузки моделей и обновления программы. С Ollama так же, если вы не выбрали облачную модель с пометкой cloud."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Сколько оперативной памяти нужно для нейросети на компьютере?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "LM Studio рекомендует от 16 ГБ оперативной памяти, на Windows еще и видеокарту с памятью от 4 ГБ. На Mac с 8 ГБ можно работать с маленькими моделями и коротким контекстом. Точнее подскажет размер файла модели на ее странице: он должен помещаться в память с запасом."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Чем Ollama отличается от LM Studio?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "LM Studio это программа с окном, где поиск, загрузка и чат делаются мышкой, она удобнее новичку. Ollama изначально работает через командную строку и локальный API, ее проще подключать к другим программам, а на macOS и Windows у нее есть приложение с чатом. Обе запускают открытые модели локально."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Видит ли кто-то мои запросы к локальной нейросети?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "При локальном запуске нет. LM Studio пишет, что введенное в чат не покидает устройство, Ollama пишет, что не видит запросов и данных при локальной работе. Исключение: облачные модели Ollama, с ними запросы обрабатываются на серверах компании."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Можно ли врачу загружать в локальную нейросеть данные пациентов?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Только обезличенные. Данные о здоровье по 152-ФЗ относятся к специальной категории персональных данных, и хранение на своем компьютере тоже считается обработкой. Перед работой уберите ФИО, даты, контакты и все, по чему пациента можно узнать."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<!-- seo:head:end -->
+</head>
+<body>
+<!-- blocks:header:start -->
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="/">Ильдар <span>Хайров</span></a>
+    <nav aria-label="Основная навигация">
+      <a class="hide-m" href="/blog/">Статьи</a>
+      <a class="hide-m" href="/ob-avtore/">Об авторе</a>
+      <a class="hide-m" href="/produkty/">Продукты</a>
+      <a class="btn-tg" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=tg_header&amp;utm_campaign=channel" data-goal="tg_header">Telegram-канал</a>
+    </nav>
+  </div>
+</header>
+<!-- blocks:header:end -->
+<div class="journal">
+<!-- blocks:sidenav:start -->
+<nav class="sidenav" aria-label="Разделы сайта">
+    <a class="nav-item" href="/">Главная</a>
+    <a class="nav-item" href="/blog/">Все статьи</a>
+    <a class="nav-item" href="/ob-avtore/">Об авторе</a>
+    <a class="nav-item" href="/redpolitika/">Как мы проверяем статьи</a>
+    <a class="nav-item" href="/produkty/">Продукты</a>
+    <p class="grp">Рубрики</p>
+    <a class="nav-item" href="/blog/zdorovye-zuby/"><span>Здоровые зубы</span><b>16</b></a>
+    <a class="nav-item" href="/blog/zdorovie/"><span>Нейросети и здоровье</span><b>5</b></a>
+    <a class="nav-item" href="/blog/v-zhizni/"><span>Нейросети в жизни</span><b>2</b></a>
+    <a class="nav-item on" href="/blog/assistent/"><span>Свой ИИ-ассистент</span><b>2</b></a>
+    <a class="nav-item" href="/blog/vrachu/"><span>Врачу</span><b>1</b></a>
+    <a class="nav-item" href="/blog/ii/"><span>Искусственный интеллект помимо стоматологии</span><b>0</b></a>
+  </nav>
+<!-- blocks:sidenav:end -->
+  <div class="col-main">
+    <article class="wcard art">
+      <header>
+<!-- seo:info:start -->
+<p class="crumbs"><a href="/">Главная</a> / <a href="/blog/">Статьи</a> / <a href="/blog/assistent/">Свой ИИ-ассистент</a></p>
+<p class="meta"><a href="/blog/assistent/">Свой ИИ-ассистент</a> · 14 мин · обновлено 27 ноября 2026</p>
+<!-- seo:info:end -->
+        <h1>Своя нейросеть на компьютере без облака: Ollama и LM Studio простыми словами</h1>
+        <p class="lede">Открытую нейросеть можно скачать и запустить у себя, как обычную программу: без подписки, без интернета и без отправки текста на чужие серверы. Две самые простые программы для этого называются Ollama и LM Studio. Чем они отличаются, как запустить первую модель и где у такой нейросети честный потолок.</p>
+<!-- blocks:byline:start -->
+<p class="byline"><img src="/photo-avatar.png" alt="" width="36" height="36" /><a href="/ob-avtore/">Ильдар Хайров</a> · стоматолог-ортопед, на приеме с 2017 года</p>
+<!-- blocks:byline:end -->
+      </header>
+      <img class="cover-img" src="/blog/img/svoya-neyroset-na-kompyutere-bez-oblaka.png" alt="Своя нейросеть на компьютере без облака: Ollama и LM Studio простыми словами, обложка статьи" width="1200" height="630" />
+<!-- blocks:toc-m:start -->
+<details class="toc-m"><summary>Содержание</summary><ol>
+  <li><a href="#korotko">Коротко: главное и четыре термина</a></li>
+  <li><a href="#zachem">Зачем запускать у себя</a></li>
+  <li><a href="#minusy">Честные ограничения</a></li>
+  <li><a href="#ollama-ili-lm-studio">Ollama или LM Studio</a></li>
+  <li><a href="#kak-zapustit">Первый запуск по шагам</a></li>
+  <li><a href="#razmer-modeli">Какой размер модели выбрать</a></li>
+  <li><a href="#zadachi">Для каких задач подходит</a></li>
+  <li><a href="#vracham">Врачам: данные пациентов</a></li>
+  <li><a href="#chek-list">Чек-лист</a></li>
+  <li><a href="#faq">Частые вопросы</a></li>
+</ol></details>
+<!-- blocks:toc-m:end -->
+
+      <div class="prose">
+        <div class="callout callout-main"><p>Своя нейросеть на компьютере это открытая модель, которую вы один раз скачиваете и дальше запускаете локально. Проще всего сделать это через LM Studio (программа с окном, поиском и чатом) или Ollama (приложение для macOS и Windows плюс командная строка). Обе бесплатны, работают без интернета после загрузки модели, а переписка остается на вашем устройстве. Плата за это: модели, которые помещаются в память обычного ноутбука, слабее больших облачных, а самому компьютеру нужно хотя бы 16 ГБ оперативной памяти, если верить рекомендации LM Studio.</p></div>
+
+        <p>Вы открываете чат с нейросетью, вставляете туда черновик договора, выписку из анализов или личный дневник, и где-то в этот момент появляется неприятная мысль: а куда это все сейчас ушло? В облачном сервисе ответ один: на серверы компании, и дальше текст живет по ее правилам. Локальная нейросеть устроена иначе. Модель лежит файлом у вас на диске, считает на вашем процессоре и видеокарте, и интернет ей нужен только один раз, чтобы этот файл скачать. Ниже все по официальной документации Ollama и LM Studio (ссылки в конце), без обещаний скорости, которые на вашем компьютере могут не сбыться.</p>
+
+        <h2 id="korotko" data-short="Коротко: главное и четыре термина">Коротко: главное и четыре термина</h2>
+        <div class="callout callout-short"><ul>
+          <li>Локальная нейросеть работает без интернета: текст, который вы ей даете, не покидает компьютер.</li>
+          <li>LM Studio удобнее новичку: все делается мышкой в одном окне, включая разговор с документами.</li>
+          <li>Ollama проще встроить в другие программы, а на macOS и Windows у нее тоже есть приложение с чатом.</li>
+          <li>Размер модели выбирают под память компьютера: файл модели должен в нее помещаться с запасом.</li>
+          <li>Для черновиков, пересказа своих заметок и личных документов этого хватает, для сложных выводов и свежих фактов нет.</li>
+          <li>Данные пациентов остаются персональными данными и на своем компьютере: перед работой их обезличивают.</li>
+        </ul></div>
+        <dl class="glossary">
+          <dt>Локальная модель</dt><dd>Нейросеть, файл которой хранится и запускается на вашем устройстве, а не на сервере компании.</dd>
+          <dt>Открытые веса</dt><dd>Модель, которую автор выложил для скачивания: ее можно запускать у себя, в отличие от закрытых облачных моделей.</dd>
+          <dt>Квантование</dt><dd>Сжатие файла модели: он становится меньше и требует меньше памяти, но часть качества теряется. В названиях обозначается как Q4, Q8 и похоже.</dd>
+          <dt>Контекст</dt><dd>Объем текста, который модель держит в голове за один разговор: ваш вопрос, документ и ее ответы вместе.</dd>
+        </dl>
+
+        <h2 id="zachem" data-short="Зачем запускать у себя">Зачем запускать нейросеть на своем компьютере, если есть ChatGPT?</h2>
+        <p>Ради трех вещей: приватности, работы без сети и отсутствия подписки. Про приватность обе программы говорят прямо. В документации LM Studio написано, что ничего из введенного в чат не покидает ваше устройство, а документы обрабатываются локально и не выходят за пределы приложения. В справке Ollama сказано, что при локальном запуске компания не видит ни ваших запросов, ни данных.</p>
+        <p>Без сети тоже работает по-настоящему: LM Studio, по ее же документации, может действовать полностью офлайн, нужно только заранее скачать файлы моделей. Интернет понадобится для поиска и загрузки новых моделей и для обновления программы. Подписки нет: Ollama распространяется под открытой лицензией MIT, а LM Studio с июля 2025 года бесплатна и для дома, и для работы.</p>
+        <div class="callout callout-note"><p>У Ollama есть и облачные модели, они помечены словом cloud в названии. С ними запросы уходят на серверы Ollama, и это уже не локальная работа. Если нужна только локальная, в справке Ollama описан режим без облака: переменная окружения <code>OLLAMA_NO_CLOUD=1</code> или параметр <code>disable_ollama_cloud</code> в файле настроек.</p></div>
+
+        <h2 id="minusy" data-short="Честные ограничения">Чем локальная нейросеть хуже облачной?</h2>
+        <p>Она слабее, медленнее на ноутбуке и требует железа. Модели, которые помещаются в память домашнего компьютера, меньше тех, что крутятся в дата-центрах, и это видно на сложных задачах: длинные рассуждения, точные факты, редкие темы. Сама Ollama на странице модели Gemma 4 делит версии на маленькие, сделанные для ноутбуков и телефонов, и модели для рабочих станций, то есть для мощных компьютеров.</p>
+        <p>Второе ограничение: память. LM Studio рекомендует от 16 ГБ оперативной памяти, на Windows еще и видеокарту с отдельной памятью от 4 ГБ, а на Mac только чипы Apple серии M, Intel-маки не поддерживаются. На Mac с 8 ГБ программа запустится, но советуют брать маленькие модели и небольшой контекст. Если модель не влезает в видеопамять, Ollama делит ее между видеокартой и обычной памятью, и ответ начинает идти заметно медленнее.</p>
+        <p>Третье: модель не знает ничего свежее даты, на которой ее обучили, и сама в интернет не ходит. Плюс по умолчанию Ollama держит контекст в 4096 токенов. Его можно увеличить в настройках, но памяти тогда уйдет больше, так что толстый документ целиком в маленькую модель на слабом ноутбуке может просто не поместиться.</p>
+
+        <!-- cta:inline:start -->
+<div class="cta-inline">
+  <p><strong>«Личный секретарь в кармане».</strong> 4 999 ₽. Как собрать своего помощника на нейросетях по шагам: он живет в Telegram, понимает голосовые, помнит контекст и закрывает рутину. Так я собрал своего Альфреда.</p>
+  <a class="btn" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=cta_inline&amp;utm_campaign=guide&amp;utm_content=svoya-neyroset-na-kompyutere-bez-oblaka" data-goal="cta_inline">Узнать о выходе в канале</a>
+</div>
+<!-- cta:inline:end -->
+
+        <!-- blocks:third:start -->
+<a class="wide-offer" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=article_third&amp;utm_campaign=guide&amp;utm_content=svoya-neyroset-na-kompyutere-bez-oblaka" data-goal="article_third">
+  <span class="body"><span class="k">Гайд, скоро</span><b>«Личный секретарь в кармане» <span class="price">4 999 ₽</span></b><span class="txt">Как собрать своего помощника на нейросетях по шагам: он живет в Telegram, понимает голосовые, помнит контекст и закрывает рутину. Так я собрал своего Альфреда.</span></span>
+  <span class="btn">Узнать о выходе в канале</span>
+</a>
+<!-- blocks:third:end -->
+        <h2 id="ollama-ili-lm-studio" data-short="Ollama или LM Studio">Ollama или LM Studio: что выбрать новичку?</h2>
+        <p>Если вы никогда не открывали командную строку, начинайте с LM Studio. Если хотите подключить локальную модель к другим программам или вам не страшен терминал, ставьте Ollama. Внутри у них много общего: обе скачивают открытые модели, обе умеют работать как локальный сервер для других приложений.</p>
+        <table>
+          <thead><tr><th></th><th>LM Studio</th><th>Ollama</th></tr></thead>
+          <tbody>
+            <tr><td>Как выглядит</td><td>Программа с окном: поиск моделей, загрузка, чат</td><td>Приложение с чатом на macOS и Windows, плюс команды в терминале</td></tr>
+            <tr><td>Системы</td><td>macOS на чипах M, Windows, Linux</td><td>macOS, Windows, Linux, Docker</td></tr>
+            <tr><td>Где берет модели</td><td>Поиск по Hugging Face прямо в программе</td><td>Собственная библиотека моделей на ollama.com</td></tr>
+            <tr><td>Документы</td><td>Можно приложить файл к сообщению и работать с ним офлайн</td><td>В приложении можно перетащить текст или PDF в чат</td></tr>
+            <tr><td>Для других программ</td><td>Локальный сервер в формате, похожем на OpenAI</td><td>Локальный API на localhost:11434, библиотеки для Python и JavaScript</td></tr>
+          </tbody>
+        </table>
+        <p class="src">Источник таблицы: документация LM Studio (lmstudio.ai/docs), репозиторий Ollama на GitHub, документация Ollama и запись в блоге Ollama о приложении от 30.07.2025.</p>
+        <p>Локальный сервер звучит как что-то для программистов, и в основном так и есть. Но именно через него к вашей модели подключаются чат-интерфейсы, редакторы и агенты. Чем агент отличается от обычного чата и зачем ему доступ к инструментам, разобрано в статье <a href="/blog/ii-agent-chto-eto-prostymi-slovami.html">«ИИ-агент простыми словами»</a>.</p>
+
+        <h2 id="kak-zapustit" data-short="Первый запуск по шагам">Как запустить свою нейросеть на компьютере по шагам?</h2>
+        <p>Через LM Studio это занимает несколько шагов без единой команды:</p>
+        <ol class="steps">
+          <li>Скачайте установщик для своей системы на странице загрузок lmstudio.ai и установите программу как обычно.</li>
+          <li>Откройте поиск моделей внутри программы (для поиска нужен интернет) и выберите небольшую модель от известного разработчика.</li>
+          <li>Из вариантов сжатия берите 4-битный (Q4) или выше, если компьютер тянет: так советует документация LM Studio. Чем меньше бит, тем меньше файл и тем ниже качество.</li>
+          <li>Дождитесь загрузки, загрузите модель и задайте первый вопрос в чате.</li>
+          <li>Отключите интернет и спросите еще раз. Модель ответит: так вы своими глазами увидите, что все работает у вас.</li>
+        </ol>
+        <p>С Ollama путь похожий. Скачайте программу на ollama.com/download: на Windows установщик не просит прав администратора, на Mac приложение перетаскивается в «Программы». В приложении на macOS и Windows можно выбрать модель и сразу общаться. Если хочется через терминал, хватит четырех команд из документации: <code>ollama run gemma4</code> скачает модель и откроет разговор, <code>ollama ls</code> покажет скачанные модели, <code>ollama ps</code> покажет, что сейчас загружено в память и на чем оно считается, <code>ollama rm gemma4</code> удалит модель с диска.</p>
+        <p>Место на диске тоже нужно: в документации Ollama прямо сказано, что сами модели могут занимать от десятков до сотен гигабайт, если ставить их много.</p>
+
+        <h2 id="razmer-modeli" data-short="Какой размер модели выбрать">Какую модель выбрать под объем оперативной памяти?</h2>
+        <p>Смотрите на размер файла модели и сравнивайте его с памятью компьютера: файл должен помещаться с запасом, потому что системе и другим программам память тоже нужна. Точной формулы «столько гигабайт на такую модель» ни Ollama, ни LM Studio в документации не дают, поэтому опирайтесь на размеры, указанные на странице самой модели.</p>
+        <p>Для примера: на странице модели Gemma 4 в библиотеке Ollama указаны такие размеры загрузки (диапазон зависит от варианта сжатия):</p>
+        <table>
+          <thead><tr><th>Версия</th><th>Размер загрузки</th><th>Для чего, по описанию</th></tr></thead>
+          <tbody>
+            <tr><td>gemma4:e2b</td><td>от 4,6 до 7,5 ГБ</td><td>Маленькая, для ноутбуков и мобильных устройств</td></tr>
+            <tr><td>gemma4:e4b</td><td>от 6,6 до 9,5 ГБ</td><td>Маленькая, для ноутбуков и мобильных устройств</td></tr>
+            <tr><td>gemma4:26b</td><td>от 16 до 19 ГБ</td><td>Для рабочих станций</td></tr>
+            <tr><td>gemma4:31b</td><td>от 19 до 20 ГБ</td><td>Для рабочих станций</td></tr>
+          </tbody>
+        </table>
+        <p class="src">Источник таблицы: страница модели gemma4 на ollama.com, данные на 27.11.2026.</p>
+        <p>Отсюда простая логика. На ноутбуке с 8 ГБ берите самые маленькие версии и короткий контекст, как и советует LM Studio. На 16 ГБ можно пробовать модели среднего размера. Большие версии оставьте для компьютера с мощной видеокартой. Проверить, справляется ли компьютер, в Ollama можно командой <code>ollama ps</code>: надпись «100% GPU» значит, что модель целиком в видеокарте, а деление вроде «48%/52% CPU/GPU» значит, что часть ушла в обычную память и скорость упадет.</p>
+        <div class="hl-frame"><p><b>Начните с самой маленькой модели. Если ответы устраивают, модель крупнее не нужна. Если нет, шагайте на размер выше, пока компьютер не начнет задыхаться.</b></p></div>
+
+        <h2 id="zadachi" data-short="Для каких задач подходит">Для каких задач подходит локальная нейросеть, а для каких нет?</h2>
+        <p>Хорошо подходит то, где текст ваш и он личный, а задача понятная: сделать черновик письма, пересказать свои заметки, вытащить из длинного документа главное, переписать текст проще, разложить мысли по пунктам. Особенно то, что жалко отдавать в облако: личные документы, финансовые заметки, черновики, которые никто не должен видеть раньше времени. Маленькой модели здесь нужна четкая задача, поэтому формулировка запроса решает еще больше, чем в облаке. Как ставить задачу, чтобы ответ получился с первого раза, есть в статье <a href="/blog/kak-pisat-prompty.html">«Как писать промпты для нейросети»</a>.</p>
+        <p>Плохо подходит все, где нужна точность и свежесть: свежие новости и цены, юридические и медицинские выводы, расчеты, где ошибка стоит денег или здоровья. Локальная модель может уверенно выдумать факт так же, как облачная, а маленькая делает это чаще. Ответ на такие вопросы проверяйте по первоисточнику, а лучше сразу идите к нему.</p>
+
+        <h2 id="vracham" data-short="Врачам: данные пациентов">Можно ли врачу обрабатывать данные пациентов в локальной нейросети?</h2>
+        <p>Локальная модель снимает вопрос о том, куда уходит текст, но не снимает закон. По 152-ФЗ обработка персональных данных это любое действие с ними, включая запись, хранение и использование, с компьютером или без. А данные о состоянии здоровья относятся к специальной категории, обрабатывать которую можно только в случаях, прямо перечисленных в статье 10. То, что файл никуда не уехал, не превращает выписку с ФИО в безопасный текст: она лежит на вашем ноутбуке, который могут украсть, взломать или забыть незаблокированным.</p>
+        <p>Поэтому правило для врача простое: перед тем как дать нейросети текст, даже своей, обезличьте его. Уберите ФИО, дату рождения, адрес, телефон, номер карты и все, по чему человека можно узнать. Закон определяет обезличивание как действия, после которых без дополнительной информации нельзя понять, чьи это данные. Сведения об обращении и диагнозе к тому же составляют врачебную тайну по 323-ФЗ. Где нейросети на приеме помогают, а куда их пускать нельзя совсем, разобрано в методичке «ИИ в практике врача» (<a href="/metodichka.html">подробнее</a>), а начать можно с бесплатных «30 запросов для врача» в боте <a href="https://t.me/doctorAImetod_bot?start=free">@doctorAImetod_bot</a>.</p>
+        <div class="callout callout-warn"><p>Локальная нейросеть не делает обработку данных пациентов законной сама по себе. Обезличивайте текст до того, как он попадет в модель, и держите компьютер под паролем и с шифрованием диска.</p></div>
+
+        <h2 id="chek-list" data-short="Чек-лист">Чек-лист: своя нейросеть на компьютере</h2>
+        <ul class="checklist">
+          <li>Проверьте память: LM Studio рекомендует от 16 ГБ, на 8 ГБ только маленькие модели.</li>
+          <li>Не дружите с терминалом: ставьте LM Studio. Нужна связка с другими программами: Ollama.</li>
+          <li>Скачайте самую маленькую модель от известного разработчика, сжатие Q4 или выше.</li>
+          <li>Отключите интернет и убедитесь, что модель отвечает офлайн.</li>
+          <li>В Ollama проверьте, что модель без пометки cloud, или включите режим без облака.</li>
+          <li>Давайте модели короткие понятные задачи на своих текстах.</li>
+          <li>Факты, цифры и медицинские выводы проверяйте по первоисточнику.</li>
+          <li>Данные пациентов обезличивайте до того, как вставить их в чат.</li>
+        </ul>
+
+        <div class="callout callout-legal"><p>Статья рассказывает о программах для запуска нейросетей и не заменяет консультацию юриста или специалиста по защите данных. Возможности и системные требования описаны по официальной документации на дату публикации и могут измениться. Нейросеть ошибается и может выдумывать факты. Вопросы здоровья решает только врач на очном приеме: нейросеть не ставит диагноз и не назначает лечение.</p></div>
+      </div>
+
+      <section class="faq prose" aria-label="Частые вопросы">
+        <h2 id="faq">Частые вопросы</h2>
+        <details class="faq"><summary>Можно ли установить нейросеть на компьютер бесплатно?</summary><p>Да. Ollama распространяется под открытой лицензией MIT, а LM Studio бесплатна для дома и работы с июля 2025 года. Открытые модели в их библиотеках тоже скачиваются бесплатно. Платить придется только железом: нужен компьютер с достаточным объемом памяти и местом на диске.</p></details>
+        <details class="faq"><summary>Работает ли локальная нейросеть без интернета?</summary><p>Да, после того как вы скачали модель. LM Studio по документации может работать полностью офлайн, интернет нужен только для поиска и загрузки моделей и обновления программы. С Ollama так же, если вы не выбрали облачную модель с пометкой cloud.</p></details>
+        <details class="faq"><summary>Сколько оперативной памяти нужно для нейросети на компьютере?</summary><p>LM Studio рекомендует от 16 ГБ оперативной памяти, на Windows еще и видеокарту с памятью от 4 ГБ. На Mac с 8 ГБ можно работать с маленькими моделями и коротким контекстом. Точнее подскажет размер файла модели на ее странице: он должен помещаться в память с запасом.</p></details>
+        <details class="faq"><summary>Чем Ollama отличается от LM Studio?</summary><p>LM Studio это программа с окном, где поиск, загрузка и чат делаются мышкой, она удобнее новичку. Ollama изначально работает через командную строку и локальный API, ее проще подключать к другим программам, а на macOS и Windows у нее есть приложение с чатом. Обе запускают открытые модели локально.</p></details>
+        <details class="faq"><summary>Видит ли кто-то мои запросы к локальной нейросети?</summary><p>При локальном запуске нет. LM Studio пишет, что введенное в чат не покидает устройство, Ollama пишет, что не видит запросов и данных при локальной работе. Исключение: облачные модели Ollama, с ними запросы обрабатываются на серверах компании.</p></details>
+        <details class="faq"><summary>Можно ли врачу загружать в локальную нейросеть данные пациентов?</summary><p>Только обезличенные. Данные о здоровье по 152-ФЗ относятся к специальной категории персональных данных, и хранение на своем компьютере тоже считается обработкой. Перед работой уберите ФИО, даты, контакты и все, по чему пациента можно узнать.</p></details>
+      </section>
+
+      <section class="prose">
+        <h2 id="istochniki" class="no-toc">Источники</h2>
+        <ol class="sources">
+          <li><a href="https://github.com/ollama/ollama" rel="nofollow noopener" target="_blank">Ollama. Репозиторий на GitHub: установка, локальный API, лицензия MIT</a>; <a href="https://docs.ollama.com/faq" rel="nofollow noopener" target="_blank">документация Ollama, FAQ: приватность, контекст, ollama ps, режим без облака</a>; <a href="https://docs.ollama.com/cli" rel="nofollow noopener" target="_blank">команды CLI</a>; <a href="https://docs.ollama.com/windows" rel="nofollow noopener" target="_blank">установка на Windows</a>; <a href="https://docs.ollama.com/macos" rel="nofollow noopener" target="_blank">установка на macOS</a></li>
+          <li><a href="https://ollama.com/blog/new-app" rel="nofollow noopener" target="_blank">Ollama. Ollama's new app, 30.07.2025: приложение с чатом для macOS и Windows</a>; <a href="https://ollama.com/library/gemma4" rel="nofollow noopener" target="_blank">страница модели Gemma 4 в библиотеке Ollama: версии и размеры</a></li>
+          <li><a href="https://lmstudio.ai/docs/app" rel="nofollow noopener" target="_blank">LM Studio. Документация: возможности программы</a>; <a href="https://lmstudio.ai/docs/app/system-requirements" rel="nofollow noopener" target="_blank">системные требования</a>; <a href="https://lmstudio.ai/docs/app/offline" rel="nofollow noopener" target="_blank">работа офлайн и приватность</a>; <a href="https://lmstudio.ai/docs/app/basics/download-model" rel="nofollow noopener" target="_blank">загрузка модели и квантование</a></li>
+          <li><a href="https://lmstudio.ai/blog/free-for-work" rel="nofollow noopener" target="_blank">LM Studio. LM Studio is free for use at work, 08.07.2025</a></li>
+          <li><a href="https://www.consultant.ru/document/cons_doc_LAW_61801/4f41fe599ce341751e4e34dc50a4b676674c1416/" rel="nofollow noopener" target="_blank">Федеральный закон от 27.07.2006 № 152-ФЗ «О персональных данных», статья 3 «Основные понятия»</a>; <a href="https://www.consultant.ru/document/cons_doc_LAW_61801/26edb2934b899bf9c74c3a8f7e574651c6565e6d/" rel="nofollow noopener" target="_blank">статья 10 «Специальные категории персональных данных»</a>; <a href="https://www.consultant.ru/document/cons_doc_LAW_121895/9f906d460f9454a8a0d290738d9fc2798c1e865a/" rel="nofollow noopener" target="_blank">323-ФЗ, статья 13 «Соблюдение врачебной тайны»</a></li>
+        </ol>
+      </section>
+
+<!-- blocks:end:start -->
+<div class="like-row"><button class="like" type="button" data-like="svoya-neyroset-na-kompyutere-bez-oblaka" data-goal="article_like">Полезно</button><span>Статья помогла? Отметьте, так я вижу, о чем писать дальше.</span></div>
+<section class="related" aria-label="Рекомендуем прочитать">
+  <h2>Рекомендуем прочитать</h2>
+  <div class="rel-grid">
+    <a class="rel" href="/blog/ii-agent-chto-eto-prostymi-slovami.html"><span class="rel-meta">Свой ИИ-ассистент · 12 мин</span><b>ИИ-агент простыми словами: чем отличается от чат-бота</b></a>
+    <a class="rel" href="/blog/implant-ili-most.html"><span class="rel-meta">Здоровые зубы · 13 мин</span><b>Имплант или мост: что выбрать</b></a>
+    <a class="rel" href="/blog/rasshifrovka-audio-v-tekst-besplatno.html"><span class="rel-meta">Нейросети в жизни · 14 мин</span><b>Расшифровка аудио в текст бесплатно: голосовые, лекции, встречи</b></a>
+    <a class="rel" href="/blog/otbelivanie-zubov-vredno-li.html"><span class="rel-meta">Здоровые зубы · 12 мин</span><b>Можно ли отбеливать зубы и вредно ли это</b></a>
+  </div>
+</section>
+<aside class="author-box">
+  <img src="/photo-avatar.png" alt="Ильдар Хайров" width="64" height="64" />
+  <div><div class="name"><a href="/ob-avtore/">Ильдар Хайров</a></div>
+    <p>Практикующий стоматолог-ортопед, на приеме с 2017 года. Полтора года встраиваю ИИ в свой прием и в быт и пишу только о том, что проверил сам.</p>
+    <a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=tg_author&amp;utm_campaign=channel&amp;utm_content=svoya-neyroset-na-kompyutere-bez-oblaka" data-goal="tg_author">Telegram-канал: заметки врача и разборы нейросетей</a></div>
+</aside>
+<!-- blocks:end:end -->
+    </article>
+<!-- blocks:lead:start -->
+<section class="lead" aria-label="ИИ-агент под ключ">
+  <div><span class="when">от 50 000 ₽</span>
+    <h2>Соберу помощника под ваши задачи</h2>
+    <p>Агент живет в Telegram, понимает голосовые, работает на вашем сервере и помнит контекст. Работающий помощник за 1-2 недели и месяц сопровождения.</p></div>
+  <div><a class="btn" href="https://t.me/il_khairov?utm_source=blog&amp;utm_medium=lead_block&amp;utm_campaign=agents&amp;utm_content=svoya-neyroset-na-kompyutere-bez-oblaka" data-goal="lead_block">Обсудить задачу в Telegram</a>
+    <a class="all" href="/produkty/">Все продукты</a></div>
+</section>
+<!-- blocks:lead:end -->
+  </div>
+<!-- blocks:aside:start -->
+<aside class="col-aside">
+<a class="side-offer" href="https://t.me/il_khairov?utm_source=blog&amp;utm_medium=offer_side&amp;utm_campaign=agents&amp;utm_content=svoya-neyroset-na-kompyutere-bez-oblaka" data-goal="offer_side">
+  <span class="body"><span class="k">ИИ-агент под ключ</span><b>Соберу помощника под ваши задачи <span class="price">от 50 000 ₽</span></b><span class="txt">Агент живет в Telegram, понимает голосовые, работает на вашем сервере и помнит контекст. Работающий помощник за 1-2 недели и месяц сопровождения.</span></span>
+  <span class="btn">Обсудить задачу в Telegram</span>
+</a>
+<div class="wcard author-card">
+  <img src="/photo-avatar.png" alt="" width="56" height="56" />
+  <span class="role">Автор</span>
+  <b><a href="/ob-avtore/">Ильдар Хайров</a></b>
+  <p>Стоматолог-ортопед, на приеме с 2017 года. Пишу о том, что вижу на приеме и проверяю сам.</p>
+</div>
+<nav class="wcard toc" aria-label="Содержание статьи"><h4>Содержание</h4><ol>
+    <li><a href="#korotko" data-toc="korotko">1. Коротко: главное и четыре термина</a></li>
+    <li><a href="#zachem" data-toc="zachem">2. Зачем запускать у себя</a></li>
+    <li><a href="#minusy" data-toc="minusy">3. Честные ограничения</a></li>
+    <li><a href="#ollama-ili-lm-studio" data-toc="ollama-ili-lm-studio">4. Ollama или LM Studio</a></li>
+    <li><a href="#kak-zapustit" data-toc="kak-zapustit">5. Первый запуск по шагам</a></li>
+    <li><a href="#razmer-modeli" data-toc="razmer-modeli">6. Какой размер модели выбрать</a></li>
+    <li><a href="#zadachi" data-toc="zadachi">7. Для каких задач подходит</a></li>
+    <li><a href="#vracham" data-toc="vracham">8. Врачам: данные пациентов</a></li>
+    <li><a href="#chek-list" data-toc="chek-list">9. Чек-лист</a></li>
+    <li><a href="#faq" data-toc="faq">10. Частые вопросы</a></li>
+  </ol></nav>
+</aside>
+<!-- blocks:aside:end -->
+</div>
+<!-- blocks:footer:start -->
+<footer class="site-footer">
+  <div class="cols">
+    <div class="about"><b>Ильдар Хайров</b><br /><span>Стоматолог-ортопед. Нейросети в медицине и в жизни</span></div>
+    <div><p class="fh">Рубрики</p><div class="links"><a href="/blog/zdorovye-zuby/">Здоровые зубы</a><a href="/blog/zdorovie/">Нейросети и здоровье</a><a href="/blog/v-zhizni/">Нейросети в жизни</a><a href="/blog/assistent/">Свой ИИ-ассистент</a><a href="/blog/vrachu/">Врачу</a><a href="/blog/ii/">Искусственный интеллект помимо стоматологии</a></div></div>
+    <div><p class="fh">Продукты</p><div class="links"><a href="/metodichka.html?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=metodichka" data-goal="footer">Методичка «ИИ в практике врача», 1 799 ₽</a><a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=guide" data-goal="footer">Гайд «Личный секретарь в кармане», 4 999 ₽</a><a href="https://t.me/il_khairov?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=agents" data-goal="footer">ИИ-агент под ключ</a><a href="/ildar/?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=priem#priem" data-goal="footer">Запись на прием к стоматологу</a></div></div>
+    <div><p class="fh">Блог</p><div class="links"><a href="/blog/">Все статьи</a><a href="/ob-avtore/">Об авторе</a><a href="/redpolitika/">Как мы проверяем статьи</a><a href="/blog/feed.xml">RSS</a><a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=channel" data-goal="footer">Telegram-канал</a></div></div>
+    <div><p class="fh">Соцсети</p><div class="links"><a href="https://t.me/dr_khairov_multiverse">Telegram</a><a href="https://www.instagram.com/dr.khairov.multiverse/">Instagram</a><a href="https://www.tiktok.com/@dr.khairov.multiverse">TikTok</a><a href="https://www.youtube.com/@dr_khairov_multiverse">YouTube</a><a href="https://www.threads.com/@doc_khairov">Threads</a></div></div>
+  </div>
+  <div class="legal">
+    <p>Материалы носят информационный характер, не являются медицинской услугой и не заменяют очного обращения к врачу.</p>
+    <p><a href="/docs/price.html">Цены</a> · <a href="/docs/oferta.html">Оферта</a> · <a href="/docs/privacy.html">Политика конфиденциальности</a> · <a href="/docs/payment.html">Оплата и возврат</a> · © khairovmultiverse.com</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var goal = function (name) { if (window.ym) ym(113066474, 'reachGoal', name); };
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-goal]') : null;
+    if (el) goal(el.getAttribute('data-goal'));
+  });
+  var like = document.querySelector('[data-like]');
+  if (like) {
+    var key = 'like:' + like.getAttribute('data-like');
+    try { if (localStorage.getItem(key)) like.classList.add('on'); } catch (err) {}
+    like.addEventListener('click', function () {
+      like.classList.add('on');
+      try { localStorage.setItem(key, '1'); } catch (err) {}
+    });
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('[data-toc]'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var set = function (id) { links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-toc') === id); }); };
+  var io = new IntersectionObserver(function (es) {
+    var vis = es.filter(function (x) { return x.isIntersecting; });
+    if (vis.length) set(vis[0].target.id);
+  }, { rootMargin: '-70px 0px -65% 0px' });
+  links.forEach(function (a) { var el = document.getElementById(a.getAttribute('data-toc')); if (el) io.observe(el); });
+  set(links[0].getAttribute('data-toc'));
+})();
+</script>
+<!-- blocks:footer:end -->
+</body>
+</html>
