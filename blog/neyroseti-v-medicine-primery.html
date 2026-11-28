@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113066474', 'ym');
+
+    ym(113066474, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113066474" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Нейросети в медицине: 10 примеров, которые уже работают</title>
+<meta name="description" content="Нейросети уже ищут диабетическую ретинопатию, рак груди на маммограммах, инсульт на КТ, кариес на снимках и пишут за врача протокол приема. Разбираем 10 примеров: что делает каждая система, чем подтверждена, где ее предел и почему решение остается за врачом." />
+<meta name="author" content="Ильдар Хайров" />
+<meta name="rubric" content="zdorovie" />
+<meta name="published" content="2026-11-28" />
+<meta name="updated" content="2026-11-28" />
+<link rel="canonical" href="https://khairovmultiverse.com/blog/neyroseti-v-medicine-primery.html" />
+<meta property="og:title" content="10 нейросетей, которые уже работают в больницах" />
+<meta property="og:description" content="Глазное дно, маммограммы, инсульт, кариес, биопсии, часы, протоколы и лекарства: что доказано и где предел." />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/blog/blog.css" />
+<link rel="alternate" type="application/rss+xml" title="Ильдар Хайров: нейросети и здоровье" href="/blog/feed.xml" />
+<!-- seo:head:start -->
+<meta property="og:url" content="https://khairovmultiverse.com/blog/neyroseti-v-medicine-primery.html" />
+<meta property="og:image" content="https://khairovmultiverse.com/blog/img/neyroseti-v-medicine-primery.png" />
+<meta property="og:site_name" content="Ильдар Хайров" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="article:published_time" content="2026-11-28" />
+<meta property="article:modified_time" content="2026-11-28" />
+<meta property="article:section" content="Нейросети и здоровье" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://khairovmultiverse.com/blog/img/neyroseti-v-medicine-primery.png" />
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://khairovmultiverse.com/blog/neyroseti-v-medicine-primery.html#article",
+   "headline": "Нейросети в медицине: 10 примеров, которые уже работают",
+   "description": "Нейросети уже ищут диабетическую ретинопатию, рак груди на маммограммах, инсульт на КТ, кариес на снимках и пишут за врача протокол приема. Разбираем 10 примеров: что делает каждая система, чем подтверждена, где ее предел и почему решение остается за врачом.",
+   "image": "https://khairovmultiverse.com/blog/img/neyroseti-v-medicine-primery.png",
+   "datePublished": "2026-11-28",
+   "dateModified": "2026-11-28",
+   "inLanguage": "ru",
+   "author": {
+    "@type": "Person",
+    "name": "Ильдар Хайров",
+    "jobTitle": "стоматолог-ортопед",
+    "description": "Практикующий стоматолог-ортопед, на приеме с 2017 года. Полтора года встраиваю ИИ в свой прием и в быт и пишу только о том, что проверил сам.",
+    "url": "https://khairovmultiverse.com/ob-avtore/",
+    "image": "https://khairovmultiverse.com/photo-avatar.png",
+    "sameAs": [
+     "https://t.me/dr_khairov_multiverse"
+    ]
+   },
+   "publisher": {
+    "@type": "Person",
+    "name": "Ильдар Хайров",
+    "url": "https://khairovmultiverse.com/"
+   },
+   "mainEntityOfPage": "https://khairovmultiverse.com/blog/neyroseti-v-medicine-primery.html",
+   "articleSection": "Нейросети и здоровье",
+   "timeRequired": "PT15M"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Главная",
+     "item": "https://khairovmultiverse.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Статьи",
+     "item": "https://khairovmultiverse.com/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Нейросети и здоровье",
+     "item": "https://khairovmultiverse.com/blog/zdorovie/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 4,
+     "name": "Нейросети в медицине: 10 примеров, которые уже работают",
+     "item": "https://khairovmultiverse.com/blog/neyroseti-v-medicine-primery.html"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Может ли нейросеть поставить диагноз без врача?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "В редких узких случаях да. Первой такой системой стала IDx-DR, которая с 2018 года в США сама выдает вывод о диабетической ретинопатии по снимку глазного дна. Почти все остальные разрешенные системы работают как помощники, а окончательное заключение подписывает врач."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Используют ли нейросети в российских больницах?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Да. В Москве с 2020 года идет эксперимент по внедрению компьютерного зрения в лучевую диагностику: по данным Департамента здравоохранения на ноябрь 2023 года, нейросети проанализировали больше 11 миллионов изображений по 28 направлениям, ими пользуются 150 учреждений города."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Насколько точно нейросеть находит рак на маммограмме?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "В шведском исследовании MASAI на 105 тысячах женщин нейросеть вместе с рентгенологом нашла рак у 6,4 на 1000 обследованных против 5,0 при обычном чтении двумя врачами, без роста ложных вызовов. Чувствительность в группе с нейросетью была 80,5% против 73,8%."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Часы показали аритмию. Это точно фибрилляция предсердий?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Не обязательно. В Apple Heart Study фибрилляцию предсердий на ЭКГ-пластыре подтвердили у 34% тех, кто получил уведомление. Сигнал часов это повод снять ЭКГ у кардиолога, а при плохом самочувствии вызвать скорую."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Стоматологи используют нейросети для поиска кариеса?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Да, в США разрешены несколько таких программ для рентгеновских снимков зубов. Они подсвечивают подозрительные участки, а решение принимает врач после осмотра. Точность в исследованиях сильно различается, от 44% до 86% по чувствительности, поэтому программа подсказывает, но не решает, лечить ли зуб."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Есть ли уже лекарства, созданные нейросетью?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Одобренных пока нет. Самый продвинутый пример, рентосертиб для лечения легочного фиброза, прошел только исследование 2a фазы на 71 пациенте. Зато нейросеть AlphaFold2 уже помогает ученым понимать форму белков, за нее дали Нобелевскую премию по химии 2024 года."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<!-- seo:head:end -->
+</head>
+<body>
+<!-- blocks:header:start -->
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="/">Ильдар <span>Хайров</span></a>
+    <nav aria-label="Основная навигация">
+      <a class="hide-m" href="/blog/">Статьи</a>
+      <a class="hide-m" href="/ob-avtore/">Об авторе</a>
+      <a class="hide-m" href="/produkty/">Продукты</a>
+      <a class="btn-tg" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=tg_header&amp;utm_campaign=channel" data-goal="tg_header">Telegram-канал</a>
+    </nav>
+  </div>
+</header>
+<!-- blocks:header:end -->
+<div class="journal">
+<!-- blocks:sidenav:start -->
+<nav class="sidenav" aria-label="Разделы сайта">
+    <a class="nav-item" href="/">Главная</a>
+    <a class="nav-item" href="/blog/">Все статьи</a>
+    <a class="nav-item" href="/ob-avtore/">Об авторе</a>
+    <a class="nav-item" href="/redpolitika/">Как мы проверяем статьи</a>
+    <a class="nav-item" href="/produkty/">Продукты</a>
+    <p class="grp">Рубрики</p>
+    <a class="nav-item" href="/blog/zdorovye-zuby/"><span>Здоровые зубы</span><b>17</b></a>
+    <a class="nav-item on" href="/blog/zdorovie/"><span>Нейросети и здоровье</span><b>6</b></a>
+    <a class="nav-item" href="/blog/v-zhizni/"><span>Нейросети в жизни</span><b>2</b></a>
+    <a class="nav-item" href="/blog/assistent/"><span>Свой ИИ-ассистент</span><b>2</b></a>
+    <a class="nav-item" href="/blog/vrachu/"><span>Врачу</span><b>1</b></a>
+    <a class="nav-item" href="/blog/ii/"><span>Искусственный интеллект помимо стоматологии</span><b>0</b></a>
+  </nav>
+<!-- blocks:sidenav:end -->
+  <div class="col-main">
+    <article class="wcard art">
+      <header>
+<!-- seo:info:start -->
+<p class="crumbs"><a href="/">Главная</a> / <a href="/blog/">Статьи</a> / <a href="/blog/zdorovie/">Нейросети и здоровье</a></p>
+<p class="meta"><a href="/blog/zdorovie/">Нейросети и здоровье</a> · 15 мин · обновлено 28 ноября 2026</p>
+<!-- seo:info:end -->
+        <h1>Нейросети в медицине: 10 примеров, которые уже работают</h1>
+        <p class="lede">Не прогнозы и не презентации стартапов, а системы, которые прошли регистрацию или большие исследования и уже стоят в клиниках. Что делает каждая, чем это подтверждено и где ее предел.</p>
+<!-- blocks:byline:start -->
+<p class="byline"><img src="/photo-avatar.png" alt="" width="36" height="36" /><a href="/ob-avtore/">Ильдар Хайров</a> · стоматолог-ортопед, на приеме с 2017 года</p>
+<!-- blocks:byline:end -->
+      </header>
+      <img class="cover-img" src="/blog/img/neyroseti-v-medicine-primery.png" alt="Нейросети в медицине: 10 примеров, которые уже работают, обложка статьи" width="1200" height="630" />
+<!-- blocks:toc-m:start -->
+<details class="toc-m"><summary>Содержание</summary><ol>
+  <li><a href="#korotko">Коротко: главное и пять терминов</a></li>
+  <li><a href="#gde-rabotayut">Где уже работают</a></li>
+  <li><a href="#snimki">Снимки: глаз, грудь, мозг</a></li>
+  <li><a href="#stomatologiya-patologiya">Стоматология и биопсии</a></li>
+  <li><a href="#chasy-i-sekretar">Часы и секретарь врача</a></li>
+  <li><a href="#lekarstva">Новые лекарства</a></li>
+  <li><a href="#ne-zamenyaet">Где не заменяет врача</a></li>
+  <li><a href="#kak-otnositsya">Как относиться пациенту</a></li>
+  <li><a href="#chek-list">Чек-лист</a></li>
+  <li><a href="#faq">Частые вопросы</a></li>
+</ol></details>
+<!-- blocks:toc-m:end -->
+
+      <div class="prose">
+        <div class="callout callout-main"><p>Нейросети в медицине уже работают, и в основном там, где есть картинка: снимок глазного дна, маммограмма, КТ головы, рентген зуба, скан биопсии. В США в списке FDA больше тысячи медицинских устройств с такими алгоритмами, в Москве с 2020 года нейросети проверили больше 11 миллионов снимков. Почти везде нейросеть работает помощником: подсвечивает подозрительное, сортирует очередь, пишет черновик. Диагноз ставит и лечение назначает врач.</p></div>
+
+        <p>Про нейросети в медицине обычно рассказывают одно из двух: либо «скоро врачи не нужны», либо «это все игрушки». Обе версии мимо. Ниже десять примеров, у каждого есть регистрация регулятора или крупное исследование в рецензируемом журнале. По каждому: что делает, чем подтверждено и где спотыкается. Цифры взяты только из источников, ссылки в конце.</p>
+
+        <h2 id="korotko" data-short="Коротко: главное и пять терминов">Коротко: главное и пять терминов</h2>
+        <div class="callout callout-short"><ul>
+          <li>Больше всего зарегистрированных нейросетей в лучевой диагностике: примерно три из четырех позиций в списке FDA относятся к радиологии.</li>
+          <li>Самостоятельно, без врача, ставить вывод разрешено единицам. Первой стала система IDx-DR для поиска диабетической ретинопатии в 2018 году.</li>
+          <li>В скрининге рака груди нейросеть вместе с рентгенологом нашла больше опухолей и сократила число прочтений снимков на 44%.</li>
+          <li>Часы с уведомлением о неровном пульсе дают сигнал, а не диагноз: фибрилляцию предсердий подтвердили у 34% получивших уведомление.</li>
+          <li>Нейросеть-секретарь экономит врачу время на записях, но иногда ошибается в тексте, поэтому врач все перечитывает.</li>
+          <li>Лекарств, целиком придуманных нейросетью и уже одобренных, пока нет: первые кандидаты только проходят испытания.</li>
+        </ul></div>
+        <dl class="glossary">
+          <dt>Нейросеть</dt><dd>Программа, которая научилась находить закономерности на тысячах примеров: снимков, записей ЭКГ, текстов. Она не «знает» медицину, она узнает похожее.</dd>
+          <dt>FDA</dt><dd>Управление по контролю за продуктами и лекарствами США. Медицинское устройство, в том числе программа, без его разрешения в США продаваться не может.</dd>
+          <dt>Чувствительность</dt><dd>Какую долю больных тест находит. Чувствительность 87% значит, что из 100 больных тест заметит 87, а 13 пропустит.</dd>
+          <dt>Специфичность</dt><dd>Какую долю здоровых тест правильно называет здоровыми. Чем она ниже, тем больше ложных тревог.</dd>
+          <dt>Скрининг</dt><dd>Проверка людей без жалоб, чтобы найти болезнь раньше, чем она себя проявит. Например, маммография раз в два года.</dd>
+        </dl>
+
+        <h2 id="gde-rabotayut" data-short="Где уже работают">Где нейросети в медицине уже работают по-настоящему?</h2>
+        <p>Там, где можно показать машине миллион размеченных картинок. FDA ведет открытый список медицинских устройств, в которых работают такие алгоритмы и которые разрешены к продаже в США (официально он называется Artificial Intelligence-Enabled Medical Devices). На осень 2026 года в нем больше тысячи позиций, и по нашему подсчету по этой таблице около 1 230 из примерно 1 600 записей относятся к радиологии. Сама FDA оговаривает, что список не исчерпывающий: туда попадают устройства, в описании которых встречаются соответствующие термины.</p>
+        <table>
+          <thead><tr><th>Пример</th><th>Что делает нейросеть</th><th>Чем подтверждено</th></tr></thead>
+          <tbody>
+            <tr><td>1. IDx-DR</td><td>Ищет диабетическую ретинопатию по снимку глазного дна</td><td>Разрешение FDA 2018, исследование на 900 пациентах</td></tr>
+            <tr><td>2. Transpara в программе MASAI</td><td>Сортирует маммограммы и подсвечивает подозрительное</td><td>Рандомизированное исследование, больше 105 тысяч женщин</td></tr>
+            <tr><td>3. Viz ContaCT</td><td>Находит на КТ признаки закупорки крупного сосуда мозга и будит специалиста</td><td>Разрешение FDA 2018</td></tr>
+            <tr><td>4. Московский эксперимент</td><td>Подсвечивает находки на снимках по 28 направлениям</td><td>Данные Департамента здравоохранения Москвы</td></tr>
+            <tr><td>5. Поиск кариеса на снимках</td><td>Отмечает кариес на прицельных и панорамных снимках</td><td>Несколько систем в списке FDA, систематический обзор</td></tr>
+            <tr><td>6. Paige Prostate</td><td>Показывает патологу подозрительный участок в биопсии простаты</td><td>Разрешение FDA 2021</td></tr>
+            <tr><td>7. Уведомление о неровном пульсе в часах</td><td>Замечает неровный пульс и предлагает проверить сердце</td><td>Исследование на 419 тысячах человек, есть в списке FDA</td></tr>
+            <tr><td>8. Нейросеть-секретарь</td><td>Слушает прием и пишет черновик записи в карту</td><td>Рандомизированное исследование, 238 врачей</td></tr>
+            <tr><td>9. AlphaFold2</td><td>Предсказывает форму белков</td><td>Нобелевская премия по химии 2024</td></tr>
+            <tr><td>10. Рентосертиб</td><td>Лекарство-кандидат, мишень и молекулу которого нашли нейросетью</td><td>Исследование 2a фазы, 71 пациент</td></tr>
+          </tbody>
+        </table>
+        <p class="src">Источники таблицы: список FDA, публикации и материалы из раздела «Источники».</p>
+
+        <h2 id="snimki" data-short="Снимки: глаз, грудь, мозг">Как нейросети читают снимки: глаз, грудь, мозг?</h2>
+        <h3>1. Диабетическая ретинопатия без офтальмолога в кабинете</h3>
+        <p>IDx-DR смотрит на фотографию глазного дна, сделанную прямо в кабинете терапевта, и сама выдает ответ: есть ретинопатия тяжелее легкой степени или нет. В 2018 году FDA разрешила ее как первую автономную диагностическую систему, то есть такую, которой не нужен врач для чтения результата. В исследовании на 900 людях с диабетом чувствительность была 87,2%, специфичность 90,7%. Предел виден в тех же цифрах: из сотни больных глаз примерно тринадцать система пропустит, поэтому она годится для отбора, кого срочно отправить к офтальмологу, а не вместо него.</p>
+        <h3>2. Маммография: больше найденных опухолей и меньше работы</h3>
+        <p>В шведском исследовании MASAI больше 105 тысяч женщин случайно разделили на две группы. В одной снимки по старой схеме читали два рентгенолога, в другой нейросеть Transpara оценивала риск: простые случаи шли одному врачу, подозрительные двум, а находки подсвечивались. В группе с нейросетью рак нашли у 6,4 на 1000 обследованных против 5,0 в обычной, ложных вызовов больше не стало, а прочтений снимков стало меньше на 44%. В 2026 году вышел следующий анализ: рака, который проявился между плановыми обследованиями, в группе с нейросетью было не больше, чем в обычной, а чувствительность выше, 80,5% против 73,8%. Предел: одна страна, одна программа, один производитель, и снимки все равно читал человек.</p>
+        <h3>3. Инсульт на КТ: кто первым увидит снимок</h3>
+        <p>Viz ContaCT FDA разрешила в феврале 2018 года. Программа ищет на КТ головы признаки закупорки крупного сосуда и сразу шлет сообщение нейрососудистому специалисту на телефон, не дожидаясь, пока рентгенолог дойдет до снимка в очереди. Но FDA в своем сообщении прямо пишет: специалист все равно должен посмотреть снимки на рабочей станции. Программа ускоряет звонок, а решение о лечении принимает врач.</p>
+        <h3>4. Москва: нейросети в обычных поликлиниках</h3>
+        <p>С 2020 года Департамент здравоохранения Москвы проводит эксперимент по внедрению компьютерного зрения в лучевую диагностику. По данным на ноябрь 2023 года нейросети проанализировали больше 11 миллионов медицинских изображений и помогают рентгенологам по 28 направлениям: рак легких, пневмония, остеопороз, аневризма аорты, инсульт, рак молочной железы и другие. Сервисы подсвечивают цветом зоны возможной патологии, делают измерения и готовят черновик описания, ими пользуются врачи 150 учреждений города. Там же сказано, что в 2023 году Москва первой стала оплачивать анализ маммографии с участием нейросети из средств ОМС. Предел: это данные самого организатора, независимой сравнительной оценки исходов для пациентов в этом сообщении нет.</p>
+
+        <!-- cta:inline:start -->
+<div class="cta-inline">
+  <p><strong>Нейросети и здоровье без воды.</strong> Разборы нейросетей и заметки из практики стоматолога. Новые статьи и памятки выходят там первыми.</p>
+  <a class="btn" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=cta_inline&amp;utm_campaign=channel&amp;utm_content=neyroseti-v-medicine-primery" data-goal="cta_inline">Открыть канал</a>
+</div>
+<!-- cta:inline:end -->
+
+        <!-- blocks:third:start -->
+<a class="wide-offer" href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=article_third&amp;utm_campaign=channel&amp;utm_content=neyroseti-v-medicine-primery" data-goal="article_third">
+  <span class="body"><span class="k">Telegram-канал врача</span><b>Нейросети и здоровье без воды</b><span class="txt">Разборы нейросетей и заметки из практики стоматолога. Новые статьи и памятки выходят там первыми.</span></span>
+  <span class="btn">Открыть канал</span>
+</a>
+<!-- blocks:third:end -->
+        <h2 id="stomatologiya-patologiya" data-short="Стоматология и биопсии">Что нейросети делают в стоматологии и при биопсии?</h2>
+        <h3>5. Кариес на рентгене</h3>
+        <p>Это ближе всего к моей работе. В списке FDA несколько программ, которые ищут кариес на снимках зубов: Overjet Caries Assist, Videa Caries Assist, Pearl Second Opinion и другие, первые такие разрешения появились в 2022 году. Программа обводит на снимке подозрительные участки, а врач смотрит, согласен он или нет. Систематический обзор 20 исследований в BMC Oral Health показал большой разброс: чувствительность от 44% до 86%, специфичность от 85% до 98%. Авторы отмечают, что наборы снимков были маленькие и разнородные. Вывод простой: кариес на снимке программа может подсказать, но глубину, активность и то, нужно ли вообще сверлить, решают осмотр и врач.</p>
+        <h3>6. Биопсия простаты</h3>
+        <p>Paige Prostate FDA разрешила в 2021 году. Патолог сначала сам смотрит отсканированный препарат биопсии, а потом программа показывает одну точку, где вероятность рака самая высокая. В документах FDA сказано прямо: это вспомогательный инструмент, его вывод нельзя использовать как основной диагноз. По расчетам в тех же документах польза ожидается примерно в 7,3% биопсий с раком, где врач с подсказкой увидит то, что без нее пропустил бы. На уровне пациента, у которого берут несколько столбиков ткани, FDA ожидает пользу заметно ниже.</p>
+
+        <h2 id="chasy-i-sekretar" data-short="Часы и секретарь врача">Что умеют часы и нейросеть-секретарь?</h2>
+        <h3>7. Неровный пульс на запястье</h3>
+        <p>Функция уведомления о нерегулярном ритме Apple есть в списке FDA. Ее проверили в Apple Heart Study: 419 297 участников, уведомление за время наблюдения получили 0,52%. Тем, кто получил сигнал, отправляли ЭКГ-пластырь на неделю, и фибрилляцию предсердий на нем нашли у 34%. Совпадение уведомления с аритмией на ЭКГ в тот же момент было 84%. То есть часы редко поднимают тревогу и чаще по делу, но уведомление это повод пойти к кардиологу и снять ЭКГ, а не диагноз. Исследование финансировала Apple. Подробнее о том, что часы измеряют хорошо, а что нет, в статье <a href="/blog/smart-chasy-chto-izmeryayut-na-samom-dele.html">про смарт-часы</a>.</p>
+        <h3>8. Нейросеть, которая пишет за врача</h3>
+        <p>Так называемые «эмбиент-скрайбы» слушают разговор на приеме и быстро делают черновик записи в карту. В первом рандомизированном исследовании 238 врачей поликлиник разделили на три группы: две программы, DAX Copilot и Nabla, и обычная работа. Время на записи сократилось только с Nabla, на 9,5%, у DAX значимой разницы не было. Усталость и нагрузка по опросам снизились в обеих группах, но авторы просят подтвердить это в больших исследованиях. И главное: врачи отмечали, что клинически значимые ошибки в тексте встречаются «иногда». Поэтому запись, которую написала нейросеть, врач обязан перечитать до подписи.</p>
+
+        <h2 id="lekarstva" data-short="Новые лекарства">Как нейросети помогают создавать лекарства?</h2>
+        <h3>9. Форма белков</h3>
+        <p>Лекарство обычно действует на белок, а чтобы подобрать к белку молекулу, нужно знать его форму. Нейросеть AlphaFold2, которую в 2020 году представили Демис Хассабис и Джон Джампер, предсказала структуру практически всех 200 миллионов известных белков, а ею воспользовались больше двух миллионов человек из 190 стран. За это в 2024 году они получили половину Нобелевской премии по химии. Это не лекарство, а карта, по которой лекарства теперь ищут быстрее.</p>
+        <h3>10. Препарат, мишень которого нашла нейросеть</h3>
+        <p>Рентосертиб от компании Insilico Medicine создан для лечения идиопатического легочного фиброза. И мишень, белок TNIK, и саму молекулу подобрали генеративные нейросети. В 2025 году в Nature Medicine опубликовали исследование 2a фазы на 71 пациенте: препарат в целом переносился так же, как плацебо, а в группе с самой высокой дозировкой форсированная жизненная емкость легких за 12 недель выросла, тогда как в группе плацебо почти не изменилась. Предел очевиден: пациентов мало, срок короткий, исследование оплачивал разработчик. Это кандидат, а не одобренное лекарство, и его еще ждут большие испытания.</p>
+
+        <h2 id="ne-zamenyaet" data-short="Где не заменяет врача">Где нейросеть не заменяет врача?</h2>
+        <p>Почти везде. Посмотрите на десять примеров выше: самостоятельно решение принимает только IDx-DR, и то в одной узкой задаче, а все остальные системы зарегистрированы как помощники. Тому есть простые причины.</p>
+        <ul>
+          <li><b>Нейросеть видит то, чему ее учили.</b> Программа для кариеса не заметит опухоль челюсти на том же снимке, если ее этому не учили.</li>
+          <li><b>Цифры из исследования не равны цифрам в вашей клинике.</b> Другой аппарат, другие пациенты, другое качество снимков, и точность меняется. Обзор по кариесу это хорошо показывает разбросом от 44% до 86%.</li>
+          <li><b>Нейросеть не знает вас.</b> Жалоб, анамнеза и лекарств на снимке нет.</li>
+          <li><b>Ошибки бывают в обе стороны:</b> пропуск болезни и ложная тревога.</li>
+          <li><b>Отвечает за решение врач.</b> Ни одна из этих программ не несет ответственности за лечение.</li>
+        </ul>
+        <div class="hl-frame"><p><b>Нейросеть хорошо находит подозрительное. Решать, что с этим делать, она не умеет.</b></p></div>
+        <p>Отдельная история с чат-ботами, которым люди сами задают вопросы о здоровье. Это не медицинские устройства, ни одна из систем выше к ним не относится. Как проверять такие ответы, разобрано в статье <a href="/blog/kak-proverit-medicinskiy-sovet-neyroseti.html">как проверить медицинский совет нейросети</a>.</p>
+
+        <h2 id="kak-otnositsya" data-short="Как относиться пациенту">Как пациенту относиться к выводу нейросети?</h2>
+        <p>Спокойно и как ко второму мнению, а не к приговору. Если в заключении КТ или маммографии написано, что снимок смотрела нейросеть, это нормальная практика: финальное описание все равно подписал врач. Если же вы сами загрузили анализы или снимок в чат-бот и получили страшный или, наоборот, слишком успокаивающий ответ, порядок такой:</p>
+        <ol class="steps">
+          <li>Не делайте выводов и ничего не меняйте в лечении сами.</li>
+          <li>Сохраните ответ целиком, вместе с тем, что вы загружали.</li>
+          <li>Покажите его своему врачу и спросите прямо: «Вы с этим согласны?»</li>
+          <li>Если программа говорит о срочном (инсульт, аритмия, кровотечение), не ждите планового приема: звоните врачу или в скорую.</li>
+        </ol>
+        <p>Как правильно спрашивать нейросеть про анализы и где она чаще всего ошибается, есть в отдельной статье <a href="/blog/rasshifrovka-analizov-neyrosetyu.html">о расшифровке анализов нейросетью</a>. А врачам, которые хотят пользоваться нейросетями в работе без риска, пригодится методичка «ИИ в практике врача» (<a href="/metodichka.html">подробнее</a>): там есть четыре зоны, куда нейросети пускать нельзя.</p>
+        <div class="callout callout-warn"><p>Часы показали неровный пульс и при этом вам плохо: давит в груди, не хватает воздуха, кружится голова, онемела рука или перекосило лицо? Это не повод ждать ответа чат-бота. Вызывайте скорую.</p></div>
+
+        <h2 id="chek-list" data-short="Чек-лист">Чек-лист: как читать новость о нейросети в медицине</h2>
+        <ul class="checklist">
+          <li>Есть ли регистрация: FDA, Росздравнадзор или другой регулятор?</li>
+          <li>Есть ли исследование в рецензируемом журнале, а не только пресс-релиз компании?</li>
+          <li>Сравнивали ли с обычной работой врачей, а лучше в рандомизированном исследовании?</li>
+          <li>Кто платил за исследование?</li>
+          <li>Нейросеть ставит вывод сама или только подсказывает врачу?</li>
+          <li>Любой вывод нейросети о вашем здоровье: спросите своего врача.</li>
+        </ul>
+
+        <div class="callout callout-legal"><p>Статья не заменяет консультацию врача и не ставит диагноз. Здесь описано, как устроены медицинские системы на нейросетях, а не как лечиться. Диагноз и лечение определяет только врач на приеме, в том числе когда результат получен с помощью нейросети.</p></div>
+      </div>
+
+      <section class="faq prose" aria-label="Частые вопросы">
+        <h2 id="faq">Частые вопросы</h2>
+        <details class="faq"><summary>Может ли нейросеть поставить диагноз без врача?</summary><p>В редких узких случаях да. Первой такой системой стала IDx-DR, которая с 2018 года в США сама выдает вывод о диабетической ретинопатии по снимку глазного дна. Почти все остальные разрешенные системы работают как помощники, а окончательное заключение подписывает врач.</p></details>
+        <details class="faq"><summary>Используют ли нейросети в российских больницах?</summary><p>Да. В Москве с 2020 года идет эксперимент по внедрению компьютерного зрения в лучевую диагностику: по данным Департамента здравоохранения на ноябрь 2023 года, нейросети проанализировали больше 11 миллионов изображений по 28 направлениям, ими пользуются 150 учреждений города.</p></details>
+        <details class="faq"><summary>Насколько точно нейросеть находит рак на маммограмме?</summary><p>В шведском исследовании MASAI на 105 тысячах женщин нейросеть вместе с рентгенологом нашла рак у 6,4 на 1000 обследованных против 5,0 при обычном чтении двумя врачами, без роста ложных вызовов. Чувствительность в группе с нейросетью была 80,5% против 73,8%.</p></details>
+        <details class="faq"><summary>Часы показали аритмию. Это точно фибрилляция предсердий?</summary><p>Не обязательно. В Apple Heart Study фибрилляцию предсердий на ЭКГ-пластыре подтвердили у 34% тех, кто получил уведомление. Сигнал часов это повод снять ЭКГ у кардиолога, а при плохом самочувствии вызвать скорую.</p></details>
+        <details class="faq"><summary>Стоматологи используют нейросети для поиска кариеса?</summary><p>Да, в США разрешены несколько таких программ для рентгеновских снимков зубов. Они подсвечивают подозрительные участки, а решение принимает врач после осмотра. Точность в исследованиях сильно различается, от 44% до 86% по чувствительности, поэтому программа подсказывает, но не решает, лечить ли зуб.</p></details>
+        <details class="faq"><summary>Есть ли уже лекарства, созданные нейросетью?</summary><p>Одобренных пока нет. Самый продвинутый пример, рентосертиб для лечения легочного фиброза, прошел только исследование 2a фазы на 71 пациенте. Зато нейросеть AlphaFold2 уже помогает ученым понимать форму белков, за нее дали Нобелевскую премию по химии 2024 года.</p></details>
+      </section>
+
+      <section class="prose">
+        <h2 id="istochniki" class="no-toc">Источники</h2>
+        <ol class="sources">
+          <li><a href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices" rel="nofollow noopener" target="_blank">FDA. Artificial Intelligence-Enabled Medical Devices (список устройств, обновление от 04.09.2026)</a>; <a href="https://www.fda.gov/news-events/press-announcements/fda-permits-marketing-clinical-decision-support-software-alerting-providers-potential-stroke" rel="nofollow noopener" target="_blank">FDA, 13.02.2018: разрешение Viz ContaCT</a>; <a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN200080.pdf" rel="nofollow noopener" target="_blank">FDA, De Novo DEN200080: решение по Paige Prostate</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6550188/" rel="nofollow noopener" target="_blank">Abramoff M. D. et al. Pivotal trial of an autonomous AI-based diagnostic system for detection of diabetic retinopathy in primary care offices. npj Digital Medicine, 2018; 1: 39</a></li>
+          <li><a href="https://doi.org/10.1016/S2589-7500(24)00267-X" rel="nofollow noopener" target="_blank">Hernstrom V. et al. Screening performance and characteristics of breast cancer detected in the MASAI trial. Lancet Digital Health, 2025; 7(3): e175-e183</a>; <a href="https://doi.org/10.1016/S0140-6736(25)02464-X" rel="nofollow noopener" target="_blank">Gommers J. et al. Interval cancer, sensitivity, and specificity in the MASAI study. Lancet, 2026; 407: 505-514</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8112605/" rel="nofollow noopener" target="_blank">Perez M. V. et al. Large-Scale Assessment of a Smartwatch to Identify Atrial Fibrillation (Apple Heart Study). New England Journal of Medicine, 2019; 381: 1909-1917</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10894487/" rel="nofollow noopener" target="_blank">Albano D. et al. Artificial intelligence for radiographic imaging detection of caries lesions: a systematic review. BMC Oral Health, 2024; 24: 274</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12768499/" rel="nofollow noopener" target="_blank">Lukac P. J. et al. Ambient AI Scribes in Clinical Practice: A Randomized Trial. NEJM AI, 2025; 2(12)</a></li>
+          <li><a href="https://www.mos.ru/news/item/132247073/" rel="nofollow noopener" target="_blank">Сайт Москвы, 18.11.2023: «В Москве искусственный интеллект повысил скорость и точность лучевой диагностики» (Департамент здравоохранения Москвы)</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12353801/" rel="nofollow noopener" target="_blank">Xu Z. et al. A generative AI-discovered TNIK inhibitor for idiopathic pulmonary fibrosis: a randomized phase 2a trial. Nature Medicine, 2025; 31: 2602-2610</a>; <a href="https://www.nobelprize.org/prizes/chemistry/2024/press-release/" rel="nofollow noopener" target="_blank">Нобелевская премия по химии 2024, пресс-релиз</a></li>
+        </ol>
+      </section>
+
+<!-- blocks:end:start -->
+<div class="like-row"><button class="like" type="button" data-like="neyroseti-v-medicine-primery" data-goal="article_like">Полезно</button><span>Статья помогла? Отметьте, так я вижу, о чем писать дальше.</span></div>
+<section class="related" aria-label="Рекомендуем прочитать">
+  <h2>Рекомендуем прочитать</h2>
+  <div class="rel-grid">
+    <a class="rel" href="/blog/chatgpt-o-zdorove-mozhno-li.html"><span class="rel-meta">Нейросети и здоровье · 11 мин</span><b>Можно ли спрашивать ChatGPT о здоровье: что можно, что нельзя</b></a>
+    <a class="rel" href="/blog/rasshifrovka-analizov-neyrosetyu.html"><span class="rel-meta">Нейросети и здоровье · 13 мин</span><b>Расшифровка анализов нейросетью: как спросить и где она ошибается</b></a>
+    <a class="rel" href="/blog/podgotovka-k-priemu-vracha-s-neyrosetyu.html"><span class="rel-meta">Нейросети и здоровье · 13 мин</span><b>Как подготовиться к приему врача с нейросетью: список вопросов за 10 минут</b></a>
+    <a class="rel" href="/blog/kak-proverit-medicinskiy-sovet-neyroseti.html"><span class="rel-meta">Нейросети и здоровье · 10 мин</span><b>Как проверить медицинский совет нейросети</b></a>
+  </div>
+</section>
+<aside class="author-box">
+  <img src="/photo-avatar.png" alt="Ильдар Хайров" width="64" height="64" />
+  <div><div class="name"><a href="/ob-avtore/">Ильдар Хайров</a></div>
+    <p>Практикующий стоматолог-ортопед, на приеме с 2017 года. Полтора года встраиваю ИИ в свой прием и в быт и пишу только о том, что проверил сам.</p>
+    <a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=tg_author&amp;utm_campaign=channel&amp;utm_content=neyroseti-v-medicine-primery" data-goal="tg_author">Telegram-канал: заметки врача и разборы нейросетей</a></div>
+</aside>
+<!-- blocks:end:end -->
+    </article>
+<!-- blocks:lead:start -->
+<section class="lead" aria-label="Для практикующего врача">
+  <div><span class="when">1 799 ₽</span>
+    <h2>Методичка «ИИ в практике врача»</h2>
+    <p>24 страницы: что поручать нейросети, что не поручать никогда и как сформулировать запрос, чтобы получить рабочий ответ. Семь сценариев с приема и чек-лист на 30 секунд.</p></div>
+  <div><a class="btn" href="/metodichka.html?utm_source=blog&amp;utm_medium=lead_block&amp;utm_campaign=metodichka&amp;utm_content=neyroseti-v-medicine-primery" data-goal="lead_block">Подробнее о методичке</a>
+    <a class="all" href="/produkty/">Все продукты</a></div>
+</section>
+<!-- blocks:lead:end -->
+  </div>
+<!-- blocks:aside:start -->
+<aside class="col-aside">
+<a class="side-offer" href="/metodichka.html?utm_source=blog&amp;utm_medium=offer_side&amp;utm_campaign=metodichka&amp;utm_content=neyroseti-v-medicine-primery" data-goal="offer_side">
+  <span class="body"><span class="k">Для практикующего врача</span><b>Методичка «ИИ в практике врача» <span class="price">1 799 ₽</span></b><span class="txt">24 страницы: что поручать нейросети, что не поручать никогда и как сформулировать запрос, чтобы получить рабочий ответ. Семь сценариев с приема и чек-лист на 30 секунд.</span></span>
+  <span class="btn">Подробнее о методичке</span>
+</a>
+<div class="wcard author-card">
+  <img src="/photo-avatar.png" alt="" width="56" height="56" />
+  <span class="role">Автор</span>
+  <b><a href="/ob-avtore/">Ильдар Хайров</a></b>
+  <p>Стоматолог-ортопед, на приеме с 2017 года. Пишу о том, что вижу на приеме и проверяю сам.</p>
+</div>
+<nav class="wcard toc" aria-label="Содержание статьи"><h4>Содержание</h4><ol>
+    <li><a href="#korotko" data-toc="korotko">1. Коротко: главное и пять терминов</a></li>
+    <li><a href="#gde-rabotayut" data-toc="gde-rabotayut">2. Где уже работают</a></li>
+    <li><a href="#snimki" data-toc="snimki">3. Снимки: глаз, грудь, мозг</a></li>
+    <li><a href="#stomatologiya-patologiya" data-toc="stomatologiya-patologiya">4. Стоматология и биопсии</a></li>
+    <li><a href="#chasy-i-sekretar" data-toc="chasy-i-sekretar">5. Часы и секретарь врача</a></li>
+    <li><a href="#lekarstva" data-toc="lekarstva">6. Новые лекарства</a></li>
+    <li><a href="#ne-zamenyaet" data-toc="ne-zamenyaet">7. Где не заменяет врача</a></li>
+    <li><a href="#kak-otnositsya" data-toc="kak-otnositsya">8. Как относиться пациенту</a></li>
+    <li><a href="#chek-list" data-toc="chek-list">9. Чек-лист</a></li>
+    <li><a href="#faq" data-toc="faq">10. Частые вопросы</a></li>
+  </ol></nav>
+</aside>
+<!-- blocks:aside:end -->
+</div>
+<!-- blocks:footer:start -->
+<footer class="site-footer">
+  <div class="cols">
+    <div class="about"><b>Ильдар Хайров</b><br /><span>Стоматолог-ортопед. Нейросети в медицине и в жизни</span></div>
+    <div><p class="fh">Рубрики</p><div class="links"><a href="/blog/zdorovye-zuby/">Здоровые зубы</a><a href="/blog/zdorovie/">Нейросети и здоровье</a><a href="/blog/v-zhizni/">Нейросети в жизни</a><a href="/blog/assistent/">Свой ИИ-ассистент</a><a href="/blog/vrachu/">Врачу</a><a href="/blog/ii/">Искусственный интеллект помимо стоматологии</a></div></div>
+    <div><p class="fh">Продукты</p><div class="links"><a href="/metodichka.html?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=metodichka" data-goal="footer">Методичка «ИИ в практике врача», 1 799 ₽</a><a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=guide" data-goal="footer">Гайд «Личный секретарь в кармане», 4 999 ₽</a><a href="https://t.me/il_khairov?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=agents" data-goal="footer">ИИ-агент под ключ</a><a href="/ildar/?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=priem#priem" data-goal="footer">Запись на прием к стоматологу</a></div></div>
+    <div><p class="fh">Блог</p><div class="links"><a href="/blog/">Все статьи</a><a href="/ob-avtore/">Об авторе</a><a href="/redpolitika/">Как мы проверяем статьи</a><a href="/blog/feed.xml">RSS</a><a href="https://t.me/dr_khairov_multiverse?utm_source=blog&amp;utm_medium=footer&amp;utm_campaign=channel" data-goal="footer">Telegram-канал</a></div></div>
+    <div><p class="fh">Соцсети</p><div class="links"><a href="https://t.me/dr_khairov_multiverse">Telegram</a><a href="https://www.instagram.com/dr.khairov.multiverse/">Instagram</a><a href="https://www.tiktok.com/@dr.khairov.multiverse">TikTok</a><a href="https://www.youtube.com/@dr_khairov_multiverse">YouTube</a><a href="https://www.threads.com/@doc_khairov">Threads</a></div></div>
+  </div>
+  <div class="legal">
+    <p>Материалы носят информационный характер, не являются медицинской услугой и не заменяют очного обращения к врачу.</p>
+    <p><a href="/docs/price.html">Цены</a> · <a href="/docs/oferta.html">Оферта</a> · <a href="/docs/privacy.html">Политика конфиденциальности</a> · <a href="/docs/payment.html">Оплата и возврат</a> · © khairovmultiverse.com</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var goal = function (name) { if (window.ym) ym(113066474, 'reachGoal', name); };
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-goal]') : null;
+    if (el) goal(el.getAttribute('data-goal'));
+  });
+  var like = document.querySelector('[data-like]');
+  if (like) {
+    var key = 'like:' + like.getAttribute('data-like');
+    try { if (localStorage.getItem(key)) like.classList.add('on'); } catch (err) {}
+    like.addEventListener('click', function () {
+      like.classList.add('on');
+      try { localStorage.setItem(key, '1'); } catch (err) {}
+    });
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('[data-toc]'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var set = function (id) { links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-toc') === id); }); };
+  var io = new IntersectionObserver(function (es) {
+    var vis = es.filter(function (x) { return x.isIntersecting; });
+    if (vis.length) set(vis[0].target.id);
+  }, { rootMargin: '-70px 0px -65% 0px' });
+  links.forEach(function (a) { var el = document.getElementById(a.getAttribute('data-toc')); if (el) io.observe(el); });
+  set(links[0].getAttribute('data-toc'));
+})();
+</script>
+<!-- blocks:footer:end -->
+</body>
+</html>
